@@ -30,7 +30,7 @@ export function createApiAxios(options: ApiAxiosOptions): AxiosInstance {
     baseURL,
     withCredentials: true,
     timeout: defaultTimeout,
-    headers: { "Content-Type": "application/json", "X-Online Competitions-Client": "1" },
+    headers: { "Content-Type": "application/json", "X-OnlineCompetitions-Client": "1" },
   });
 
   instance.interceptors.request.use((config) => {
