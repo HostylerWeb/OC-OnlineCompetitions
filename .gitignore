@@ -37,8 +37,14 @@ dist/
 # Logs
 *.log
 
-# PDF documents (local proposals / handoff — do not upload)
+# Local notes / ops / proposals (never commit or deploy)
+*.txt
+!**/public/robots.txt
 *.pdf
+*.pfg
+ssh.txt
+what-was-fixed.txt
+client-update-plain-english.txt
 
 # OS files
 .DS_Store
@@ -48,7 +54,7 @@ dist/
 # Script artifacts (HAR files, screenshots, audit results)
 /.artifacts/
 
-# Ops / migration example scripts (local laptop; documented in ssh.txt — not committed)
+# Ops / migration example scripts (local laptop only — not committed)
 scripts/sync-assets-from-hetzner.sh
 
 # Environment files (ignore all .env.* except .env.example)
