@@ -2,11 +2,6 @@ import {
   cookiePolicyIntro as cookiePolicyIntroEN,
   cookiePolicySections as cookiePolicySectionsEN,
 } from "@oc/content/legal";
-import { resolveContent } from "@oc/content/locales";
-import {
-  cookiePolicyIntro as cookiePolicyIntroRO,
-  cookiePolicySections as cookiePolicySectionsRO,
-} from "@oc/content/ro";
 import { Hash } from "@oc/icons";
 import { GoldOutlineButton } from "@/components/buttons";
 import { Link } from "@/components/Link";
@@ -14,8 +9,8 @@ import { useTranslation } from "@/lib/i18n";
 
 export default function CookiePolicyPage() {
   const { t, locale } = useTranslation();
-  const intro = resolveContent(locale, cookiePolicyIntroEN, cookiePolicyIntroRO);
-  const sections = resolveContent(locale, cookiePolicySectionsEN, cookiePolicySectionsRO);
+  const intro = cookiePolicyIntroEN;
+  const sections = cookiePolicySectionsEN;
 
   return (
     <div className="oc-container-content pb-8">

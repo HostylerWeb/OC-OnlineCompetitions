@@ -1,13 +1,11 @@
 "use client";
 
 import { format as dateFnsFormat } from "date-fns";
-import { enGB, ro } from "date-fns/locale";
+import { enGB } from "date-fns/locale";
 import { createContext, useCallback, useContext, useMemo } from "react";
 import enData from "./en.json";
 import type { Locale } from "./locales";
 import { localeDefault, SUPPORTED_LOCALES } from "./locales";
-import roData from "./ro.json";
-
 type TranslationMap = typeof enData;
 type NestedKeyOf<T, Prefix extends string = ""> = {
   [K in keyof T & string]: T[K] extends string
@@ -20,7 +18,6 @@ export type TranslationKey = NestedKeyOf<TranslationMap>;
 
 const localeMap: Record<string, Record<string, unknown>> = {
   en: enData as unknown as Record<string, unknown>,
-  ro: roData as unknown as Record<string, unknown>,
 };
 
 // --- Romanian pluralization ---
@@ -213,7 +210,6 @@ export function useLogicalPathname(): string {
 
 const currencyConfig = {
   en: { locale: "en-GB", currency: "GBP" },
-  ro: { locale: "en-GB", currency: "GBP" },
 };
 
 export function formatCurrency(amount: number, locale?: string, currency?: string): string {
@@ -230,11 +226,10 @@ export function formatCurrency(amount: number, locale?: string, currency?: strin
 
 export function formatNumber(value: number, locale?: string): string {
   const loc = locale ?? "en";
-  const localeStr = loc === "ro" ? "ro-RO" : "en-GB";
-  return value.toLocaleString(localeStr);
+  return value.toLocaleString("en-GB");
 }
 
-const dateLocaleModules = { en: enGB, ro };
+const dateLocaleModules = { en: enGB };
 
 export function formatDate(date: Date | string, pattern?: string, locale?: string): string {
   const loc = (locale ?? "en") as keyof typeof dateLocaleModules;

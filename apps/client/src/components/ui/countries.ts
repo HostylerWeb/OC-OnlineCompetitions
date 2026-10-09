@@ -3,6 +3,8 @@ export interface CountryOption {
   label: string;
 }
 
+export const UNITED_KINGDOM_ONLY: CountryOption[] = [{ value: "GB", label: "United Kingdom" }];
+
 export const COUNTRIES: CountryOption[] = [
   { value: "GB", label: "United Kingdom" },
   { value: "US", label: "United States" },

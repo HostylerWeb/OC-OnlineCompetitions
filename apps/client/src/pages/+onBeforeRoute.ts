@@ -5,6 +5,15 @@ export function onBeforeRoute(pageContext: PageContext) {
   const pathname = pageContext.urlParsed.pathname;
   const searchOriginal = pageContext.urlParsed.searchOriginal ?? "";
 
+  if (pathname === "/ro" || pathname.startsWith("/ro/")) {
+    const rest = pathname === "/ro" ? "" : pathname.slice(3);
+    return {
+      pageContext: {
+        redirect: `/en${rest || "/"}${searchOriginal}`,
+      },
+    };
+  }
+
   // Self-healing: detect and fix double-locale URLs (e.g. /en/en/auth/login → /en/auth/login)
   for (const loc of SUPPORTED_LOCALES) {
     const doublePrefix = `/${loc}/${loc}`;

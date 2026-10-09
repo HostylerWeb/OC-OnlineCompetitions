@@ -3,12 +3,6 @@ import {
   ABOUT_HERO as ABOUT_HERO_EN,
   ABOUT_SECTIONS as ABOUT_SECTIONS_EN,
 } from "@oc/content/about";
-import { resolveContent } from "@oc/content/locales";
-import {
-  ABOUT_CTA as ABOUT_CTA_RO,
-  ABOUT_HERO as ABOUT_HERO_RO,
-  ABOUT_SECTIONS as ABOUT_SECTIONS_RO,
-} from "@oc/content/ro";
 import { ArrowRight } from "@oc/icons";
 import Accordion from "@/components/about/Accordion";
 import { GoldOutlineButton } from "@/components/buttons";
@@ -17,9 +11,9 @@ import { useTranslation } from "@/lib/i18n";
 
 export default function AboutPage() {
   const { t, locale } = useTranslation();
-  const hero = resolveContent(locale, ABOUT_HERO_EN, ABOUT_HERO_RO);
-  const sections = resolveContent(locale, ABOUT_SECTIONS_EN, ABOUT_SECTIONS_RO);
-  const cta = resolveContent(locale, ABOUT_CTA_EN, ABOUT_CTA_RO);
+  const hero = ABOUT_HERO_EN;
+  const sections = ABOUT_SECTIONS_EN;
+  const cta = ABOUT_CTA_EN;
 
   return (
     <div className="oc-container-content pb-8">

@@ -1,6 +1,4 @@
 import { HOME_CTA as HOME_CTA_EN } from "@oc/content/home";
-import { resolveContent } from "@oc/content/locales";
-import { HOME_CTA as HOME_CTA_RO } from "@oc/content/ro";
 import { ArrowRight, Shield, Users, Zap } from "@oc/icons";
 import { GoldOutlineButton } from "@/components/buttons";
 import { Link } from "@/components/Link";
@@ -10,7 +8,7 @@ const iconMap = { Shield, Zap, Users } as const;
 
 export function CtaSection() {
   const { t, locale } = useTranslation();
-  const ctaContent = resolveContent(locale, HOME_CTA_EN, HOME_CTA_RO);
+  const ctaContent = HOME_CTA_EN;
   return (
     <section className="py-20 sm:py-24 md:py-32 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-gold/10 via-background to-gold/10" />

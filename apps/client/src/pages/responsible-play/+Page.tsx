@@ -5,11 +5,6 @@ import {
   RESPONSIBLE_PLAY_SECTIONS as RESPONSIBLE_PLAY_SECTIONS_EN,
   SUPPORT_ORGANISATIONS as SUPPORT_ORGANISATIONS_EN,
 } from "@oc/content";
-import { resolveContent } from "@oc/content/locales";
-import {
-  RESPONSIBLE_PLAY_SECTIONS as RESPONSIBLE_PLAY_SECTIONS_RO,
-  SUPPORT_ORGANISATIONS as SUPPORT_ORGANISATIONS_RO,
-} from "@oc/content/ro";
 import {
   Calendar,
   CreditCard,
@@ -46,16 +41,8 @@ export default function ResponsiblePlayPage() {
   );
   const router = useRouter();
 
-  const sections = resolveContent(
-    locale,
-    RESPONSIBLE_PLAY_SECTIONS_EN,
-    RESPONSIBLE_PLAY_SECTIONS_RO
-  );
-  const orgs = resolveContent(
-    locale,
-    SUPPORT_ORGANISATIONS_EN,
-    SUPPORT_ORGANISATIONS_RO as unknown as typeof SUPPORT_ORGANISATIONS_EN
-  );
+  const sections = RESPONSIBLE_PLAY_SECTIONS_EN;
+  const orgs = SUPPORT_ORGANISATIONS_EN;
 
   if (features.isLoading) {
     return (

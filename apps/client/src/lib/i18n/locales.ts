@@ -1,7 +1,6 @@
-export const SUPPORTED_LOCALES = ["en", "ro"] as const;
+export const SUPPORTED_LOCALES = ["en"] as const;
 export type Locale = (typeof SUPPORTED_LOCALES)[number];
 export const LOCALE_PREFIXES: Record<Locale, string> = {
   en: "/en",
-  ro: "/ro",
 };
 export const localeDefault: Locale = "en";

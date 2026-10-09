@@ -6,12 +6,6 @@ import {
   contactFooterNote as contactFooterNoteEN,
   contactHero as contactHeroEN,
 } from "@oc/content/contact";
-import { resolveContent } from "@oc/content/locales";
-import {
-  CONTACT_INFO_CARDS as CONTACT_INFO_CARDS_RO,
-  contactFooterNote as contactFooterNoteRO,
-  contactHero as contactHeroRO,
-} from "@oc/content/ro";
 import { Building2, Mail, MapPin, Phone, SocialLinksChips } from "@oc/icons";
 import { useEffect, useState } from "react";
 import { GoldButton } from "@/components/buttons";
@@ -30,9 +24,9 @@ const ICON_MAP = {
 
 export default function ContactPage() {
   const { t, locale } = useTranslation();
-  const contactHero = resolveContent(locale, contactHeroEN, contactHeroRO);
-  const contactFooterNote = resolveContent(locale, contactFooterNoteEN, contactFooterNoteRO);
-  const infoCards = resolveContent(locale, CONTACT_INFO_CARDS_EN, CONTACT_INFO_CARDS_RO);
+  const contactHero = contactHeroEN;
+  const contactFooterNote = contactFooterNoteEN;
+  const infoCards = CONTACT_INFO_CARDS_EN;
 
   const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
   const [successMsg, setSuccessMsg] = useState("");

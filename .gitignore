@@ -25,6 +25,9 @@ staging-json-db/
 e2e/test-results/
 e2e/playwright-report/
 *.png
+!**/public/brand/*.png
+!**/public/favicon.png
+!apps/admin/app/icon.png
 
 # Dependencies and build
 node_modules/

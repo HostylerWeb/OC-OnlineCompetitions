@@ -1,7 +1,7 @@
 import type { ProfileAddress } from "@oc/types";
 import { cn } from "@oc/utils";
 import { Combobox } from "@/components/ui/combobox";
-import { COUNTRIES } from "@/components/ui/countries";
+import { COUNTRIES, type CountryOption } from "@/components/ui/countries";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useTranslation } from "@/lib/i18n";
@@ -12,6 +12,7 @@ export interface AddressFormFieldsProps {
   idPrefix?: string;
   required?: boolean;
   className?: string;
+  countryOptions?: CountryOption[];
 }
 
 export function AddressFormFields({
@@ -20,6 +21,7 @@ export function AddressFormFields({
   idPrefix = "",
   required = false,
   className,
+  countryOptions = COUNTRIES,
 }: AddressFormFieldsProps) {
   const { t } = useTranslation();
   const id = (name: string) => (idPrefix ? `${idPrefix}-${name}` : name);
@@ -86,7 +88,7 @@ export function AddressFormFields({
       <div className="space-y-2 sm:col-span-2">
         <Label htmlFor={id("country")}>{t("addressForm.country")}</Label>
         <Combobox
-          options={COUNTRIES}
+          options={countryOptions}
           value={value.country}
           onValueChange={(nextValue) => onChange("country", nextValue)}
           placeholder={t("addressForm.countryPlaceholder")}

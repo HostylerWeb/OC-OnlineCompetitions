@@ -46,7 +46,7 @@ import { Link } from "@/components/Link";
 import { AddressFormFields } from "@/components/shared/AddressFormFields";
 import { useConsumeQueryParams } from "@/components/ui";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { COUNTRIES } from "@/components/ui/countries";
+import { UNITED_KINGDOM_ONLY } from "@/components/ui/countries";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Spinner } from "@/components/ui/spinner";
@@ -326,32 +326,6 @@ function CheckoutPageContent() {
   const [paymentError, setPaymentError] = useState<ContextualError | null>(null);
   const [addressEdited, setAddressEdited] = useState(false);
   const isSubmittingRef = useRef<boolean>(false);
-  const geoResolvedRef = useRef(false);
-  const geoDefaultSetRef = useRef(false);
-
-  useEffect(() => {
-    if (geoResolvedRef.current) return;
-    if (address.country !== DEFAULT_PROFILE_ADDRESS.country) return;
-
-    let cancelled = false;
-    geoResolvedRef.current = true;
-
-    fetch("https://tiny-glitter-95dd.cdn.onlinecompetitions.co.uk/")
-      .then((r) => r.json() as Promise<{ ip: string; country: string }>)
-      .then((data) => {
-        if (cancelled) return;
-        if (data.country && COUNTRIES.some((c) => c.value === data.country)) {
-          geoDefaultSetRef.current = true;
-          setAddress((prev) => ({ ...prev, country: data.country }));
-        }
-      })
-      .catch(() => {});
-
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
   useConsumeQueryParams(["payment"]);
 
   useEffect(() => {
@@ -372,9 +346,11 @@ function CheckoutPageContent() {
     phone: isGuest ? "" : (serverProfile?.phone ?? ""),
   });
 
-  const [address, setAddress] = useState<ProfileAddress>(
-    !isGuest && serverProfile ? profileAddressFromProfile(serverProfile) : DEFAULT_PROFILE_ADDRESS
-  );
+  const [address, setAddress] = useState<ProfileAddress>(() => {
+    const base =
+      !isGuest && serverProfile ? profileAddressFromProfile(serverProfile) : DEFAULT_PROFILE_ADDRESS;
+    return { ...base, country: "GB" };
+  });
 
   const [dob, setDob] = useState("");
   const [emailRegistered, setEmailRegistered] = useState(false);
@@ -570,7 +546,7 @@ function CheckoutPageContent() {
       phone: profile.phone ?? "",
     });
     if (!addressEdited) {
-      setAddress(profileAddressFromProfile(profile));
+      setAddress({ ...profileAddressFromProfile(profile), country: "GB" });
     }
   }, [profile, user, addressEdited, isGuest]);
 
@@ -863,6 +839,7 @@ function CheckoutPageContent() {
                       }}
                       idPrefix="review"
                       required
+                      countryOptions={UNITED_KINGDOM_ONLY}
                     />
                     {showAddressError && (
                       <p className="text-xs text-red-400 -mt-2">

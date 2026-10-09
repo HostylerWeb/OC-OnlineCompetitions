@@ -4,7 +4,6 @@ import { useComplianceFeatures } from "@oc/api-client";
 import {
   CARD_BRAND_COMPONENT,
   CARD_BRANDS,
-  ChevronDown,
   Smartphone,
   SocialLinksIconButtons,
 } from "@oc/icons";
@@ -12,15 +11,6 @@ import { cn, getFooterCopyright } from "@oc/utils";
 import { useEffect, useMemo, useState } from "react";
 import { usePageContext } from "vike-react/usePageContext";
 import { Link } from "@/components/Link";
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { type TranslationKey, useTranslation } from "@/lib/i18n";
 
 const DISMISS_KEY = "pwa-install-dismissed-v2";
@@ -142,7 +132,7 @@ function PaymentLogos() {
 }
 
 export function Footer() {
-  const { t, locale, setLocale } = useTranslation();
+  const { t } = useTranslation();
   const pageContext = usePageContext();
   const complianceData = (pageContext as { complianceFeaturesData?: unknown }).complianceFeaturesData;
   const features = useComplianceFeatures({ initialData: complianceData ?? undefined });
@@ -216,41 +206,6 @@ export function Footer() {
                 </button>
               )}
 
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="h-7 px-2 text-xs font-medium text-muted-foreground hover:text-gold gap-1 rounded-md"
-                    aria-label={t("header.language")}
-                  >
-                    {locale === "en" ? "EN" : "RO"}
-                    <ChevronDown className="size-3" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="start" className="w-28">
-                  <DropdownMenuLabel className="text-xs">{t("header.language")}</DropdownMenuLabel>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem
-                    onClick={() => setLocale("en")}
-                    className={locale === "en" ? "text-gold font-medium" : ""}
-                  >
-                    English
-                    {locale === "en" ? (
-                      <span className="ml-auto size-1.5 rounded-full bg-gold" aria-hidden="true" />
-                    ) : null}
-                  </DropdownMenuItem>
-                  <DropdownMenuItem
-                    onClick={() => setLocale("ro")}
-                    className={locale === "ro" ? "text-gold font-medium" : ""}
-                  >
-                    Română
-                    {locale === "ro" ? (
-                      <span className="ml-auto size-1.5 rounded-full bg-gold" aria-hidden="true" />
-                    ) : null}
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
             </div>
           </div>
 

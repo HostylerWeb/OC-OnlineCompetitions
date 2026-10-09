@@ -2,8 +2,6 @@ import {
   termsIntro as termsIntroEN,
   termsSections as termsSectionsEN,
 } from "@oc/content/legal";
-import { resolveContent } from "@oc/content/locales";
-import { termsIntro as termsIntroRO, termsSections as termsSectionsRO } from "@oc/content/ro";
 import { Hash } from "@oc/icons";
 import { GoldOutlineButton } from "@/components/buttons";
 import { Link } from "@/components/Link";
@@ -11,8 +9,8 @@ import { useTranslation } from "@/lib/i18n";
 
 export default function TermsPage() {
   const { t, locale } = useTranslation();
-  const intro = resolveContent(locale, termsIntroEN, termsIntroRO);
-  const sections = resolveContent(locale, termsSectionsEN, termsSectionsRO);
+  const intro = termsIntroEN;
+  const sections = termsSectionsEN;
 
   return (
     <div className="oc-container-content pb-8">

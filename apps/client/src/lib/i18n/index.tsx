@@ -1,7 +1,7 @@
 "use client";
 
 import { format as dateFnsFormat } from "date-fns";
-import { enGB, ro } from "date-fns/locale";
+import { enGB } from "date-fns/locale";
 import { createContext, useContext } from "react";
 import { navigate } from "vike/client/router";
 import { usePageContext } from "vike-react/usePageContext";
@@ -9,14 +9,7 @@ import enData from "./en.json";
 import type { Locale } from "./locales";
 import { SUPPORTED_LOCALES } from "./locales";
 
-// --- Romanian pluralization ---
-//
-// Romanian marks plural with word-specific forms (not a single suffix). The
-// word→{one, other} map and the plural-aware interpolator live in
-// `./interpolate` (pure, unit-tested).
-
 import { interpolate } from "./interpolate";
-import roData from "./ro.json";
 
 // --- Type helpers ---
 
@@ -34,7 +27,6 @@ export type TranslationKey = NestedKeyOf<TranslationMap>;
 
 const localeMap: Record<string, Record<string, unknown>> = {
   en: enData as unknown as Record<string, unknown>,
-  ro: roData as unknown as Record<string, unknown>,
 };
 
 const localeCache = new Map<string, Record<string, unknown>>();
@@ -210,7 +202,6 @@ export function useLogicalPathname(): string {
 
 const currencyConfig = {
   en: { locale: "en-GB", currency: "GBP" },
-  ro: { locale: "en-GB", currency: "GBP" },
 };
 
 export function formatCurrency(amount: number, locale?: string, currency?: string): string {
@@ -227,13 +218,11 @@ export function formatCurrency(amount: number, locale?: string, currency?: strin
 
 export function formatNumber(value: number, locale?: string): string {
   const loc = locale ?? "en";
-  const localeStr = loc === "ro" ? "ro-RO" : "en-GB";
-  return value.toLocaleString(localeStr);
+  return value.toLocaleString("en-GB");
 }
 
 const dateLocaleModules = {
   en: enGB,
-  ro: ro,
 };
 
 export function formatDate(date: Date | string, pattern?: string, locale?: string): string {

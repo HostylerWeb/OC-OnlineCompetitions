@@ -2,11 +2,6 @@ import {
   privacyIntro as privacyIntroEN,
   privacySections as privacySectionsEN,
 } from "@oc/content/legal";
-import { resolveContent } from "@oc/content/locales";
-import {
-  privacyIntro as privacyIntroRO,
-  privacySections as privacySectionsRO,
-} from "@oc/content/ro";
 import { Hash } from "@oc/icons";
 import { GoldOutlineButton } from "@/components/buttons";
 import { Link } from "@/components/Link";
@@ -14,8 +9,8 @@ import { useTranslation } from "@/lib/i18n";
 
 export default function PrivacyPage() {
   const { t, locale } = useTranslation();
-  const intro = resolveContent(locale, privacyIntroEN, privacyIntroRO);
-  const sections = resolveContent(locale, privacySectionsEN, privacySectionsRO);
+  const intro = privacyIntroEN;
+  const sections = privacySectionsEN;
 
   return (
     <div className="oc-container-content pb-8">

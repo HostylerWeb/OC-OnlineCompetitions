@@ -3,11 +3,6 @@ import {
   FAQS_BY_CATEGORY as FAQS_BY_CATEGORY_EN,
   FAQ_SUPPORT_EMAIL,
 } from "@oc/content/faqs";
-import { resolveContent } from "@oc/content/locales";
-import {
-  FAQ_CATEGORIES as FAQ_CATEGORIES_RO,
-  FAQS_BY_CATEGORY as FAQS_BY_CATEGORY_RO,
-} from "@oc/content/ro";
 import { ArrowRight, HelpCircle } from "@oc/icons";
 import { GoldGhostButton, GoldOutlineButton } from "@/components/buttons";
 import FaqTabs from "@/components/faq/FaqTabs";
@@ -16,8 +11,8 @@ import { useTranslation } from "@/lib/i18n";
 
 export default function FaqPage() {
   const { t, locale } = useTranslation();
-  const faqCategories = resolveContent(locale, FAQ_CATEGORIES_EN, FAQ_CATEGORIES_RO);
-  const faqsByCategory = resolveContent(locale, FAQS_BY_CATEGORY_EN, FAQS_BY_CATEGORY_RO);
+  const faqCategories = FAQ_CATEGORIES_EN;
+  const faqsByCategory = FAQS_BY_CATEGORY_EN;
   const filteredCategories = faqCategories.filter(
     (cat) => (faqsByCategory[cat.id]?.length ?? 0) > 0
   );

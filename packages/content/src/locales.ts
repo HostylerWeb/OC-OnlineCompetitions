@@ -1,4 +1,3 @@
-export function resolveContent<T>(locale: string, enContent: T, roContent?: T): T {
-  if (locale === "ro" && roContent !== undefined) return roContent;
+export function resolveContent<T>(_locale: string, enContent: T, _roContent?: T): T {
   return enContent;
 }

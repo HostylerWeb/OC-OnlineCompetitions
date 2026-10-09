@@ -2,20 +2,12 @@ import {
   HOME_BUILT_DIFFERENT as HOME_BUILT_DIFFERENT_EN,
   HOME_FEATURES as HOME_FEATURES_EN,
 } from "@oc/content/home";
-import { resolveContent } from "@oc/content/locales";
-import {
-  HOME_BUILT_DIFFERENT as HOME_BUILT_DIFFERENT_RO,
-  HOME_FEATURES as HOME_FEATURES_RO,
-} from "@oc/content/ro";
 import { Shield, Users, Zap } from "@oc/icons";
-import { useTranslation } from "@/lib/i18n";
-
 const iconMap = { Shield, Zap, Users } as const;
 
 export function BuiltDifferentSection() {
-  const { locale } = useTranslation();
-  const builtDifferent = resolveContent(locale, HOME_BUILT_DIFFERENT_EN, HOME_BUILT_DIFFERENT_RO);
-  const features = resolveContent(locale, HOME_FEATURES_EN, HOME_FEATURES_RO);
+  const builtDifferent = HOME_BUILT_DIFFERENT_EN;
+  const features = HOME_FEATURES_EN;
   const featuredFeature = features.find((f) => f.variant === "featured");
   const sideFeatures = features.filter((f) => f.variant === "side");
 
