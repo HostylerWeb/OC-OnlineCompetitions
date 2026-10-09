@@ -120,6 +120,13 @@ const CLICK_ID_COOKIE_MAX_AGE = 30 * 24 * 60 * 60;
 const SOURCE_PATTERN = /^[a-z0-9]{2,4}$/;
 
 app.use("*", async (c, next) => {
+  const path = c.req.path;
+  if (path === "/ro" || path.startsWith("/ro/")) {
+    const rest = path === "/ro" ? "/" : path.slice(3) || "/";
+    const url = new URL(c.req.url);
+    return c.redirect(`/en${rest}${url.search}`, 301);
+  }
+
   const url = new URL(c.req.url);
   const ref = url.searchParams.get("ref");
   const clickId = CLICK_ID_PARAMS.map((p) => url.searchParams.get(p)).find(
