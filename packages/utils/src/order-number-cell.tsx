@@ -7,12 +7,12 @@ export interface OrderNumberCellProps {
 }
 
 function renderDisplay(value: number | string | null | undefined): string {
-  if (value == null || value === "") return "—";
+  if (value == null || value === "") return "-";
   if (typeof value === "number") {
-    return Number.isFinite(value) ? formatOrderNumber(value) : "—";
+    return Number.isFinite(value) ? formatOrderNumber(value) : "-";
   }
   const numeric = Number(value);
-  return Number.isFinite(numeric) && value.trim() !== "" ? formatOrderNumber(numeric) : "—";
+  return Number.isFinite(numeric) && value.trim() !== "" ? formatOrderNumber(numeric) : "-";
 }
 
 export function OrderNumberCell({ value, className }: OrderNumberCellProps) {

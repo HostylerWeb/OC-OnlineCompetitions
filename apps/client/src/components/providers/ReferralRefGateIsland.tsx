@@ -1,4 +1,4 @@
-// ReferralRefGateIsland.tsx — captures `?ref=<code>` and stores it for later
+// ReferralRefGateIsland.tsx  -  captures `?ref=<code>` and stores it for later
 // claim after the user signs in.
 
 import { resolveRefFromUrl, setPendingReferralRef } from "@oc/api-client";
@@ -13,7 +13,7 @@ export function ReferralRefGateIsland() {
       setPendingReferralRef(fromUrl);
       return;
     }
-    // No URL ref — AuthProvider handles claim from cookie/sessionStorage.
+    // No URL ref  -  AuthProvider handles claim from cookie/sessionStorage.
   }, []);
 
   return null;

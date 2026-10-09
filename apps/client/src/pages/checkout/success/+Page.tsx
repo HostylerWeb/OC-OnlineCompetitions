@@ -268,18 +268,18 @@ function CheckoutSuccessPageContent() {
         ?.fulfillmentFailedAfterCapture === true;
 
     // Authentication flows that were cancelled by the customer (e.g. 3DS)
-    // land back here as redirect_status=canceled — show the cancelled notice
+    // land back here as redirect_status=canceled  -  show the cancelled notice
     // instead of polling a session that will never complete.
     if (redirectStatus === "canceled") return "cancelled" as const;
 
-    // Local provider is synchronous — detect from URL params directly so
+    // Local provider is synchronous  -  detect from URL params directly so
     // SSR and first client render agree on "completed" (no hydration mismatch).
     if (provider === "local" && hasPaymentContext) return "completed" as const;
 
     if (provider === "paytriot") {
       // E2 defense-in-depth: even if URL says payment=success, check order
       // metadata for fulfillmentFailedAfterCapture. If present, the customer
-      // was charged but order fulfillment failed — show the bespoke
+      // was charged but order fulfillment failed  -  show the bespoke
       // "captured-not-fulfilled" UI (not the generic "failed" UI).
       if (fulfillmentFailed) {
         return "captured-not-fulfilled" as const;
@@ -298,7 +298,7 @@ function CheckoutSuccessPageContent() {
 
     if (hasPaymentContext) {
       if (status === "success") {
-        // Local provider: fulfillment is synchronous — seedSuccess is the
+        // Local provider: fulfillment is synchronous  -  seedSuccess is the
         // authoritative success signal, no need to verify via order detail
         if (provider === "local") return "completed" as const;
 

@@ -11,8 +11,8 @@ const landerUrl = process.env.NEXT_PUBLIC_APP_URL || "https://agro.onlinecompeti
 
 export const metadata: Metadata = {
   title: {
-    default: "Win Premium Prizes — Online Competitions",
-    template: "%s — Online Competitions",
+    default: "Win Premium Prizes  -  Online Competitions",
+    template: "%s  -  Online Competitions",
   },
   description:
     "Enter to win incredible prizes with Online Competitions. Browse active competitions, answer skill questions, and win instantly.",

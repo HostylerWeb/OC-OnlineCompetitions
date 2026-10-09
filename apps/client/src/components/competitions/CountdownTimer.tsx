@@ -26,7 +26,7 @@ export function CountdownTimer({
   initialNow,
 }: {
   targetDate: string;
-  /** SSR snapshot — must match server render so hydration agrees with the first client paint. */
+  /** SSR snapshot  -  must match server render so hydration agrees with the first client paint. */
   initialNow?: number;
 }) {
   const { t } = useTranslation();

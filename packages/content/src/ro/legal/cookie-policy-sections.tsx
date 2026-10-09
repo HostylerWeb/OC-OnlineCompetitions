@@ -78,21 +78,21 @@ export const cookiePolicySections = [
         <p>Folosim servicii terțe care plasează propriile cookie-uri pe dispozitivul tău:</p>
         <ul className="list-disc list-inside space-y-2">
           <li>
-            <strong>Google Analytics</strong> — Analiza traficului și comportamentului
+            <strong>Google Analytics</strong> - Analiza traficului și comportamentului
             utilizatorilor
           </li>
           <li>
-            <strong>Google Ads</strong> — Publicitate targetată și remarketing
+            <strong>Google Ads</strong> - Publicitate targetată și remarketing
           </li>
           <li>
-            <strong>Microsoft Clarity</strong> — Înregistrarea sesiunilor utilizatorilor și hărți
+            <strong>Microsoft Clarity</strong> - Înregistrarea sesiunilor utilizatorilor și hărți
             termice
           </li>
           <li>
-            <strong>Klaviyo</strong> — Marketing prin email și preferințele clienților
+            <strong>Klaviyo</strong> - Marketing prin email și preferințele clienților
           </li>
           <li>
-            <strong>Sentry</strong> — Monitorizarea erorilor aplicației
+            <strong>Sentry</strong> - Monitorizarea erorilor aplicației
           </li>
         </ul>
         <p className="mt-3">

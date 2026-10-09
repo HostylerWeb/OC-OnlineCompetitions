@@ -1,4 +1,4 @@
-// server-cookies.ts — server-only helpers for forwarding cookies to the Hono API.
+// server-cookies.ts  -  server-only helpers for forwarding cookies to the Hono API.
 //
 // The `import "server-only"` directive is enforced at build time by Vite
 // to prevent these helpers from being bundled into client islands.

@@ -133,7 +133,7 @@ export default function Page() {
   const ogDesc = comp?.shortDescription || comp?.description || "";
   if (ogTitle) {
     config({
-      title: `${ogTitle} — Online Competitions`,
+      title: `${ogTitle}  -  Online Competitions`,
       Head: (
         <>
           <meta property="og:title" content={ogTitle} />

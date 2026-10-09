@@ -2,7 +2,7 @@ import type { HomeFeature } from "../content-types";
 
 export const HOME_BUILT_DIFFERENT = {
   title: "Construit Altfel",
-  subtitle: "Transparență, corectitudine și entuziasm — integrate în fiecare concurs.",
+  subtitle: "Transparență, corectitudine și entuziasm - integrate în fiecare concurs.",
 };
 
 export const HOME_FEATURES: HomeFeature[] = [
@@ -10,7 +10,7 @@ export const HOME_FEATURES: HomeFeature[] = [
     id: "fairness",
     title: "Corectitudine și Siguranță",
     description:
-      "Fiecare extragere este alimentată de un generator de numere aleatoare certificat. Fără manipulare, fără reguli ascunse — doar corectitudine pură și verificabilă.",
+      "Fiecare extragere este alimentată de un generator de numere aleatoare certificat. Fără manipulare, fără reguli ascunse - doar corectitudine pură și verificabilă.",
     icon: "Shield",
     variant: "featured",
     badges: [

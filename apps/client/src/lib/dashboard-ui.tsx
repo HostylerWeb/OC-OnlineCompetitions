@@ -1,5 +1,5 @@
 // Barrel for dashboard-ui components.
-// Simplified stubs — no react-window or @oc/icons dependencies.
+// Simplified stubs  -  no react-window or @oc/icons dependencies.
 // Replace with full implementations from onlinecompetitions-web/packages/ui when needed.
 
 import type { ReactNode } from "react";
@@ -70,7 +70,7 @@ export function DashboardStatCard({
           {isLoading ? (
             <div className="mt-1 h-6 w-24 animate-pulse rounded bg-muted" />
           ) : (
-            <p className="mt-1 font-mono text-xl font-semibold tabular-nums">{value ?? "—"}</p>
+            <p className="mt-1 font-mono text-xl font-semibold tabular-nums">{value ?? " - "}</p>
           )}
         </div>
         {Icon ? <Icon className="size-5 shrink-0 text-muted-foreground" aria-hidden /> : null}

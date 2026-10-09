@@ -47,7 +47,7 @@ export interface DatePickerProps {
   placeholder?: string;
   className?: string;
   disabled?: boolean;
-  /** Minimum age in years — dates after this cutoff are disabled. When set, used to restrict selection. */
+  /** Minimum age in years  -  dates after this cutoff are disabled. When set, used to restrict selection. */
   minAge?: number;
   /** When true (and minAge is set), opens the calendar on the latest allowed birth month. */
   defaultToMinAge?: boolean;

@@ -111,17 +111,17 @@ export function OrderPaymentStatus({
       <Badge variant={statusVariant(status)}>{status}</Badge>
       {isProcessing ? <p className="text-sm text-muted-foreground">Processing payment…</p> : null}
       {!isProcessing && stripeSuccess && status === "paid" ? (
-        <p className="text-sm text-success">Payment received — your order is being prepared.</p>
+        <p className="text-sm text-success">Payment received  -  your order is being prepared.</p>
       ) : null}
       {status === "failed" ? (
-        <p className="text-sm text-destructive">Payment failed — you have not been charged.</p>
+        <p className="text-sm text-destructive">Payment failed  -  you have not been charged.</p>
       ) : null}
       {timedOut ? (
         <Link
           href={`/orders/${orderId}`}
           className="text-sm text-gold underline underline-offset-4 transition-colors hover:text-gold/80"
         >
-          Payment is still processing — refresh to check again.
+          Payment is still processing  -  refresh to check again.
         </Link>
       ) : null}
     </div>

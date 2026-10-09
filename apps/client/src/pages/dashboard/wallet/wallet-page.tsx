@@ -205,7 +205,7 @@ export default function DashboardWalletView() {
                           {formatAmount(tx.balanceAfter)}
                         </TableCell>
                         <TableCell className="hidden max-w-[200px] truncate text-sm text-muted-foreground md:table-cell">
-                          {tx.note?.trim() || "—"}
+                          {tx.note?.trim() || " - "}
                         </TableCell>
                       </TableRow>
                     );

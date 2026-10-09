@@ -150,7 +150,7 @@ export function PricingBreakdown({
         ) : walletTickets <= 0 ? (
           <div className="flex justify-between text-sm">
             <span className="text-muted-foreground">{t("checkout.discount")}</span>
-            <span className="text-muted-foreground tabular-nums">—</span>
+            <span className="text-muted-foreground tabular-nums"> - </span>
           </div>
         ) : null}
 

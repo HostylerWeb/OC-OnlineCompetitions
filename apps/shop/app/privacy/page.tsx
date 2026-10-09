@@ -8,11 +8,11 @@ import {
 } from "@/components/company-details";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Online Competitions",
+  title: "Privacy Policy  -  Online Competitions",
   description:
     "Privacy policy explaining how we collect, use, and protect your personal data in compliance with UK GDPR.",
   openGraph: {
-    title: "Privacy Policy — Online Competitions",
+    title: "Privacy Policy  -  Online Competitions",
     description: "Privacy policy explaining how we collect, use, and protect your personal data.",
   },
 };

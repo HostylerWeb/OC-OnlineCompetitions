@@ -11,7 +11,7 @@ export const HOW_IT_WORKS_STEPS: HowItWorksStep[] = [
   {
     stepNumber: 2,
     title: "Selectează Biletele",
-    description: "Alege câte bilete dorești — mai multe bilete îți măresc șansele.",
+    description: "Alege câte bilete dorești - mai multe bilete îți măresc șansele.",
     icon: "Ticket",
   },
   {

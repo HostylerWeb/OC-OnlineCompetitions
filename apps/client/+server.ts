@@ -1,8 +1,8 @@
-// +server.ts — Hono entry that mounts the Hono API and Vike SSR.
+// +server.ts - Hono entry that mounts the Hono API and Vike SSR.
 //
-//  1. `/api/*` (auth, cart, payments, etc.) — handled by the shared Hono app
+//  1. `/api/*` (auth, cart, payments, etc.) - handled by the shared Hono app
 //     from `@oc/api-server/app`.
-//  2. Everything else — handled by Vike for SSR + client-side hydration.
+//  2. Everything else - handled by Vike for SSR + client-side hydration.
 //
 // In dev, `vike dev` uses this as the server entry via Vike's `+server.ts` convention.
 // In prod, build with `vike build` and run this file with bun.

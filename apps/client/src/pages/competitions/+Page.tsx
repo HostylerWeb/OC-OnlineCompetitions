@@ -35,10 +35,10 @@ export default function Page() {
   const ogSrc = hasRef && globalRefOg ? globalRefOg : brandLogoUrl(baseUrl);
   const ogUrl = ogSrc.startsWith("/") ? `${baseUrl}${ogSrc}` : ogSrc;
   config({
-    title: `${heading} — Online Competitions`,
+    title: `${heading}  -  Online Competitions`,
     Head: (
       <>
-        <meta property="og:title" content={`${heading} — Online Competitions`} />
+        <meta property="og:title" content={`${heading}  -  Online Competitions`} />
         <meta property="og:description" content={description} />
         <meta property="og:url" content={`${baseUrl}/competitions`} />
         <meta property="og:image" content={ogUrl} />

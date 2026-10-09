@@ -113,15 +113,15 @@ export const privacySections = [
         <p>Putem partaja datele tale cu următorii furnizori terți de servicii:</p>
         <ul className="list-disc list-inside space-y-2">
           <li>
-            <strong>PayPal</strong> — Procesare plăți. Politica lor de confidențialitate guvernează
+            <strong>PayPal</strong> - Procesare plăți. Politica lor de confidențialitate guvernează
             utilizarea datelor tale.
           </li>
           <li>
-            <strong>Resend</strong> — Serviciu de livrare email pentru emailuri tranzacționale și de
+            <strong>Resend</strong> - Serviciu de livrare email pentru emailuri tranzacționale și de
             marketing.
           </li>
           <li>
-            <strong>Google Analytics 4</strong> — Analiză site web. Date personale procesate: număr
+            <strong>Google Analytics 4</strong> - Analiză site web. Date personale procesate: număr
             de Utilizatori, statistici de sesiune, Trackere, Date de Utilizare.{" "}
             <a
               href="https://policies.google.com/privacy"
@@ -133,7 +133,7 @@ export const privacySections = [
             </a>
           </li>
           <li>
-            <strong>Meta Pixel</strong> — Urmărirea conversiilor publicitare. Date personale
+            <strong>Meta Pixel</strong> - Urmărirea conversiilor publicitare. Date personale
             procesate: Trackere, Date de Utilizare.{" "}
             <a
               href="https://www.facebook.com/privacy/policy"
@@ -145,7 +145,7 @@ export const privacySections = [
             </a>
           </li>
           <li>
-            <strong>Microsoft Clarity</strong> — Hărți termice și înregistrare sesiuni. Date
+            <strong>Microsoft Clarity</strong> - Hărți termice și înregistrare sesiuni. Date
             personale procesate: Date de Utilizare.{" "}
             <a
               href="https://privacy.microsoft.com/privacystatement"
@@ -157,7 +157,7 @@ export const privacySections = [
             </a>
           </li>
           <li>
-            <strong>Klaviyo</strong> — Marketing prin email. Date personale procesate: țara, adresa
+            <strong>Klaviyo</strong> - Marketing prin email. Date personale procesate: țara, adresa
             de email, prenumele, numele, numărul de telefon, istoricul achizițiilor.{" "}
             <a
               href="https://www.klaviyo.com/privacy"
@@ -169,7 +169,7 @@ export const privacySections = [
             </a>
           </li>
           <li>
-            <strong>Sentry</strong> — Monitorizare erori și infrastructură.{" "}
+            <strong>Sentry</strong> - Monitorizare erori și infrastructură.{" "}
             <a
               href="https://sentry.io/privacy/"
               target="_blank"
@@ -180,11 +180,11 @@ export const privacySections = [
             </a>
           </li>
           <li>
-            <strong>Google Fonts</strong> — Serviciu de vizualizare a fonturilor pentru afișarea
+            <strong>Google Fonts</strong> - Serviciu de vizualizare a fonturilor pentru afișarea
             conținutului.
           </li>
           <li>
-            <strong>Google Cloud CDN</strong> — Optimizare și distribuire trafic.
+            <strong>Google Cloud CDN</strong> - Optimizare și distribuire trafic.
           </li>
         </ul>
         <p className="mt-3">
@@ -257,7 +257,7 @@ export const privacySections = [
           </li>
           <li>
             <strong>Depunerea unei plângeri:</strong> Contactarea Information Commissioner&apos;s
-            Office (ICO) dacă crezi că nu am gestionat corect datele tale — vizitează{" "}
+            Office (ICO) dacă crezi că nu am gestionat corect datele tale - vizitează{" "}
             <a
               href="https://ico.org.uk"
               target="_blank"

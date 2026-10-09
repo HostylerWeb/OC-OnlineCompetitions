@@ -30,18 +30,18 @@ const shopUrl =
 
 export const metadata: Metadata = {
   title: {
-    default: "Shop — Online Competitions",
-    template: "%s — Online Competitions Shop",
+    default: "Shop  -  Online Competitions",
+    template: "%s  -  Online Competitions Shop",
   },
-  description: "Online Competitions official merchandise store — premium apparel and accessories.",
+  description: "Online Competitions official merchandise store  -  premium apparel and accessories.",
   icons: [
     { rel: "icon", url: BRAND_FAVICON_PATH, type: "image/png" },
     { rel: "apple-touch-icon", url: BRAND_LOGO_PATH, type: "image/png" },
   ],
   manifest: "/manifest.json",
   openGraph: {
-    title: "Shop — Online Competitions",
-    description: "Online Competitions official merchandise store — premium apparel and accessories.",
+    title: "Shop  -  Online Competitions",
+    description: "Online Competitions official merchandise store  -  premium apparel and accessories.",
     siteName: "Online Competitions Shop",
     type: "website",
     locale: "en_GB",

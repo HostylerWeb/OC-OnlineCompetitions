@@ -1,4 +1,4 @@
-// navigation.ts — thin router helpers used inside React islands.
+// navigation.ts  -  thin router helpers used inside React islands.
 //
 // Vike handles client-side routing via standard `<a href>` links (with
 // prefetching). We expose `useRouter()` and `usePathname()` / `useSearchParams()`
@@ -6,7 +6,7 @@
 // manual `pushState`/`replaceState` events so they update on programmatic
 // navigation triggered via our tiny `router.push` helper.
 //
-// This is intentionally minimal — we don't have a full router. Real
+// This is intentionally minimal  -  we don't have a full router. Real
 // navigations happen via `<a href>` (Vike handles prefetch) or by
 // `window.location.assign()`.
 

@@ -13,7 +13,7 @@ interface StickyHeaderProps {
 }
 
 /**
- * `<StickyHeader>` — fixed header that transitions from transparent to solid
+ * `<StickyHeader>`  -  fixed header that transitions from transparent to solid
  * based on scroll position. Also supports `showAt` (0→1 progress threshold)
  * for more fine-grained control over visibility.
  */

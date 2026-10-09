@@ -44,7 +44,7 @@ const DashboardResponsiblePlay = lazy(() => import("@/pages/dashboard/responsibl
 export function AppRoutes() {
   return (
     <Routes>
-      {/* Main shell with bottom nav — includes auth, cart, checkout */}
+      {/* Main shell with bottom nav  -  includes auth, cart, checkout */}
       <Route element={<MainShell />}>
         <Route path="/" element={<HomePage />} />
 
@@ -101,7 +101,7 @@ export function AppRoutes() {
         <Route path="/r/:code" element={<ReferralRedirectPage />} />
         <Route path="/access-denied" element={<AccessDeniedPage />} />
 
-        {/* Dashboard — inside main shell with sidebar context */}
+        {/* Dashboard  -  inside main shell with sidebar context */}
         <Route element={<DashboardMobileContent />}>
           <Route path="/dashboard" element={<DashboardHome />} />
           <Route path="/dashboard/tickets" element={<DashboardTickets />} />

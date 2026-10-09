@@ -58,7 +58,7 @@ export const SUPPORT_ORGANISATIONS = [
   {
     name: "National Gambling Helpline",
     url: "tel:08088020133",
-    description: "Call 0808 8020 133 — free, confidential, 24/7.",
+    description: "Call 0808 8020 133 - free, confidential, 24/7.",
   },
   {
     name: "Citizens Advice",

@@ -106,7 +106,7 @@ export default async function OrderPage({
                           {item.productSnapshot?.name ?? "Product"}
                         </span>
                         <span className="text-xs text-muted-foreground md:text-sm">
-                          {item.productSnapshot?.sku ?? "—"}
+                          {item.productSnapshot?.sku ?? " - "}
                         </span>
                         <span className="text-right text-sm tabular-nums md:text-left">
                           {item.quantity}

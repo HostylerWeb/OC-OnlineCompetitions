@@ -10,7 +10,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { fetchOrders } from "@/lib/api";
 
 export const metadata: Metadata = {
-  title: "Account — Online Competitions Shop",
+  title: "Account  -  Online Competitions Shop",
 };
 
 const statusVariant: Record<

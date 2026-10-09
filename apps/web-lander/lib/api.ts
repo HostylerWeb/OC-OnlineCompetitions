@@ -4,7 +4,7 @@
  * Reads NEXT_PUBLIC_CLIENT_APP_URL (or FRONTEND_URL) for server-side API calls.
  * NEXT_PUBLIC_APP_URL is the lander's own public URL only (metadata).
  *
- * NEVER import this file from client components — it is intentionally
+ * NEVER import this file from client components  -  it is intentionally
  * free of "use client" so Next.js keeps it in the server bundle only.
  */
 
@@ -210,7 +210,7 @@ serverAxios.interceptors.response.use(
   (error: AxiosError) => {
     if (error.response) {
       const body = error.response.data as { message?: string } | undefined;
-      throw new Error(body?.message ?? `HTTP ${error.response.status} — ${error.config?.url}`);
+      throw new Error(body?.message ?? `HTTP ${error.response.status}  -  ${error.config?.url}`);
     }
     throw new Error(error.message ?? "Request failed");
   }

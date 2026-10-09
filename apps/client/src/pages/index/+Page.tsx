@@ -31,7 +31,7 @@ export default function Page() {
   const ogCandidate = hasRef && globalRefOg ? globalRefOg : defaultOg;
   const ogImageUrl = ogCandidate.startsWith("/") ? `${baseUrl}${ogCandidate}` : ogCandidate;
   const defaultTitle =
-    (pageContext as any).defaultTitle ?? "Online Competitions — Win Amazing Prizes & Luxury Experiences";
+    (pageContext as any).defaultTitle ?? "Online Competitions  -  Win Amazing Prizes & Luxury Experiences";
   const defaultDesc =
     (pageContext as any).defaultDescription ??
     "Enter competitions on Online Competitions to win incredible prizes, from premium electronics and designer fashion to unforgettable luxury experiences.";

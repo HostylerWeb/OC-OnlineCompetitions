@@ -1,6 +1,6 @@
 {
   "head": {
-    "title": "Online Competitions — Win Amazing Prizes & Luxury Experiences",
+    "title": "Online Competitions  -  Win Amazing Prizes & Luxury Experiences",
     "description": "Enter competitions on Online Competitions to win incredible prizes, from premium electronics and designer fashion to unforgettable luxury experiences. Play skill-based contests and try instant win games.",
     "siteName": "Online Competitions"
   },
@@ -152,7 +152,7 @@
     "back": "Back",
     "categories": {
       "necessary": "Necessary",
-      "necessaryDesc": "Essential for the website to function — always active",
+      "necessaryDesc": "Essential for the website to function  -  always active",
       "functional": "Functional",
       "functionalDesc": "Enable social sharing and embedded content",
       "analytics": "Analytics",
@@ -209,8 +209,8 @@
       "instructions": "Enter the verification code for \"{email}\".",
       "verifyingFromLink": "Verifying from your email link…",
       "otpInstructions": "Use the code from your inbox to activate your account. If you need a new code, click Resend below.",
-      "linkExpired": "The link has expired. We've sent a fresh code — enter it below.",
-      "linkExpiredAlt": "That link expired. We've sent a fresh code — enter it below.",
+      "linkExpired": "The link has expired. We've sent a fresh code  -  enter it below.",
+      "linkExpiredAlt": "That link expired. We've sent a fresh code  -  enter it below.",
       "missingEmail": "Missing email.",
       "signUpAgain": "Sign up again"
     },
@@ -559,14 +559,14 @@
     "apply": "Apply",
     "applying": "Applying",
     "referralDiscountApplied": "Referral discount applied",
-    "referralDiscountDesc": "{percent}% off your first order — this discount is locked and cannot be removed.",
+    "referralDiscountDesc": "{percent}% off your first order  -  this discount is locked and cannot be removed.",
     "promoApplied": "Promo Applied",
     "referralApplied": "Referral Applied",
     "unavailable": "Unavailable",
     "maxReached": "Max reached",
     "limitLabel": "Limit {n}",
     "limitNowLabel": "Limit is now {n}",
-    "soldOutDesc": "Sold out — tickets were purchased by others",
+    "soldOutDesc": "Sold out  -  tickets were purchased by others",
     "signInForDiscount": "Sign in to use this discount",
     "guestDiscountHint": "Have a code? Sign in to use discount codes.",
     "youWereReferred": "You were referred! Sign in to claim your discount.",
@@ -579,10 +579,10 @@
     "perTicket": "{n} / Ticket",
     "itemsChangedTitle": "{n} item{plural} updated while you were away",
     "adjustmentReasons": {
-      "availability": "Only {n} ticket{plural} available — your quantity was adjusted from {prev}",
+      "availability": "Only {n} ticket{plural} available  -  your quantity was adjusted from {prev}",
       "maxPerUser": "You've reached your ticket limit for this competition",
       "walletReclamp": "Referral wallet adjusted: {title} reduced to {n}",
-      "competitionEnded": "{title} ended — removed from cart"
+      "competitionEnded": "{title} ended  -  removed from cart"
     },
     "unavailableAlert": {
       "single": "\"{name}\" is no longer available",
@@ -607,7 +607,7 @@
   },
   "checkout": {
     "meta": {
-      "title": "Checkout — Online Competitions",
+      "title": "Checkout  -  Online Competitions",
       "description": "Complete your purchase securely on Online Competitions. Review your cart, enter shipping details, and choose a payment method. Win amazing prizes with every entry.",
       "ogDescription": "Complete your purchase securely on Online Competitions. Review your cart, enter shipping details, and choose a payment method."
     },
@@ -646,7 +646,7 @@
     "phoneValidation": "Enter a valid phone number (at least 5 characters).",
     "addressValidation": "Fill in address line, city, and postcode.",
     "addressSaveError": "Failed to save your address. Please try again.",
-    "cartEmptyError": "Your cart is empty — items may have been purchased by others.",
+    "cartEmptyError": "Your cart is empty  -  items may have been purchased by others.",
     "soldOutError": "\"{title}\" is sold out. Please remove it from your cart.",
     "orderFailed": "Order failed. Please try again.",
     "shippingAddress": {
@@ -675,7 +675,7 @@
     "securePaymentDesc": "Your payment information is never stored on our servers.",
     "encryptedProtected": "Encrypted & Protected",
     "encryptedProtectedDesc": "All data is protected with 256-bit SSL encryption.",
-    "skillBased": "Skill-based competition — not a game of chance",
+    "skillBased": "Skill-based competition  -  not a game of chance",
     "age18plus": "Participants must be 18 or over. If you have concerns about your participation, contact GamCare:",
     "gamCarePhone": "0808 8020 133",
     "beGambleAware": "begambleaware.org",
@@ -744,7 +744,7 @@
     "localBypass": {
       "testMode": "Test mode",
       "fillFieldsFirst": "Complete required fields first",
-      "infoAlert": "Local bypass skips payment processing. Orders complete immediately — for development and staging only.",
+      "infoAlert": "Local bypass skips payment processing. Orders complete immediately  -  for development and staging only.",
       "formInvalidAlert": "Please complete your contact email and shipping address before completing the order.",
       "completeOrder": "Complete Order {amount}",
       "processing": "Processing…"
@@ -797,7 +797,7 @@
       "youWonInstant": "You won {count} instant prize{plural}",
       "viewInDashboard": "View in your dashboard to claim",
       "cartClearWarning": "Your order is confirmed, but we couldn't clear your cart automatically. You can empty it from the cart page.",
-      "orderFetchError": "We couldn't load your order details. Your tickets are confirmed — check your dashboard for full details.",
+      "orderFetchError": "We couldn't load your order details. Your tickets are confirmed  -  check your dashboard for full details.",
       "competition": "Competition",
       "ticketsPurchased": "{count} ticket{plural} purchased",
       "winningTicket": "Winning ticket",
@@ -812,11 +812,11 @@
       "prizeValue": "{value} value",
       "ticketsAwarded": "Tickets awarded",
       "awaitingProcessing": "Awaiting processing",
-      "wasChargedMessage": "Your payment was received but we encountered an issue processing your order. Our team has been notified and will resolve this soon — your card has been charged.",
+      "wasChargedMessage": "Your payment was received but we encountered an issue processing your order. Our team has been notified and will resolve this soon  -  your card has been charged.",
       "notChargedMessage": "Something went wrong with your payment. Your card has not been charged. Please try again or contact support.",
       "doNotRetryDesc": "Your card has been charged. Our support team is reviewing this order and will be in touch. Retrying could result in a duplicate charge.",
       "timedOutTitle": "Payment is still being processed",
-      "timedOutDesc": "Your payment hasn't been confirmed yet — it may still be completing. Check your orders for updates before placing another order.",
+      "timedOutDesc": "Your payment hasn't been confirmed yet  -  it may still be completing. Check your orders for updates before placing another order.",
       "timedOutNote": "Do not retry this payment. If your order doesn't appear within a few minutes, contact support.",
       "cancelled": "Payment cancelled",
       "cancelledDesc": "Your payment was cancelled and was not completed. You can try again whenever you're ready."
@@ -879,9 +879,9 @@
       "instantPrizeInfo": "You could win an instant prize with this ticket!",
       "referFriend": "Refer a Friend",
       "referFriendDesc": "Share this competition and earn FREE bonus tickets",
-      "ageNotice": "Participants must be 18 years or over. Skill-based competition — not a game of chance.",
+      "ageNotice": "Participants must be 18 years or over. Skill-based competition  -  not a game of chance.",
       "freePostalAvailable": "Free postal entry available",
-      "freePostalDesc": "No purchase necessary — see terms",
+      "freePostalDesc": "No purchase necessary  -  see terms",
       "ticketSales": "Ticket Sales",
       "drawOn": "Draw on {date}",
       "drawCountdown": "Draw Countdown",
@@ -971,7 +971,7 @@
     "codeCopied": "Code copied",
     "copyReferralCode": "Copy referral code",
     "referralHint": "Friends can enter this code when they sign up.",
-    "referralCodeIncluded": " — your referral code is included in the link.",
+    "referralCodeIncluded": "  -  your referral code is included in the link.",
     "shareCompetition": "Share Competition",
     "shareReferral": "Share your referral",
     "shareText": "Check out this competition: {title}"
@@ -1075,7 +1075,7 @@
     },
     "connectedAccounts": {
       "google": "Google",
-      "connected": "Connected — sign in faster and sync your photo",
+      "connected": "Connected  -  sign in faster and sync your photo",
       "connect": "Link for one-tap sign in and photo import",
       "connectedBadge": "Connected",
       "importing": "Importing...",
@@ -1198,7 +1198,7 @@
       "failedToLoadWins": "Failed to load wins",
       "failedToLoadWinsDesc": "Please try again later.",
       "noWins": "No wins yet",
-      "noWinsDesc": "Keep entering competitions — your win could be next!",
+      "noWinsDesc": "Keep entering competitions  -  your win could be next!",
       "browseCompetitions": "Browse Competitions",
       "noCompWins": "No competition wins yet",
       "noCompWinsFiltered": "No {filter} competition wins",
@@ -1220,7 +1220,7 @@
     },
     "referrals": {
       "heading": "Referrals",
-      "subtitle": "Share your code — Friends get discount , you get free tickets !",
+      "subtitle": "Share your code  -  Friends get discount , you get free tickets !",
       "ticketsWallet": "Tickets wallet",
       "walletDesc": "Earned when friends make qualifying purchases; credited after processing. Spend at checkout or redeem below.",
       "available": "Available",
@@ -1264,7 +1264,7 @@
       "failedToLoadDesc": "Please try again.",
       "redeem": {
         "heading": "Redeem tickets",
-        "description": "{count} available ticket{plural} — pick a competition below, or use them at checkout.",
+        "description": "{count} available ticket{plural}  -  pick a competition below, or use them at checkout.",
         "chooseCompetition": "Choose competition",
         "searchPlaceholder": "Search competitions...",
         "searchAria": "Search competitions by title",
@@ -1317,7 +1317,7 @@
       "email": "Email",
       "emailNotChangable": "Email cannot be changed here",
       "dateOfBirth": "Date of birth",
-      "dobVerified": "Verified at sign-up — no need to enter this again.",
+      "dobVerified": "Verified at sign-up  -  no need to enter this again.",
       "dobPlaceholder": "Select your date of birth",
       "dobRequired": "Required for checkout. Must be {age}+.",
       "deliveryAddress": "Delivery address",
@@ -1405,7 +1405,7 @@
       "dashboardNav": "Dashboard navigation"
     },
     "liveBadge": "Live",
-    "statFallback": "—",
+    "statFallback": " - ",
     "quickLinks": {
       "browse": "Browse",
       "orders": "Orders",
@@ -1507,7 +1507,7 @@
       "whyChooseOnlineCompetitions": "Why Choose",
       "yourJourney": "Your journey",
       "fromBrowseToWin": "From browse to win",
-      "stepDescription": "Seven simple steps — online checkout or free postal entry.",
+      "stepDescription": "Seven simple steps  -  online checkout or free postal entry.",
       "haveQuestions": "Have Questions?",
       "haveQuestionsDesc": "Check our frequently asked questions for more details about how competitions work.",
       "viewFaq": "View FAQ",
@@ -1579,12 +1579,12 @@
     },
     "responsiblePlay": {
       "heading": "Responsible Play",
-      "subtitle": "How Online Competitions meets the UK Voluntary Code on player protections — and tools to stay in control.",
+      "subtitle": "How Online Competitions meets the UK Voluntary Code on player protections  -  and tools to stay in control.",
       "supportOrgs": "Support organisations"
     },
     "entries": {
       "heading": "Competition Entries",
-      "subtitle": "Every ticket. Every participant. Every draw — fully transparent.",
+      "subtitle": "Every ticket. Every participant. Every draw  -  fully transparent.",
       "fullTransparency": "Full Transparency",
       "failedToLoad": "Failed to load entries",
       "failedToLoadDesc": "Something went wrong. Please try again.",
@@ -1607,12 +1607,12 @@
     },
     "freePostalEntry": {
       "heading": "Free Postal Entry",
-      "subtitle": "Enter any competition by post — completely free of charge",
+      "subtitle": "Enter any competition by post  -  completely free of charge",
       "intro": "You may enter the competition using the Postal Entry Route by complying with the following conditions.",
       "sendTo": "Send your entry to",
       "companyName": "Online Competitions",
       "address": "42 Meadowbank Drive, Edinburgh, EH8 7AQ, Scotland",
-      "companyRegistration": "ONLINE COMPETITIONS LTD — Company No. SC729481 (Scotland)",
+      "companyRegistration": "ONLINE COMPETITIONS LTD  -  Company No. SC729481 (Scotland)",
       "includeHeading": "Include with your entry",
       "includeItems": [
         "your full name;",
@@ -1766,7 +1766,7 @@
   "progressBar": {
     "pctMilestone": "{pct}% Milestone",
     "prizeAmount": "£{value} prize",
-    "wonCount": "Won — {won} of {total} awarded",
+    "wonCount": "Won  -  {won} of {total} awarded",
     "ticketsToGo": "{count} ticket{plural} to go",
     "activatingNow": "Activating now",
     "activatesAt": "Activates at {pct}% sold",

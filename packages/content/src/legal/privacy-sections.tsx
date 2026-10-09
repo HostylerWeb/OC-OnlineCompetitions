@@ -113,14 +113,14 @@ export const privacySections = [
         <p>We may share your data with the following third-party service providers:</p>
         <ul className="list-disc list-inside space-y-2">
           <li>
-            <strong>PayPal</strong> — Payment processing. Their privacy policy governs their use of
+            <strong>PayPal</strong> - Payment processing. Their privacy policy governs their use of
             your data.
           </li>
           <li>
-            <strong>Resend</strong> — Email delivery service for transactional and marketing emails.
+            <strong>Resend</strong> - Email delivery service for transactional and marketing emails.
           </li>
           <li>
-            <strong>Google Analytics 4</strong> — Website analytics. Personal Data processed: number
+            <strong>Google Analytics 4</strong> - Website analytics. Personal Data processed: number
             of Users, session statistics, Trackers, Usage Data.{" "}
             <a
               href="https://policies.google.com/privacy"
@@ -132,7 +132,7 @@ export const privacySections = [
             </a>
           </li>
           <li>
-            <strong>Meta Pixel</strong> — Advertising conversion tracking. Personal Data processed:
+            <strong>Meta Pixel</strong> - Advertising conversion tracking. Personal Data processed:
             Trackers, Usage Data.{" "}
             <a
               href="https://www.facebook.com/privacy/policy"
@@ -144,7 +144,7 @@ export const privacySections = [
             </a>
           </li>
           <li>
-            <strong>Microsoft Clarity</strong> — Heat mapping and session recording. Personal Data
+            <strong>Microsoft Clarity</strong> - Heat mapping and session recording. Personal Data
             processed: Usage Data.{" "}
             <a
               href="https://privacy.microsoft.com/privacystatement"
@@ -156,7 +156,7 @@ export const privacySections = [
             </a>
           </li>
           <li>
-            <strong>Klaviyo</strong> — Email marketing. Personal Data processed: country, email
+            <strong>Klaviyo</strong> - Email marketing. Personal Data processed: country, email
             address, first name, last name, phone number, purchase history.{" "}
             <a
               href="https://www.klaviyo.com/privacy"
@@ -168,7 +168,7 @@ export const privacySections = [
             </a>
           </li>
           <li>
-            <strong>Sentry</strong> — Error monitoring and infrastructure monitoring.{" "}
+            <strong>Sentry</strong> - Error monitoring and infrastructure monitoring.{" "}
             <a
               href="https://sentry.io/privacy/"
               target="_blank"
@@ -179,10 +179,10 @@ export const privacySections = [
             </a>
           </li>
           <li>
-            <strong>Google Fonts</strong> — Typeface visualisation service for displaying content.
+            <strong>Google Fonts</strong> - Typeface visualisation service for displaying content.
           </li>
           <li>
-            <strong>Google Cloud CDN</strong> — Traffic optimisation and distribution.
+            <strong>Google Cloud CDN</strong> - Traffic optimisation and distribution.
           </li>
         </ul>
         <p className="mt-3">
@@ -252,7 +252,7 @@ export const privacySections = [
           </li>
           <li>
             <strong>Lodge a complaint:</strong> Contact the Information Commissioner&apos;s Office
-            (ICO) if you believe we have not handled your data properly — visit{" "}
+            (ICO) if you believe we have not handled your data properly - visit{" "}
             <a
               href="https://ico.org.uk"
               target="_blank"

@@ -170,7 +170,7 @@
     max-width: 28rem;
   }
 
-  /* Mobile: tighter gutters, full-width containers (below md / 768px — matches header breakpoint) */
+  /* Mobile: tighter gutters, full-width containers (below md / 768px  -  matches header breakpoint) */
   @media (max-width: 767px) {
     .oc-container,
     .oc-container-wide,
@@ -188,7 +188,7 @@
     }
   }
 
-  /* Layout only — pair with Tailwind `grid` (or `md:grid`) so `hidden` breakpoints work */
+  /* Layout only  -  pair with Tailwind `grid` (or `md:grid`) so `hidden` breakpoints work */
   .onlinecompetitions-grid-competitions {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: clamp(0.5rem, 2vw, 0.75rem);

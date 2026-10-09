@@ -435,7 +435,7 @@ function CheckoutPageContent() {
         }
         emailAutoFilled.current = true;
       } catch {
-        // non-fatal — form stays as-is
+        // non-fatal  -  form stays as-is
       } finally {
         setProfileFillActive(false);
       }

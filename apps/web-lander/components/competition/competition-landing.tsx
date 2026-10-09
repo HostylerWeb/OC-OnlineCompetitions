@@ -168,7 +168,7 @@ function HeroOverlay({ competition }: { competition: Competition }) {
               </>
             ) : null}
             {formatCurrency(competition.ticketPrice, competition.currency)}
-            {drawDate ? <> — Draw: {formatDate(drawDate)}</> : null}
+            {drawDate ? <>  -  Draw: {formatDate(drawDate)}</> : null}
           </p>
         </AutoReveal>
 
@@ -190,7 +190,7 @@ function HeroOverlay({ competition }: { competition: Competition }) {
               className="rounded-full bg-[var(--color-gold)] px-10 py-5 text-base font-semibold tracking-wide text-black shadow-[0_8px_48px_var(--color-gold-glow)] transition-all duration-300 ease-[var(--ease-premium)] hover:scale-[1.04] hover:bg-[var(--color-gold)]/90 hover:shadow-[0_16px_64px_var(--color-gold-glow-strong)] sm:px-12 sm:py-6 sm:text-lg"
               style={{ animation: "pulseGold 3s ease-in-out infinite" }}
             >
-              Enter now — {formatCurrency(competition.ticketPrice, competition.currency)}
+              Enter now  -  {formatCurrency(competition.ticketPrice, competition.currency)}
             </Button>
           </a>
         </AutoReveal>
@@ -302,7 +302,7 @@ function AvailabilityScene({
                   {isFullyClaimed ? "100% claimed" : `${Math.round(pct)}% claimed`}
                 </span>
                 {isFullyClaimed ? (
-                  <span className="text-amber-400">Fully claimed — held tickets may expire</span>
+                  <span className="text-amber-400">Fully claimed  -  held tickets may expire</span>
                 ) : (
                   <span className="text-[var(--color-gold)]">
                     {ticketsLeft.toLocaleString()} remaining
@@ -848,7 +848,7 @@ function FooterCta({ competition }: { competition: Competition }) {
           <Reveal animation="fade-up" at={0.2} progress={progress}>
             <p className="text-center text-white/50">
               Entry from {formatCurrency(competition.ticketPrice, competition.currency)}
-              {competition.drawDate ? <> — Draw: {formatDate(competition.drawDate)}</> : null}
+              {competition.drawDate ? <>  -  Draw: {formatDate(competition.drawDate)}</> : null}
             </p>
           </Reveal>
 
@@ -859,7 +859,7 @@ function FooterCta({ competition }: { competition: Competition }) {
                 className="rounded-full bg-[var(--color-gold)] px-12 py-6 text-lg font-semibold tracking-wide text-black shadow-[0_12px_64px_var(--color-gold-glow)] transition-all duration-300 ease-[var(--ease-premium)] hover:scale-[1.05] hover:bg-[var(--color-gold)]/90 sm:px-16 sm:py-7"
                 style={{ animation: "pulseGold 3s ease-in-out infinite" }}
               >
-                Enter now — {formatCurrency(competition.ticketPrice, competition.currency)}
+                Enter now  -  {formatCurrency(competition.ticketPrice, competition.currency)}
               </Button>
             </a>
           </Reveal>

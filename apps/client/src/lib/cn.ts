@@ -1,4 +1,4 @@
-// Local cn() helper — combines clsx and tailwind-merge.
+// Local cn() helper  -  combines clsx and tailwind-merge.
 // Mirrors the one in @oc/utils but lives locally to avoid an extra
 // import boundary in component files.
 import { type ClassValue, clsx } from "clsx";

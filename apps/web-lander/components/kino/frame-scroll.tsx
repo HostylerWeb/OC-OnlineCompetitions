@@ -90,7 +90,7 @@ export function FrameScroll({ framePrefix, totalFrames, fps: _fps, poster }: Fra
   const loadedCountBatchRef = useRef<number>(0);
   const loadedCountRafRef = useRef<number | null>(null);
 
-  // Build frame URLs — every frame, no stride
+  // Build frame URLs  -  every frame, no stride
   const frameUrls = useRef<string[]>([]);
   const totalFramesRef = useRef<number>(0);
 
@@ -153,7 +153,7 @@ export function FrameScroll({ framePrefix, totalFrames, fps: _fps, poster }: Fra
     }
   }, [flushLoadedCount]);
 
-  // LRU eviction — O(1) FIFO with protected ±10 window
+  // LRU eviction  -  O(1) FIFO with protected ±10 window
   const evictCache = useCallback((currentFrame: number) => {
     const cache = frameCacheRef.current;
     const order = cacheOrderRef.current;
@@ -254,7 +254,7 @@ export function FrameScroll({ framePrefix, totalFrames, fps: _fps, poster }: Fra
     await loadFrames(phase1, "high");
     if (abortedRef.current || sessionRef.current !== currentSession) return;
 
-    // Phase 1 done — switch from poster to live frames
+    // Phase 1 done  -  switch from poster to live frames
     setPhase1Done(true);
 
     // Phase 1B: next batch
@@ -425,7 +425,7 @@ export function FrameScroll({ framePrefix, totalFrames, fps: _fps, poster }: Fra
     }
   }, []);
 
-  // Scroll handler — direct 1:1 frame update, no rAF loop
+  // Scroll handler  -  direct 1:1 frame update, no rAF loop
   useEffect(() => {
     if (!isClient) return;
 
@@ -510,7 +510,7 @@ export function FrameScroll({ framePrefix, totalFrames, fps: _fps, poster }: Fra
 
       {/* ── Layered cinematic overlays ── */}
 
-      {/* Layer 1: Stable dark base — masks frame flicker behind content */}
+      {/* Layer 1: Stable dark base  -  masks frame flicker behind content */}
       <div
         className="pointer-events-none absolute inset-0 z-[4]"
         style={{

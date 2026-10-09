@@ -11,7 +11,7 @@ export const HOW_IT_WORKS_STEPS: HowItWorksStep[] = [
   {
     stepNumber: 2,
     title: "Select Your Tickets",
-    description: "Choose how many tickets you'd like — more tickets increase your chances.",
+    description: "Choose how many tickets you'd like - more tickets increase your chances.",
     icon: "Ticket",
   },
   {

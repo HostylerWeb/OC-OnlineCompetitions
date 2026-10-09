@@ -1,4 +1,4 @@
-// AuthShell.tsx — composes QueryProvider + AuthProvider as a single client island.
+// AuthShell.tsx  -  composes QueryProvider + AuthProvider as a single client island.
 
 import { AuthProvider, QueryProvider } from "@oc/api-client";
 import type { ReactNode } from "react";

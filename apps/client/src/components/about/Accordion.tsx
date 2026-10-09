@@ -32,7 +32,7 @@ function renderSectionContent(section: AboutSection) {
             </div>
             <div>
               <span className="font-semibold text-foreground">{item.title}</span>
-              <span className="text-muted-foreground"> — {item.description}</span>
+              <span className="text-muted-foreground">  -  {item.description}</span>
             </div>
           </div>
         ))}

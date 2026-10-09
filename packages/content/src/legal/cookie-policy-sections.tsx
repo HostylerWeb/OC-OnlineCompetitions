@@ -111,25 +111,25 @@ export const cookiePolicySections = [
         <p>Some cookies are placed by third-party services that appear on our website:</p>
         <ul className="list-disc list-inside space-y-2">
           <li>
-            <strong>PayPal</strong> — Payment processing and fraud prevention
+            <strong>PayPal</strong> - Payment processing and fraud prevention
           </li>
           <li>
-            <strong>Resend</strong> — Email delivery service
+            <strong>Resend</strong> - Email delivery service
           </li>
           <li>
-            <strong>Google Analytics</strong> — Website traffic and user behaviour analysis
+            <strong>Google Analytics</strong> - Website traffic and user behaviour analysis
           </li>
           <li>
-            <strong>Meta Pixel</strong> — Advertising and conversion tracking
+            <strong>Meta Pixel</strong> - Advertising and conversion tracking
           </li>
           <li>
-            <strong>Microsoft Clarity</strong> — User session recording and heatmaps
+            <strong>Microsoft Clarity</strong> - User session recording and heatmaps
           </li>
           <li>
-            <strong>Klaviyo</strong> — Email marketing and customer preferences
+            <strong>Klaviyo</strong> - Email marketing and customer preferences
           </li>
           <li>
-            <strong>Sentry</strong> — Application error monitoring
+            <strong>Sentry</strong> - Application error monitoring
           </li>
         </ul>
         <p className="mt-3">

@@ -9,11 +9,11 @@ import {
 } from "@/components/company-details";
 
 export const metadata: Metadata = {
-  title: "Terms of Service — Online Competitions",
+  title: "Terms of Service  -  Online Competitions",
   description:
     "Terms of service governing the use of our website and purchase of products. UK e-commerce terms for premium streetwear.",
   openGraph: {
-    title: "Terms of Service — Online Competitions",
+    title: "Terms of Service  -  Online Competitions",
     description: "Terms of service governing the use of our website and purchase of products.",
   },
 };

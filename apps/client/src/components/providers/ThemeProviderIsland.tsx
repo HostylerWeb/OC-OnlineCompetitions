@@ -1,4 +1,4 @@
-// ThemeProvider.tsx — dark/light theme management with localStorage persistence.
+// ThemeProvider.tsx  -  dark/light theme management with localStorage persistence.
 
 import { type ReactNode, useEffect, useState } from "react";
 

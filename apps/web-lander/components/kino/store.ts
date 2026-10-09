@@ -2,7 +2,7 @@
 import { create } from "zustand";
 
 // ---------------------------------------------------------------------------
-// Global scroll store — single source of truth for all scroll state
+// Global scroll store  -  single source of truth for all scroll state
 // ---------------------------------------------------------------------------
 
 interface KinoStore {
@@ -28,7 +28,7 @@ export const useKinoStore = create<KinoStore>((set) => ({
 }));
 
 // ---------------------------------------------------------------------------
-// ScrollTracker — RAF-batched scroll listener, writes directly to the store
+// ScrollTracker  -  RAF-batched scroll listener, writes directly to the store
 // ---------------------------------------------------------------------------
 
 class ScrollTracker {
@@ -88,13 +88,13 @@ class ScrollTracker {
 }
 
 // ---------------------------------------------------------------------------
-// Singleton tracker — no context needed, import directly
+// Singleton tracker  -  no context needed, import directly
 // ---------------------------------------------------------------------------
 
 export const scrollTracker = new ScrollTracker();
 
 // ---------------------------------------------------------------------------
-// Scene progress registry — keyed by unique scene ID
+// Scene progress registry  -  keyed by unique scene ID
 // ---------------------------------------------------------------------------
 
 const sceneProgress = new Map<string, number>();
@@ -113,7 +113,7 @@ export function getSceneProgress(id: string): number {
 }
 
 // ---------------------------------------------------------------------------
-// Core utilities — inlined, zero external deps
+// Core utilities  -  inlined, zero external deps
 // ---------------------------------------------------------------------------
 
 export function clamp(value: number, min: number, max: number): number {

@@ -243,7 +243,7 @@ export default function DashboardReferralsView() {
               <FieldLabel htmlFor="referral-code" className="text-sm">
                 {t("dashboard.referrals.referralCode")}
                 {refereeRewardEnabled && discountPercent > 0
-                  ? ` — ${discountPercent}% DISCOUNT`
+                  ? `  -  ${discountPercent}% DISCOUNT`
                   : ""}
               </FieldLabel>
               {referralData.referralCode ? (

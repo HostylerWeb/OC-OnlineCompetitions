@@ -9,7 +9,7 @@ export const LEGAL_COMPANY_NAME = "ONLINE COMPETITIONS LTD";
 export const LEGAL_COMPANY_NUMBER = "SC729481";
 /** Display line for forms and about sections */
 export const LEGAL_COMPANY_NUMBER_LABEL = `Company No. ${LEGAL_COMPANY_NUMBER} (Scotland)`;
-export const LEGAL_COMPANY_REGISTRATION_LINE = `${LEGAL_COMPANY_NAME} — ${LEGAL_COMPANY_NUMBER_LABEL}`;
+export const LEGAL_COMPANY_REGISTRATION_LINE = `${LEGAL_COMPANY_NAME} - ${LEGAL_COMPANY_NUMBER_LABEL}`;
 
 export const LEGAL_REGISTERED_OFFICE =
   "42 Meadowbank Drive, Edinburgh, EH8 7AQ, Scotland";

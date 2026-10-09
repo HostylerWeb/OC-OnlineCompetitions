@@ -27,16 +27,16 @@ export default function ShippingPage() {
           <h2 className="text-xl font-semibold tracking-tight text-gold">UK Shipping</h2>
           <div className="mt-2 space-y-1 text-muted-foreground leading-relaxed">
             <p>
-              <span className="text-foreground font-medium">Standard</span> (3–5 business days) —
+              <span className="text-foreground font-medium">Standard</span> (3–5 business days) -
               £4.99
             </p>
             <p>
-              <span className="text-foreground font-medium">Express</span> (1–2 business days) —
+              <span className="text-foreground font-medium">Express</span> (1–2 business days) -
               £8.99
             </p>
             <p>
               <span className="text-foreground font-medium">Free Shipping</span> on all UK orders
-              over £75 — automatically applied at checkout.
+              over £75  -  automatically applied at checkout.
             </p>
           </div>
         </section>

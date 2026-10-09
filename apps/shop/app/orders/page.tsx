@@ -10,7 +10,7 @@ import { fetchOrders } from "@/lib/api";
 import { cn } from "@/lib/utils";
 
 export const metadata = {
-  title: "My Orders — Online Competitions Shop",
+  title: "My Orders  -  Online Competitions Shop",
 };
 
 const statusVariant: Record<

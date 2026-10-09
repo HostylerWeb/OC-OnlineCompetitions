@@ -74,7 +74,7 @@ app.onError(async (err, c) => {
   );
 });
 
-// Auth instance (lazy — initialize on first request to survive build)
+// Auth instance (lazy  -  initialize on first request to survive build)
 let authInstance: Awaited<ReturnType<typeof getClientAuth>> | null = null;
 app.use("*", async (c, next) => {
   if (c.req.path === "/api/health" || c.req.path === "/api/health/ready") {
@@ -152,7 +152,7 @@ app.use("*", rateLimitBodyReader);
 app.use("*", emailRateLimit());
 app.use("*", csrfProtection());
 
-// Version endpoint — returns the build timestamp injected at Docker build
+// Version endpoint  -  returns the build timestamp injected at Docker build
 app.get("/api/version", (c) => {
   c.res.headers.set("Cache-Control", "no-cache, no-store, must-revalidate");
   return c.json({ sha: process.env.NEXT_PUBLIC_APP_VERSION || "dev" });
@@ -179,7 +179,7 @@ app.get("/api/health/ready", async (c) => {
   return c.json({ status: "healthy", checks });
 });
 
-// Auth routes (before session middleware — no session required for auth)
+// Auth routes (before session middleware  -  no session required for auth)
 app.on(["POST", "GET"], "/api/auth/*", async (c) => {
   return await authInstance!.handler(c.req.raw);
 });

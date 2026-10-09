@@ -14,7 +14,7 @@ export function getClientAppUrl(): string {
   return getEnv("APP_URL").replace(/\/+$/, "");
 }
 
-/** @deprecated Use getClientAppUrl — kept for existing imports */
+/** @deprecated Use getClientAppUrl  -  kept for existing imports */
 export function getFrontendUrl(): string {
   return getClientAppUrl();
 }

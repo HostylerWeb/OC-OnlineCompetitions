@@ -4,11 +4,11 @@ import { CompanyContactEmail, RegisteredOfficeAddress } from "@/components/compa
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Discover OC — a premium streetwear brand founded in London. Heavyweight fabrics, British design, timeless collections.",
+    "Discover OC  -  a premium streetwear brand founded in London. Heavyweight fabrics, British design, timeless collections.",
   openGraph: {
-    title: "About — Online Competitions",
+    title: "About  -  Online Competitions",
     description:
-      "Discover OC — a premium streetwear brand founded in London. Heavyweight fabrics, British design, timeless collections.",
+      "Discover OC  -  a premium streetwear brand founded in London. Heavyweight fabrics, British design, timeless collections.",
   },
 };
 
@@ -35,8 +35,8 @@ export default function AboutPage() {
         <h2 className="text-2xl font-bold tracking-tight">The Brand</h2>
         <p className="mt-4 text-muted-foreground leading-relaxed">
           Born in the heart of London, OC brings together British design sensibility and
-          uncompromising quality. We work exclusively with heavyweight fabrics — 500GSM French Terry
-          for our hoodies, 280GSM combed-ring spun cotton for tees — because weight translates to
+          uncompromising quality. We work exclusively with heavyweight fabrics  -  500GSM French Terry
+          for our hoodies, 280GSM combed-ring spun cotton for tees  -  because weight translates to
           durability, structure, and a feel that cheap garments can&apos;t replicate.
         </p>
         <p className="mt-4 text-muted-foreground leading-relaxed">
@@ -54,8 +54,8 @@ export default function AboutPage() {
           <div>
             <h3 className="text-lg font-semibold text-gold">The Essentials Collection Vol. 1</h3>
             <p className="mt-2 text-muted-foreground leading-relaxed">
-              The debut collection. A tightly curated set of staples — heavyweight hoodies, premium
-              tees, accessories — built around the fit and finish that define OC. Every piece is
+              The debut collection. A tightly curated set of staples  -  heavyweight hoodies, premium
+              tees, accessories  -  built around the fit and finish that define OC. Every piece is
               designed to be worn hard and hold its shape.
             </p>
           </div>
@@ -76,8 +76,8 @@ export default function AboutPage() {
         <h2 className="text-2xl font-bold tracking-tight">Quality Commitment</h2>
         <p className="mt-4 text-muted-foreground leading-relaxed">
           We don&apos;t cut corners. Heavyweight fabrics that hold their shape. Reinforced seams.
-          Custom packaging that makes unboxing part of the experience. Every detail — from the
-          thread count to the hang tag — is deliberate.
+          Custom packaging that makes unboxing part of the experience. Every detail  -  from the
+          thread count to the hang tag  -  is deliberate.
         </p>
         <p className="mt-4 text-muted-foreground leading-relaxed">
           Our quality commitment means every order is inspected before it ships. If it doesn&apos;t

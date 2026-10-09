@@ -52,7 +52,7 @@ function CancelledNotice() {
       role="status"
       className="mb-8 flex items-center justify-between gap-4 rounded-xl border border-destructive/30 bg-destructive/10 p-4"
     >
-      <p className="text-sm">Payment cancelled — you have not been charged.</p>
+      <p className="text-sm">Payment cancelled  -  you have not been charged.</p>
       <button
         type="button"
         onClick={() => router.replace("/checkout")}
@@ -480,7 +480,7 @@ export default function CheckoutPage() {
                     ? "Redirecting..."
                     : submitting
                       ? "Placing order..."
-                      : `Place Order — £${(subtotal / 100).toFixed(2)}`}
+                      : `Place Order  -  £${(subtotal / 100).toFixed(2)}`}
                 </Button>
 
                 <Link

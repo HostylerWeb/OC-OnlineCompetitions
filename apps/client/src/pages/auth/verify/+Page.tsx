@@ -23,7 +23,7 @@ export default function VerifyPage() {
 
   // Ensure an OTP is sent on mount. Two paths:
   // - verifyFailed: user was redirected here after an expired/failed email-link
-  //   attempt — force-send a fresh code (no dedup).
+  //   attempt  -  force-send a fresh code (no dedup).
   // - normal load: ensure a code has been dispatched (sessionStorage dedup
   //   prevents duplicate sends within the session).
   useEffect(() => {

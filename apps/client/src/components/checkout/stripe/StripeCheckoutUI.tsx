@@ -73,7 +73,7 @@ export function StripeCheckoutUI({
     onSuccess();
   }, [stripe, elements, sessionId, orderId, onSuccess, onProcessingChange, t]);
 
-  // Fires for any Payment Element load failure — a canceled or already-paid
+  // Fires for any Payment Element load failure  -  a canceled or already-paid
   // intent, a key/environment mismatch, a network fault. Reporting all of them
   // as "expired" hid the real cause, so surface Stripe's own message and log
   // the underlying error.

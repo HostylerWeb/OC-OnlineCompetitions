@@ -1,4 +1,4 @@
-// server-fetch.ts — server-only wrapper that calls the Hono API in-process.
+// server-fetch.ts  -  server-only wrapper that calls the Hono API in-process.
 //
 // Replaces the Next.js version that used server-side fetch with retries.
 

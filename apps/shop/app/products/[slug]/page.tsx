@@ -25,7 +25,7 @@ export async function generateMetadata({
       : `${shopUrl}${imageUrl.startsWith("/") ? "" : "/"}${imageUrl}`;
 
     return {
-      title: `${product.name} — Online Competitions Shop`,
+      title: `${product.name}  -  Online Competitions Shop`,
       description: product.description?.substring(0, 160),
       openGraph: {
         title: product.name,
@@ -45,7 +45,7 @@ export async function generateMetadata({
       },
     };
   } catch {
-    return { title: "Product Not Found — Online Competitions Shop" };
+    return { title: "Product Not Found  -  Online Competitions Shop" };
   }
 }
 

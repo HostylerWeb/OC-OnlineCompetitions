@@ -2,7 +2,7 @@ import type { HomeFeature } from "./content-types";
 
 export const HOME_BUILT_DIFFERENT = {
   title: "Built Different",
-  subtitle: "Transparency, fairness, and excitement — built into every competition.",
+  subtitle: "Transparency, fairness, and excitement - built into every competition.",
 };
 
 export const HOME_FEATURES: HomeFeature[] = [
@@ -10,7 +10,7 @@ export const HOME_FEATURES: HomeFeature[] = [
     id: "fairness",
     title: "Fairness & Security",
     description:
-      "Every draw is powered by a certified random number generator. No manipulation, no hidden rules — just pure, verifiable fairness.",
+      "Every draw is powered by a certified random number generator. No manipulation, no hidden rules - just pure, verifiable fairness.",
     icon: "Shield",
     variant: "featured",
     badges: [

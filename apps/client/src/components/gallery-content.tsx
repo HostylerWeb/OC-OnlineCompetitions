@@ -244,7 +244,7 @@ export function GalleryContent({
               wrapperClass="!h-full !w-full"
               contentClass="!flex !h-full !w-full items-center justify-center"
             >
-              {/* next/image skip — react-zoom-pan-pinch needs DOM img */}
+              {/* next/image skip  -  react-zoom-pan-pinch needs DOM img */}
               {(() => {
                 const src = visibleImages[currentIndex];
                 if (!src) return null;

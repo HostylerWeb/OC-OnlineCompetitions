@@ -59,7 +59,7 @@ export const SUPPORT_ORGANISATIONS = [
   {
     name: "Linia Națională de Jocuri de Noroc",
     url: "tel:08088020133",
-    description: "Sună la 0808 8020 133 — gratuit, confidențial, 24/7.",
+    description: "Sună la 0808 8020 133 - gratuit, confidențial, 24/7.",
   },
   {
     name: "Citizens Advice",

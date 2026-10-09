@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     "Get in touch with OC. General inquiries, order support, returns, and press contacts.",
   openGraph: {
-    title: "Contact — Online Competitions",
+    title: "Contact  -  Online Competitions",
     description:
       "Get in touch with OC. General inquiries, order support, returns, and press contacts.",
   },
@@ -23,7 +23,7 @@ export default function ContactPage() {
         <h1 className="mt-4 text-4xl font-bold tracking-tight md:text-5xl">Contact Us</h1>
         <p className="mt-4 text-base text-muted-foreground md:text-lg">
           We&apos;d love to hear from you. Whether it&apos;s a question about your order, a press
-          inquiry, or just to say hello — we&apos;re here to help.
+          inquiry, or just to say hello  -  we&apos;re here to help.
         </p>
       </section>
 

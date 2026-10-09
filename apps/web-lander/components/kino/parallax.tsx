@@ -10,7 +10,7 @@ interface ParallaxProps {
 }
 
 /**
- * `<Parallax>` — translates children vertically based on scroll speed.
+ * `<Parallax>`  -  translates children vertically based on scroll speed.
  * Speed < 1 means slower than scroll (background effect).
  * Speed > 1 means faster than scroll (foreground effect).
  */

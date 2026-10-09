@@ -56,7 +56,7 @@ export function ProductDetail({ slug, product }: ProductDetailProps) {
               if (line === "---") return <hr key={i} className="border-border-subtle" />;
               return (
                 <p key={i} className="text-sm text-foreground">
-                  {line.startsWith("—") || line.startsWith("–") ? (
+                  {line.startsWith(" - ") || line.startsWith("–") ? (
                     <span className="text-muted-foreground">{line}</span>
                   ) : (
                     line

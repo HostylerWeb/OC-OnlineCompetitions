@@ -1,4 +1,4 @@
-// Local utilities barrel — re-exports common helpers from @oc/utils
+// Local utilities barrel  -  re-exports common helpers from @oc/utils
 // and the local cn() helper.
 //
 // Components that previously imported from "@/lib/utils" get:

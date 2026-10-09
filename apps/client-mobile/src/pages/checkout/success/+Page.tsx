@@ -306,14 +306,14 @@ function CheckoutSuccessPageContent() {
 
     if (redirectStatus === "canceled") return "cancelled" as const;
 
-    // Local provider is synchronous — detect from URL params directly so
+    // Local provider is synchronous  -  detect from URL params directly so
     // SSR and first client render agree on "completed" (no hydration mismatch).
     if (provider === "local" && hasPaymentContext) return "completed" as const;
 
     if (provider === "paytriot") {
       // E2 defense-in-depth: even if URL says payment=success, check order
       // metadata for fulfillmentFailedAfterCapture. If present, the customer
-      // was charged but order fulfillment failed — show the bespoke
+      // was charged but order fulfillment failed  -  show the bespoke
       // "captured-not-fulfilled" UI (not the generic "failed" UI).
       if (fulfillmentFailed) {
         return "captured-not-fulfilled" as const;
@@ -332,7 +332,7 @@ function CheckoutSuccessPageContent() {
 
     if (hasPaymentContext) {
       if (status === "success") {
-        // Local provider: fulfillment is synchronous — seedSuccess is the
+        // Local provider: fulfillment is synchronous  -  seedSuccess is the
         // authoritative success signal, no need to verify via order detail
         if (provider === "local") return "completed" as const;
 
@@ -352,7 +352,7 @@ function CheckoutSuccessPageContent() {
       }
 
       // The poll budget was exhausted while the session was still showing
-      // processing (not failed). The payment may still complete — surface a
+      // processing (not failed). The payment may still complete  -  surface a
       // "still processing" view rather than a failed one, unless the order
       // detail resolves the state for us.
       if (status === "error" && timedOut) {

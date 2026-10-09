@@ -9,11 +9,11 @@ import { fetchGlobalStats, fetchLandingPageCompetitions } from "@/lib/api";
 const landerUrl = process.env.NEXT_PUBLIC_APP_URL || "https://agro.onlinecompetitions.co.uk";
 
 export const metadata: Metadata = {
-  title: "Win Premium Prizes — Online Competitions",
+  title: "Win Premium Prizes  -  Online Competitions",
   description:
     "Enter to win incredible prizes with Online Competitions. Browse active competitions, answer skill questions, and win instantly.",
   openGraph: {
-    title: "Win Premium Prizes — Online Competitions",
+    title: "Win Premium Prizes  -  Online Competitions",
     description:
       "Enter to win incredible prizes with Online Competitions. Browse active competitions, answer skill questions, and win instantly.",
     url: landerUrl,

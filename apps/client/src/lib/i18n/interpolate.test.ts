@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest";
 import { interpolate } from "./interpolate";
 
-describe("interpolate — English plural", () => {
+describe("interpolate - English plural", () => {
   test("singular (1)", () => {
     expect(interpolate("You own {count} ticket{plural}", { count: 1 }, "en")).toBe(
       "You own 1 ticket"
@@ -46,7 +46,7 @@ describe("interpolate — English plural", () => {
   });
 });
 
-describe("interpolate — Romanian plural", () => {
+describe("interpolate - Romanian plural", () => {
   test("bilet: one vs many", () => {
     expect(interpolate("Ai deja {count} bilet{plural}", { count: 1 }, "ro")).toBe(
       "Ai deja 1 bilet"
@@ -106,7 +106,7 @@ describe("interpolate — Romanian plural", () => {
   });
 });
 
-describe("interpolate — general tokens", () => {
+describe("interpolate - general tokens", () => {
   test("substitutes all generic tokens", () => {
     expect(
       interpolate("Cart will update from {from} to {to} ticket{plural}", {

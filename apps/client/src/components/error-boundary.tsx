@@ -44,7 +44,7 @@ export class ErrorBoundary extends Component<Props, State> {
     const buildVersion = this.props.buildVersion;
 
     if (!buildVersion) {
-      // No build version — treat as regular error, don't reload
+      // No build version  -  treat as regular error, don't reload
       return;
     }
 

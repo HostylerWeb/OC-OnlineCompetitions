@@ -1,4 +1,4 @@
-// useConsumeQueryParams — removes specified query params from the URL.
+// useConsumeQueryParams  -  removes specified query params from the URL.
 // Compatible with Vike (client-side only, uses History API).
 "use client";
 

@@ -1,4 +1,4 @@
-// ToasterIsland.tsx — Sonner toast container.
+// ToasterIsland.tsx  -  Sonner toast container.
 
 import { Toaster } from "sonner";
 

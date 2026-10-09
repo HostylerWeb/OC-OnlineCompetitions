@@ -267,9 +267,9 @@ export function ProductVariantSelector({
                         }`}
                         title={
                           !isAvailable
-                            ? `${optVal.value} — unavailable`
+                            ? `${optVal.value}  -  unavailable`
                             : isThisSoldOut
-                              ? `${optVal.value} — sold out`
+                              ? `${optVal.value}  -  sold out`
                               : optVal.value
                         }
                       >
