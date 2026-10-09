@@ -42,6 +42,7 @@ import { registerStripeWebhooks } from "@oc/api-server/lib/payment/register-stri
 import { affiliateMiddleware } from "@oc/api-server/middleware/affiliate";
 import { sessionMiddleware } from "@oc/api-server/middleware/auth";
 import { redisCacheRoute } from "@oc/api-server/middleware/cache";
+import { ALLOWED_ORIGIN_PATTERNS } from "@oc/api-server/middleware/allowed-origins";
 import { csrfProtection } from "@oc/api-server/middleware/csrf";
 import {
   emailRateLimit,
@@ -422,13 +423,6 @@ app.use("*", async (c, next) => {
 });
 
 // CORS
-const ALLOWED_ORIGIN_PATTERNS = [
-  /^https?:\/\/localhost(:\d+)?$/,
-  /^capacitor:\/\/localhost(:\d+)?$/,
-  /^https:\/\/.*\.onlinecompetitions\.win$/,
-  /^https:\/\/onlinecompetitions\.win$/,
-];
-
 app.use(
   "*",
   cors({
@@ -440,6 +434,9 @@ app.use(
       "Content-Type",
       "Authorization",
       "X-Request-ID",
+      "X-OnlineCompetitions-Client",
+      "X-Affiliate-Clickid",
+      "X-Affiliate-Source",
       "Cookie",
       "baggage",
       "sentry-trace",

@@ -13,12 +13,7 @@ const SKIP_PATH_PREFIXES = [
   "/api/internal/jobs",
 ];
 
-const ALLOWED_ORIGIN_PATTERNS = [
-  /^https?:\/\/localhost(:\d+)?$/,
-  /^capacitor:\/\/localhost(:\d+)?$/,
-  /^https:\/\/.*\.onlinecompetitions\.win$/,
-  /^https:\/\/onlinecompetitions\.win$/,
-];
+import { ALLOWED_ORIGIN_PATTERNS } from "./allowed-origins";
 
 const OC_CLIENT_HEADER = "x-onlinecompetitions-client";
 
