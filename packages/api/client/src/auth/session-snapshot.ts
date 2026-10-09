@@ -1,6 +1,6 @@
-import type { AuthClientSession } from "@luxero/auth-client";
-import { authClient } from "@luxero/auth-client";
-import type { User } from "@luxero/types";
+import type { AuthClientSession } from "@oc/auth-client";
+import { authClient } from "@oc/auth-client";
+import type { User } from "@oc/types";
 import { mapSessionUser } from "./session";
 
 type SessionUser = AuthClientSession["user"] & {

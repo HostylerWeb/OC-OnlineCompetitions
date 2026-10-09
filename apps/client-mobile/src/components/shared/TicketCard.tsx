@@ -1,6 +1,6 @@
 "use client";
 
-import { formatTicketNumber } from "@luxero/utils";
+import { formatTicketNumber } from "@oc/utils";
 import { useTranslation } from "@/lib/i18n";
 import {
   getPrizeTicketVisualStyles,

@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, Copy } from "@luxero/icons";
+import { Check, Copy } from "@oc/icons";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 

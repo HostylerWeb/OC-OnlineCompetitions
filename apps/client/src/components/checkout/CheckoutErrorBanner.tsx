@@ -1,5 +1,5 @@
-import type { ContextualError } from "@luxero/api-client";
-import { AlertTriangle, RefreshCw } from "@luxero/icons";
+import type { ContextualError } from "@oc/api-client";
+import { AlertTriangle, RefreshCw } from "@oc/icons";
 import { ContextualErrorMessage } from "@/components/ContextualErrorMessage";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useTranslation } from "@/lib/i18n";

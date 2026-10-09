@@ -35,7 +35,7 @@ export default function ForgotPasswordPage() {
   }
 
   return (
-    <div className="luxero-container flex min-h-[60vh] items-center justify-center py-16">
+    <div className="oc-container flex min-h-[60vh] items-center justify-center py-16">
       <div className="w-full max-w-sm">
         <div className="text-center">
           <h1 className="text-2xl font-bold tracking-tight">Reset your password</h1>

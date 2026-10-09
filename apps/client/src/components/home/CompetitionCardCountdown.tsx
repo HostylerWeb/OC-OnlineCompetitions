@@ -1,7 +1,7 @@
 "use client";
 
-import type { TimeLeft } from "@luxero/utils";
-import { cn } from "@luxero/utils";
+import type { TimeLeft } from "@oc/utils";
+import { cn } from "@oc/utils";
 import { useEffect, useState } from "react";
 import { useTranslation } from "@/lib/i18n";
 

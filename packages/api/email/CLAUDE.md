@@ -1,10 +1,10 @@
-# @luxero/api-email
+# @oc/api-email
 
 Transactional email dispatch with dual-provider strategy.
 
 ## Source of truth
 
-`luxero-api/packages/email/src` — synced to this repo.
+`onlinecompetitions-api/packages/email/src` — synced to this repo.
 
 ## Providers
 

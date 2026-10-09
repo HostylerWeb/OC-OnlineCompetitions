@@ -1,5 +1,5 @@
-import { AlertCircle, CheckCircle, Eye, EyeOff, LoaderCircle } from "@luxero/icons";
-import { cn } from "@luxero/utils";
+import { AlertCircle, CheckCircle, Eye, EyeOff, LoaderCircle } from "@oc/icons";
+import { cn } from "@oc/utils";
 import { useEffect, useRef, useState } from "react";
 import { buildVerifyRequiredPath, sanitizeReturnTo } from "../../referral/redirect";
 import {

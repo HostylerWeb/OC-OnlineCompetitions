@@ -1,4 +1,14 @@
 import type { LegalSection } from "../../content-types";
+import {
+  BRAND_NAME,
+  CompanyEmailLink,
+  CONTACT_PHONE_DISPLAY,
+  LEGAL_COMPANY_NAME,
+  LEGAL_COMPANY_NUMBER,
+  LEGAL_REGISTERED_OFFICE,
+  LEGAL_WEBSITE,
+  LEGAL_WEBSITE_URL,
+} from "../../legal/company-legal";
 
 export const termsSections = [
   {
@@ -7,11 +17,10 @@ export const termsSections = [
     content: (
       <div className="space-y-3 text-muted-foreground">
         <p>
-          SUNTEM LUXERO COMPETITIONS LTD, o companie înregistrată în Scoția cu numărul de companie
-          SC888260. Sediu nostru social este la 107 Dalriada Crescent, Motherwell, ML1 3XT, Scoția.
+          SUNTEM {LEGAL_COMPANY_NAME}, o companie înregistrată în Scoția cu numărul de companie {LEGAL_COMPANY_NUMBER}. Sediu nostru social este la {LEGAL_REGISTERED_OFFICE}.
           Suntem &ldquo;Promotorul&rdquo; extragerii cu premii (&ldquo;Extragerea&rdquo;) operată la
-          LUXERO &ndash; Site-ul Oficial Luxero Competitions &ndash; Donează și câștigă mașini,
-          bani, premii instant (luxero.win) (&ldquo;Site-ul Web&rdquo;), ceea ce înseamnă că suntem
+          OC &ndash; Site-ul Oficial {BRAND_NAME} &ndash; Donează și câștigă mașini,
+          bani, premii instant ({LEGAL_WEBSITE}) (&ldquo;Site-ul Web&rdquo;), ceea ce înseamnă că suntem
           responsabili pentru buna și corecta desfășurare a acesteia.
         </p>
         <p>
@@ -45,25 +54,21 @@ export const termsSections = [
           noastră de Confidențialitate și ești de acord să fii obligat legal de aceștia. Politica
           noastră de Confidențialitate poate fi găsită aici{" "}
           <a href="/privacy" className="text-gold hover:underline">
-            https://www.luxero.win/privacy
+            {LEGAL_WEBSITE_URL}/privacy
           </a>
           .
         </p>
         <p>
           2.5. Dacă ai întrebări, nelămuriri sau reclamații legate de o Extragere, te rugăm să ne
           contactezi la{" "}
-          <a href="mailto:contact@luxero.win" className="text-gold hover:underline">
-            contact@luxero.win
-          </a>{" "}
-          sau +44 744 328 9228.
+          <CompanyEmailLink />{" "}
+          sau {CONTACT_PHONE_DISPLAY}.
         </p>
         <p>
           2.6. Dacă întâmpini dificultăți în accesarea sau participarea la această promoție, te
           rugăm să ne contactezi la{" "}
-          <a href="mailto:contact@luxero.win" className="text-gold hover:underline">
-            contact@luxero.win
-          </a>{" "}
-          sau +44 744 328 9228.
+          <CompanyEmailLink />{" "}
+          sau {CONTACT_PHONE_DISPLAY}.
         </p>
         <p>
           2.7. Dacă dorești acești termeni și condiții într-un alt format (de exemplu: audio,
@@ -138,17 +143,17 @@ export const termsSections = [
         <p>Poți participa la această promoție în oricare dintre următoarele moduri:</p>
         <p>
           <strong>Online</strong> Completează pașii de participare online pe Site-ul nostru Web la
-          LUXERO – Site-ul Oficial Luxero Competitions – Donează și câștigă mașini, bani, premii
-          instant (luxero.win). Costul participării va fi afișat pe Site-ul nostru Web.
+          OC – Site-ul Oficial Online Competitions – Donează și câștigă mașini, bani, premii
+          instant ({LEGAL_WEBSITE}). Costul participării va fi afișat pe Site-ul nostru Web.
         </p>
         <p>
           <strong>Poștă</strong> Poți participa prin poștă, dar va trebui mai întâi să-ți
           înregistrezi un cont la noi (vezi clauza 4.1 de mai jos).
         </p>
         <p>
-          Te rugăm să trimiți o carte poștală cu numele tău, numărul de cont Luxero, adresa poștală,
+          Te rugăm să trimiți o carte poștală cu numele tău, numărul de cont Online Competitions, adresa poștală,
           data nașterii, adresa de email și numărul de telefon și numele concursului la care
-          participi la 107 Dalriada Crescent, Motherwell, ML1 3XT, Scotland.
+          participi la {LEGAL_REGISTERED_OFFICE}.
         </p>
         <p>Participările gratuite valide vor fi găsite în istoricul contului tău.</p>
         <p>O participare per carte poștală pentru fiecare Extragere.</p>
@@ -266,7 +271,7 @@ export const termsSections = [
         </p>
         <p>
           5.3. Extragerea va fi efectuată și transmisă în direct pe Facebook, pe pagina noastră
-          "Luxero Competitions" și/sau pe o altă platformă de social media pe care o decidem.
+          "Online Competitions" și/sau pe o altă platformă de social media pe care o decidem.
         </p>
         <p>
           5.4. Câștigătorul va fi notificat cât mai curând posibil. Vom încerca inițial să contactăm
@@ -342,11 +347,9 @@ export const termsSections = [
         </p>
         <p>
           5.17. Detaliile parțiale ale Câștigătorului pot fi obținute trimițându-ne un email la{" "}
-          <a href="mailto:contact@luxero.win" className="text-gold hover:underline">
-            contact@luxero.win
-          </a>{" "}
-          și vor fi publicate la LUXERO – Site-ul Oficial Luxero Competitions – Donează și câștigă
-          mașini, bani, premii instant (luxero.win) la 6 luni după data și ora de închidere.
+          <CompanyEmailLink />{" "}
+          și vor fi publicate la OC – Site-ul Oficial Online Competitions – Donează și câștigă
+          mașini, bani, premii instant ({LEGAL_WEBSITE}) la 6 luni după data și ora de închidere.
         </p>
         <p>
           5.18. Participanții care nu doresc ca detaliile lor să fie incluse în lista Câștigătorilor
@@ -533,15 +536,13 @@ export const termsSections = [
           8.13. Dacă dorești să ne contactezi despre această promoție sau ai o reclamație, ne poți
           contacta prin:
         </p>
-        <p>8.13.1. Telefon: +44 744 328 9228</p>
+        <p>8.13.1. Telefon: {CONTACT_PHONE_DISPLAY}</p>
         <p>
           8.13.2. email:{" "}
-          <a href="mailto:contact@luxero.win" className="text-gold hover:underline">
-            contact@luxero.win
-          </a>{" "}
+          <CompanyEmailLink />{" "}
           ; sau
         </p>
-        <p>8.13.3. 107 Dalriada Crescent, Motherwell, ML1 3XT, Scotland</p>
+        <p>8.13.3. {LEGAL_REGISTERED_OFFICE}</p>
         <p>
           8.14. Acești Termeni și orice dispută sau revendicare (inclusiv dispute sau revendicări
           necontractuale) care decurg din sau în legătură cu aceștia sau obiectul sau formarea lor
@@ -695,7 +696,7 @@ export const termsSections = [
           Conținut.
         </p>
         <p>
-          13.4. Mărci comerciale: Luxero este marca noastră comercială. Alte mărci comerciale și
+          13.4. Mărci comerciale: Online Competitions este marca noastră comercială. Alte mărci comerciale și
           nume comerciale pot fi, de asemenea, utilizate pe Site-ul Web sau în Conținut. Utilizarea
           de către tine a oricăror mărci comerciale de pe Site-ul Web sau din Conținut este strict
           interzisă, cu excepția cazului în care ai permisiunea noastră scrisă prealabilă.

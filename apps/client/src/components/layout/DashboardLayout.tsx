@@ -1,6 +1,6 @@
 "use client";
 
-import { Menu } from "@luxero/icons";
+import { Menu } from "@oc/icons";
 import { useCallback, useEffect } from "react";
 import { usePageContext } from "vike-react/usePageContext";
 import { Button } from "@/components/ui/button";
@@ -34,7 +34,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
         id={SCROLL_CONTAINER_ID}
         className="scrollbar-gutter-stable min-h-0 min-w-0 flex-1 overflow-x-hidden overflow-y-auto"
       >
-        <div className="luxero-container-medium flex w-full min-w-0 flex-col gap-4 py-4 lg:gap-6 lg:py-8">
+        <div className="oc-container-medium flex w-full min-w-0 flex-col gap-4 py-4 lg:gap-6 lg:py-8">
           <div className="md:hidden sticky top-0 z-20 -mx-4 self-stretch bg-background/95 px-4 pb-2 pt-0.5 backdrop-blur-sm">
             <Button
               variant="outline"

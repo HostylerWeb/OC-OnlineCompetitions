@@ -1,4 +1,4 @@
-import type { ApiResponse, SelfExcludedUser } from "@luxero/types";
+import type { ApiResponse, SelfExcludedUser } from "@oc/types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { api } from "../../client";
 import { STALE_TIME_ADMIN } from "../../constants";

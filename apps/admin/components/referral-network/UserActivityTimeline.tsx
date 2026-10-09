@@ -1,6 +1,6 @@
 "use client";
 
-import type { TimelineEvent, TimelineEventType } from "@luxero/api-referrals/timeline";
+import type { TimelineEvent, TimelineEventType } from "@oc/api-referrals/timeline";
 import { format } from "date-fns";
 import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";

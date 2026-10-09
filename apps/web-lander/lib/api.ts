@@ -1,5 +1,5 @@
 /**
- * Server-side API client for competition.luxero.win
+ * Server-side API client for competition.onlinecompetitions.co.uk
  *
  * Reads NEXT_PUBLIC_CLIENT_APP_URL (or FRONTEND_URL) for server-side API calls.
  * NEXT_PUBLIC_APP_URL is the lander's own public URL only (metadata).
@@ -8,7 +8,7 @@
  * free of "use client" so Next.js keeps it in the server bundle only.
  */
 
-import { createServerAxios } from "@luxero/api-axios";
+import { createServerAxios } from "@oc/api-axios";
 import { getClientAppUrl } from "./config";
 import { type AxiosError, type AxiosResponse } from "axios";
 

@@ -1,9 +1,9 @@
-import { Order } from "@luxero/api-db/models";
+import { Order } from "@oc/api-db/models";
 import {
   type CreatePendingOrderParams,
   createPendingCheckoutOrder,
-} from "@luxero/api-tickets/create-session";
-import { releasePromoCodeUsage } from "@luxero/api-tickets/promo-codes";
+} from "@oc/api-tickets/create-session";
+import { releasePromoCodeUsage } from "@oc/api-tickets/promo-codes";
 import { Types } from "mongoose";
 import { reserveCheckoutPromoCode } from "../../build-fulfillment-deps";
 

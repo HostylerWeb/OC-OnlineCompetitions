@@ -1,7 +1,7 @@
 "use client";
 
-import { SearchX } from "@luxero/icons";
-import type { AdminCompetition } from "@luxero/types";
+import { SearchX } from "@oc/icons";
+import type { AdminCompetition } from "@oc/types";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import {

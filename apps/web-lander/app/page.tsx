@@ -1,3 +1,4 @@
+import { BRAND_LOGO_PATH, brandLogoUrl } from "@oc/utils";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { ErrorDisplay } from "@/components/competition/error-display";
@@ -5,27 +6,27 @@ import { CompetitionLoadingSkeleton } from "@/components/competition/loading-ske
 import { IndexPage } from "@/components/index/index-page";
 import { fetchGlobalStats, fetchLandingPageCompetitions } from "@/lib/api";
 
-const landerUrl = process.env.NEXT_PUBLIC_APP_URL || "https://agro.luxero.win";
+const landerUrl = process.env.NEXT_PUBLIC_APP_URL || "https://agro.onlinecompetitions.co.uk";
 
 export const metadata: Metadata = {
-  title: "Win Premium Prizes — Luxero Competitions",
+  title: "Win Premium Prizes — Online Competitions",
   description:
-    "Enter to win incredible prizes with Luxero Competitions. Browse active competitions, answer skill questions, and win instantly.",
+    "Enter to win incredible prizes with Online Competitions. Browse active competitions, answer skill questions, and win instantly.",
   openGraph: {
-    title: "Win Premium Prizes — Luxero Competitions",
+    title: "Win Premium Prizes — Online Competitions",
     description:
-      "Enter to win incredible prizes with Luxero Competitions. Browse active competitions, answer skill questions, and win instantly.",
+      "Enter to win incredible prizes with Online Competitions. Browse active competitions, answer skill questions, and win instantly.",
     url: landerUrl,
     images: [
       {
-        url: "/og-default.png",
-        secureUrl: `${landerUrl}/og-default.png`,
+        url: BRAND_LOGO_PATH,
+        secureUrl: brandLogoUrl(landerUrl),
         type: "image/png",
         width: 1200,
         height: 630,
       },
     ],
-    siteName: "Luxero",
+    siteName: "Online Competitions",
   },
 };
 

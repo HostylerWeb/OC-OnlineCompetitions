@@ -5,10 +5,10 @@ import {
   useAdminInstantPrizeWinMutations,
   useAdminInstantPrizeWins,
   useServerPagination,
-} from "@luxero/api-admin";
-import { MoreHorizontal, RefreshCw, Trash2, Trophy, User } from "@luxero/icons";
-import type { AdminCompetition, AdminUser } from "@luxero/types";
-import { getDisplayName } from "@luxero/utils";
+} from "@oc/api-admin";
+import { MoreHorizontal, RefreshCw, Trash2, Trophy, User } from "@oc/icons";
+import type { AdminCompetition, AdminUser } from "@oc/types";
+import { getDisplayName } from "@oc/utils";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import type { ColumnDef, SortingState, Updater, VisibilityState } from "@tanstack/react-table";
 import { useRouter, useSearchParams } from "next/navigation";

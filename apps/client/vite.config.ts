@@ -1,4 +1,4 @@
-import "@luxero/env/server";
+import "@oc/env/server";
 
 import path from "node:path";
 import { hostylerConsoleNoticeIndexHtmlPlugin } from "../../packages/utils/src/vite-hostyler-console-notice-plugin.ts";
@@ -14,25 +14,29 @@ if ((process.env.FRAMEWORK || "").toLowerCase() !== "vike") {
 export default defineConfig({
   plugins: [hostylerConsoleNoticeIndexHtmlPlugin(), react(), tailwindcss(), vike()],
   server: {
-    allowedHosts: ["debug.luxero.win"],
+    allowedHosts: ["debug.onlinecompetitions.co.uk"],
   },
   envPrefix: ["PUBLIC_ENV__", "VITE_"],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+      "@oc/utils": path.resolve(__dirname, "../../packages/utils/src/index.ts"),
+      "@oc/utils/company": path.resolve(__dirname, "../../packages/utils/src/company.ts"),
+      "@oc/utils/brand": path.resolve(__dirname, "../../packages/utils/src/brand.ts"),
+      "@oc/utils/social": path.resolve(__dirname, "../../packages/utils/src/social.ts"),
     },
   },
   ssr: {
     noExternal: [
-      "@luxero/api-client",
-      "@luxero/api-db",
-      "@luxero/api-server",
-      "@luxero/auth-client",
-      "@luxero/icons",
-      "@luxero/content",
-      "@luxero/types",
-      "@luxero/utils",
-      "@luxero/auth-admin",
+      "@oc/api-client",
+      "@oc/api-db",
+      "@oc/api-server",
+      "@oc/auth-client",
+      "@oc/icons",
+      "@oc/content",
+      "@oc/types",
+      "@oc/utils",
+      "@oc/auth-admin",
     ],
     external: [
       "react",

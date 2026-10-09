@@ -3,7 +3,7 @@
 import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
 import Confetti from "react-confetti";
-import { LuxeroLogoSquare } from "@/components/LuxeroLogo";
+import { BrandLogoSquare } from "@/components/BrandLogo";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import {
   Card,
@@ -87,11 +87,11 @@ export function AuthShell({ children, maxWidth = "sm" }: AuthShellProps) {
 
         <div className="relative z-10 flex flex-col items-center gap-6 px-12 pb-20 text-center">
           <div className="flex size-20 items-center justify-center rounded-2xl border border-primary/20 bg-primary/10 shadow-xl">
-            <LuxeroLogoSquare className="size-12 text-primary" />
+            <BrandLogoSquare className="size-12 text-primary" />
           </div>
           <div className="flex flex-col gap-2">
             <h1 className="text-3xl font-semibold tracking-tight text-foreground">
-              Welcome to Luxero Admin
+              Welcome to Online Competitions Admin
             </h1>
             <p className="text-base text-muted-foreground leading-relaxed max-w-xs">
               Secure dashboard for managing competitions, users, and payouts.
@@ -106,9 +106,9 @@ export function AuthShell({ children, maxWidth = "sm" }: AuthShellProps) {
         <div className="flex lg:hidden items-center justify-between px-6 py-4 border-b bg-gradient-to-r from-primary/5 via-background to-background">
           <div className="flex items-center gap-3">
             <div className="flex size-8 items-center justify-center rounded-lg border border-primary/20 bg-primary/10">
-              <LuxeroLogoSquare className="size-5 text-primary" />
+              <BrandLogoSquare className="size-5 text-primary" />
             </div>
-            <span className="font-semibold text-foreground">Luxero Admin</span>
+            <span className="font-semibold text-foreground">Online Competitions Admin</span>
           </div>
           <ThemeToggle data-umami-event="nav:theme-toggle" />
         </div>
@@ -122,10 +122,10 @@ export function AuthShell({ children, maxWidth = "sm" }: AuthShellProps) {
           >
             <div className="hidden lg:flex flex-col items-center gap-1.5 mb-6 text-center">
               <div className="flex size-12 items-center justify-center rounded-xl border border-primary/20 bg-primary/10">
-                <LuxeroLogoSquare className="size-7 text-primary" />
+                <BrandLogoSquare className="size-7 text-primary" />
               </div>
               <h1 className="text-2xl font-semibold tracking-tight text-foreground">
-                Luxero Admin
+                Online Competitions Admin
               </h1>
             </div>
 
@@ -145,7 +145,7 @@ export function AuthBrand({ subtitle }: AuthBrandProps) {
   return (
     <div className="flex flex-col items-center gap-3 text-center">
       <div className="flex size-12 items-center justify-center rounded-full border border-primary/20 bg-primary/10 shadow-sm">
-        <LuxeroLogoSquare className="size-6 text-primary" aria-hidden />
+        <BrandLogoSquare className="size-6 text-primary" aria-hidden />
       </div>
       {subtitle ? (
         <p className="text-sm leading-relaxed text-muted-foreground">{subtitle}</p>

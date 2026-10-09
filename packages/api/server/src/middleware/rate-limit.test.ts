@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, test, vi } from "vitest";
 
 const mockGetRedis = vi.hoisted(() => vi.fn());
 
-vi.mock("@luxero/api-infra/cache/redis", () => ({
+vi.mock("@oc/api-infra/cache/redis", () => ({
   getRedis: mockGetRedis,
 }));
 

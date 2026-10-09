@@ -1,7 +1,7 @@
 "use client";
 
-import { useInfiniteCompetitionInstantPrizes } from "@luxero/api-client";
-import { Gift, Sparkles } from "@luxero/icons";
+import { useInfiniteCompetitionInstantPrizes } from "@oc/api-client";
+import { Gift, Sparkles } from "@oc/icons";
 import { useEffect, useRef, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { formatNumber, useTranslation } from "@/lib/i18n";

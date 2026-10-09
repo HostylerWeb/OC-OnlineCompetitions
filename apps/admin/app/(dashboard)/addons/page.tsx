@@ -5,7 +5,7 @@ import { PageShell } from "@/components/PageShell";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Settings } from "@luxero/icons";
+import { Settings } from "@oc/icons";
 import Link from "next/link";
 
 export default function AddonsAdminPage() {

@@ -22,7 +22,7 @@ const __mocks = vi.hoisted(() => ({
   applyPendingSpendLimit: vi.fn(async (profile: unknown) => profile),
 }));
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   Profile: {
     findById: __mocks.findById,
   },

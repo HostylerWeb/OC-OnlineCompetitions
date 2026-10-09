@@ -1,16 +1,16 @@
-import { ShopOrder } from "@luxero/api-db/models";
-import dbConnect from "@luxero/api-infra/db";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { escapeRegex } from "@luxero/api-infra/fuzzy-search";
-import { parsePagination, parseSort } from "@luxero/api-infra/pagination";
-import { error, paginated, success } from "@luxero/api-infra/response";
-import { captureRouteError } from "@luxero/api-infra/sentry";
-import { requireManager } from "@luxero/api-server/middleware/auth";
+import { ShopOrder } from "@oc/api-db/models";
+import dbConnect from "@oc/api-infra/db";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { escapeRegex } from "@oc/api-infra/fuzzy-search";
+import { parsePagination, parseSort } from "@oc/api-infra/pagination";
+import { error, paginated, success } from "@oc/api-infra/response";
+import { captureRouteError } from "@oc/api-infra/sentry";
+import { requireManager } from "@oc/api-server/middleware/auth";
 import {
   type ShopOrderUpdateStatusInput,
   shopOrderUpdateStatusSchema,
   validateBody,
-} from "@luxero/api-validation";
+} from "@oc/api-validation";
 import { Hono } from "hono";
 import mongoose from "mongoose";
 

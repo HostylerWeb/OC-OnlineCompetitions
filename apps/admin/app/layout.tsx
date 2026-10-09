@@ -1,5 +1,5 @@
-import { AuthProvider, QueryProvider } from "@luxero/api-admin";
-import { HOSTYLER_CONSOLE_NOTICE_INLINE } from "@luxero/utils";
+import { AuthProvider, QueryProvider } from "@oc/api-admin";
+import { HOSTYLER_CONSOLE_NOTICE_INLINE } from "@oc/utils";
 import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import { ThemeProvider } from "next-themes";
@@ -23,11 +23,11 @@ const plusJakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Admin — Luxero",
-    template: "%s — Luxero Admin",
+    default: "Admin — Online Competitions",
+    template: "%s — Online Competitions Admin",
   },
-  description: "Luxero admin dashboard",
-  icons: [{ rel: "icon", url: "/icons/icon-192x192.svg" }],
+  description: "Online Competitions admin dashboard",
+  icons: [{ rel: "icon", url: "/favicon.png", type: "image/png" }],
   manifest: "/manifest.webmanifest",
   robots: { index: false },
 };
@@ -48,7 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && (
           <script
             defer
-            src="https://umami.luxero.win/script.js"
+            src="https://umami.onlinecompetitions.co.uk/script.js"
             data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
           />
         )}
@@ -59,7 +59,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
-          storageKey="luxero-theme"
+          storageKey="oc-theme"
           enableSystem
           disableTransitionOnChange
         >
@@ -72,7 +72,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   <AuthProvider enableGuestSession={false}>{children}</AuthProvider>
                 </Suspense>
                 <PwaInstallPrompt
-                  appName="Luxero Admin"
+                  appName="Online Competitions Admin"
                   tagline="Add to your home screen for one-tap admin access"
                 />
                 <Toaster />

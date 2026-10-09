@@ -1,4 +1,4 @@
-import type { InstantPrizeCapacityResponse } from "@luxero/types";
+import type { InstantPrizeCapacityResponse } from "@oc/types";
 import { Progress } from "@/components/ui/progress";
 
 export function InstantPrizeCapacityPanel({

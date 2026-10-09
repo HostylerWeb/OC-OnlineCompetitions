@@ -1,6 +1,6 @@
 "use client";
 
-import type { ReferralMindmapResponse } from "@luxero/api-referrals/mindmap";
+import type { ReferralMindmapResponse } from "@oc/api-referrals/mindmap";
 import { type UseQueryResult, useQuery } from "@tanstack/react-query";
 
 interface UseAdminReferralMindmapOptions {

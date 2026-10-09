@@ -22,7 +22,7 @@ export function ProductDetail({ slug, product }: ProductDetailProps) {
   const variants = product.variants ?? [];
 
   return (
-    <main className="luxero-container py-8 md:py-12">
+    <main className="oc-container py-8 md:py-12">
       <nav className="mb-8 text-sm text-muted-foreground">
         <Link href="/products" className="transition-colors hover:text-gold">
           Products

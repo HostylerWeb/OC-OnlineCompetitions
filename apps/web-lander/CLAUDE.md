@@ -15,7 +15,7 @@ Next.js 16 ISR pages for competition marketing. No auth. Publicly accessible.
 
 ### Styling
 
-Tailwind CSS v4 with CSS-first configuration (`@import 'tailwindcss'`). Luxero brand tokens in `app/globals.css` (`--color-bg-deep`, `--color-gold`, `--color-surface`). Always dark theme.
+Tailwind CSS v4 with CSS-first configuration (`@import 'tailwindcss'`). Online Competitions brand tokens in `app/globals.css` (`--color-bg-deep`, `--color-gold`, `--color-surface`). Always dark theme.
 
 ### Animations
 
@@ -44,11 +44,11 @@ bun run lint
 
 ## Important notes
 
-- `app/globals.css` is the **primary CSS** — contains all Luxero brand tokens, animations, and utility classes.
+- `app/globals.css` is the **primary CSS** — contains all Online Competitions brand tokens, animations, and utility classes.
 - `styles/globals.css` is legacy/inactive — not imported by the layout.
 - `components/theme-provider.tsx` uses `next-themes` — allowed in this app only (forbidden in web-client/web-admin).
 - `components/ui/` contains vendored shadcn components (new-york style).
-- Static copy from `@luxero/content` for legal/marketing text.
+- Static copy from `@oc/content` for legal/marketing text.
 
 ## Redirects
 

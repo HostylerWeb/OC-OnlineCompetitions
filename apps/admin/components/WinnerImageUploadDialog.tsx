@@ -1,7 +1,7 @@
 "use client";
 
-import { api } from "@luxero/api-admin";
-import { Image as ImageIcon, Trash2, Upload } from "@luxero/icons";
+import { api } from "@oc/api-admin";
+import { Image as ImageIcon, Trash2, Upload } from "@oc/icons";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";

@@ -1,6 +1,8 @@
 "use client";
 
 import { LogOut, ShoppingBag, User } from "lucide-react";
+import { BRAND_LOGO_PATH, BRAND_NAME } from "@oc/utils";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
@@ -55,9 +57,16 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border-subtle bg-background/80 backdrop-blur-md">
-      <div className="luxero-container flex h-16 items-center justify-between">
-        <Link href="/" className="tracking-widest text-sm font-bold text-gold uppercase">
-          Luxero
+      <div className="oc-container flex h-16 items-center justify-between">
+        <Link href="/" className="flex shrink-0 items-center">
+          <Image
+            src={BRAND_LOGO_PATH}
+            alt={BRAND_NAME}
+            width={180}
+            height={48}
+            className="h-12 w-auto max-w-[240px] object-contain md:h-14"
+            priority
+          />
         </Link>
 
         <nav className="flex items-center gap-6">

@@ -1,8 +1,8 @@
-import { canonicalizeEmail } from "@luxero/auth-admin/auth-hooks";
-import { Profile } from "@luxero/api-db/models";
+import { canonicalizeEmail } from "@oc/auth-admin/auth-hooks";
+import { Profile } from "@oc/api-db/models";
 import { Types } from "mongoose";
 
-const GUEST_EMAIL_SUFFIX = "@guest.luxero.local";
+const GUEST_EMAIL_SUFFIX = "@guest.onlinecompetitions.local";
 
 export interface OrderReadScope {
   userIds: string[];

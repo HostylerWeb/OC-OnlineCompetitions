@@ -6,16 +6,16 @@ import {
   CompetitionBonusAwardAssignment,
   type IBonusAwardWin,
   Profile,
-} from "@luxero/api-db/models";
-import { CH, invalidateByChannelSafe } from "@luxero/api-infra/cache";
-import dbConnect from "@luxero/api-infra/db";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { escapeRegex, substringRegex } from "@luxero/api-infra/fuzzy-search";
-import { parsePagination, parseSort } from "@luxero/api-infra/pagination";
-import { error, paginated, success } from "@luxero/api-infra/response";
-import { captureRouteError } from "@luxero/api-infra/sentry";
-import { requireManager } from "@luxero/api-server/middleware/auth";
-import { pickPendingBonusAwardWinners } from "@luxero/api-tickets/bonus-award-draw";
+} from "@oc/api-db/models";
+import { CH, invalidateByChannelSafe } from "@oc/api-infra/cache";
+import dbConnect from "@oc/api-infra/db";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { escapeRegex, substringRegex } from "@oc/api-infra/fuzzy-search";
+import { parsePagination, parseSort } from "@oc/api-infra/pagination";
+import { error, paginated, success } from "@oc/api-infra/response";
+import { captureRouteError } from "@oc/api-infra/sentry";
+import { requireManager } from "@oc/api-server/middleware/auth";
+import { pickPendingBonusAwardWinners } from "@oc/api-tickets/bonus-award-draw";
 import {
   type BonusAwardCapacityQueryInput,
   type BonusAwardWinBulkInput,
@@ -35,14 +35,14 @@ import {
   updateBonusAwardSchema,
   validateBody,
   validateQuery,
-} from "@luxero/api-validation";
+} from "@oc/api-validation";
 import type {
   AdminBonusAward,
   AdminBonusAwardAssignment,
   AdminBonusAwardWinItem,
   BonusAwardCapacityResponse,
-} from "@luxero/types";
-import { ADMIN_BONUS_AWARD_ASSIGNMENT_TABLE, ADMIN_BONUS_AWARD_TABLE } from "@luxero/types";
+} from "@oc/types";
+import { ADMIN_BONUS_AWARD_ASSIGNMENT_TABLE, ADMIN_BONUS_AWARD_TABLE } from "@oc/types";
 import { Hono } from "hono";
 import { type PipelineStage, Types } from "mongoose";
 import { notifyBonusAwardWins } from "../../lib/payment/notify-bonus-award-wins";

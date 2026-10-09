@@ -1,6 +1,6 @@
 "use client";
 
-import type { S3Asset } from "@luxero/api-storage/s3";
+import type { S3Asset } from "@oc/api-storage/s3";
 import { useMemo } from "react";
 import {
   Dialog,

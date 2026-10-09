@@ -1,8 +1,8 @@
 "use client";
 
-import { ChevronLeft } from "@luxero/icons";
+import { ChevronLeft } from "@oc/icons";
 import { Outlet, useNavigate } from "react-router-dom";
-import { LuxeroLogo } from "@/components/LuxeroLogo";
+import { BrandLogo } from "@/components/BrandLogo";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/lib/i18n";
 
@@ -22,7 +22,7 @@ export function AuthLayout() {
         >
           <ChevronLeft className="size-5" />
         </Button>
-        <LuxeroLogo className="h-5 w-auto text-gold mx-auto -ml-9" />
+        <BrandLogo className="mx-auto -ml-9 text-gold" />
       </header>
       <main className="flex-1 flex flex-col items-center justify-center px-4 pb-12">
         <Outlet />

@@ -9,11 +9,11 @@ import {
   OrderItem,
   Profile,
   Ticket,
-} from "@luxero/api-db/models";
-import { CH, invalidateByChannelSafe, invalidateUser } from "@luxero/api-infra/cache";
-import { createLogger } from "@luxero/api-logger";
-import { releasePromoCodeUsage } from "@luxero/api-tickets/promo-codes";
-import { releaseByOrderId, revertGrantedSoldTickets } from "@luxero/api-tickets/ticket-service";
+} from "@oc/api-db/models";
+import { CH, invalidateByChannelSafe, invalidateUser } from "@oc/api-infra/cache";
+import { createLogger } from "@oc/api-logger";
+import { releasePromoCodeUsage } from "@oc/api-tickets/promo-codes";
+import { releaseByOrderId, revertGrantedSoldTickets } from "@oc/api-tickets/ticket-service";
 import type { ClientSession } from "mongoose";
 import { Types } from "mongoose";
 

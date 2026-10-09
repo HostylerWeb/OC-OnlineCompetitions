@@ -1,6 +1,6 @@
-import { Profile, ReferralPurchase, ReferralSettings } from "@luxero/api-db/models";
-import { invalidateUser } from "@luxero/api-infra/cache";
-import { createLogger } from "@luxero/api-logger";
+import { Profile, ReferralPurchase, ReferralSettings } from "@oc/api-db/models";
+import { invalidateUser } from "@oc/api-infra/cache";
+import { createLogger } from "@oc/api-logger";
 import { sendReferralTicketsAllocatedEmail, sendReferralTicketsAwardedEmail } from "./emails";
 import { qualifyPurchaseForTier } from "./qualify-purchase";
 import { awardPendingReferralTickets } from "./referral-award";
@@ -109,7 +109,7 @@ export async function recordReferralPurchase(params: {
 
   const existedCount = await ReferralPurchase.countDocuments(
     { referrerId: effectiveReferrerId, referredUserId: params.buyerUserId },
-    { luxero_softDeleteIncluded: true }
+    { onlinecompetitions_softDeleteIncluded: true }
   );
   const existedBeforeCreate = existedCount > 0;
 

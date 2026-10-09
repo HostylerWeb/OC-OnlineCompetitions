@@ -1,4 +1,4 @@
-import type { PaytriotPublicConfig, StripePublicConfig } from "@luxero/types";
+import type { PaytriotPublicConfig, StripePublicConfig } from "@oc/types";
 import { mapInternalCapabilitiesToPublic } from "./capabilities";
 import type { PaymentProcessor } from "./providers/payments-processors";
 

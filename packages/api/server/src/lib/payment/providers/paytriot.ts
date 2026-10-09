@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
-import { Competition, Order, PaymentAttempt } from "@luxero/api-db/models";
-import { createLogger } from "@luxero/api-logger";
-import type { GatewayRequest, PaytriotResponse } from "@luxero/api-payment-paytriot";
+import { Competition, Order, PaymentAttempt } from "@oc/api-db/models";
+import { createLogger } from "@oc/api-logger";
+import type { GatewayRequest, PaytriotResponse } from "@oc/api-payment-paytriot";
 import {
   Gateway,
   getPaytriotErrorInfo,
@@ -10,15 +10,15 @@ import {
   sanitizeUserMessage,
   sign,
   verifyResponse,
-} from "@luxero/api-payment-paytriot";
-import { incrementCounter } from "@luxero/api-server/lib/observability/metrics";
+} from "@oc/api-payment-paytriot";
+import { incrementCounter } from "@oc/api-server/lib/observability/metrics";
 import {
   computeCheckoutTotal,
   computeGatewayChargeAmount,
   createPendingCheckoutOrder,
-} from "@luxero/api-tickets/create-session";
-import { releasePromoCodeUsage } from "@luxero/api-tickets/promo-codes";
-import { getEnv } from "@luxero/env/server";
+} from "@oc/api-tickets/create-session";
+import { releasePromoCodeUsage } from "@oc/api-tickets/promo-codes";
+import { getEnv } from "@oc/env/server";
 import { Types } from "mongoose";
 import { reserveCheckoutPromoCode } from "../build-fulfillment-deps";
 import { finalizeSuccessfulOrder } from "../finalize-successful-order";

@@ -7,7 +7,7 @@ const mockCreate = vi.fn();
 const mockFindOneAndUpdate = vi.fn();
 const mockUpdateOne = vi.fn();
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   Order: {
     findOne: (...args: unknown[]) => mockFindOne(...args),
     create: (...args: unknown[]) => mockCreate(...args),

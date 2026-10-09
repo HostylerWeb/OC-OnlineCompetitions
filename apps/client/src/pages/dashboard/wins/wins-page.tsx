@@ -5,9 +5,9 @@ import {
   useInfiniteMyBonusAwardWins,
   useInfiniteMyInstantPrizeWins,
   useInfiniteMyWins,
-} from "@luxero/api-client";
-import { Gift, Star, Trophy } from "@luxero/icons";
-import type { MyBonusAwardWinDto } from "@luxero/types";
+} from "@oc/api-client";
+import { Gift, Star, Trophy } from "@oc/icons";
+import type { MyBonusAwardWinDto } from "@oc/types";
 import { useMemo, useState } from "react";
 import { useData } from "vike-react/useData";
 import {

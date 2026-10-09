@@ -19,7 +19,7 @@ self.addEventListener("fetch", () => {});
 self.addEventListener("push", (event) => {
   const data = event.data?.json() ?? {};
 
-  const title = data.title ?? "Luxero Admin";
+  const title = data.title ?? "Online Competitions Admin";
   const options = {
     body: data.body ?? "",
     icon: data.icon ?? "/icons/icon-192x192.svg",

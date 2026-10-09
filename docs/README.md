@@ -1,4 +1,4 @@
-# Luxero documentation
+# Online Competitions documentation
 
 Human-readable project docs live here. The repo root keeps only **[README.md](../README.md)** (GitHub overview) plus **AGENTS.md** / **CLAUDE.md** (Cursor/agent context — not day-to-day runbooks).
 
@@ -6,11 +6,11 @@ Human-readable project docs live here. The repo root keeps only **[README.md](..
 
 | | |
 |--|--|
-| **GitHub** | https://github.com/HostylerWeb/Luxero |
-| **Clone (SSH)** | `git clone git@github.com:HostylerWeb/Luxero.git` |
-| **Local path (this host)** | `/var/www/luxero/turborepo-main` |
+| **GitHub** | https://github.com/HostylerWeb/Online Competitions |
+| **Clone (SSH)** | `git clone git@github.com:HostylerWeb/Online Competitions.git` |
+| **Local path (this host)** | `/var/www/onlinecompetitions/turborepo-main` |
 
-Ops/SSH notes (servers, Hostinger): `/var/www/luxero/ssh.txt`
+Ops/SSH notes (servers, Hostinger): `/var/www/onlinecompetitions/ssh.txt`
 
 ## Start here
 
@@ -23,7 +23,7 @@ Ops/SSH notes (servers, Hostinger): `/var/www/luxero/ssh.txt`
 | **[client-audit.md](./client-audit.md)** | Web client + client-mobile audit (shared API, security, parity) |
 | **[database-audit.md](./database-audit.md)** | MongoDB / data layer — security, performance, integrity, exploits |
 
-**Client PDF (Hostyler remediation plan):** [Luxero_Remediation_Proposal_Hostyler.pdf](../Luxero_Remediation_Proposal_Hostyler.pdf) — source HTML in [proposal/Luxero_Remediation_Proposal.html](./proposal/Luxero_Remediation_Proposal.html) (regenerate with headless Chrome from that folder, same as EGC proposal workflow).
+**Client PDF (Hostyler remediation plan):** [Online Competitions_Remediation_Proposal_Hostyler.pdf](../Online Competitions_Remediation_Proposal_Hostyler.pdf) — source HTML in [proposal/Online Competitions_Remediation_Proposal.html](./proposal/Online Competitions_Remediation_Proposal.html) (regenerate with headless Chrome from that folder, same as EGC proposal workflow).
 
 ## Operations & integrations
 

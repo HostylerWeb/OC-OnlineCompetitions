@@ -1,6 +1,6 @@
 "use client";
 
-import type { Entry, MyEntriesStats } from "@luxero/types";
+import type { Entry, MyEntriesStats } from "@oc/types";
 
 export type DashboardTicketOutcome = "pending" | "winning" | "non-winning";
 

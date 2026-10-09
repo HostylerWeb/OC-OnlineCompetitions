@@ -38,9 +38,9 @@ const __mock = vi.hoisted(() => {
   };
 });
 
-vi.mock("@luxero/api-infra/db", () => ({ default: vi.fn(async () => {}) }));
+vi.mock("@oc/api-infra/db", () => ({ default: vi.fn(async () => {}) }));
 
-vi.mock("@luxero/api-server/middleware/auth", () => ({
+vi.mock("@oc/api-server/middleware/auth", () => ({
   requireGuestCheckout: async (
     c: {
       set: (key: string, value: unknown) => void;
@@ -55,7 +55,7 @@ vi.mock("@luxero/api-server/middleware/auth", () => ({
   },
 }));
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   ShopCart: {
     updateOne: (...args: unknown[]) => __mock.shopCartUpdateOne(...args),
   },
@@ -71,17 +71,17 @@ vi.mock("@luxero/api-db/models", () => ({
   },
 }));
 
-vi.mock("@luxero/api-shop/checkout", () => ({
+vi.mock("@oc/api-shop/checkout", () => ({
   validateCheckoutItems: (...args: unknown[]) => __mock.validateCheckoutItems(...args),
   createPendingShopOrder: (...args: unknown[]) => __mock.createPendingShopOrder(...args),
 }));
 
-vi.mock("@luxero/api-shop/email", () => ({
+vi.mock("@oc/api-shop/email", () => ({
   sendShopOrderConfirmationEmail: (...args: unknown[]) =>
     __mock.sendShopOrderConfirmationEmail(...args),
 }));
 
-vi.mock("@luxero/api-infra/cache", () => ({
+vi.mock("@oc/api-infra/cache", () => ({
   CH: {
     shopProducts: "shopProducts",
     shopProduct: "shopProduct",
@@ -92,11 +92,11 @@ vi.mock("@luxero/api-infra/cache", () => ({
   invalidateByChannelSafe: (...args: unknown[]) => __mock.invalidateByChannelSafe(...args),
 }));
 
-vi.mock("@luxero/api-infra/env", () => ({
+vi.mock("@oc/api-infra/env", () => ({
   getCurrentContext: (...args: unknown[]) => __mock.getCurrentContext(...args),
 }));
 
-vi.mock("@luxero/api-payment-stripe", () => ({
+vi.mock("@oc/api-payment-stripe", () => ({
   createStripeClient: (...args: unknown[]) => __mock.createStripeClient(...args),
   resolveStripeConfig: (...args: unknown[]) => __mock.resolveStripeConfig(...args),
 }));
@@ -146,7 +146,7 @@ function checkoutPostBody(overrides: Record<string, unknown> = {}): Record<strin
   };
 }
 
-const SHOP_ORIGIN = "https://shop.luxero.win";
+const SHOP_ORIGIN = "https://shop.onlinecompetitions.co.uk";
 
 describe("shop checkout stripe — POST / (create Checkout Session)", () => {
   beforeEach(() => {

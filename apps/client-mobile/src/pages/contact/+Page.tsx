@@ -1,19 +1,18 @@
 "use client";
 
-import { useContactForm } from "@luxero/api-client";
+import { useContactForm } from "@oc/api-client";
 import {
   CONTACT_INFO_CARDS as CONTACT_INFO_CARDS_EN,
   contactFooterNote as contactFooterNoteEN,
   contactHero as contactHeroEN,
-} from "@luxero/content/contact";
-import { resolveContent } from "@luxero/content/locales";
+} from "@oc/content/contact";
+import { resolveContent } from "@oc/content/locales";
 import {
   CONTACT_INFO_CARDS as CONTACT_INFO_CARDS_RO,
   contactFooterNote as contactFooterNoteRO,
   contactHero as contactHeroRO,
-} from "@luxero/content/ro";
-import { Building2, Mail, MapPin, Phone, SocialIcon } from "@luxero/icons";
-import { SOCIAL_LINKS } from "@luxero/utils";
+} from "@oc/content/ro";
+import { Building2, Mail, MapPin, Phone, SocialLinksChips } from "@oc/icons";
 import { useEffect, useState } from "react";
 import { GoldButton } from "@/components/buttons";
 import { Link } from "@/components/Link";
@@ -66,7 +65,7 @@ export default function ContactPage() {
   return (
     <>
       <section className="py-8 sm:py-12 border-b border-gold/10">
-        <div className="luxero-container-medium text-center">
+        <div className="oc-container-medium text-center">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground mb-3 text-balance">
             {t("staticPages.contact.heading")}
           </h1>
@@ -75,7 +74,7 @@ export default function ContactPage() {
       </section>
 
       <section className="py-8 sm:py-10">
-        <div className="luxero-container-medium">
+        <div className="oc-container-medium">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3">
             {infoCards.map(({ label, value, href, subvalue }) => {
               const Icon = ICON_MAP[label as keyof typeof ICON_MAP] ?? Mail;
@@ -119,7 +118,7 @@ export default function ContactPage() {
       </section>
 
       <section className="py-6 sm:py-8 border-y border-gold/10">
-        <div className="luxero-container-medium">
+        <div className="oc-container-medium">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
             <div>
               <p className="text-sm font-semibold text-foreground">
@@ -129,28 +128,13 @@ export default function ContactPage() {
                 {t("staticPages.contact.followUsSubtitle")}
               </p>
             </div>
-            <div className="flex flex-wrap gap-2">
-              {SOCIAL_LINKS.map(({ label, href, icon }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-umami-event="contact:social-follow"
-                  data-umami-event-social={label}
-                  className="inline-flex items-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-gold/20 text-xs font-medium text-muted-foreground hover:border-gold/50 hover:text-gold transition-all duration-200"
-                >
-                  <SocialIcon name={icon} className="size-3.5" />
-                  {label}
-                </a>
-              ))}
-            </div>
+            <SocialLinksChips className="sm:gap-2.5" />
           </div>
         </div>
       </section>
 
       <section className="py-8 sm:py-10">
-        <div className="luxero-container-narrow">
+        <div className="oc-container-narrow">
           <div className="bg-card rounded-xl border border-gold/10 p-5 sm:p-8">
             {successMsg && (
               <div className="mb-5 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium">
@@ -243,7 +227,7 @@ export default function ContactPage() {
       </section>
 
       <section className="pb-8 sm:pb-10">
-        <div className="luxero-container-narrow">
+        <div className="oc-container-narrow">
           <div className="mx-auto max-w-sm space-y-3 rounded-xl border border-gold/10 bg-card/50 p-4 text-center sm:p-5">
             <p className="text-xs leading-relaxed text-muted-foreground">{contactFooterNote}</p>
             <div className="h-px bg-gold/10" />

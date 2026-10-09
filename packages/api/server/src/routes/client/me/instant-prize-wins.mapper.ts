@@ -3,12 +3,12 @@ import {
   CompetitionInstantPrize,
   InstantPrize,
   InstantPrizeWin,
-} from "@luxero/api-db/models";
+} from "@oc/api-db/models";
 import {
   flattenCompetitionInstantPrize,
   normalizeGrantedEntryIds,
   normalizeId,
-} from "@luxero/api-tickets/instant-prize-win-mapper";
+} from "@oc/api-tickets/instant-prize-win-mapper";
 import mongoose from "mongoose";
 
 type LinkedCompetitionInfo = { title: string; slug?: string };

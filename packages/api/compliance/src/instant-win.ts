@@ -1,4 +1,4 @@
-import { CompetitionInstantPrize } from "@luxero/api-db/models";
+import { CompetitionInstantPrize } from "@oc/api-db/models";
 
 export async function cartHasInstantWinCompetitions(competitionIds: string[]): Promise<boolean> {
   if (competitionIds.length === 0) return false;

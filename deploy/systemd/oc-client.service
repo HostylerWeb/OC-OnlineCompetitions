@@ -1,0 +1,17 @@
+[Unit]
+Description=Online Competitions client (Vike)
+After=network.target docker.service
+Wants=docker.service
+
+[Service]
+Type=simple
+WorkingDirectory=/var/www/onlinecompetitions/app/apps/client
+EnvironmentFile=/var/www/onlinecompetitions/app/apps/client/.env
+Environment=PORT=3555
+Environment=HOSTNAME=127.0.0.1
+ExecStart=/usr/local/bin/bun run dist/server/index.mjs
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

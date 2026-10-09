@@ -1,6 +1,6 @@
 "use client";
 
-import { Sparkles } from "@luxero/icons";
+import { Sparkles } from "@oc/icons";
 import type { CheckoutProviderPanelProps } from "@/components/checkout/providers/types";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";

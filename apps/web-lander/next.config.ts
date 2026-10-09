@@ -1,15 +1,16 @@
+import { devAssetCspHosts } from "@oc/env/server";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   typescript: { ignoreBuildErrors: true },
   images: {
     remotePatterns: [
-      { protocol: "https", hostname: "assets.luxero.win" },
-      { protocol: "https", hostname: "assets.staging.luxero.win" },
+      { protocol: "https", hostname: "assets.onlinecompetitions.co.uk" },
+      { protocol: "https", hostname: "assets.staging.onlinecompetitions.co.uk" },
       { protocol: "https", hostname: "lh3.googleusercontent.com" },
       { protocol: "https", hostname: "googleuserconsent.com" },
-      { protocol: "http", hostname: "localhost", port: "9011", pathname: "/luxero-assets/**" },
-      { protocol: "http", hostname: "127.0.0.1", port: "9011", pathname: "/luxero-assets/**" },
+      { protocol: "http", hostname: "localhost", port: "9011", pathname: "/onlinecompetitions-assets/**" },
+      { protocol: "http", hostname: "127.0.0.1", port: "9011", pathname: "/onlinecompetitions-assets/**" },
     ],
     dangerouslyAllowLocalIP: process.env.NODE_ENV !== "production",
     formats: ["image/avif", "image/webp"],
@@ -20,21 +21,20 @@ const nextConfig: NextConfig = {
     maximumDiskCacheSize: 250_000_000,
   },
   async headers() {
-    const devAssetHosts =
-      process.env.NODE_ENV !== "production" ? " http://localhost:9011 http://127.0.0.1:9011" : "";
+    const devAssetHosts = devAssetCspHosts(process.env.NODE_ENV !== "production");
     const devClient =
       process.env.NODE_ENV !== "production"
         ? " http://localhost:3555 http://127.0.0.1:3555 http://localhost:3333"
         : "";
     const csp =
       "base-uri 'self'; form-action 'self'; object-src 'none'; frame-ancestors 'none'; default-src 'self'; " +
-      `media-src 'self' https://assets.luxero.win https://assets.staging.luxero.win${devAssetHosts}; ` +
+      `media-src 'self' https://assets.onlinecompetitions.co.uk https://assets.staging.onlinecompetitions.co.uk${devAssetHosts}; ` +
       "script-src 'self' 'unsafe-inline' 'unsafe-eval'; " +
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
       "style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
       "worker-src 'self' blob:; child-src 'self' blob:; " +
-      `connect-src 'self' https://assets.luxero.win https://assets.staging.luxero.win${devAssetHosts}${devClient}; ` +
-      `img-src 'self' data: blob: https://assets.luxero.win https://assets.staging.luxero.win https://luxero.win https://lh3.googleusercontent.com${devAssetHosts}; ` +
+      `connect-src 'self' https://assets.onlinecompetitions.co.uk https://assets.staging.onlinecompetitions.co.uk${devAssetHosts}${devClient}; ` +
+      `img-src 'self' data: blob: https://assets.onlinecompetitions.co.uk https://assets.staging.onlinecompetitions.co.uk https://onlinecompetitions.co.uk https://lh3.googleusercontent.com${devAssetHosts}; ` +
       "font-src 'self' https://fonts.gstatic.com data:";
 
     return [

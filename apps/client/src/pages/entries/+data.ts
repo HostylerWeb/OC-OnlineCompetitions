@@ -1,4 +1,4 @@
-import type { EntryCompetition } from "@luxero/types";
+import type { EntryCompetition } from "@oc/types";
 import type { PageContextServer } from "vike/types";
 import { serverFetch } from "@/lib/server-fetch";
 

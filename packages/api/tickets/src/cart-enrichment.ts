@@ -1,4 +1,4 @@
-import { Competition, type ICartItem } from "@luxero/api-db/models";
+import { Competition, type ICartItem } from "@oc/api-db/models";
 
 export interface EnrichedCartItem {
   competitionId: string;

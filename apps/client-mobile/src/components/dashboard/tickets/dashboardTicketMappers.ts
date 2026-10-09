@@ -1,4 +1,4 @@
-import type { Entry } from "@luxero/types";
+import type { Entry } from "@oc/types";
 
 export function buildDashboardPillProps(entries: Entry[]): number[] {
   const numbers: number[] = [];

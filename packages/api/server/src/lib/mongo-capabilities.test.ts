@@ -3,7 +3,7 @@ import {
   probeMongoCapabilities,
   resolveMongoConnectOptions,
   withMongoTransactionOptional,
-} from "@luxero/api-infra/mongo-capabilities";
+} from "@oc/api-infra/mongo-capabilities";
 import mongoose from "mongoose";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 
@@ -32,13 +32,13 @@ afterEach(() => {
 describe("resolveMongoConnectOptions", () => {
   test("MONGODB_RETRY_WRITES env overrides URL and scheme defaults", () => {
     process.env.MONGODB_RETRY_WRITES = "false";
-    expect(resolveMongoConnectOptions("mongodb+srv://cluster.example.net/luxero")).toEqual({
+    expect(resolveMongoConnectOptions("mongodb+srv://cluster.example.net/onlinecompetitions")).toEqual({
       retryWrites: false,
     });
 
     process.env.MONGODB_RETRY_WRITES = "true";
     expect(
-      resolveMongoConnectOptions("mongodb://localhost:27017/luxero?retryWrites=false")
+      resolveMongoConnectOptions("mongodb://localhost:27017/onlinecompetitions?retryWrites=false")
     ).toEqual({
       retryWrites: true,
     });
@@ -49,7 +49,7 @@ describe("withMongoTransactionOptional", () => {
   beforeEach(() => {
     clearMongoCapabilitiesCache();
     delete process.env.ALLOW_NON_TX_CIP;
-    process.env.DATABASE_URL = "mongodb://localhost:27017/luxero?retryWrites=false";
+    process.env.DATABASE_URL = "mongodb://localhost:27017/onlinecompetitions?retryWrites=false";
   });
 
   test("calls fn(null) when transactions are unsupported", async () => {
@@ -77,7 +77,7 @@ describe("withMongoTransactionOptional", () => {
   });
 
   test("uses session when transactions are supported", async () => {
-    process.env.DATABASE_URL = "mongodb+srv://cluster.example.net/luxero";
+    process.env.DATABASE_URL = "mongodb+srv://cluster.example.net/onlinecompetitions";
 
     const endSession = vi.fn(async () => {});
     const withTransaction = vi.fn(async (fn: () => Promise<unknown>) => fn());

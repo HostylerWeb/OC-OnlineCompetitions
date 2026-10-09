@@ -1,4 +1,4 @@
-import { getEnv, getNum } from "@luxero/env/server";
+import { getEnv, getNum } from "@oc/env/server";
 import * as Sentry from "@sentry/node";
 import type { Context } from "hono";
 import { ErrorCodes } from "./error-codes";
@@ -34,7 +34,7 @@ export function initSentry(): void {
   });
 
   Sentry.setTag("domain", "api");
-  Sentry.setTag("app", "luxero-api");
+  Sentry.setTag("app", "onlinecompetitions-api");
 }
 
 export function isSentryEnabled(): boolean {

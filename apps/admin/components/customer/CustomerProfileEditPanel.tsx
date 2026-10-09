@@ -4,9 +4,9 @@ import {
   useAdminComplianceSettings,
   useAdminUserBalance,
   useAdminUserComplianceMutations,
-} from "@luxero/api-admin";
-import { AlertTriangle, Save, Wallet } from "@luxero/icons";
-import type { Balance, Profile } from "@luxero/types";
+} from "@oc/api-admin";
+import { AlertTriangle, Save, Wallet } from "@oc/icons";
+import type { Balance, Profile } from "@oc/types";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import { AdminCompactCard } from "@/components/admin/AdminCompactCard";

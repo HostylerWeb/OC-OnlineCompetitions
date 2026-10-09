@@ -1,10 +1,10 @@
-# @luxero/api-db
+# @oc/api-db
 
 MongoDB/Mongoose connection manager and domain models.
 
 ## Source of truth
 
-`luxero-api/packages/db/src` — synced to this repo.
+`onlinecompetitions-api/packages/db/src` — synced to this repo.
 
 ## Key modules
 

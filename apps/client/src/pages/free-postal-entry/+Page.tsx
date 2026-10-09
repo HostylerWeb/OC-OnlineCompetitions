@@ -1,7 +1,12 @@
 "use client";
 
-import { deriveComplianceFeatures } from "@luxero/api-client";
-import { AlertCircle, Check } from "@luxero/icons";
+import { deriveComplianceFeatures } from "@oc/api-client";
+import {
+  BRAND_NAME,
+  LEGAL_COMPANY_NUMBER_LABEL,
+  LEGAL_POSTAL_ADDRESS,
+} from "@oc/utils";
+import { AlertCircle, Check } from "@oc/icons";
 import { usePageContext } from "vike-react/usePageContext";
 import { GoldOutlineButton } from "@/components/buttons";
 import { Link } from "@/components/Link";
@@ -26,11 +31,11 @@ export default function FreePostalEntryPage() {
     return null;
   }
 
-  const postalAddress = features.postalEntryAddress || t("staticPages.freePostalEntry.address");
+  const postalAddress = features.postalEntryAddress || LEGAL_POSTAL_ADDRESS;
   const addressLines = formatPostalAddress(postalAddress);
 
   return (
-    <div className="luxero-container-narrow pb-8">
+    <div className="oc-container-narrow pb-8">
       <div className="py-5 lg:py-12">
         <div className="text-center mb-12">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4 text-balance">
@@ -53,7 +58,7 @@ export default function FreePostalEntryPage() {
               <section className="bg-gradient-to-br from-gold/10 to-gold/5 border border-gold/20 rounded-2xl p-6">
                 <h3 className="font-semibold mb-3">{t("staticPages.freePostalEntry.sendTo")}</h3>
                 <p className="text-lg font-medium text-foreground leading-relaxed">
-                  {t("staticPages.freePostalEntry.companyName")}
+                  {BRAND_NAME}
                   <br />
                   {addressLines.map((line, i) => (
                     <span key={i}>
@@ -63,7 +68,7 @@ export default function FreePostalEntryPage() {
                   ))}
                 </p>
                 <p className="text-xs text-muted-foreground mt-2">
-                  {t("staticPages.freePostalEntry.companyRegistration")}
+                  {LEGAL_COMPANY_NUMBER_LABEL}
                 </p>
               </section>
 

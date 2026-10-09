@@ -13,7 +13,7 @@ describe("ReferralTicketsAllocatedEmail", () => {
         { competitionId: "c3", competitionTitle: "Comp C", ticketNumbers: [304, 305, 306], qty: 3 },
       ],
       currentTier: "Silver",
-      frontendUrl: "https://luxero.win",
+      frontendUrl: "https://onlinecompetitions.co.uk",
     });
     expect(result).toBeTruthy();
   });
@@ -26,7 +26,7 @@ describe("ReferralTicketsAllocatedEmail", () => {
       allocation: [
         { competitionId: "solo", competitionTitle: "Solo Comp", ticketNumbers: [42], qty: 1 },
       ],
-      frontendUrl: "https://luxero.win",
+      frontendUrl: "https://onlinecompetitions.co.uk",
     });
     expect(result).toBeTruthy();
   });
@@ -37,7 +37,7 @@ describe("ReferralTicketsAllocatedEmail", () => {
       totalTickets: 0,
       competitionCount: 0,
       allocation: [],
-      frontendUrl: "https://luxero.win",
+      frontendUrl: "https://onlinecompetitions.co.uk",
     });
     expect(result).toBeTruthy();
   });

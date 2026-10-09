@@ -1,5 +1,5 @@
-import type { HowItWorksAltPath } from "@luxero/content";
-import { ArrowRight, Mail } from "@luxero/icons";
+import type { HowItWorksAltPath } from "@oc/content";
+import { ArrowRight, Mail } from "@oc/icons";
 import { Link } from "@/components/Link";
 import { useTranslation } from "@/lib/i18n";
 import { getHowItWorksIcon } from "./icon-map";

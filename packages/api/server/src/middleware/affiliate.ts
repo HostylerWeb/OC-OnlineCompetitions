@@ -1,4 +1,4 @@
-import { runWithAffiliateContext } from "@luxero/api-affiliate";
+import { runWithAffiliateContext } from "@oc/api-affiliate";
 import type { Context, Next } from "hono";
 
 const CLICK_ID_HEADER = "X-Affiliate-Clickid";

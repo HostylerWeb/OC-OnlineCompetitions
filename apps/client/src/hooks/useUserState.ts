@@ -8,9 +8,9 @@ import {
   setSessionUnauthenticated,
   useAuth,
   useSessionStore,
-} from "@luxero/api-client";
-import type { User } from "@luxero/types";
-import { getDisplayName, getProfileInitials } from "@luxero/utils";
+} from "@oc/api-client";
+import type { User } from "@oc/types";
+import { getDisplayName, getProfileInitials } from "@oc/utils";
 import { useEffect, useMemo, useRef } from "react";
 import { usePageContext } from "vike-react/usePageContext";
 

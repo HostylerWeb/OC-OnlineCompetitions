@@ -9,8 +9,8 @@ import {
   useCartWallet,
   useMyProfile,
   useRemoveCartDiscount,
-} from "@luxero/api-client";
-import { Lock, ShieldCheck } from "@luxero/icons";
+} from "@oc/api-client";
+import { Lock, ShieldCheck } from "@oc/icons";
 import { memo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";

@@ -1,6 +1,6 @@
 "use client";
 
-import { api, queryKeys, STALE_TIME_ADMIN } from "@luxero/api-admin";
+import { api, queryKeys, STALE_TIME_ADMIN } from "@oc/api-admin";
 import { useQueryClient } from "@tanstack/react-query";
 import { useEffect } from "react";
 

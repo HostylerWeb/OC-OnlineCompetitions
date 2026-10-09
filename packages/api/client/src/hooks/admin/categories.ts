@@ -1,4 +1,4 @@
-import type { AdminCategory, AdminCategoryPayload, ApiResponse } from "@luxero/types";
+import type { AdminCategory, AdminCategoryPayload, ApiResponse } from "@oc/types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { ApiResponseError, api } from "../../client";
 import { queryKeys } from "../../keys";

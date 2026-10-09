@@ -1,5 +1,5 @@
-import { Profile, ReferralPurchase } from "@luxero/api-db/models";
-import { invalidateUser } from "@luxero/api-infra/cache";
+import { Profile, ReferralPurchase } from "@oc/api-db/models";
+import { invalidateUser } from "@oc/api-infra/cache";
 import mongoose from "mongoose";
 
 async function countActivePairsForReferrer(referrerId: string): Promise<number> {

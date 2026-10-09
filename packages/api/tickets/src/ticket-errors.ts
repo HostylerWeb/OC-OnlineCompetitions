@@ -1,6 +1,6 @@
-import { MaxTicketsPerUserExceededError, TicketSoldOutError } from "@luxero/api-errors";
+import { MaxTicketsPerUserExceededError, TicketSoldOutError } from "@oc/api-errors";
 
-export { MaxTicketsPerUserExceededError, TicketSoldOutError } from "@luxero/api-errors";
+export { MaxTicketsPerUserExceededError, TicketSoldOutError } from "@oc/api-errors";
 
 export function formatTicketError(err: unknown): string {
   if (err instanceof TicketSoldOutError) {

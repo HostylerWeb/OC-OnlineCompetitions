@@ -1,4 +1,4 @@
-import { QueryProvider } from "@luxero/api-client";
+import { QueryProvider } from "@oc/api-client";
 import { Loader2Icon } from "lucide-react";
 import { useEffect } from "react";
 import { ErrorBoundary } from "@/components/error-boundary";

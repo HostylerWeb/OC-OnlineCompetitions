@@ -7,7 +7,7 @@ import {
   useCompetitionStream,
   useDashboardData,
   useMyReferralTickets,
-} from "@luxero/api-client";
+} from "@oc/api-client";
 import {
   ArrowRight,
   Gift,
@@ -18,9 +18,9 @@ import {
   User,
   Users,
   Zap,
-} from "@luxero/icons";
-import type { ApiResponse, Entry, MeOrderDto, ReferralWalletResponse } from "@luxero/types";
-import { formatDate, getDisplayName, OrderNumberCell } from "@luxero/utils";
+} from "@oc/icons";
+import type { ApiResponse, Entry, MeOrderDto, ReferralWalletResponse } from "@oc/types";
+import { formatDate, getDisplayName, OrderNumberCell } from "@oc/utils";
 import { useEffect, useState } from "react";
 import { useData } from "vike-react/useData";
 import { usePageContext } from "vike-react/usePageContext";

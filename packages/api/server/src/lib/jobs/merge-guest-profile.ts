@@ -4,7 +4,7 @@
  * account, then backfill related data-integrity gaps.
  *
  * Problem it fixes: `createGuestCheckoutProfile` canonicalizes Gmail emails
- * (strips dots) before the existing-verified lookup, while `createLuxeroProfile`
+ * (strips dots) before the existing-verified lookup, while `createOnlineCompetitionsProfile`
  * stored the raw dotted email. A guest entering alexandru.chiriacc@gmail.com
  * therefore got a NEW guest profile (alexandruchiriacc@gmail.com) instead of
  * attaching to the existing verified account.
@@ -28,10 +28,10 @@ import {
   Profile,
   PromoCode,
   Ticket,
-} from "@luxero/api-db/models";
-import dbConnect from "@luxero/api-infra/db";
-import { canonicalizeEmail } from "@luxero/auth-admin/auth-hooks";
-import { getMongoDb } from "@luxero/auth-admin/auth-mongo";
+} from "@oc/api-db/models";
+import dbConnect from "@oc/api-infra/db";
+import { canonicalizeEmail } from "@oc/auth-admin/auth-hooks";
+import { getMongoDb } from "@oc/auth-admin/auth-mongo";
 import mongoose from "mongoose";
 
 interface Args {
@@ -269,7 +269,7 @@ async function main(): Promise<void> {
     // Find duplicate profiles by canonical email (verified + guest sharing one).
     const profiles = await Profile.find({ isGuestCheckout: true }).lean();
     for (const guest of profiles) {
-      if (guest.email.endsWith("@guest.luxero.local")) continue;
+      if (guest.email.endsWith("@guest.onlinecompetitions.local")) continue;
       const canonical = canonicalizeEmail(guest.email);
       const verified = await Profile.findOne({
         email: canonical,

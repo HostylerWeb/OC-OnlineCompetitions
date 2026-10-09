@@ -1,8 +1,8 @@
 "use client";
 
-import { useAdminDashboardStats } from "@luxero/api-admin";
-import { Award, CreditCard, PoundSterling, ShoppingBag, Trophy, Users } from "@luxero/icons";
-import { OrderNumberCell } from "@luxero/utils";
+import { useAdminDashboardStats } from "@oc/api-admin";
+import { Award, CreditCard, PoundSterling, ShoppingBag, Trophy, Users } from "@oc/icons";
+import { OrderNumberCell } from "@oc/utils";
 import type { ColumnDef } from "@tanstack/react-table";
 import Link from "next/link";
 import type { ElementType } from "react";

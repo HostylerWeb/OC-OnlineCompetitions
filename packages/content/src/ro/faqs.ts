@@ -1,3 +1,4 @@
+import { LEGAL_CONTACT_EMAIL } from "@oc/utils";
 import type { FaqCategory, FaqItem } from "../content-types";
 
 export const FAQ_CATEGORIES: FaqCategory[] = [
@@ -51,7 +52,7 @@ export const FAQS_BY_CATEGORY: Record<string, FaqItem[]> = {
     {
       question: "Pot participa gratuit prin poștă?",
       answer:
-        "Da. Participarea gratuită prin poștă este disponibilă pentru concursurile active. Vizitează pagina noastră de Participare gratuită prin poștă pentru adresa poștală și ce trebuie să incluzi (numele complet, adresa, datele de contact, numele concursului și emailul contului Luxero). Participările incomplete nu pot fi acceptate.",
+        "Da. Participarea gratuită prin poștă este disponibilă pentru concursurile active. Vizitează pagina noastră de Participare gratuită prin poștă pentru adresa poștală și ce trebuie să incluzi (numele complet, adresa, datele de contact, numele concursului și emailul contului Online Competitions). Participările incomplete nu pot fi acceptate.",
     },
     {
       question: "Pot cumpăra bilete pentru altcineva?",
@@ -160,4 +161,4 @@ export const FAQS_BY_CATEGORY: Record<string, FaqItem[]> = {
   ],
 };
 
-export const FAQ_SUPPORT_EMAIL = "contact@luxero.win";
+export const FAQ_SUPPORT_EMAIL = LEGAL_CONTACT_EMAIL;

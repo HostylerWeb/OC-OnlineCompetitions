@@ -1,5 +1,5 @@
 {
-  "name": "luxero",
+  "name": "online-competitions",
   "private": true,
   "workspaces": [
     "apps/*",

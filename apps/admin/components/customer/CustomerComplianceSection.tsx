@@ -1,6 +1,6 @@
 "use client";
 
-import type { AdminUserComplianceState } from "@luxero/types";
+import type { AdminUserComplianceState } from "@oc/types";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";

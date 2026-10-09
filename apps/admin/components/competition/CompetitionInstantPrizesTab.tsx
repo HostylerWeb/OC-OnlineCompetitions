@@ -21,9 +21,9 @@ import {
   ApiResponseError,
   useAdminCompetitionInstantPrizeAssignmentMutations,
   useAdminCompetitionInstantPrizeAssignments,
-} from "@luxero/api-admin";
-import { GripVertical, Plus, Trophy } from "@luxero/icons";
-import type { CompetitionInstantPrize } from "@luxero/types";
+} from "@oc/api-admin";
+import { GripVertical, Plus, Trophy } from "@oc/icons";
+import type { CompetitionInstantPrize } from "@oc/types";
 import { useState } from "react";
 import { toast } from "sonner";
 import { AdminConfirmDialog, EmptyState, EntityActionMenu } from "@/components/admin";

@@ -53,7 +53,7 @@ export const HOW_IT_WORKS_ALT_PATHS: HowItWorksAltPath[] = [
   },
   {
     title: "Recomandă prietenii",
-    description: "Distribuie Luxero și câștigă bilete gratuite când prietenii participă.",
+    description: "Distribuie Online Competitions și câștigă bilete gratuite când prietenii participă.",
     icon: "Users",
     href: "/dashboard/referrals",
   },

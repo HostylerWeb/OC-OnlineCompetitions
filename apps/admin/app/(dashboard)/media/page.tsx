@@ -3,7 +3,7 @@ import { MediaLibraryClient } from "./MediaLibraryClient";
 import { MediaUploadButton } from "./MediaUploadButton";
 
 export const metadata = {
-  title: "Media Library | Luxero Admin",
+  title: "Media Library | Online Competitions Admin",
   description: "Browse and manage uploaded media files.",
 };
 

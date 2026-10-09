@@ -1,7 +1,7 @@
 "use client";
 
-import { useAdminOrder } from "@luxero/api-admin";
-import type { AdminOrder } from "@luxero/types";
+import { useAdminOrder } from "@oc/api-admin";
+import type { AdminOrder } from "@oc/types";
 import { ArrowRight, Calendar, Crosshair, Crown, Loader2, Mail, Ticket, X } from "lucide-react";
 import { useState } from "react";
 import { OrderDetailDialog } from "@/components/admin/OrderDetailDialog";

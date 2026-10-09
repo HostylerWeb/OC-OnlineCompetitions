@@ -1,7 +1,7 @@
 // ReferralRefGateIsland.tsx — captures `?ref=<code>` and stores it for later
 // claim after the user signs in.
 
-import { resolveRefFromUrl, setPendingReferralRef } from "@luxero/api-client";
+import { resolveRefFromUrl, setPendingReferralRef } from "@oc/api-client";
 import { useEffect } from "react";
 
 export function ReferralRefGateIsland() {

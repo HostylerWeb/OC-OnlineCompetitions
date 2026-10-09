@@ -19,7 +19,7 @@ const __mocks = vi.hoisted(() => ({
   completedOrderCount: 0,
 }));
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   PromoCode: {
     findOne: vi.fn(() => ({
       lean: vi.fn(async () => __mocks.promoFindOneResult),
@@ -51,7 +51,7 @@ vi.mock("@luxero/api-db/models", () => ({
   },
 }));
 
-import { calculateReferralDiscountAmount } from "@luxero/api-tickets/promo-codes";
+import { calculateReferralDiscountAmount } from "@oc/api-tickets/promo-codes";
 
 describe("calculateReferralDiscountAmount", () => {
   test("applies percentage to subtotal", () => {
@@ -70,7 +70,7 @@ describe("validatePromoCode", () => {
   });
 
   async function loadValidatePromoCode() {
-    const mod = await import("@luxero/api-tickets/promo-codes");
+    const mod = await import("@oc/api-tickets/promo-codes");
     return mod.validatePromoCode;
   }
 
@@ -133,7 +133,7 @@ describe("validateReferralCode", () => {
   });
 
   async function loadValidateReferralCode() {
-    const mod = await import("@luxero/api-tickets/promo-codes");
+    const mod = await import("@oc/api-tickets/promo-codes");
     return mod.validateReferralCode;
   }
 
@@ -219,7 +219,7 @@ describe("reservePromoCodeUsage", () => {
   });
 
   async function loadReservePromoCodeUsage() {
-    const mod = await import("@luxero/api-tickets/promo-codes");
+    const mod = await import("@oc/api-tickets/promo-codes");
     return mod.reservePromoCodeUsage;
   }
 

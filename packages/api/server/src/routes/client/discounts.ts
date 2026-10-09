@@ -1,14 +1,14 @@
-import { Order, Profile, ReferralSettings } from "@luxero/api-db/models";
-import dbConnect from "@luxero/api-infra/db";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { error, success } from "@luxero/api-infra/response";
-import { captureRouteError } from "@luxero/api-infra/sentry";
-import { requireGuestCheckout } from "@luxero/api-server/middleware/auth";
+import { Order, Profile, ReferralSettings } from "@oc/api-db/models";
+import dbConnect from "@oc/api-infra/db";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { error, success } from "@oc/api-infra/response";
+import { captureRouteError } from "@oc/api-infra/sentry";
+import { requireGuestCheckout } from "@oc/api-server/middleware/auth";
 import {
   validatePendingReferralCode,
   validatePromoCode,
   validateReferralCode,
-} from "@luxero/api-tickets/promo-codes";
+} from "@oc/api-tickets/promo-codes";
 import { Hono } from "hono";
 import { ZodError, z } from "zod";
 

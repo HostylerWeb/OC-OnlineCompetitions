@@ -232,7 +232,7 @@ export default function CheckoutPage() {
 
   if (loading) {
     return (
-      <main className="luxero-container py-12">
+      <main className="oc-container py-12">
         <p className="text-center text-muted-foreground">Loading checkout...</p>
       </main>
     );
@@ -250,7 +250,7 @@ export default function CheckoutPage() {
   const labelClass = "block text-sm font-medium";
 
   return (
-    <main className="luxero-container py-12">
+    <main className="oc-container py-12">
       <Suspense fallback={null}>
         <CancelledNotice />
       </Suspense>

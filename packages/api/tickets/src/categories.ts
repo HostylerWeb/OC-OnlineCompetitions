@@ -1,4 +1,4 @@
-import { Competition } from "@luxero/api-db/models";
+import { Competition } from "@oc/api-db/models";
 
 /** Update competitions that store the old category slug after a rename. */
 export async function backpropagateCategorySlugChange(

@@ -1,9 +1,9 @@
-import type { CompetitionAvailability, CompetitionInstantPrizePublicDTO } from "@luxero/api-client";
+import type { CompetitionAvailability, CompetitionInstantPrizePublicDTO } from "@oc/api-client";
 import type {
   PublicBonusAwardEntry,
   PublicBonusAwardWinDTO,
   RawCompetitionResponse,
-} from "@luxero/types";
+} from "@oc/types";
 import type { PageContextServer } from "vike/types";
 import { serverFetch } from "@/lib/server-fetch";
 

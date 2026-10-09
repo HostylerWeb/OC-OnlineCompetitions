@@ -3,7 +3,7 @@ import {
   DEFAULT_MEDIA_CONVERTER_SETTINGS,
   type MediaConverterScopeMap,
   type MediaConverterSettings,
-} from "@luxero/types";
+} from "@oc/types";
 import { m } from "../db";
 
 const ScopeMapSchema = new Schema<MediaConverterScopeMap>(

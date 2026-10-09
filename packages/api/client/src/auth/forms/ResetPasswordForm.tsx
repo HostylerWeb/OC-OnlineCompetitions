@@ -1,6 +1,6 @@
-import { normalizeAuthClientError } from "@luxero/auth-client";
-import { AlertCircle, CheckCircle, Eye, EyeOff, LoaderCircle } from "@luxero/icons";
-import { cn } from "@luxero/utils";
+import { normalizeAuthClientError } from "@oc/auth-client";
+import { AlertCircle, CheckCircle, Eye, EyeOff, LoaderCircle } from "@oc/icons";
+import { cn } from "@oc/utils";
 import { useEffect, useState } from "react";
 import { useResetPassword } from "../../hooks/auth";
 import {

@@ -1,10 +1,10 @@
-import { Competition, Order, Profile, Winner } from "@luxero/api-db/models";
-import dbConnect from "@luxero/api-infra/db";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { error, success } from "@luxero/api-infra/response";
-import { captureRouteError } from "@luxero/api-infra/sentry";
-import { requireManager } from "@luxero/api-server/middleware/auth";
-import { getGlobalScopedTicketStatusTotals } from "@luxero/api-tickets/scoped-ticket-stats";
+import { Competition, Order, Profile, Winner } from "@oc/api-db/models";
+import dbConnect from "@oc/api-infra/db";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { error, success } from "@oc/api-infra/response";
+import { captureRouteError } from "@oc/api-infra/sentry";
+import { requireManager } from "@oc/api-server/middleware/auth";
+import { getGlobalScopedTicketStatusTotals } from "@oc/api-tickets/scoped-ticket-stats";
 import { Hono } from "hono";
 
 const app = new Hono();
@@ -76,7 +76,7 @@ app.get("/stats", async (c) => {
     ] = await Promise.all([
       Profile.countDocuments({
         isGuestCheckout: { $ne: true },
-        email: { $not: { $regex: /@guest\.luxero\.local$/i } },
+        email: { $not: { $regex: /@guest\.onlinecompetitions\.local$/i } },
       }).maxTimeMS(5000),
       Competition.countDocuments({ status: "active" }).maxTimeMS(5000),
       Competition.countDocuments().maxTimeMS(5000),
@@ -93,7 +93,7 @@ app.get("/stats", async (c) => {
       Profile.countDocuments({
         createdAt: { $gte: startOfMonth },
         isGuestCheckout: { $ne: true },
-        email: { $not: { $regex: /@guest\.luxero\.local$/i } },
+        email: { $not: { $regex: /@guest\.onlinecompetitions\.local$/i } },
       }).maxTimeMS(5000),
       Competition.aggregate([
         { $match: { deletedAt: null } },
@@ -147,7 +147,7 @@ app.get("/stats", async (c) => {
         {
           $match: {
             "profile.isGuestCheckout": { $ne: true },
-            "profile.email": { $not: { $regex: /@guest\.luxero\.local$/i } },
+            "profile.email": { $not: { $regex: /@guest\.onlinecompetitions\.local$/i } },
           },
         },
         {

@@ -18,7 +18,7 @@ const state = vi.hoisted(() => ({
   sendEmailCalls: [] as any[],
 }));
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   Profile: {
     findById: vi.fn((id: any) => ({
       lean: async () => state.profiles.get(id.toString()) ?? null,
@@ -54,23 +54,23 @@ vi.mock("@luxero/api-db/models", () => ({
   },
 }));
 
-vi.mock("@luxero/api-email", () => ({
+vi.mock("@oc/api-email", () => ({
   sendEmail: vi.fn(async () => {}),
 }));
 
-vi.mock("@luxero/api-email/config", () => ({
+vi.mock("@oc/api-email/config", () => ({
   getEmailConfig: vi.fn(async () => ({})),
 }));
 
-vi.mock("@luxero/api-email/templates/referral-tickets-awarded", () => ({
+vi.mock("@oc/api-email/templates/referral-tickets-awarded", () => ({
   ReferralTicketsAwardedEmail: vi.fn(() => null),
 }));
 
-vi.mock("@luxero/api-email/templates/referral-tickets-allocated", () => ({
+vi.mock("@oc/api-email/templates/referral-tickets-allocated", () => ({
   ReferralTicketsAllocatedEmail: vi.fn(() => null),
 }));
 
-vi.mock("@luxero/api-infra/env", () => ({
+vi.mock("@oc/api-infra/env", () => ({
   getCurrentContext: vi.fn(() => ({ frontendUrl: "http://localhost:3111" })),
 }));
 

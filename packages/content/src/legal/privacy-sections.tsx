@@ -1,4 +1,11 @@
 import type { LegalSection } from "../content-types";
+import {
+  BRAND_NAME,
+  CompanyEmailLink,
+  LEGAL_COMPANY_NAME,
+  LEGAL_COMPANY_REGISTRY_EN,
+  LEGAL_REGISTERED_OFFICE_POSTAL,
+} from "./company-legal";
 
 export const privacySections = [
   {
@@ -7,7 +14,7 @@ export const privacySections = [
     content: (
       <div className="space-y-3 text-muted-foreground">
         <p>
-          LUXERO COMPETITIONS LTD (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) is committed
+          {LEGAL_COMPANY_NAME} (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) is committed
           to protecting and respecting your privacy. This Privacy Policy explains how we collect,
           use, disclose, and safeguard your information when you use our website and services.
         </p>
@@ -207,9 +214,7 @@ export const privacySections = [
         <p className="mt-3">
           You can opt out of interest-based advertising by visiting the relevant opt-out sections in
           our Cookie Policy or by contacting us at{" "}
-          <a href="mailto:contact@luxero.win" className="text-gold hover:underline">
-            contact@luxero.win
-          </a>
+          <CompanyEmailLink />
           .
         </p>
       </div>
@@ -260,9 +265,7 @@ export const privacySections = [
         </ul>
         <p className="mt-3">
           To exercise any of these rights, contact us at{" "}
-          <a href="mailto:contact@luxero.win" className="text-gold hover:underline">
-            contact@luxero.win
-          </a>
+          <CompanyEmailLink />
           . We will respond within one month.
         </p>
       </div>
@@ -395,15 +398,12 @@ export const privacySections = [
         <ul className="list-disc list-inside space-y-2">
           <li>
             Email:{" "}
-            <a href="mailto:contact@luxero.win" className="text-gold hover:underline">
-              contact@luxero.win
-            </a>
+            <CompanyEmailLink />
           </li>
           <li>
-            Post: Luxero Competitions, 107 Dalriada Crescent, Motherwell, Scotland ML1 3XT, United
-            Kingdom
+            Post: {BRAND_NAME}, {LEGAL_REGISTERED_OFFICE_POSTAL}
           </li>
-          <li>Company: LUXERO COMPETITIONS LTD (Company No.SC888260, registered in Scotland)</li>
+          <li>Company: {LEGAL_COMPANY_REGISTRY_EN}</li>
         </ul>
       </div>
     ),

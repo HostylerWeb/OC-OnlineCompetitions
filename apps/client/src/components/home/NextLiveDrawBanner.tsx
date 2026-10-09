@@ -1,9 +1,9 @@
 "use client";
 
-import { Timer } from "@luxero/icons";
-import type { Competition } from "@luxero/types";
-import type { TimeLeft } from "@luxero/utils";
-import { cn, getCompetitionImageUrl } from "@luxero/utils";
+import { Timer } from "@oc/icons";
+import type { Competition } from "@oc/types";
+import type { TimeLeft } from "@oc/utils";
+import { cn, getCompetitionImageUrl } from "@oc/utils";
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "@/components/Link";
 import { useCountdown } from "@/components/ui";
@@ -115,7 +115,7 @@ export function NextLiveDrawBanner({ competitions }: { competitions: Competition
 
   return (
     <section className="relative pb-2 pt-6 sm:pb-4 sm:pt-8" aria-labelledby="next-live-draw-heading">
-      <div className="luxero-container-wide relative z-10">
+      <div className="oc-container-wide relative z-10">
         <div
           className={cn(
             "relative overflow-hidden border-0 border-b p-5 sm:p-6 lg:p-8",

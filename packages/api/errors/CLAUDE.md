@@ -1,10 +1,10 @@
-# @luxero/api-errors
+# @oc/api-errors
 
 Shared error class hierarchy used across all API packages. Provides consistent HTTP error responses, domain errors, and internal failure types.
 
 ## Source of truth
 
-`luxero-api/packages/errors/src` — synced to this repo.
+`onlinecompetitions-api/packages/errors/src` — synced to this repo.
 
 ## Key exports
 
@@ -14,4 +14,4 @@ Shared error class hierarchy used across all API packages. Provides consistent H
 
 ## Error pattern
 
-All errors extend `AppError` with a stable `statusCode`, `code` string, and optional `details` payload. Used by Hono error middleware in `@luxero/api-server`.
+All errors extend `AppError` with a stable `statusCode`, `code` string, and optional `details` payload. Used by Hono error middleware in `@oc/api-server`.

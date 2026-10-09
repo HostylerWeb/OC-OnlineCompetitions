@@ -1,11 +1,16 @@
 import "../index.css";
-import type { ApiResponse, Profile } from "@luxero/types";
-import { getEnv } from "@luxero/env/vike";
-import { HOSTYLER_CONSOLE_NOTICE_INLINE, withAssetCacheVersion } from "@luxero/utils";
+import type { ApiResponse, Profile } from "@oc/types";
+import { getEnv } from "@oc/env/vike";
+import {
+  BRAND_FAVICON_PATH,
+  brandLogoUrl,
+  HOSTYLER_CONSOLE_NOTICE_INLINE,
+  withAssetCacheVersion,
+} from "@oc/utils";
 import { usePageContext } from "vike-react/usePageContext";
 
 const DEFAULT_DESC =
-  "Enter competitions on Luxero to win incredible prizes, from premium electronics and designer fashion to unforgettable luxury experiences. Play skill-based contests and try instant win games.";
+  "Enter competitions on Online Competitions to win incredible prizes, from premium electronics and designer fashion to unforgettable luxury experiences. Play skill-based contests and try instant win games.";
 
 export function Head() {
   const pageContext = usePageContext();
@@ -15,7 +20,7 @@ export function Head() {
 
   const description = pageContext.defaultDescription ?? headData?.description ?? DEFAULT_DESC;
   const umamiId = getEnv("UMAMI_WEBSITE_ID");
-  const siteName = headData?.siteName ?? "Luxero";
+  const siteName = headData?.siteName ?? "Online Competitions";
   const baseUrl = getEnv("APP_URL");
   const profileInitialData = (pageContext as { profileInitialData?: ApiResponse<Profile> | null })
     .profileInitialData;
@@ -38,7 +43,7 @@ export function Head() {
         href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600&display=swap"
         rel="stylesheet"
       />
-      <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+      <link rel="icon" type="image/png" href={BRAND_FAVICON_PATH} />
       {avatarPreloadHref ? (
         <link rel="preload" as="image" href={avatarPreloadHref} fetchPriority="high" />
       ) : null}
@@ -46,7 +51,7 @@ export function Head() {
       {pageContext.nonce && <style nonce={pageContext.nonce} />}
 
       {umamiId && (
-        <script defer src="https://umami.luxero.win/script.js" data-website-id={umamiId} />
+        <script defer src="https://umami.onlinecompetitions.co.uk/script.js" data-website-id={umamiId} />
       )}
 
       <script defer src="/sw-register.js" />
@@ -59,7 +64,7 @@ export function Head() {
             "@type": "Organization",
             name: siteName,
             url: baseUrl,
-            logo: `${baseUrl}/og-default.png`,
+            logo: brandLogoUrl(baseUrl),
           }),
         }}
       />

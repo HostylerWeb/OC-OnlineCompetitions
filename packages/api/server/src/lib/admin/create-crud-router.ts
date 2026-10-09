@@ -1,8 +1,8 @@
-import dbConnect from "@luxero/api-infra/db";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { isDuplicateKeyError } from "@luxero/api-infra/mongo-errors";
-import { parsePagination } from "@luxero/api-infra/pagination";
-import { created, error, paginated, success } from "@luxero/api-infra/response";
+import dbConnect from "@oc/api-infra/db";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { isDuplicateKeyError } from "@oc/api-infra/mongo-errors";
+import { parsePagination } from "@oc/api-infra/pagination";
+import { created, error, paginated, success } from "@oc/api-infra/response";
 import type { Context } from "hono";
 import { Hono } from "hono";
 import type { Document, Model } from "mongoose";

@@ -8,11 +8,11 @@ const __mock = vi.hoisted(() => ({
   profileUpdateMany: vi.fn(),
 }));
 
-vi.mock("@luxero/api-infra/db", () => ({
+vi.mock("@oc/api-infra/db", () => ({
   default: vi.fn(async () => {}),
 }));
 
-vi.mock("@luxero/api-server/middleware/auth", () => ({
+vi.mock("@oc/api-server/middleware/auth", () => ({
   isPublicRoute: () => false,
   resolveSession: vi.fn(async () => ({})),
   sessionMiddleware: async (_c: unknown, next: () => Promise<void>) => {
@@ -34,11 +34,11 @@ vi.mock("@luxero/api-server/middleware/auth", () => ({
   },
 }));
 
-vi.mock("@luxero/auth-admin/user-deletion", () => ({
+vi.mock("@oc/auth-admin/user-deletion", () => ({
   deleteUserAccount: (...args: unknown[]) => __mock.deleteUserAccount(...args),
 }));
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   Profile: {
     updateMany: (...args: unknown[]) => __mock.profileUpdateMany(...args),
   },

@@ -51,7 +51,7 @@ export const HOW_IT_WORKS_ALT_PATHS: HowItWorksAltPath[] = [
   },
   {
     title: "Refer Friends",
-    description: "Share Luxero and earn free tickets when friends enter.",
+    description: "Share Online Competitions and earn free tickets when friends enter.",
     icon: "Users",
     href: "/dashboard/referrals",
   },

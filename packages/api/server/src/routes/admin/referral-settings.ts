@@ -1,15 +1,15 @@
-import { ReferralSettings } from "@luxero/api-db/models";
-import { CH, invalidateByChannelSafe, invalidateUser } from "@luxero/api-infra/cache";
-import dbConnect from "@luxero/api-infra/db";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { error, success } from "@luxero/api-infra/response";
-import { DEFAULT_REFERRAL_SETTINGS } from "@luxero/api-referrals/referral-defaults";
-import { requireAdmin } from "@luxero/api-server/middleware/auth";
+import { ReferralSettings } from "@oc/api-db/models";
+import { CH, invalidateByChannelSafe, invalidateUser } from "@oc/api-infra/cache";
+import dbConnect from "@oc/api-infra/db";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { error, success } from "@oc/api-infra/response";
+import { DEFAULT_REFERRAL_SETTINGS } from "@oc/api-referrals/referral-defaults";
+import { requireAdmin } from "@oc/api-server/middleware/auth";
 import {
   type ReferralSettingsUpdateInput,
   referralSettingsUpdateSchema,
   validateBody,
-} from "@luxero/api-validation";
+} from "@oc/api-validation";
 import { Hono } from "hono";
 
 const app = new Hono();

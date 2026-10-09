@@ -1,5 +1,5 @@
 import type { ComponentType } from "react";
-import { Film } from "@luxero/icons";
+import { Film } from "@oc/icons";
 
 export type AddonCatalogStatus = "available" | "coming_soon";
 

@@ -6,10 +6,10 @@ const nextConfig: NextConfig = {
 
   images: {
     remotePatterns: [
-      { protocol: "https", hostname: "assets.luxero.win" },
-      { protocol: "https", hostname: "assets.staging.luxero.win" },
-      { protocol: "http", hostname: "localhost", port: "9011", pathname: "/luxero-assets/**" },
-      { protocol: "http", hostname: "127.0.0.1", port: "9011", pathname: "/luxero-assets/**" },
+      { protocol: "https", hostname: "assets.onlinecompetitions.co.uk" },
+      { protocol: "https", hostname: "assets.staging.onlinecompetitions.co.uk" },
+      { protocol: "http", hostname: "localhost", port: "9011", pathname: "/onlinecompetitions-assets/**" },
+      { protocol: "http", hostname: "127.0.0.1", port: "9011", pathname: "/onlinecompetitions-assets/**" },
     ],
     dangerouslyAllowLocalIP: process.env.NODE_ENV !== "production",
     formats: ["image/avif", "image/webp"],
@@ -21,9 +21,9 @@ const nextConfig: NextConfig = {
   },
 
   transpilePackages: [
-    "@luxero/env",
-    "@luxero/types",
-    "@luxero/utils",
+    "@oc/env",
+    "@oc/types",
+    "@oc/utils",
   ],
 
   serverExternalPackages: ["sharp"],

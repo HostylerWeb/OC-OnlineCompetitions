@@ -1,10 +1,10 @@
-import { Profile } from "@luxero/api-db/models";
-import { sendEmail } from "@luxero/api-email/client";
-import { getEmailConfig } from "@luxero/api-email/config";
-import { ReferralTicketsAllocatedEmail } from "@luxero/api-email/templates/referral-tickets-allocated";
-import { ReferralTicketsAwardedEmail } from "@luxero/api-email/templates/referral-tickets-awarded";
-import { ReferralTicketsRedeemedEmail } from "@luxero/api-email/templates/referral-tickets-redeemed";
-import { getCurrentContext } from "@luxero/api-infra/env";
+import { Profile } from "@oc/api-db/models";
+import { sendEmail } from "@oc/api-email/client";
+import { getEmailConfig } from "@oc/api-email/config";
+import { ReferralTicketsAllocatedEmail } from "@oc/api-email/templates/referral-tickets-allocated";
+import { ReferralTicketsAwardedEmail } from "@oc/api-email/templates/referral-tickets-awarded";
+import { ReferralTicketsRedeemedEmail } from "@oc/api-email/templates/referral-tickets-redeemed";
+import { getCurrentContext } from "@oc/api-infra/env";
 import { render } from "@react-email/render";
 
 interface SendReferralTicketsRedeemedEmailParams {
@@ -43,7 +43,7 @@ export async function sendReferralTicketsRedeemedEmail(
     );
     await sendEmail({
       to: profile.email,
-      subject: "Your referral tickets have been redeemed — Luxero",
+      subject: "Your referral tickets have been redeemed — Online Competitions",
       html: emailHtml,
     });
   } catch (emailErr) {
@@ -79,7 +79,7 @@ export async function sendReferralTicketsAwardedEmail(
 
     await sendEmail({
       to: params.referrerEmail,
-      subject: "You've earned referral tickets! — Luxero",
+      subject: "You've earned referral tickets! — Online Competitions",
       html: emailHtml,
     });
   } catch (emailErr) {
@@ -120,7 +120,7 @@ export async function sendReferralTicketsAllocatedEmail(params: {
 
     await sendEmail({
       to: params.referrerEmail,
-      subject: `You've earned ${params.totalTickets} referral tickets across ${params.competitionCount} competitions — Luxero`,
+      subject: `You've earned ${params.totalTickets} referral tickets across ${params.competitionCount} competitions — Online Competitions`,
       html: emailHtml,
     });
   } catch (emailErr) {

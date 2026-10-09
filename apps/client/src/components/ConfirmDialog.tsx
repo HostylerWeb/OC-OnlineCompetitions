@@ -1,5 +1,5 @@
 "use client";
-import { AlertTriangle, CircleCheck, Loader2 } from "@luxero/icons";
+import { AlertTriangle, CircleCheck, Loader2 } from "@oc/icons";
 import { Button } from "./ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "./ui/dialog";
 

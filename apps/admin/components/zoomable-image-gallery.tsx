@@ -27,7 +27,7 @@ export function ZoomableImageGallery({
   if (variant === "fullscreen") {
     return (
       <div
-        data-slot="luxero-dialog-fullscreen"
+        data-slot="brand-dialog-fullscreen"
         className={`fixed inset-0 z-[100] flex flex-col bg-black ${className ?? ""}`}
       >
         <GalleryContent

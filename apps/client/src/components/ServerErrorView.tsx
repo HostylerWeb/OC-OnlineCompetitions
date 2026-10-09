@@ -1,6 +1,6 @@
 "use client";
 
-import { AlertTriangle, Home, RefreshCw } from "@luxero/icons";
+import { AlertTriangle, Home, RefreshCw } from "@oc/icons";
 import { GoldButton, GoldOutlineButton } from "@/components/buttons";
 import { Link } from "@/components/Link";
 import { useTranslation } from "@/lib/i18n";

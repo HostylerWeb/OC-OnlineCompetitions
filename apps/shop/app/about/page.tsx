@@ -1,19 +1,20 @@
 import type { Metadata } from "next";
+import { CompanyContactEmail, RegisteredOfficeAddress } from "@/components/company-details";
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Discover LUXERO — a premium streetwear brand founded in London. Heavyweight fabrics, British design, timeless collections.",
+    "Discover OC — a premium streetwear brand founded in London. Heavyweight fabrics, British design, timeless collections.",
   openGraph: {
-    title: "About — Luxero",
+    title: "About — Online Competitions",
     description:
-      "Discover LUXERO — a premium streetwear brand founded in London. Heavyweight fabrics, British design, timeless collections.",
+      "Discover OC — a premium streetwear brand founded in London. Heavyweight fabrics, British design, timeless collections.",
   },
 };
 
 export default function AboutPage() {
   return (
-    <main className="luxero-container py-12">
+    <main className="oc-container py-12">
       {/* Hero */}
       <section className="mx-auto max-w-3xl text-center">
         <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-gold">
@@ -23,7 +24,7 @@ export default function AboutPage() {
           Built in London. Made to Last.
         </h1>
         <p className="mt-4 text-base text-muted-foreground md:text-lg">
-          LUXERO was founded with a single belief: streetwear should feel as good as it looks. Every
+          OC was founded with a single belief: streetwear should feel as good as it looks. Every
           piece is engineered from premium materials, cut to a precise fit, and finished with
           details that set it apart.
         </p>
@@ -33,7 +34,7 @@ export default function AboutPage() {
       <section className="mx-auto mt-20 max-w-3xl">
         <h2 className="text-2xl font-bold tracking-tight">The Brand</h2>
         <p className="mt-4 text-muted-foreground leading-relaxed">
-          Born in the heart of London, LUXERO brings together British design sensibility and
+          Born in the heart of London, OC brings together British design sensibility and
           uncompromising quality. We work exclusively with heavyweight fabrics — 500GSM French Terry
           for our hoodies, 280GSM combed-ring spun cotton for tees — because weight translates to
           durability, structure, and a feel that cheap garments can&apos;t replicate.
@@ -54,7 +55,7 @@ export default function AboutPage() {
             <h3 className="text-lg font-semibold text-gold">The Essentials Collection Vol. 1</h3>
             <p className="mt-2 text-muted-foreground leading-relaxed">
               The debut collection. A tightly curated set of staples — heavyweight hoodies, premium
-              tees, accessories — built around the fit and finish that define LUXERO. Every piece is
+              tees, accessories — built around the fit and finish that define OC. Every piece is
               designed to be worn hard and hold its shape.
             </p>
           </div>
@@ -124,21 +125,9 @@ export default function AboutPage() {
       {/* Contact / Address */}
       <section className="mx-auto mt-16 max-w-3xl border-t border-border-subtle pt-12">
         <h2 className="text-2xl font-bold tracking-tight">Visit Us</h2>
-        <p className="mt-4 text-muted-foreground leading-relaxed">
-          107 Dalriada Crescent
-          <br />
-          Motherwell, ML1 3XT
-          <br />
-          Scotland, United Kingdom
-        </p>
+        <RegisteredOfficeAddress className="mt-4 text-muted-foreground leading-relaxed" />
         <p className="mt-4 text-muted-foreground">
-          Email:{" "}
-          <a
-            href="mailto:contact@luxero.win"
-            className="text-gold underline-offset-2 hover:underline"
-          >
-            contact@luxero.win
-          </a>
+          Email: <CompanyContactEmail className="text-gold underline-offset-2 hover:underline" />
         </p>
       </section>
 

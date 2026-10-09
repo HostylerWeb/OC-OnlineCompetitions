@@ -1,15 +1,15 @@
 import { pbkdf2Sync, randomInt, timingSafeEqual } from "node:crypto";
-import { dbConnect } from "@luxero/api-db";
-import { EmergencyError } from "@luxero/api-errors";
-import { getAdminAuth } from "@luxero/auth-admin/admin-auth";
-import { sendEmergencyOtpEmail } from "@luxero/auth-admin/auth-email";
-import { type AdminSetupResult, upsertAdminAccount } from "@luxero/auth-admin/auth-setup";
-import { secretsEqual } from "@luxero/auth-admin/secret-compare";
-import { getEnv } from "@luxero/env/server";
+import { dbConnect } from "@oc/api-db";
+import { EmergencyError } from "@oc/api-errors";
+import { getAdminAuth } from "@oc/auth-admin/admin-auth";
+import { sendEmergencyOtpEmail } from "@oc/auth-admin/auth-email";
+import { type AdminSetupResult, upsertAdminAccount } from "@oc/auth-admin/auth-setup";
+import { secretsEqual } from "@oc/auth-admin/secret-compare";
+import { getEnv } from "@oc/env/server";
 
 const getAppUrl = () => getEnv("APP_URL").replace(/\/$/, "");
 
-export const ADMIN_EMERGENCY_EMAIL = "admin@luxero.win";
+export const ADMIN_EMERGENCY_EMAIL = "admin@onlinecompetitions.co.uk";
 
 const EMERGENCY_SECRET_HEADER = "x-emergency-secret";
 const OTP_EXPIRES_IN_SEC = 300;

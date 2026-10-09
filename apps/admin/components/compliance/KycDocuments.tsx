@@ -1,8 +1,8 @@
 "use client";
 
-import { useAdminUserCompliance } from "@luxero/api-admin";
-import { FileText } from "@luxero/icons";
-import { formatDate } from "@luxero/utils";
+import { useAdminUserCompliance } from "@oc/api-admin";
+import { FileText } from "@oc/icons";
+import { formatDate } from "@oc/utils";
 import { Card, CardContent } from "@/components/ui/card";
 
 interface KycDocumentsProps {

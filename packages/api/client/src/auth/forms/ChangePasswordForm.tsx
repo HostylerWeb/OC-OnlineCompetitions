@@ -1,6 +1,6 @@
-import { authClient, normalizeAuthClientError, safelyRunAuthRequest } from "@luxero/auth-client";
-import { AlertCircle, CheckCircle, Eye, EyeOff, LoaderCircle } from "@luxero/icons";
-import { cn } from "@luxero/utils";
+import { authClient, normalizeAuthClientError, safelyRunAuthRequest } from "@oc/auth-client";
+import { AlertCircle, CheckCircle, Eye, EyeOff, LoaderCircle } from "@oc/icons";
+import { cn } from "@oc/utils";
 import { useEffect, useState } from "react";
 import { useChangePassword } from "../../hooks";
 import { getAuthErrorMessage } from "../actions";

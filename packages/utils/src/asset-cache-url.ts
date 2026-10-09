@@ -41,7 +41,7 @@ function appendCacheVersionParam(url: string, version: string): string {
 }
 
 /**
- * Stable cache key for Luxero-hosted assets: same `?v=` until `version` (e.g. competition updatedAt) changes.
+ * Stable cache key for Online Competitions-hosted assets: same `?v=` until `version` (e.g. competition updatedAt) changes.
  * Versioned S3 keys (avatars/{id}/{timestamp}-…) infer `v` from the path when no version is passed.
  * Third-party avatar URLs (Google, etc.) are returned unchanged.
  */

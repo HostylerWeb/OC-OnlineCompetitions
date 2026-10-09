@@ -6,7 +6,7 @@ import type {
   MyReferralsResponse,
   MyStats,
   Profile,
-} from "@luxero/types";
+} from "@oc/types";
 import { useQuery } from "@tanstack/react-query";
 import { api } from "../../client";
 import { STALE_TIME_USER } from "../../constants";

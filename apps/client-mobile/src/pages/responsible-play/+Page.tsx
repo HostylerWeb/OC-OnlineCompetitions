@@ -1,15 +1,15 @@
 "use client";
 
-import { isResponsiblePlaySectionVisible, useComplianceFeatures } from "@luxero/api-client";
+import { isResponsiblePlaySectionVisible, useComplianceFeatures } from "@oc/api-client";
 import {
   RESPONSIBLE_PLAY_SECTIONS as RESPONSIBLE_PLAY_SECTIONS_EN,
   SUPPORT_ORGANISATIONS as SUPPORT_ORGANISATIONS_EN,
-} from "@luxero/content";
-import { resolveContent } from "@luxero/content/locales";
+} from "@oc/content";
+import { resolveContent } from "@oc/content/locales";
 import {
   RESPONSIBLE_PLAY_SECTIONS as RESPONSIBLE_PLAY_SECTIONS_RO,
   SUPPORT_ORGANISATIONS as SUPPORT_ORGANISATIONS_RO,
-} from "@luxero/content/ro";
+} from "@oc/content/ro";
 import {
   Calendar,
   CreditCard,
@@ -21,7 +21,7 @@ import {
   Trophy,
   Users,
   Zap,
-} from "@luxero/icons";
+} from "@oc/icons";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useTranslation } from "@/lib/i18n";
 import { useRouter } from "@/lib/navigation";
@@ -54,7 +54,7 @@ export default function ResponsiblePlayPage() {
 
   if (features.isLoading) {
     return (
-      <div className="luxero-container-narrow pb-12">
+      <div className="oc-container-narrow pb-12">
         <div className="py-8 lg:py-12 space-y-6">
           <div className="flex flex-col items-center gap-3">
             <Skeleton className="h-14 w-14 rounded-2xl" shimmer />
@@ -79,7 +79,7 @@ export default function ResponsiblePlayPage() {
   );
 
   return (
-    <div className="luxero-container-narrow pb-12">
+    <div className="oc-container-narrow pb-12">
       <div className="py-8 lg:py-12">
         <div className="text-center mb-10">
           <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gold/15 mb-4">

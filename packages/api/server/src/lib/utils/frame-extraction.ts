@@ -2,7 +2,7 @@ import { execFile } from "node:child_process";
 import { mkdir, readdir, readFile, rm, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { promisify } from "node:util";
-import { createExternalAxios } from "@luxero/api-axios";
+import { createExternalAxios } from "@oc/api-axios";
 import {
   buildAssetUrl,
   deleteObjects,
@@ -10,7 +10,7 @@ import {
   getPresignedDownloadUrl,
   listAssets,
   uploadFile,
-} from "@luxero/api-storage/s3";
+} from "@oc/api-storage/s3";
 import { probeVideo } from "./probe-video";
 
 const execFileAsync = promisify(execFile);

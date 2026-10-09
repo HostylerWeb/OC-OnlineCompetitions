@@ -1,4 +1,4 @@
-import { AllocationError } from "@luxero/api-errors";
+import { AllocationError } from "@oc/api-errors";
 import { type ClientSession, Types } from "mongoose";
 
 export interface AllocationWin {
@@ -219,7 +219,7 @@ export async function freeGrantedTickets(
   session?: ClientSession | null
 ): Promise<number> {
   if (ticketIds.length === 0) return 0;
-  const { Competition, Ticket } = await import("@luxero/api-db/models");
+  const { Competition, Ticket } = await import("@oc/api-db/models");
   const sessionOpts = session ? { session } : {};
   const objectIds = ticketIds.map((id) => new Types.ObjectId(id));
 

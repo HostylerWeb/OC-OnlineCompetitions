@@ -1,6 +1,6 @@
-import type { HowItWorksStep } from "@luxero/content";
-import { Trophy } from "@luxero/icons";
-import { cn } from "@luxero/utils";
+import type { HowItWorksStep } from "@oc/content";
+import { Trophy } from "@oc/icons";
+import { cn } from "@oc/utils";
 import { useTranslation } from "@/lib/i18n";
 import { getHowItWorksIcon } from "./icon-map";
 

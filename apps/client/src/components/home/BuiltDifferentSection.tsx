@@ -1,13 +1,13 @@
 import {
   HOME_BUILT_DIFFERENT as HOME_BUILT_DIFFERENT_EN,
   HOME_FEATURES as HOME_FEATURES_EN,
-} from "@luxero/content/home";
-import { resolveContent } from "@luxero/content/locales";
+} from "@oc/content/home";
+import { resolveContent } from "@oc/content/locales";
 import {
   HOME_BUILT_DIFFERENT as HOME_BUILT_DIFFERENT_RO,
   HOME_FEATURES as HOME_FEATURES_RO,
-} from "@luxero/content/ro";
-import { Shield, Users, Zap } from "@luxero/icons";
+} from "@oc/content/ro";
+import { Shield, Users, Zap } from "@oc/icons";
 import { useTranslation } from "@/lib/i18n";
 
 const iconMap = { Shield, Zap, Users } as const;
@@ -23,7 +23,7 @@ export function BuiltDifferentSection() {
     <section className="py-16 sm:py-20 md:py-24 bg-gradient-to-b from-card/30 to-background relative overflow-hidden">
       <div className="absolute inset-0 bg-grid-pattern opacity-[0.02]" />
 
-      <div className="luxero-container-wide relative z-10">
+      <div className="oc-container-wide relative z-10">
         <div className="mb-12 md:mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tighter leading-none mb-3 sm:mb-4">
             <span className="text-gold">{builtDifferent.title}</span>

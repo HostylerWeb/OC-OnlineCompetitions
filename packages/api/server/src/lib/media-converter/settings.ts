@@ -2,8 +2,8 @@ import {
   DEFAULT_MEDIA_CONVERTER_SETTINGS,
   MediaConverterSettings,
   type IMediaConverterSettings,
-} from "@luxero/api-db/models/MediaConverterSettings";
-import dbConnect from "@luxero/api-infra/db";
+} from "@oc/api-db/models/MediaConverterSettings";
+import dbConnect from "@oc/api-infra/db";
 
 let cached: { at: number; value: IMediaConverterSettings } | null = null;
 const CACHE_TTL_MS = 5_000;

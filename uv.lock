@@ -547,7 +547,7 @@ wheels = [
 ]
 
 [[package]]
-name = "luxero-turborepo"
+name = "onlinecompetitions"
 version = "0.0.1"
 source = { virtual = "." }
 

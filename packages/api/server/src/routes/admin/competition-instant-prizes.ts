@@ -3,20 +3,20 @@ import {
   CompetitionInstantPrize,
   InstantPrize,
   InstantPrizeWin,
-} from "@luxero/api-db/models";
-import type { ICompetitionInstantPrize } from "@luxero/api-db/models/CompetitionInstantPrize";
-import type { IInstantPrize } from "@luxero/api-db/models/InstantPrize";
-import { AllocationError } from "@luxero/api-errors";
-import { CH, invalidateByChannelSafe } from "@luxero/api-infra/cache";
-import dbConnect from "@luxero/api-infra/db";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { substringRegex } from "@luxero/api-infra/fuzzy-search";
-import { applyGroupBy, type GroupByFieldConfig } from "@luxero/api-infra/group-by";
-import { withMongoTransactionOptional } from "@luxero/api-infra/mongo-capabilities";
-import { parsePagination, parseSort } from "@luxero/api-infra/pagination";
-import { error, paginated, success } from "@luxero/api-infra/response";
-import { captureRouteError } from "@luxero/api-infra/sentry";
-import { requireManager } from "@luxero/api-server/middleware/auth";
+} from "@oc/api-db/models";
+import type { ICompetitionInstantPrize } from "@oc/api-db/models/CompetitionInstantPrize";
+import type { IInstantPrize } from "@oc/api-db/models/InstantPrize";
+import { AllocationError } from "@oc/api-errors";
+import { CH, invalidateByChannelSafe } from "@oc/api-infra/cache";
+import dbConnect from "@oc/api-infra/db";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { substringRegex } from "@oc/api-infra/fuzzy-search";
+import { applyGroupBy, type GroupByFieldConfig } from "@oc/api-infra/group-by";
+import { withMongoTransactionOptional } from "@oc/api-infra/mongo-capabilities";
+import { parsePagination, parseSort } from "@oc/api-infra/pagination";
+import { error, paginated, success } from "@oc/api-infra/response";
+import { captureRouteError } from "@oc/api-infra/sentry";
+import { requireManager } from "@oc/api-server/middleware/auth";
 import {
   computeArchiveState,
   computeSlotRemoval,
@@ -26,24 +26,24 @@ import {
   getTicketIdsToFreeForRemovedSlots,
   rebuildGrantedTicketIds,
   shrinkGrantedTicketsForTicketCountChange,
-} from "@luxero/api-tickets/instant-prize-allocation";
+} from "@oc/api-tickets/instant-prize-allocation";
 import {
   generateWinningEntryNumbers,
   regenerateUnclaimedWinningEntryNumbers,
   validateManualWinningEntryNumbers,
-} from "@luxero/api-tickets/instant-prize-utils";
+} from "@oc/api-tickets/instant-prize-utils";
 import {
   buildExcludeSetForInstantPrizes,
   holdTickets,
   pickAvailableNumbers,
   provisionTickets,
   releaseHeldByCip,
-} from "@luxero/api-tickets/ticket-service";
+} from "@oc/api-tickets/ticket-service";
 import {
   getInstantPrizeCapacity,
   isCipInvariantError,
   validateInstantPrizeAssignment,
-} from "@luxero/api-tickets/validate-instant-prize-assignment";
+} from "@oc/api-tickets/validate-instant-prize-assignment";
 import {
   type AssignCompetitionInstantPrizeInput,
   assignCompetitionInstantPrizeSchema,
@@ -55,7 +55,7 @@ import {
   updateCompetitionInstantPrizeSchema,
   validateBody,
   validateQuery,
-} from "@luxero/api-validation";
+} from "@oc/api-validation";
 import { type Context, Hono } from "hono";
 import { type ClientSession, type PipelineStage, Types } from "mongoose";
 

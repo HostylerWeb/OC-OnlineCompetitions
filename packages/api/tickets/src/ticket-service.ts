@@ -1,17 +1,17 @@
-import { TicketAvailabilityError } from "@luxero/api-errors";
+import { TicketAvailabilityError } from "@oc/api-errors";
 
-export { TicketAvailabilityError } from "@luxero/api-errors";
+export { TicketAvailabilityError } from "@oc/api-errors";
 
-import { Cart, Competition, Order, Profile, Ticket } from "@luxero/api-db/models";
-import type { ITicketFields } from "@luxero/api-db/models/schemas/ticket.schema";
-import type { TicketStatus } from "@luxero/api-db/models/Ticket";
-import { CH, invalidateByChannelSafe } from "@luxero/api-infra/cache";
-import { defaultAggregateOptions } from "@luxero/api-infra/mongo-query-options";
-import { createLogger } from "@luxero/api-logger";
-import { normalizeAnswerIndex } from "@luxero/api-payment-core";
-import { isOpenForTicketSales } from "@luxero/api-tickets/competition-sales";
-import { generateOrderNumber } from "@luxero/api-tickets/create-session";
-import { getTicketIdsForSlotRange } from "@luxero/api-tickets/instant-prize-allocation";
+import { Cart, Competition, Order, Profile, Ticket } from "@oc/api-db/models";
+import type { ITicketFields } from "@oc/api-db/models/schemas/ticket.schema";
+import type { TicketStatus } from "@oc/api-db/models/Ticket";
+import { CH, invalidateByChannelSafe } from "@oc/api-infra/cache";
+import { defaultAggregateOptions } from "@oc/api-infra/mongo-query-options";
+import { createLogger } from "@oc/api-logger";
+import { normalizeAnswerIndex } from "@oc/api-payment-core";
+import { isOpenForTicketSales } from "@oc/api-tickets/competition-sales";
+import { generateOrderNumber } from "@oc/api-tickets/create-session";
+import { getTicketIdsForSlotRange } from "@oc/api-tickets/instant-prize-allocation";
 import { type ClientSession, Types } from "mongoose";
 import { checkBonusAwardMilestones } from "./bonus-award-draw";
 
@@ -117,7 +117,7 @@ export async function getMinimumAllowedMaxTickets(
   competitionId: string | Types.ObjectId
 ): Promise<number> {
   const compId = toObjectId(competitionId);
-  const { CompetitionInstantPrize } = await import("@luxero/api-db/models");
+  const { CompetitionInstantPrize } = await import("@oc/api-db/models");
 
   const [maxTakenAgg, competition, cipMaxAgg] = await Promise.all([
     Ticket.aggregate<{ maxNum: number }>([
@@ -1081,7 +1081,7 @@ export async function buildExcludeSetForInstantPrizes(
   competitionId: string | Types.ObjectId,
   baseExclude?: Set<number>
 ): Promise<Set<number>> {
-  const { CompetitionInstantPrize, InstantPrizeWin } = await import("@luxero/api-db/models");
+  const { CompetitionInstantPrize, InstantPrizeWin } = await import("@oc/api-db/models");
   const compId = toObjectId(competitionId);
   const competition = await Competition.findById(compId).select("winnerTicketNumber").lean();
   const exclude = new Set(baseExclude ?? []);

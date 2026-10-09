@@ -1,4 +1,4 @@
-import { Order } from "@luxero/api-db/models";
+import { Order } from "@oc/api-db/models";
 import { Types } from "mongoose";
 import { finalizeSuccessfulOrder } from "../../finalize-successful-order";
 

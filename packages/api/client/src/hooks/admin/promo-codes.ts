@@ -1,4 +1,4 @@
-import type { AdminPromoCode, ApiResponse } from "@luxero/types";
+import type { AdminPromoCode, ApiResponse } from "@oc/types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { api } from "../../client";
 import { queryKeys } from "../../keys";

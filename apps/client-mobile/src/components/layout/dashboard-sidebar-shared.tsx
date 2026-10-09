@@ -7,8 +7,8 @@ import {
   useComplianceFeatures,
   useProfileAvatar,
   useSaferPlay,
-} from "@luxero/api-client";
-import type { LucideIcon } from "@luxero/icons";
+} from "@oc/api-client";
+import type { LucideIcon } from "@oc/icons";
 import {
   Gift,
   Home,
@@ -19,8 +19,8 @@ import {
   Ticket,
   Trophy,
   User,
-} from "@luxero/icons";
-import { getDisplayName, getProfileInitials } from "@luxero/utils";
+} from "@oc/icons";
+import { getDisplayName, getProfileInitials } from "@oc/utils";
 import { useMemo } from "react";
 import { UserAvatar } from "@/components/user-avatar";
 import { type TranslationKey, useLogicalPathname, useTranslation } from "@/lib/i18n";

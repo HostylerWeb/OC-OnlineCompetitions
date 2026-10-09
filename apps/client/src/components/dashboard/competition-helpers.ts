@@ -1,9 +1,9 @@
-import type { Competition } from "@luxero/types";
+import type { Competition } from "@oc/types";
 import {
   getCompetitionImageUrl as resolveCompetitionImageUrl,
   getProgress,
   getTicketsSold,
-} from "@luxero/utils";
+} from "@oc/utils";
 
 export function getCompetitionHref(comp: Competition): string {
   return `/competitions/${comp.slug ?? comp._id}`;

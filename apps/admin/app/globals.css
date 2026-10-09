@@ -214,7 +214,7 @@
   body:has([data-state="open"][data-slot="dialog-content"]) {
     overflow: hidden;
   }
-  body:has([data-state="open"][data-slot="luxero-dialog-fullscreen"]) {
+  body:has([data-state="open"][data-slot="brand-dialog-fullscreen"]) {
     overflow: hidden;
   }
   [data-slot="sheet-content"] {

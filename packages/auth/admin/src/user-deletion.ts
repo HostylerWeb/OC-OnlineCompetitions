@@ -1,4 +1,4 @@
-import { dbConnect } from "@luxero/api-db";
+import { dbConnect } from "@oc/api-db";
 import {
   Balance,
   BalanceTransaction,
@@ -17,10 +17,10 @@ import {
   ShopOrder,
   Ticket,
   Winner,
-} from "@luxero/api-db/models";
-import { CH, invalidateByChannelSafe, invalidateUser } from "@luxero/api-infra/cache";
-import { getAdminAuth } from "@luxero/auth-admin/admin-auth";
-import { getMongoDb } from "@luxero/auth-admin/auth-mongo";
+} from "@oc/api-db/models";
+import { CH, invalidateByChannelSafe, invalidateUser } from "@oc/api-infra/cache";
+import { getAdminAuth } from "@oc/auth-admin/admin-auth";
+import { getMongoDb } from "@oc/auth-admin/auth-mongo";
 import mongoose, { Types } from "mongoose";
 
 export async function deleteUserAccount(userId: string, headers?: Headers): Promise<void> {

@@ -1,7 +1,7 @@
 [project]
-name = "luxero-turborepo"
+name = "onlinecompetitions"
 version = "0.0.1"
-description = "Luxero turborepo dev tooling"
+description = "Online Competitions turborepo dev tooling"
 requires-python = ">=3.13"
 dependencies = []
 

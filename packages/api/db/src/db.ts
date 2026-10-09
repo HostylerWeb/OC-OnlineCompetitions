@@ -1,4 +1,4 @@
-import dbConnect from "@luxero/api-infra/db";
+import dbConnect from "@oc/api-infra/db";
 import mongoose, { type Model } from "mongoose";
 
 export default dbConnect;

@@ -1,12 +1,12 @@
 "use client";
 
-import type { CompetitionInstantPrizePublicDTO } from "@luxero/api-client";
-import { Gift } from "@luxero/icons";
-import { cn } from "@luxero/utils";
+import type { CompetitionInstantPrizePublicDTO } from "@oc/api-client";
+import { Gift } from "@oc/icons";
+import { cn } from "@oc/utils";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { ChevronDownIcon } from "lucide-react";
 import { useMemo, useState } from "react";
-import { LuxeroDialog } from "@/components/luxero-dialog";
+import { BrandDialog } from "@/components/brand-dialog";
 import {
   collapsibleContentClass,
   collapsibleItemClass,
@@ -267,7 +267,7 @@ export function PrizeAccordionItem({
         </div>
       </AccordionContent>
 
-      <LuxeroDialog
+      <BrandDialog
         open={lightboxOpen}
         onOpenChange={setLightboxOpen}
         mode="fullscreen"

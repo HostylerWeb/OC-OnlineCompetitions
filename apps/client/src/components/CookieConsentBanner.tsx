@@ -1,6 +1,6 @@
 "use client";
 
-import { Cookie, Settings } from "@luxero/icons";
+import { Cookie, Settings } from "@oc/icons";
 import { useEffect, useState } from "react";
 import { GoldButton, GoldOutlineButton } from "@/components/buttons";
 import { Link } from "@/components/Link";
@@ -14,7 +14,7 @@ type ConsentPreferences = {
   advertisement: boolean;
 };
 
-const STORAGE_KEY = "luxero-cookie-consent";
+const STORAGE_KEY = "oc-cookie-consent";
 
 function getStoredConsent(): ConsentPreferences | null {
   try {

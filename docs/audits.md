@@ -1,6 +1,6 @@
 # Security & quality audits
 
-Periodic audits of the Luxero monorepo. When adding a new audit, link it here and in [README.md](./README.md).
+Periodic audits of the Online Competitions monorepo. When adding a new audit, link it here and in [README.md](./README.md).
 
 | Audit | Scope | File |
 |-------|--------|------|

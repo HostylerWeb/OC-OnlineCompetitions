@@ -1,7 +1,7 @@
 "use client";
 
-import { Wallet } from "@luxero/icons";
-import type { Balance } from "@luxero/types";
+import { Wallet } from "@oc/icons";
+import type { Balance } from "@oc/types";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 

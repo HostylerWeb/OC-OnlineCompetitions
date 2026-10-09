@@ -7,10 +7,10 @@ import {
   useCheckout,
   useClearCart,
   useMyOrderDetail,
-} from "@luxero/api-client";
-import { Clock, PartyPopper, Ticket } from "@luxero/icons";
-import type { MeOrderDetailDto } from "@luxero/types";
-import { getGrantedTicketIds } from "@luxero/utils";
+} from "@oc/api-client";
+import { Clock, PartyPopper, Ticket } from "@oc/icons";
+import type { MeOrderDetailDto } from "@oc/types";
+import { getGrantedTicketIds } from "@oc/utils";
 import { useQueryClient } from "@tanstack/react-query";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
@@ -503,7 +503,7 @@ function CheckoutSuccessPageContent() {
         totalTickets={modalTotalTickets}
       />
 
-      <main className="pt-14 flex-1 flex items-center justify-center luxero-container-auth pb-8">
+      <main className="pt-14 flex-1 flex items-center justify-center oc-container-auth pb-8">
         <div className="py-8 lg:py-16 text-center max-w-lg">
           {displayStatus === "invalid" ? (
             <>

@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowLeft, ArrowRight, ChevronsLeft, ChevronsRight } from "@luxero/icons";
+import { ArrowLeft, ArrowRight, ChevronsLeft, ChevronsRight } from "@oc/icons";
 import type { ColumnDef, PaginationState } from "@tanstack/react-table";
 import { flexRender, getCoreRowModel, useReactTable } from "@tanstack/react-table";
 import type { Dispatch, ReactNode, SetStateAction } from "react";

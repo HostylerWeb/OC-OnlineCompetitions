@@ -2,7 +2,7 @@ import type {
   ApiResponse,
   RedeemReferralTicketsResponse,
   ReferralWalletResponse,
-} from "@luxero/types";
+} from "@oc/types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { api } from "../../client";
 import { STALE_TIME_USER } from "../../constants";

@@ -1,5 +1,5 @@
-import { useCompetitionsFilterStore } from "@luxero/api-client";
-import { Search } from "@luxero/icons";
+import { useCompetitionsFilterStore } from "@oc/api-client";
+import { Search } from "@oc/icons";
 import { GoldOutlineButton } from "@/components/buttons";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";

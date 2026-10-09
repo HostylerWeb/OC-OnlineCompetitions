@@ -1,5 +1,5 @@
-import type { ContextualError } from "@luxero/api-client";
-import { resolveContextualErrorFromUnknown } from "@luxero/api-client";
+import type { ContextualError } from "@oc/api-client";
+import { resolveContextualErrorFromUnknown } from "@oc/api-client";
 import { toast } from "sonner";
 import { ContextualErrorMessage } from "@/components/ContextualErrorMessage";
 

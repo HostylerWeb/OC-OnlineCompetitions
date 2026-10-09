@@ -1,4 +1,4 @@
-import type { AuthRedirectErrorKind } from "@luxero/api-client";
+import type { AuthRedirectErrorKind } from "@oc/api-client";
 import {
   buildLoginUrl,
   buildSignUpUrl,
@@ -6,8 +6,8 @@ import {
   parseRefFromSearch,
   resolveAuthRedirectError,
   sanitizeReturnTo,
-} from "@luxero/api-client";
-import { ArrowLeft, HelpCircle, Home, KeyRound, LogIn, Settings, UserPlus } from "@luxero/icons";
+} from "@oc/api-client";
+import { ArrowLeft, HelpCircle, Home, KeyRound, LogIn, Settings, UserPlus } from "@oc/icons";
 import { useEffect, useMemo } from "react";
 import type { PageAction } from "@/components/layout/PageActionButtons";
 import { localeHref, type TranslationKey, useTranslation } from "@/lib/i18n";

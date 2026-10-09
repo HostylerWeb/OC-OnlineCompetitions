@@ -1,7 +1,7 @@
 "use client";
 
-import { Home, LayoutDashboard, MoreHorizontal, Ticket, Trophy } from "@luxero/icons";
-import { cn } from "@luxero/utils";
+import { Home, LayoutDashboard, MoreHorizontal, Ticket, Trophy } from "@oc/icons";
+import { cn } from "@oc/utils";
 import { useCallback } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useUserState } from "@/hooks";

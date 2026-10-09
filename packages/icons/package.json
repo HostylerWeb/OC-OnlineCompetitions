@@ -1,12 +1,12 @@
 {
-  "name": "@luxero/icons",
+  "name": "@oc/icons",
   "version": "0.0.1",
   "private": true,
   "type": "module",
   "main": "./src/index.ts",
   "types": "./src/index.ts",
   "dependencies": {
-    "@luxero/utils": "workspace:*",
+    "@oc/utils": "workspace:*",
     "lucide-react": "^1.14.0"
   },
   "peerDependencies": {

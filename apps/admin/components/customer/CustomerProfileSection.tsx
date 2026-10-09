@@ -1,8 +1,8 @@
 "use client";
 
-import { Award, BadgeCheck, DollarSign, Shield, Ticket, User } from "@luxero/icons";
-import type { Profile } from "@luxero/types";
-import { formatDate, getDisplayName } from "@luxero/utils";
+import { Award, BadgeCheck, DollarSign, Shield, Ticket, User } from "@oc/icons";
+import type { Profile } from "@oc/types";
+import { formatDate, getDisplayName } from "@oc/utils";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";

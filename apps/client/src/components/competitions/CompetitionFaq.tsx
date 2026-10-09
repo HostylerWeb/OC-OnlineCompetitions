@@ -1,7 +1,7 @@
 "use client";
 
-import { HelpCircle } from "@luxero/icons";
-import type { Competition } from "@luxero/types";
+import { HelpCircle } from "@oc/icons";
+import type { Competition } from "@oc/types";
 import { formatDate, useTranslation } from "@/lib/i18n";
 
 export default function CompetitionFaq({

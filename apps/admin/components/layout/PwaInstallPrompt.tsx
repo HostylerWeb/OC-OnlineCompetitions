@@ -1,6 +1,6 @@
 "use client";
 
-import { Smartphone, X } from "@luxero/icons";
+import { Smartphone, X } from "@oc/icons";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -99,7 +99,7 @@ interface InstallPromptProps {
   tagline?: string;
 }
 
-function InstallPrompt({ appName = "Luxero", tagline }: InstallPromptProps = {}) {
+function InstallPrompt({ appName = "Online Competitions", tagline }: InstallPromptProps = {}) {
   const installed = useIsInstalled();
   const isIOS = useIsIOS();
   const [dismissed] = useDismissed();

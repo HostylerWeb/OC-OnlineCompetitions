@@ -1,1 +1,1 @@
-export { getAdminAuth } from "@luxero/auth-admin/admin-auth";
+export { getAdminAuth } from "@oc/auth-admin/admin-auth";

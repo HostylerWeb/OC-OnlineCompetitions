@@ -1,13 +1,13 @@
-import { EmergencyError } from "@luxero/api-errors";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { created, error, success } from "@luxero/api-infra/response";
-import { captureRouteError } from "@luxero/api-infra/sentry";
+import { EmergencyError } from "@oc/api-errors";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { created, error, success } from "@oc/api-infra/response";
+import { captureRouteError } from "@oc/api-infra/sentry";
 import {
   completeAdminEmergencyRecovery,
   getAdminEmergencyStatus,
   getEmergencySecretHeaderName,
   requestAdminEmergencyOtp,
-} from "@luxero/auth-admin/auth-emergency";
+} from "@oc/auth-admin/auth-emergency";
 import { Hono } from "hono";
 
 const app = new Hono();

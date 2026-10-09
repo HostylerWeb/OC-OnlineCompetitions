@@ -1,7 +1,7 @@
 import type {
   PaymentProviderCapabilities,
   PaymentProviderInternalCapabilities,
-} from "@luxero/types";
+} from "@oc/types";
 
 export function mapInternalCapabilitiesToPublic(
   internal: PaymentProviderInternalCapabilities

@@ -1,5 +1,5 @@
-import { createLogger } from "@luxero/api-logger";
-import type { CheckoutLineItem } from "@luxero/api-tickets/load-cart";
+import { createLogger } from "@oc/api-logger";
+import type { CheckoutLineItem } from "@oc/api-tickets/load-cart";
 
 export interface WalletTicketAllocation {
   competitionId: string;

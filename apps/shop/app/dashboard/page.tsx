@@ -1,5 +1,5 @@
-import { getServerSession } from "@luxero/auth-admin";
-import { formatOrderNumber } from "@luxero/utils";
+import { getServerSession } from "@oc/auth-admin";
+import { formatOrderNumber } from "@oc/utils";
 import { TriangleAlert } from "lucide-react";
 import type { Metadata } from "next";
 import { cookies } from "next/headers";
@@ -10,7 +10,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { fetchOrders } from "@/lib/api";
 
 export const metadata: Metadata = {
-  title: "Account — Luxero Shop",
+  title: "Account — Online Competitions Shop",
 };
 
 const statusVariant: Record<
@@ -52,7 +52,7 @@ export default async function DashboardPage() {
   const displayName = user.name ?? user.firstName ?? user.email;
 
   return (
-    <main className="luxero-container py-12">
+    <main className="oc-container py-12">
       <h1 className="text-2xl font-bold tracking-tight">My Account</h1>
 
       <div className="mt-8 space-y-4">

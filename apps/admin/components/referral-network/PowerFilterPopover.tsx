@@ -1,6 +1,6 @@
 "use client";
 
-import type { ReferralMindmapNode } from "@luxero/api-referrals/mindmap";
+import type { ReferralMindmapNode } from "@oc/api-referrals/mindmap";
 import { Filter, RotateCcw, X } from "lucide-react";
 import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";

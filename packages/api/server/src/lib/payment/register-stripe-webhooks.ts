@@ -1,7 +1,7 @@
-import { PaymentMethod } from "@luxero/api-db/models";
-import { createLogger } from "@luxero/api-logger";
-import { createStripeClient, type StripeClient } from "@luxero/api-payment-stripe";
-import { getEnv } from "@luxero/env/server";
+import { PaymentMethod } from "@oc/api-db/models";
+import { createLogger } from "@oc/api-logger";
+import { createStripeClient, type StripeClient } from "@oc/api-payment-stripe";
+import { getEnv } from "@oc/env/server";
 import {
   getStripeEnvironmentFromEnv,
   hasStripeEnvCredentials,

@@ -1,6 +1,6 @@
 "use client";
 
-import { RefreshCw } from "@luxero/icons";
+import { RefreshCw } from "@oc/icons";
 import { useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";

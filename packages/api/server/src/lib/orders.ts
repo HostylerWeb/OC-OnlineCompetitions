@@ -1,10 +1,10 @@
-import { Order, Profile } from "@luxero/api-db/models";
-import { sendEmail } from "@luxero/api-email/client";
-import { getEmailConfig } from "@luxero/api-email/config";
-import { InstantWinEmail } from "@luxero/api-email/templates/instant-win";
-import { OrderConfirmationEmail } from "@luxero/api-email/templates/order-confirmation";
-import { getCurrentContext } from "@luxero/api-infra/env";
-import { formatOrderNumber } from "@luxero/utils";
+import { Order, Profile } from "@oc/api-db/models";
+import { sendEmail } from "@oc/api-email/client";
+import { getEmailConfig } from "@oc/api-email/config";
+import { InstantWinEmail } from "@oc/api-email/templates/instant-win";
+import { OrderConfirmationEmail } from "@oc/api-email/templates/order-confirmation";
+import { getCurrentContext } from "@oc/api-infra/env";
+import { formatOrderNumber } from "@oc/utils";
 import { render } from "@react-email/render";
 
 export interface OrderEmailItem {
@@ -39,7 +39,7 @@ export async function sendOrderConfirmationEmail(
   const profile = await Profile.findById(params.userId).lean();
   const recipientEmail =
     params.orderEmail ??
-    (profile?.email && !profile.email.endsWith("@guest.luxero.local") ? profile.email : undefined);
+    (profile?.email && !profile.email.endsWith("@guest.onlinecompetitions.local") ? profile.email : undefined);
 
   if (!recipientEmail) {
     await Order.findByIdAndUpdate(params.orderId, {
@@ -101,7 +101,7 @@ export async function sendOrderConfirmationEmail(
     );
     const sendResult = await sendEmail({
       to: recipientEmail,
-      subject: `Order confirmed — Luxero (${params.orderNumber != null ? formatOrderNumber(params.orderNumber) : params.orderId})`,
+      subject: `Order confirmed — Online Competitions (${params.orderNumber != null ? formatOrderNumber(params.orderNumber) : params.orderId})`,
       html: emailHtml,
     });
     if (!sendResult.success) {
@@ -141,7 +141,7 @@ interface SendInstantWinEmailParams {
 export async function sendInstantWinEmail(params: SendInstantWinEmailParams): Promise<void> {
   const profile = await Profile.findById(params.userId).lean();
   const recipientEmail =
-    profile?.email && !profile.email.endsWith("@guest.luxero.local") ? profile.email : undefined;
+    profile?.email && !profile.email.endsWith("@guest.onlinecompetitions.local") ? profile.email : undefined;
 
   if (!recipientEmail) return;
 
@@ -163,8 +163,8 @@ export async function sendInstantWinEmail(params: SendInstantWinEmailParams): Pr
     );
     const subject =
       params.wins.length === 1
-        ? `You won ${params.wins[0]!.prizeTitle}! — Instant Prize from Luxero`
-        : `You won ${params.wins.length} instant prizes! — Luxero`;
+        ? `You won ${params.wins[0]!.prizeTitle}! — Instant Prize from Online Competitions`
+        : `You won ${params.wins.length} instant prizes! — Online Competitions`;
     await sendEmail({
       to: recipientEmail,
       subject,

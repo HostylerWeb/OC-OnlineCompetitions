@@ -1,4 +1,4 @@
-import type { ApiResponse, MeOrderDto } from "@luxero/types";
+import type { ApiResponse, MeOrderDto } from "@oc/types";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { api } from "../../client";
 import { STALE_TIME_USER } from "../../constants";

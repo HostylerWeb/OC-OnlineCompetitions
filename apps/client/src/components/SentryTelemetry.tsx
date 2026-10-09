@@ -1,6 +1,6 @@
 "use client";
 
-import { useAuth } from "@luxero/api-client";
+import { useAuth } from "@oc/api-client";
 import * as Sentry from "@sentry/react";
 import { useEffect, useRef } from "react";
 

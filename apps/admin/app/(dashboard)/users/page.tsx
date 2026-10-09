@@ -6,7 +6,7 @@ import {
   useAdminUsers,
   useAuth,
   useServerPagination,
-} from "@luxero/api-admin";
+} from "@oc/api-admin";
 import {
   Filter,
   MoreHorizontal,
@@ -15,7 +15,7 @@ import {
   Shield,
   Trash2,
   User as UserIcon,
-} from "@luxero/icons";
+} from "@oc/icons";
 import { useQueryClient } from "@tanstack/react-query";
 import type { ColumnDef, SortingState, VisibilityState } from "@tanstack/react-table";
 import { useRouter, useSearchParams } from "next/navigation";

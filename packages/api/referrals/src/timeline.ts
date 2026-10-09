@@ -4,7 +4,7 @@ import {
   Order,
   Profile,
   ReferralPurchase,
-} from "@luxero/api-db/models";
+} from "@oc/api-db/models";
 import mongoose from "mongoose";
 
 export type TimelineEventType =

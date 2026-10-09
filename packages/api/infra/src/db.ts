@@ -1,5 +1,5 @@
-import { createLogger } from "@luxero/api-logger";
-import { getBool, getEnv } from "@luxero/env/server";
+import { createLogger } from "@oc/api-logger";
+import { getBool, getEnv } from "@oc/env/server";
 import mongoose from "mongoose";
 import { resolveMongoConnectOptions } from "./mongo-capabilities";
 import { DEFAULT_AGGREGATE_MAX_TIME_MS } from "./mongo-query-options";

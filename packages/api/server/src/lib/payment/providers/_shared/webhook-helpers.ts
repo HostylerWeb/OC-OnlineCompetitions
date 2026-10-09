@@ -1,4 +1,4 @@
-import { createLogger } from "@luxero/api-logger";
+import { createLogger } from "@oc/api-logger";
 import { getAdapter } from "../index";
 import type { PaymentProviderId, WebhookResult } from "../types";
 

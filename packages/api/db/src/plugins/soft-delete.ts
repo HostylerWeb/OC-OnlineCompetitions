@@ -20,7 +20,7 @@ export interface SoftDeleteModel<T extends Document> extends Model<T> {
  * filter. Exported so callers that must see soft-deleted rows — for example to
  * free a unique index slot one still occupies — can set it explicitly.
  */
-export const SOFT_DELETE_FLAG = "luxero_softDeleteIncluded" as const;
+export const SOFT_DELETE_FLAG = "onlinecompetitions_softDeleteIncluded" as const;
 
 export function softDeletePlugin(schema: Schema): void {
   schema.add({

@@ -1,4 +1,4 @@
-import { getEnv } from "@luxero/env/server";
+import { getEnv } from "@oc/env/server";
 import { secretsEqual } from "./secret-compare";
 
 export const CRON_JOBS_SECRET_HEADER = "x-cron-jobs-secret";

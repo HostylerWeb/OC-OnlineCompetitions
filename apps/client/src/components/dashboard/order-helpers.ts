@@ -1,4 +1,4 @@
-import type { MeOrderDto } from "@luxero/types";
+import type { MeOrderDto } from "@oc/types";
 import type { StatusVariant } from "@/components/StatusBadge";
 import { formatDate } from "@/lib/utils";
 

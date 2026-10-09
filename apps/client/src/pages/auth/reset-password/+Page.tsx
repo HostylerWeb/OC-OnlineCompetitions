@@ -1,5 +1,5 @@
-import { ResetPasswordForm } from "@luxero/api-client";
-import { getEnv } from "@luxero/env/vike";
+import { ResetPasswordForm } from "@oc/api-client";
+import { getEnv } from "@oc/env/vike";
 import { useData } from "vike-react/useData";
 import { useTranslation } from "@/lib/i18n";
 import type { Data } from "./+data";

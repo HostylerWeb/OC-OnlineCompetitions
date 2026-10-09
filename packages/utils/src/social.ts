@@ -7,28 +7,26 @@ export type SocialIconName =
   | "youtube";
 
 export interface SocialLink {
+  /** Display label (domain). */
   label: string;
   href: string;
   icon: SocialIconName;
 }
 
 export const SOCIAL_LINKS: SocialLink[] = [
-  {
-    label: "Facebook",
-    href: "https://www.facebook.com/profile.php?id=61592003516271",
-    icon: "facebook",
-  },
-  { label: "Instagram", href: "https://www.instagram.com/win.luxero/", icon: "instagram" },
-  {
-    label: "WhatsApp",
-    href: "https://chat.whatsapp.com/GPcQAlYiSwNGL2NcGZY0Bg",
-    icon: "whatsapp",
-  },
-  { label: "Telegram", href: "https://t.me/luxero_competitions", icon: "telegram" },
-  { label: "TikTok", href: "https://www.tiktok.com/@luxero.win", icon: "tiktok" },
-  {
-    label: "YouTube",
-    href: "https://www.youtube.com/@Luxero_win",
-    icon: "youtube",
-  },
+  { label: "facebook.com", href: "https://www.facebook.com/", icon: "facebook" },
+  { label: "instagram.com", href: "https://www.instagram.com/", icon: "instagram" },
+  { label: "whatsapp.com", href: "https://www.whatsapp.com/", icon: "whatsapp" },
+  { label: "telegram.org", href: "https://telegram.org/", icon: "telegram" },
+  { label: "tiktok.com", href: "https://www.tiktok.com/", icon: "tiktok" },
+  { label: "youtube.com", href: "https://www.youtube.com/", icon: "youtube" },
 ];
+
+/** Default social URLs for email settings / footers (platform homepages, not profiles). */
+export const DEFAULT_SOCIAL_URLS = {
+  facebook: SOCIAL_LINKS.find((l) => l.icon === "facebook")!.href,
+  instagram: SOCIAL_LINKS.find((l) => l.icon === "instagram")!.href,
+  whatsapp: SOCIAL_LINKS.find((l) => l.icon === "whatsapp")!.href,
+  telegram: SOCIAL_LINKS.find((l) => l.icon === "telegram")!.href,
+  tiktok: SOCIAL_LINKS.find((l) => l.icon === "tiktok")!.href,
+} as const;

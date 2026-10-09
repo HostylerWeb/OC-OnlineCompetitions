@@ -1,5 +1,5 @@
 {
-  "name": "@luxero/api-infra",
+  "name": "@oc/api-infra",
   "private": true,
   "type": "module",
   "exports": {
@@ -16,10 +16,10 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@luxero/api-logger": "workspace:*",
-    "@luxero/api-validation": "workspace:*",
-    "@luxero/env": "workspace:*",
-    "@luxero/types": "workspace:*",
+    "@oc/api-logger": "workspace:*",
+    "@oc/api-validation": "workspace:*",
+    "@oc/env": "workspace:*",
+    "@oc/types": "workspace:*",
     "@sentry/node": "^8.55.0",
     "hono": "^4.12.15",
     "ioredis": "^5.6.1",

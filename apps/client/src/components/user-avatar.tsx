@@ -1,6 +1,6 @@
 "use client";
 
-import { cn, withAssetCacheVersion } from "@luxero/utils";
+import { cn, withAssetCacheVersion } from "@oc/utils";
 import { useMemo, useState } from "react";
 import { Avatar, AvatarFallback } from "./ui/avatar";
 

@@ -44,7 +44,7 @@ const __mocks = vi.hoisted(() => {
 
 __mocks.__orderFindById.mockImplementation(() => ({ lean: async () => null }));
 
-vi.mock("@luxero/api-payment-stripe", () => ({
+vi.mock("@oc/api-payment-stripe", () => ({
   createStripeClient: () => ({
     createPaymentIntent: __mocks.__createPaymentIntent,
     retrievePaymentIntent: __mocks.__retrievePaymentIntent,
@@ -57,12 +57,12 @@ vi.mock("@luxero/api-payment-stripe", () => ({
   StripeError: __mocks.__MockStripeError,
 }));
 
-vi.mock("@luxero/api-payment-core", () => ({
+vi.mock("@oc/api-payment-core", () => ({
   getItemsFromOrder: () => [],
   rollbackOrderRefund: __mocks.__rollbackOrderRefund,
 }));
 
-vi.mock("@luxero/api-tickets/create-session", () => ({
+vi.mock("@oc/api-tickets/create-session", () => ({
   computeCheckoutTotal: __mocks.__computeCheckoutTotal,
   createPendingCheckoutOrder: __mocks.__createPendingCheckoutOrder,
 }));
@@ -75,7 +75,7 @@ vi.mock("../finalize-successful-order", () => ({
   finalizeSuccessfulOrder: __mocks.__finalizeSuccessfulOrder,
 }));
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   Order: {
     findOne: __mocks.__orderFindOne,
     findOneAndUpdate: __mocks.__orderFindOneAndUpdate,
@@ -92,11 +92,11 @@ vi.mock("@luxero/api-db/models", () => ({
   },
 }));
 
-vi.mock("@luxero/auth-admin/auth-hooks", () => ({
+vi.mock("@oc/auth-admin/auth-hooks", () => ({
   canonicalizeEmail: (email: string) => email.toLowerCase().trim(),
 }));
 
-vi.mock("@luxero/api-logger", () => ({
+vi.mock("@oc/api-logger", () => ({
   createLogger: () => ({
     debug: () => {},
     info: () => {},
@@ -105,7 +105,7 @@ vi.mock("@luxero/api-logger", () => ({
   }),
 }));
 
-vi.mock("@luxero/api-infra/mongo-capabilities", () => ({
+vi.mock("@oc/api-infra/mongo-capabilities", () => ({
   withMongoTransactionOptional: async <T>(fn: (session?: unknown) => Promise<T>) => fn(undefined),
 }));
 
@@ -735,7 +735,7 @@ describe("stripe getSessionStatus", () => {
     const orderId = new Types.ObjectId();
     __mocks.__profileFindById.mockResolvedValue({
       _id: new Types.ObjectId(),
-      email: "guest-abc123@guest.luxero.local",
+      email: "guest-abc123@guest.onlinecompetitions.local",
     });
     __mocks.__profileFind.mockResolvedValue([]);
     __mocks.__orderFindOne
@@ -762,7 +762,7 @@ describe("stripe getSessionStatus", () => {
   test("does not expose an unowned order when the remote intent did not succeed", async () => {
     __mocks.__profileFindById.mockResolvedValue({
       _id: new Types.ObjectId(),
-      email: "guest-abc123@guest.luxero.local",
+      email: "guest-abc123@guest.onlinecompetitions.local",
     });
     __mocks.__profileFind.mockResolvedValue([]);
     __mocks.__orderFindOne

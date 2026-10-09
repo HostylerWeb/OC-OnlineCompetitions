@@ -1,7 +1,7 @@
 "use client";
 
-import { DollarSign, RefreshCw, Ticket, TrendingUp } from "@luxero/icons";
-import type { AdminReferralStats, Profile } from "@luxero/types";
+import { DollarSign, RefreshCw, Ticket, TrendingUp } from "@oc/icons";
+import type { AdminReferralStats, Profile } from "@oc/types";
 import {
   Avatar,
   AvatarFallback,

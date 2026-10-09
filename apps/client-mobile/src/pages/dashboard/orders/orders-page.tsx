@@ -1,7 +1,7 @@
 "use client";
 
-import { useInfiniteMyOrders } from "@luxero/api-client";
-import { Package } from "@luxero/icons";
+import { useInfiniteMyOrders } from "@oc/api-client";
+import { Package } from "@oc/icons";
 import { useMemo, useState } from "react";
 import {
   DashboardEmptyCard,

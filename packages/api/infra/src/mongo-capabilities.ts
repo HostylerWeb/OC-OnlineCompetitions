@@ -1,4 +1,4 @@
-import { getBool, getEnv } from "@luxero/env/server";
+import { getBool, getEnv } from "@oc/env/server";
 import mongoose, { type ClientSession } from "mongoose";
 
 export type MongoTopology = "standalone" | "replicaSet" | "sharded" | "unknown";

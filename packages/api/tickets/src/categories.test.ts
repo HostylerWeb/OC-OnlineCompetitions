@@ -2,7 +2,7 @@ import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 
 const updateManyCalls = { value: [] as Array<[Record<string, unknown>, Record<string, unknown>]> };
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   Competition: {
     updateMany: vi.fn(async (filter: Record<string, unknown>, update: Record<string, unknown>) => {
       updateManyCalls.value.push([filter, update]);
@@ -21,7 +21,7 @@ describe("category backpropagation", () => {
   });
 
   async function loadCategoriesLib() {
-    return import("@luxero/api-tickets/categories");
+    return import("@oc/api-tickets/categories");
   }
 
   test("backpropagateCategorySlugChange updates competitions with old slug", async () => {

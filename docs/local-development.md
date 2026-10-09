@@ -1,6 +1,6 @@
 # Local development
 
-Quick reference for running the Luxero monorepo on your machine.
+Quick reference for running the Online Competitions monorepo on your machine.
 
 ## Prerequisites
 
@@ -54,7 +54,7 @@ Root [`.env.example`](../.env.example) is **documentation only** — apps load t
 
 Local Mongo URL used in dev (no auth, replica set on Docker):
 
-`mongodb://localhost:27017/luxero?directConnection=true`
+`mongodb://localhost:27017/onlinecompetitions?directConnection=true`
 
 ## Start everything
 
@@ -68,13 +68,13 @@ bun run dev
 Run a subset:
 
 ```bash
-bunx turbo run dev --concurrency=3 --filter=@luxero/client --filter=@luxero/admin
+bunx turbo run dev --concurrency=3 --filter=@oc/client --filter=@oc/admin
 ```
 
 Skip web-lander if you do not need it (avoids extra log noise):
 
 ```bash
-bunx turbo run dev --concurrency=5 --filter='!@luxero/web-lander'
+bunx turbo run dev --concurrency=5 --filter='!@oc/web-lander'
 ```
 
 Alternative: [devservers.yml](../devservers.yml) + `bun run devserver` (Python venv; lander disabled there by default).

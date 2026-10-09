@@ -1,3 +1,4 @@
+import { BRAND_LOGO_PATH } from "@oc/utils";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { CompetitionLanding } from "@/components/competition/competition-landing";
@@ -11,11 +12,11 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const landerUrl = process.env.NEXT_PUBLIC_APP_URL || "https://agro.luxero.win";
+  const landerUrl = process.env.NEXT_PUBLIC_APP_URL || "https://agro.onlinecompetitions.co.uk";
   try {
     const { competition } = await fetchCompetitionLandingPage(slug);
 
-    const imageUrl = competition.heroImageUrl || competition.prizeImageUrl || "/og-default.png";
+    const imageUrl = competition.heroImageUrl || competition.prizeImageUrl || BRAND_LOGO_PATH;
     const imageSecureUrl = imageUrl.startsWith("http")
       ? imageUrl
       : `${landerUrl}${imageUrl.startsWith("/") ? "" : "/"}${imageUrl}`;
@@ -25,7 +26,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description:
         competition.shortDescription ??
         competition.description ??
-        `Enter to win ${competition.title} on Luxero.`,
+        `Enter to win ${competition.title} on Online Competitions.`,
       openGraph: {
         title: competition.title,
         description: competition.shortDescription ?? competition.description,
@@ -39,14 +40,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
             height: 630,
           },
         ],
-        siteName: "Luxero",
+        siteName: "Online Competitions",
         type: "website",
       },
     };
   } catch {
     return {
       title: "Competition",
-      description: "Enter to win on Luxero.",
+      description: "Enter to win on Online Competitions.",
     };
   }
 }

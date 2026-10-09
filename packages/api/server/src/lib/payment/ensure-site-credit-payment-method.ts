@@ -1,4 +1,4 @@
-import { PaymentMethod } from "@luxero/api-db/models";
+import { PaymentMethod } from "@oc/api-db/models";
 
 export const SITE_CREDIT_PROVIDER = "site_credit";
 

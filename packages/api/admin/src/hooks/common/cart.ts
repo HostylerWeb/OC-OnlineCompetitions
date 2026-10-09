@@ -1,5 +1,5 @@
 // React Query source of truth for cart reads. Selectors + convenience hooks below re-render only when the selected slice changes.
-import type { ApiResponse, CartAdjustment, CartItem, CartWalletTicket, ICart } from "@luxero/types";
+import type { ApiResponse, CartAdjustment, CartItem, CartWalletTicket, ICart } from "@oc/types";
 import { type UseQueryResult, useQuery } from "@tanstack/react-query";
 import { api } from "../../client";
 import { STALE_TIME_USER } from "../../constants";

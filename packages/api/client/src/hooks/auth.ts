@@ -1,4 +1,4 @@
-import type { ApiResponse, Profile } from "@luxero/types";
+import type { ApiResponse, Profile } from "@oc/types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import {
   changePassword,

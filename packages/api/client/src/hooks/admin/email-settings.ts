@@ -1,4 +1,4 @@
-import type { EmailSettings } from "@luxero/types";
+import type { EmailSettings } from "@oc/types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { api } from "../../client";
 import { STALE_TIME_ADMIN } from "../../constants";

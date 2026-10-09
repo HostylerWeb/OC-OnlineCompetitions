@@ -1,12 +1,12 @@
-import { Cart, Competition, Profile } from "@luxero/api-db/models";
-import type { ICart } from "@luxero/api-db/models/Cart";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { error, success } from "@luxero/api-infra/response";
-import { captureRouteError } from "@luxero/api-infra/sentry";
-import { createLogger } from "@luxero/api-logger";
-import { validateReferralTicketSpend } from "@luxero/api-referrals/referral-ticket-validation";
-import { abandonOpenCheckoutOrdersForUser } from "@luxero/api-server/lib/checkout/abandon-open-orders";
-import { requireSession } from "@luxero/api-server/middleware/auth";
+import { Cart, Competition, Profile } from "@oc/api-db/models";
+import type { ICart } from "@oc/api-db/models/Cart";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { error, success } from "@oc/api-infra/response";
+import { captureRouteError } from "@oc/api-infra/sentry";
+import { createLogger } from "@oc/api-logger";
+import { validateReferralTicketSpend } from "@oc/api-referrals/referral-ticket-validation";
+import { abandonOpenCheckoutOrdersForUser } from "@oc/api-server/lib/checkout/abandon-open-orders";
+import { requireSession } from "@oc/api-server/middleware/auth";
 import {
   type CartLineItemWithPrice,
   computeCartTotals,
@@ -15,9 +15,9 @@ import {
   isCompetitionAvailableForCart,
   loadCompetitionForCartItem,
   saveCartWithRetry,
-} from "@luxero/api-tickets/cart";
-import { enrichCartItems } from "@luxero/api-tickets/cart-enrichment";
-import { validateBody } from "@luxero/api-validation";
+} from "@oc/api-tickets/cart";
+import { enrichCartItems } from "@oc/api-tickets/cart-enrichment";
+import { validateBody } from "@oc/api-validation";
 import {
   type AddCartItemInput,
   type ApplyCartWalletInput,
@@ -27,8 +27,8 @@ import {
   applyDiscountSchema,
   type UpdateCartItemInput,
   updateCartItemSchema,
-} from "@luxero/api-validation/schemas/orders";
-import type { CartWalletTicket } from "@luxero/types";
+} from "@oc/api-validation/schemas/orders";
+import type { CartWalletTicket } from "@oc/types";
 import type { Context } from "hono";
 import { Hono } from "hono";
 import { Types } from "mongoose";
@@ -170,7 +170,7 @@ async function isReferralLocked(
   precomputedProfile?: Record<string, any> | null,
   precomputedCompletedOrders?: number
 ): Promise<boolean> {
-  const { Order, Profile } = await import("@luxero/api-db/models");
+  const { Order, Profile } = await import("@oc/api-db/models");
   const profile = precomputedProfile ?? (await Profile.findById(userId).lean());
   if (!profile?.referredByCode || !cart.referralCode) return false;
 
@@ -264,7 +264,7 @@ app.get("/buying-power", async (c) => {
     }
 
     const { getCompetitionTicketStatsBatch, countEffectiveOwnedByUserBatch } = await import(
-      "@luxero/api-tickets/ticket-service"
+      "@oc/api-tickets/ticket-service"
     );
     const profile = await Profile.findById(userId).lean();
     const walletBalance = profile?.referralTierAwardedTickets ?? 0;
@@ -381,7 +381,7 @@ app.post(
         ` POST /items: cart before merge: items=${JSON.stringify(cart.items.map((i) => ({ compId: i.competitionId.toString(), qty: i.quantity, answerIndex: i.answerIndex })))}`
       );
 
-      const { mergeCartItem } = await import("@luxero/api-tickets/cart");
+      const { mergeCartItem } = await import("@oc/api-tickets/cart");
       const newItem = {
         competitionId: new Types.ObjectId(body.competitionId),
         quantity: body.quantity,
@@ -472,7 +472,7 @@ app.put(
 
       item.quantity = body.quantity;
       if (body.answerIndex !== undefined && competition?.questionOptions) {
-        const { normalizeAnswerIndex } = await import("@luxero/api-payment-core");
+        const { normalizeAnswerIndex } = await import("@oc/api-payment-core");
         item.answerIndex = normalizeAnswerIndex(body.answerIndex, competition.questionOptions);
       }
       cart.markModified("items");
@@ -664,13 +664,13 @@ app.post(
 
       const cart = await getOrCreateCart(userId);
 
-      const { computeSubtotalForCartItems } = await import("@luxero/api-tickets/cart");
+      const { computeSubtotalForCartItems } = await import("@oc/api-tickets/cart");
       const subtotal = await computeSubtotalForCartItems(cart.items);
 
       const { validatePromoCode, validateReferralCode, validatePendingReferralCode } = await import(
-        "@luxero/api-tickets/promo-codes"
+        "@oc/api-tickets/promo-codes"
       );
-      const { Order, Profile, PromoCode } = await import("@luxero/api-db/models");
+      const { Order, Profile, PromoCode } = await import("@oc/api-db/models");
 
       const buyerProfile = await Profile.findById(userId).lean();
       const completedOrders = await Order.countDocuments({ userId, status: "completed" }).maxTimeMS(
@@ -697,7 +697,7 @@ app.post(
           isFirstOrder && Boolean(buyerProfile?.referredByCode)
         );
         if (result.valid) {
-          const { applyReferralToProfile } = await import("@luxero/auth-admin/auth-hooks");
+          const { applyReferralToProfile } = await import("@oc/auth-admin/auth-hooks");
           try {
             await applyReferralToProfile(userId, body.code);
           } catch {
@@ -723,7 +723,7 @@ app.post(
           const referralResult = await validateReferralCode(body.code, subtotal, userId);
           if (referralResult.valid) {
             result = referralResult;
-            const { applyReferralToProfile } = await import("@luxero/auth-admin/auth-hooks");
+            const { applyReferralToProfile } = await import("@oc/auth-admin/auth-hooks");
             try {
               await applyReferralToProfile(userId, body.code);
             } catch {
@@ -889,7 +889,7 @@ app.put(
           }
           const maxPerUser = competition.maxTicketsPerUser ?? 0;
           if (maxPerUser > 0) {
-            const { countEffectiveOwnedForCap } = await import("@luxero/api-tickets/ticket-service");
+            const { countEffectiveOwnedForCap } = await import("@oc/api-tickets/ticket-service");
             const userOwned = await countEffectiveOwnedForCap(alloc.competitionId, userId);
             const totalAfterPurchase = userOwned + cartItem.quantity;
             if (totalAfterPurchase > maxPerUser) {
@@ -993,7 +993,7 @@ app.delete("/discount", async (c) => {
       return error(c, ErrorCodes.NOT_FOUND, "Cart not found", 404);
     }
 
-    const { Order, Profile } = await import("@luxero/api-db/models");
+    const { Order, Profile } = await import("@oc/api-db/models");
     const profile = await Profile.findById(userId).lean();
     const completedOrders = await Order.countDocuments({ userId, status: "completed" }).maxTimeMS(
       5000

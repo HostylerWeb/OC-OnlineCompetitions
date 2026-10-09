@@ -1,6 +1,6 @@
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { error } from "@luxero/api-infra/response";
-import { auth } from "@luxero/api-server/middleware/auth";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { error } from "@oc/api-infra/response";
+import { auth } from "@oc/api-server/middleware/auth";
 import { Hono } from "hono";
 
 const app = new Hono();

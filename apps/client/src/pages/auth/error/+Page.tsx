@@ -1,4 +1,4 @@
-import { AlertTriangle } from "@luxero/icons";
+import { AlertTriangle } from "@oc/icons";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { PageActionButtons } from "@/components/layout/PageActionButtons";

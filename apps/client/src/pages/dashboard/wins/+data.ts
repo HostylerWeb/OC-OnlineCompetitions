@@ -1,4 +1,4 @@
-import type { MyBonusAwardWinDto, MyInstantPrizeWinDto, Winner } from "@luxero/types";
+import type { MyBonusAwardWinDto, MyInstantPrizeWinDto, Winner } from "@oc/types";
 import type { PageContextServer } from "vike/types";
 import { serverFetch } from "@/lib/server-fetch";
 

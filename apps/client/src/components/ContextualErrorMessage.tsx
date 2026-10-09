@@ -1,5 +1,5 @@
 "use client";
-import type { ContextualError } from "@luxero/api-client";
+import type { ContextualError } from "@oc/api-client";
 import { cn } from "@/lib/utils";
 
 export interface ContextualErrorMessageProps {

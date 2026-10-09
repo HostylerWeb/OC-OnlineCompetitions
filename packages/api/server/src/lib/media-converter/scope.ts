@@ -1,4 +1,4 @@
-import type { MediaConverterScope } from "@luxero/types";
+import type { MediaConverterScope } from "@oc/types";
 
 export function resolveScopeFromKey(key: string): MediaConverterScope | null {
   const normalized = key.replace(/^\/+/, "");

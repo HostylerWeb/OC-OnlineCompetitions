@@ -2,14 +2,14 @@ import {
   ABOUT_CTA as ABOUT_CTA_EN,
   ABOUT_HERO as ABOUT_HERO_EN,
   ABOUT_SECTIONS as ABOUT_SECTIONS_EN,
-} from "@luxero/content/about";
-import { resolveContent } from "@luxero/content/locales";
+} from "@oc/content/about";
+import { resolveContent } from "@oc/content/locales";
 import {
   ABOUT_CTA as ABOUT_CTA_RO,
   ABOUT_HERO as ABOUT_HERO_RO,
   ABOUT_SECTIONS as ABOUT_SECTIONS_RO,
-} from "@luxero/content/ro";
-import { ArrowRight } from "@luxero/icons";
+} from "@oc/content/ro";
+import { ArrowRight } from "@oc/icons";
 import Accordion from "@/components/about/Accordion";
 import { GoldOutlineButton } from "@/components/buttons";
 import { Link } from "@/components/Link";
@@ -22,11 +22,11 @@ export default function AboutPage() {
   const cta = resolveContent(locale, ABOUT_CTA_EN, ABOUT_CTA_RO);
 
   return (
-    <div className="luxero-container-content pb-8">
+    <div className="oc-container-content pb-8">
       <div className="py-8 lg:py-16">
         <div className="text-center mb-12">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4 text-foreground text-balance">
-            {t("staticPages.about.heading")} <span className="text-gold">Luxero</span>
+            {t("staticPages.about.heading")} <span className="text-gold">Online Competitions</span>
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{hero.subtitle}</p>
         </div>

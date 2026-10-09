@@ -28,7 +28,7 @@ export const HOME_FEATURES: HomeFeature[] = [
   {
     id: "community",
     title: "Community First",
-    description: "Join thousands of players who trust Luxero for fair, exciting competitions.",
+    description: "Join thousands of players who trust Online Competitions for fair, exciting competitions.",
     icon: "Users",
     variant: "side",
   },

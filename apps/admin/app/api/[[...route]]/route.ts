@@ -7,73 +7,73 @@ import {
   SetupError,
   TicketAvailabilityError,
   TicketSoldOutError,
-} from "@luxero/api-errors";
-import { getRedis } from "@luxero/api-infra/cache/redis";
-import dbConnect from "@luxero/api-infra/db";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { runtimeConfig } from "@luxero/api-infra/runtime-config";
-import { captureRouteError, flushSentry, initSentry } from "@luxero/api-infra/sentry";
-import { sessionMiddleware } from "@luxero/api-server/middleware/auth";
+} from "@oc/api-errors";
+import { getRedis } from "@oc/api-infra/cache/redis";
+import dbConnect from "@oc/api-infra/db";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { runtimeConfig } from "@oc/api-infra/runtime-config";
+import { captureRouteError, flushSentry, initSentry } from "@oc/api-infra/sentry";
+import { sessionMiddleware } from "@oc/api-server/middleware/auth";
 import {
   emailRateLimit,
   paymentRateLimit,
   rateLimitBodyReader,
-} from "@luxero/api-server/middleware/rate-limit";
-import { csrfProtection } from "@luxero/api-server/middleware/csrf";
-import authEmergency from "@luxero/api-server/routes/admin/auth/emergency";
-import authSetup from "@luxero/api-server/routes/admin/auth/setup";
-import adminBalances from "@luxero/api-server/routes/admin/balances";
-import { adminBonusAwards } from "@luxero/api-server/routes/admin/bonus-awards";
-import adminBulkActions from "@luxero/api-server/routes/admin/bulk-actions";
-import adminCategories from "@luxero/api-server/routes/admin/categories";
-import adminCompetitionInstantPrizes from "@luxero/api-server/routes/admin/competition-instant-prizes";
-import adminCompetitions from "@luxero/api-server/routes/admin/competitions";
-import adminComplianceSettings from "@luxero/api-server/routes/admin/compliance-settings";
-import adminConversionPostbacks from "@luxero/api-server/routes/admin/conversion-postbacks";
-import adminConversionSettings from "@luxero/api-server/routes/admin/conversion-settings";
-import adminDashboard from "@luxero/api-server/routes/admin/dashboard";
-import adminDashboardReferral from "@luxero/api-server/routes/admin/dashboard-referral";
-import adminEmailSettings from "@luxero/api-server/routes/admin/email-settings";
-import adminEndingSoonSettings from "@luxero/api-server/routes/admin/ending-soon-settings";
-import adminExport from "@luxero/api-server/routes/admin/export";
-import adminHomepageLayoutSettings from "@luxero/api-server/routes/admin/homepage-layout-settings";
-import adminInstantPrizeWins from "@luxero/api-server/routes/admin/instant-prize-wins";
-import adminInstantPrizes from "@luxero/api-server/routes/admin/instant-prizes";
-import internalJobs from "@luxero/api-server/routes/admin/jobs";
-import adminLivestream from "@luxero/api-server/routes/admin/livestream";
-import adminMedia from "@luxero/api-server/routes/admin/media";
-import adminMediaConverterSettings from "@luxero/api-server/routes/admin/media-converter-settings";
-import adminNotifications from "@luxero/api-server/routes/admin/notifications";
-import adminOrders from "@luxero/api-server/routes/admin/orders";
-import adminPaymentMethods from "@luxero/api-server/routes/admin/payment-methods";
-import adminPromoCodes from "@luxero/api-server/routes/admin/promo-codes";
-import adminReferralMindmap from "@luxero/api-server/routes/admin/referral-mindmap";
-import adminReferralPurchases from "@luxero/api-server/routes/admin/referral-purchases";
-import adminReferralSettings from "@luxero/api-server/routes/admin/referral-settings";
-import adminReferrals from "@luxero/api-server/routes/admin/referrals";
-import adminSearch from "@luxero/api-server/routes/admin/search";
-import adminSelfExclusionOverrides from "@luxero/api-server/routes/admin/self-exclusion-overrides";
-import adminSeoSettings from "@luxero/api-server/routes/admin/seo-settings";
-import adminShopCategories from "@luxero/api-server/routes/admin/shop/categories";
-import adminShopOrders from "@luxero/api-server/routes/admin/shop/orders";
-import adminShopProductVariants from "@luxero/api-server/routes/admin/shop/product-variants";
-import adminShopProducts from "@luxero/api-server/routes/admin/shop/products";
-import adminUserCompliance from "@luxero/api-server/routes/admin/user-compliance";
-import adminUserProfile from "@luxero/api-server/routes/admin/user-profile";
-import adminUserReferral from "@luxero/api-server/routes/admin/user-referral";
-import adminUsers from "@luxero/api-server/routes/admin/users";
-import adminWinners from "@luxero/api-server/routes/admin/winners";
-import meProfile from "@luxero/api-server/routes/client/me/profile";
-import categories from "@luxero/api-server/routes/common/categories";
-import competitions from "@luxero/api-server/routes/common/competitions";
-import competitionsInstantPrizes from "@luxero/api-server/routes/common/competitions/instant-prizes";
-import competitionsLandingPage from "@luxero/api-server/routes/common/competitions/landing-page";
-import entries from "@luxero/api-server/routes/common/entries";
-import landingPage from "@luxero/api-server/routes/common/landing-page";
-import pushSubscriptions from "@luxero/api-server/routes/common/push-subscriptions";
-import stats from "@luxero/api-server/routes/common/stats";
-import winners from "@luxero/api-server/routes/common/winners";
-import { getAdminAuth } from "@luxero/auth-admin";
+} from "@oc/api-server/middleware/rate-limit";
+import { csrfProtection } from "@oc/api-server/middleware/csrf";
+import authEmergency from "@oc/api-server/routes/admin/auth/emergency";
+import authSetup from "@oc/api-server/routes/admin/auth/setup";
+import adminBalances from "@oc/api-server/routes/admin/balances";
+import { adminBonusAwards } from "@oc/api-server/routes/admin/bonus-awards";
+import adminBulkActions from "@oc/api-server/routes/admin/bulk-actions";
+import adminCategories from "@oc/api-server/routes/admin/categories";
+import adminCompetitionInstantPrizes from "@oc/api-server/routes/admin/competition-instant-prizes";
+import adminCompetitions from "@oc/api-server/routes/admin/competitions";
+import adminComplianceSettings from "@oc/api-server/routes/admin/compliance-settings";
+import adminConversionPostbacks from "@oc/api-server/routes/admin/conversion-postbacks";
+import adminConversionSettings from "@oc/api-server/routes/admin/conversion-settings";
+import adminDashboard from "@oc/api-server/routes/admin/dashboard";
+import adminDashboardReferral from "@oc/api-server/routes/admin/dashboard-referral";
+import adminEmailSettings from "@oc/api-server/routes/admin/email-settings";
+import adminEndingSoonSettings from "@oc/api-server/routes/admin/ending-soon-settings";
+import adminExport from "@oc/api-server/routes/admin/export";
+import adminHomepageLayoutSettings from "@oc/api-server/routes/admin/homepage-layout-settings";
+import adminInstantPrizeWins from "@oc/api-server/routes/admin/instant-prize-wins";
+import adminInstantPrizes from "@oc/api-server/routes/admin/instant-prizes";
+import internalJobs from "@oc/api-server/routes/admin/jobs";
+import adminLivestream from "@oc/api-server/routes/admin/livestream";
+import adminMedia from "@oc/api-server/routes/admin/media";
+import adminMediaConverterSettings from "@oc/api-server/routes/admin/media-converter-settings";
+import adminNotifications from "@oc/api-server/routes/admin/notifications";
+import adminOrders from "@oc/api-server/routes/admin/orders";
+import adminPaymentMethods from "@oc/api-server/routes/admin/payment-methods";
+import adminPromoCodes from "@oc/api-server/routes/admin/promo-codes";
+import adminReferralMindmap from "@oc/api-server/routes/admin/referral-mindmap";
+import adminReferralPurchases from "@oc/api-server/routes/admin/referral-purchases";
+import adminReferralSettings from "@oc/api-server/routes/admin/referral-settings";
+import adminReferrals from "@oc/api-server/routes/admin/referrals";
+import adminSearch from "@oc/api-server/routes/admin/search";
+import adminSelfExclusionOverrides from "@oc/api-server/routes/admin/self-exclusion-overrides";
+import adminSeoSettings from "@oc/api-server/routes/admin/seo-settings";
+import adminShopCategories from "@oc/api-server/routes/admin/shop/categories";
+import adminShopOrders from "@oc/api-server/routes/admin/shop/orders";
+import adminShopProductVariants from "@oc/api-server/routes/admin/shop/product-variants";
+import adminShopProducts from "@oc/api-server/routes/admin/shop/products";
+import adminUserCompliance from "@oc/api-server/routes/admin/user-compliance";
+import adminUserProfile from "@oc/api-server/routes/admin/user-profile";
+import adminUserReferral from "@oc/api-server/routes/admin/user-referral";
+import adminUsers from "@oc/api-server/routes/admin/users";
+import adminWinners from "@oc/api-server/routes/admin/winners";
+import meProfile from "@oc/api-server/routes/client/me/profile";
+import categories from "@oc/api-server/routes/common/categories";
+import competitions from "@oc/api-server/routes/common/competitions";
+import competitionsInstantPrizes from "@oc/api-server/routes/common/competitions/instant-prizes";
+import competitionsLandingPage from "@oc/api-server/routes/common/competitions/landing-page";
+import entries from "@oc/api-server/routes/common/entries";
+import landingPage from "@oc/api-server/routes/common/landing-page";
+import pushSubscriptions from "@oc/api-server/routes/common/push-subscriptions";
+import stats from "@oc/api-server/routes/common/stats";
+import winners from "@oc/api-server/routes/common/winners";
+import { getAdminAuth } from "@oc/auth-admin";
 import { Hono } from "hono";
 import { cors } from "hono/cors";
 import type { ContentfulStatusCode } from "hono/utils/http-status";
@@ -243,8 +243,8 @@ app.use("*", async (c, next) => {
 // CORS (admin origins)
 const ALLOWED_ORIGIN_PATTERNS = [
   /^http:\/\/localhost(:\d+)?$/,
-  /^https:\/\/.*\.luxero\.win$/,
-  /^https:\/\/luxero\.win$/,
+  /^https:\/\/.*\.onlinecompetitions\.win$/,
+  /^https:\/\/onlinecompetitions\.win$/,
 ];
 
 app.use(

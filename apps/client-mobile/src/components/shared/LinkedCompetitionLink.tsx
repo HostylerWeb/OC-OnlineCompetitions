@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@luxero/utils";
+import { cn } from "@oc/utils";
 import { Link } from "@/components/Link";
 import { useTranslation } from "@/lib/i18n";
 

@@ -1,4 +1,4 @@
-import type { CompetitionInstantPrize } from "@luxero/types";
+import type { CompetitionInstantPrize } from "@oc/types";
 import { create } from "zustand";
 
 interface InstantPrizeDrawerState {

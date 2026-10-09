@@ -1,4 +1,4 @@
-import { formatOrderNumber, formatTicketNumber } from "@luxero/utils";
+import { formatOrderNumber, formatTicketNumber } from "@oc/utils";
 import { Button, Hr, Link, Section, Text } from "@react-email/components";
 import type { EmailTemplateProps, OrderItem } from "../types";
 import { BaseEmail, emailStyles } from "./base";
@@ -21,7 +21,7 @@ export function OrderConfirmationEmail({
   frontendUrl,
   isGuest,
 }: EmailTemplateProps) {
-  const supportAddress = settings?.supportAddress ?? "support@luxero.win";
+  const supportAddress = settings?.supportAddress ?? "support@onlinecompetitions.co.uk";
   const safeOrderId =
     typeof orderNumber === "number" && Number.isFinite(orderNumber)
       ? formatOrderNumber(orderNumber)
@@ -30,7 +30,7 @@ export function OrderConfirmationEmail({
         : "N/A";
   return (
     <BaseEmail
-      preview={`Your Luxero order #${safeOrderId} is confirmed!`}
+      preview={`Your Online Competitions order #${safeOrderId} is confirmed!`}
       settings={settings}
       frontendUrl={frontendUrl}
     >
@@ -131,7 +131,7 @@ export function OrderConfirmationEmail({
       <Text className={emailStyles.paragraph.className}>
         Good luck!
         <br />
-        The Luxero Team
+        The Online Competitions Team
       </Text>
     </BaseEmail>
   );

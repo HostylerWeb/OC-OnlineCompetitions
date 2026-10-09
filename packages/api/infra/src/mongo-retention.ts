@@ -1,4 +1,4 @@
-import { getEnv } from "@luxero/env/server";
+import { getEnv } from "@oc/env/server";
 
 const DAY_SECONDS = 24 * 60 * 60;
 

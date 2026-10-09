@@ -9,7 +9,7 @@ export const RESPONSIBLE_PLAY_SECTIONS: ResponsiblePlaySection[] = [
     id: "age",
     title: "Verificarea vârstei",
     content:
-      "Trebuie să ai 18 ani sau peste pentru a participa la concursurile Luxero. Verificăm vârsta folosind data ta de naștere la înregistrare și înainte de finalizare. Furnizorii terți de identitate ar putea fi introduși în viitor pentru a întări verificarea.",
+      "Trebuie să ai 18 ani sau peste pentru a participa la concursurile Online Competitions. Verificăm vârsta folosind data ta de naștere la înregistrare și înainte de finalizare. Furnizorii terți de identitate ar putea fi introduși în viitor pentru a întări verificarea.",
   },
   {
     id: "credit-cap",
@@ -39,7 +39,7 @@ export const RESPONSIBLE_PLAY_SECTIONS: ResponsiblePlaySection[] = [
     id: "postal",
     title: "Participare gratuită prin poștă",
     content:
-      "Participarea gratuită prin poștă este disponibilă pentru concursurile active. Trimite participarea ta la adresa afișată pe pagina noastră de Participare gratuită prin poștă, incluzând emailul contului tău Luxero și detaliile concursului. Participările gratuite și plătite sunt tratate în mod egal la extragere.",
+      "Participarea gratuită prin poștă este disponibilă pentru concursurile active. Trimite participarea ta la adresa afișată pe pagina noastră de Participare gratuită prin poștă, incluzând emailul contului tău Online Competitions și detaliile concursului. Participările gratuite și plătite sunt tratate în mod egal la extragere.",
   },
   {
     id: "draws",

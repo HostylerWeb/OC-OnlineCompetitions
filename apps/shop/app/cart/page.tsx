@@ -198,7 +198,7 @@ export default function CartPage() {
 
   if (isLoading) {
     return (
-      <main className="luxero-container py-12">
+      <main className="oc-container py-12">
         <h1 className="text-2xl font-bold tracking-tight">Shopping Cart</h1>
         <div className="mt-8 flex justify-center">
           <div className="h-8 w-8 animate-spin rounded-full border-2 border-primary border-t-transparent" />
@@ -209,7 +209,7 @@ export default function CartPage() {
 
   if (loading) {
     return (
-      <main className="luxero-container py-12">
+      <main className="oc-container py-12">
         <h1 className="text-2xl font-bold tracking-tight">Shopping Cart</h1>
         <p className="mt-8 text-center text-muted-foreground">Loading your cart...</p>
       </main>
@@ -218,7 +218,7 @@ export default function CartPage() {
 
   if (error) {
     return (
-      <main className="luxero-container py-12">
+      <main className="oc-container py-12">
         <h1 className="text-2xl font-bold tracking-tight">Shopping Cart</h1>
         <p className="mt-8 text-center text-muted-foreground">
           Failed to load cart. Please try again.
@@ -232,7 +232,7 @@ export default function CartPage() {
 
   if (items.length === 0) {
     return (
-      <main className="luxero-container py-12">
+      <main className="oc-container py-12">
         <h1 className="text-2xl font-bold tracking-tight">Shopping Cart</h1>
         <div className="mt-16 flex flex-col items-center gap-4 text-center">
           <ShoppingBagIcon className="h-12 w-12 text-muted-foreground" />
@@ -246,7 +246,7 @@ export default function CartPage() {
   }
 
   return (
-    <main className="luxero-container py-12">
+    <main className="oc-container py-12">
       <h1 className="text-2xl font-bold tracking-tight">Shopping Cart</h1>
 
       <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_22rem]">

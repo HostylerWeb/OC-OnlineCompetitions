@@ -1,4 +1,4 @@
-import type { CompetitionInstantPrizePublicDTO } from "@luxero/api-client";
+import type { CompetitionInstantPrizePublicDTO } from "@oc/api-client";
 import type { TicketCardData } from "./types";
 
 export function buildTicketCards(

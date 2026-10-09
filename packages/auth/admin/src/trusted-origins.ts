@@ -1,4 +1,4 @@
-import { getEnv } from "@luxero/env/server";
+import { getEnv } from "@oc/env/server";
 
 /** Fixed Better Auth origin allowlist — never mirror arbitrary `Origin` headers (client/admin H1). */
 export function getStaticTrustedOrigins(appUrl: string): string[] {

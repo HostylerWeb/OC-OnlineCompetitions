@@ -1,6 +1,6 @@
 "use client";
 
-import type { LucideIcon } from "@luxero/icons";
+import type { LucideIcon } from "@oc/icons";
 import type { ReactNode } from "react";
 import { EmptyState } from "@/components/EmptyState";
 import { Button } from "@/components/ui/button";

@@ -4,7 +4,7 @@
  *        bun run packages/api/server/src/lib/jobs/rewrite-local-asset-urls.ts --dry-run
  */
 
-import dbConnect from "@luxero/api-infra/db";
+import dbConnect from "@oc/api-infra/db";
 import {
   Competition,
   InstantPrize,
@@ -13,15 +13,15 @@ import {
   ShopProduct,
   ShopProductVariant,
   Winner,
-} from "@luxero/api-db/models";
+} from "@oc/api-db/models";
 
-const LOCAL_BASE = "http://localhost:9011/luxero-assets";
+const LOCAL_BASE = "http://localhost:9011/onlinecompetitions-assets";
 const dryRun = process.argv.includes("--dry-run");
 
 function rewriteUrl(value: string): string {
   let u = value
-    .replace(/https:\/\/assets\.luxero\.win\/luxero-assets/gi, LOCAL_BASE)
-    .replace(/https:\/\/assets\.staging\.luxero\.win\/luxero-assets/gi, LOCAL_BASE);
+    .replace(/https:\/\/assets\.onlinecompetitions\.win\/onlinecompetitions-assets/gi, LOCAL_BASE)
+    .replace(/https:\/\/assets\.staging\.onlinecompetitions\.win\/onlinecompetitions-assets/gi, LOCAL_BASE);
   u = u.replace(/\.(png|jpe?g)(?=($|\?|#))/gi, ".webp");
   return u;
 }

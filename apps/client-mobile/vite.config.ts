@@ -1,5 +1,5 @@
 import path from "node:path";
-import { hostylerConsoleNoticeIndexHtmlPlugin } from "@luxero/utils";
+import { hostylerConsoleNoticeIndexHtmlPlugin } from "@oc/utils";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite";

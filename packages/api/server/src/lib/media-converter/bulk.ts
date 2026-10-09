@@ -1,5 +1,5 @@
-import type { IMediaConverterSettings } from "@luxero/api-db/models/MediaConverterSettings";
-import { createExternalAxios } from "@luxero/api-axios";
+import type { IMediaConverterSettings } from "@oc/api-db/models/MediaConverterSettings";
+import { createExternalAxios } from "@oc/api-axios";
 import {
   buildAssetUrl,
   deleteAsset,
@@ -7,8 +7,8 @@ import {
   headObject,
   listStorageDelimiterPage,
   uploadFile,
-} from "@luxero/api-storage/s3";
-import type { MediaConverterScope } from "@luxero/types";
+} from "@oc/api-storage/s3";
+import type { MediaConverterScope } from "@oc/types";
 import { convertImageToWebp } from "./convert-image";
 import { convertVideoToWebm } from "./convert-video";
 import { getMediaConverterSettings } from "./settings";

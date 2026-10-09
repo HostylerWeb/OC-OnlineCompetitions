@@ -1,5 +1,5 @@
-import type { Competition } from "@luxero/types";
-import { getProgress, getTicketsSold } from "@luxero/utils";
+import type { Competition } from "@oc/types";
+import { getProgress, getTicketsSold } from "@oc/utils";
 
 export function getCompetitionHref(comp: Competition): string {
   return `/competitions/${comp.slug ?? comp._id}`;

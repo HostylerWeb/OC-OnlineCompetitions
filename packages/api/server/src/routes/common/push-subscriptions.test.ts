@@ -9,7 +9,7 @@ vi.mock("web-push", () => ({
   sendNotification: vi.fn(),
 }));
 
-vi.mock("@luxero/env/server", () => ({
+vi.mock("@oc/env/server", () => ({
   getEnv: vi.fn((key: string) => {
     if (key === "VAPID_PUBLIC_KEY") return "test-public-key";
     if (key === "VAPID_PRIVATE_KEY") return "test-private-key";
@@ -17,11 +17,11 @@ vi.mock("@luxero/env/server", () => ({
   }),
 }));
 
-vi.mock("@luxero/api-infra/db", () => ({
+vi.mock("@oc/api-infra/db", () => ({
   default: vi.fn(),
 }));
 
-vi.mock("@luxero/api-logger", () => ({
+vi.mock("@oc/api-logger", () => ({
   createLogger: vi.fn(() => ({
     error: vi.fn(),
     info: vi.fn(),
@@ -29,7 +29,7 @@ vi.mock("@luxero/api-logger", () => ({
   })),
 }));
 
-vi.mock("@luxero/api-server/lib/push", () => ({
+vi.mock("@oc/api-server/lib/push", () => ({
   sendPushNotification: vi.fn(),
 }));
 
@@ -37,7 +37,7 @@ const mockUpdateMany = vi.fn();
 const mockFindOneAndUpdate = vi.fn();
 const mockDeleteMany = vi.fn();
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   PushSubscription: {
     findOneAndUpdate: (...args: unknown[]) => mockFindOneAndUpdate(...args),
     deleteMany: (...args: unknown[]) => mockDeleteMany(...args),

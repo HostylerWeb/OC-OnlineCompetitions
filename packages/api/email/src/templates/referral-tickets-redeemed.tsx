@@ -1,4 +1,4 @@
-import { formatTicketNumber } from "@luxero/utils";
+import { formatTicketNumber } from "@oc/utils";
 import { Button, Hr, Link, Section, Text } from "@react-email/components";
 import type { EmailTemplateProps } from "../types";
 import { BaseEmail, emailStyles } from "./base";
@@ -13,7 +13,7 @@ export function ReferralTicketsRedeemedEmail({
   settings,
   frontendUrl,
 }: EmailTemplateProps) {
-  const supportAddress = settings?.supportAddress ?? "support@luxero.win";
+  const supportAddress = settings?.supportAddress ?? "support@onlinecompetitions.co.uk";
   const ticketLabel = quantityRedeemed === 1 ? "ticket" : "tickets";
 
   return (
@@ -79,7 +79,7 @@ export function ReferralTicketsRedeemedEmail({
       <Text className={emailStyles.paragraph.className}>
         Best of luck,
         <br />
-        The Luxero Team
+        The Online Competitions Team
       </Text>
     </BaseEmail>
   );

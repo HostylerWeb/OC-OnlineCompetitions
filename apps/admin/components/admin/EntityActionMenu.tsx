@@ -1,5 +1,5 @@
 "use client";
-import { Edit, MoreHorizontal, Trash2 } from "@luxero/icons";
+import { Edit, MoreHorizontal, Trash2 } from "@oc/icons";
 import type { ReactNode } from "react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";

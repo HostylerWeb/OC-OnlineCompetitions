@@ -1,4 +1,4 @@
-import type { User } from "@luxero/types";
+import type { User } from "@oc/types";
 import { isSafeReturnToPath } from "../lib/contextual-action-href";
 import { normalizeReferralCode, resolveRefFromUrl } from "./pending-ref";
 

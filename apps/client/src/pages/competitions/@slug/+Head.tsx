@@ -1,4 +1,4 @@
-import type { Competition } from "@luxero/types";
+import type { Competition } from "@oc/types";
 import { useData } from "vike-react/useData";
 import { usePageContext } from "vike-react/usePageContext";
 import { translate } from "@/lib/i18n";

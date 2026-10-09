@@ -2,22 +2,22 @@ import {
   PaymentMethod,
   type PaymentProvider,
   setDefaultPaymentMethod,
-} from "@luxero/api-db/models";
-import { CH, invalidateByChannelSafe } from "@luxero/api-infra/cache";
-import dbConnect from "@luxero/api-infra/db";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { error, success } from "@luxero/api-infra/response";
-import { captureRouteError } from "@luxero/api-infra/sentry";
-import { mapInternalCapabilitiesToPublic } from "@luxero/api-server/lib/payment/capabilities";
-import { ensureLocalPaymentMethod, isLocalPaymentMethodEnabled } from "@luxero/api-server/lib/payment/ensure-local-payment-method";
-import { ensurePaytriotPaymentMethod } from "@luxero/api-server/lib/payment/ensure-paytriot-payment-method";
-import { ensureSiteCreditPaymentMethod } from "@luxero/api-server/lib/payment/ensure-site-credit-payment-method";
-import { ensureStripePaymentMethod } from "@luxero/api-server/lib/payment/ensure-stripe-payment-method";
-import { hasProviderEnvCredentials } from "@luxero/api-server/lib/payment/payment-method-credentials";
-import { getAdapter, paymentProcessors } from "@luxero/api-server/lib/payment/providers";
-import type { PaymentProviderId } from "@luxero/api-server/lib/payment/providers/types";
-import { requireAdmin } from "@luxero/api-server/middleware/auth";
-import { updatePaymentMethodSchema, validateBody } from "@luxero/api-validation";
+} from "@oc/api-db/models";
+import { CH, invalidateByChannelSafe } from "@oc/api-infra/cache";
+import dbConnect from "@oc/api-infra/db";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { error, success } from "@oc/api-infra/response";
+import { captureRouteError } from "@oc/api-infra/sentry";
+import { mapInternalCapabilitiesToPublic } from "@oc/api-server/lib/payment/capabilities";
+import { ensureLocalPaymentMethod, isLocalPaymentMethodEnabled } from "@oc/api-server/lib/payment/ensure-local-payment-method";
+import { ensurePaytriotPaymentMethod } from "@oc/api-server/lib/payment/ensure-paytriot-payment-method";
+import { ensureSiteCreditPaymentMethod } from "@oc/api-server/lib/payment/ensure-site-credit-payment-method";
+import { ensureStripePaymentMethod } from "@oc/api-server/lib/payment/ensure-stripe-payment-method";
+import { hasProviderEnvCredentials } from "@oc/api-server/lib/payment/payment-method-credentials";
+import { getAdapter, paymentProcessors } from "@oc/api-server/lib/payment/providers";
+import type { PaymentProviderId } from "@oc/api-server/lib/payment/providers/types";
+import { requireAdmin } from "@oc/api-server/middleware/auth";
+import { updatePaymentMethodSchema, validateBody } from "@oc/api-validation";
 import { Hono } from "hono";
 
 const app = new Hono();

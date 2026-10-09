@@ -21,124 +21,124 @@
       "node"
     ],
     "paths": {
-      "@luxero/content": [
+      "@oc/content": [
         "./packages/content/src"
       ],
-      "@luxero/icons": [
+      "@oc/icons": [
         "./packages/icons/src"
       ],
-      "@luxero/types": [
+      "@oc/types": [
         "./packages/types/src"
       ],
-      "@luxero/utils": [
+      "@oc/utils": [
         "./packages/utils/src"
       ],
-      "@luxero/auth-admin": [
+      "@oc/auth-admin": [
         "./packages/auth-admin/src"
       ],
-      "@luxero/auth-admin/*": [
+      "@oc/auth-admin/*": [
         "./packages/auth-admin/src/*"
       ],
-      "@luxero/api-server": [
+      "@oc/api-server": [
         "./packages/api-server/src"
       ],
-      "@luxero/api-server/*": [
+      "@oc/api-server/*": [
         "./packages/api-server/src/*"
       ],
-      "@luxero/api-db": [
+      "@oc/api-db": [
         "./packages/api-db/src"
       ],
-      "@luxero/api-db/*": [
+      "@oc/api-db/*": [
         "./packages/api-db/src/*"
       ],
-      "@luxero/api-infra": [
+      "@oc/api-infra": [
         "./packages/api-infra/src"
       ],
-      "@luxero/api-infra/*": [
+      "@oc/api-infra/*": [
         "./packages/api-infra/src/*"
       ],
-      "@luxero/api-email": [
+      "@oc/api-email": [
         "./packages/api/email/src"
       ],
-      "@luxero/api-email/*": [
+      "@oc/api-email/*": [
         "./packages/api/email/src/*"
       ],
-      "@luxero/api-errors": [
+      "@oc/api-errors": [
         "./packages/api-errors/src"
       ],
-      "@luxero/api-errors/*": [
+      "@oc/api-errors/*": [
         "./packages/api-errors/src/*"
       ],
-      "@luxero/api-compliance": [
+      "@oc/api-compliance": [
         "./packages/api-compliance/src"
       ],
-      "@luxero/api-compliance/*": [
+      "@oc/api-compliance/*": [
         "./packages/api-compliance/src/*"
       ],
-      "@luxero/api-referrals": [
+      "@oc/api-referrals": [
         "./packages/api-referrals/src"
       ],
-      "@luxero/api-referrals/*": [
+      "@oc/api-referrals/*": [
         "./packages/api-referrals/src/*"
       ],
-      "@luxero/api-storage": [
+      "@oc/api-storage": [
         "./packages/api-storage/src"
       ],
-      "@luxero/api-storage/*": [
+      "@oc/api-storage/*": [
         "./packages/api-storage/src/*"
       ],
-      "@luxero/api-tickets": [
+      "@oc/api-tickets": [
         "./packages/api-tickets/src"
       ],
-      "@luxero/api-tickets/*": [
+      "@oc/api-tickets/*": [
         "./packages/api-tickets/src/*"
       ],
-      "@luxero/api-validation": [
+      "@oc/api-validation": [
         "./packages/api-validation/src"
       ],
-      "@luxero/api-validation/*": [
+      "@oc/api-validation/*": [
         "./packages/api-validation/src/*"
       ],
-      "@luxero/api-logger": [
+      "@oc/api-logger": [
         "./packages/api-logger/src"
       ],
-      "@luxero/api-logger/*": [
+      "@oc/api-logger/*": [
         "./packages/api-logger/src/*"
       ],
-      "@luxero/api-payment-core": [
+      "@oc/api-payment-core": [
         "./packages/api-payment-core/src"
       ],
-      "@luxero/api-payment-core/*": [
+      "@oc/api-payment-core/*": [
         "./packages/api-payment-core/src/*"
       ],
-      "@luxero/api-payment-local": [
+      "@oc/api-payment-local": [
         "./packages/api-payment-local/src"
       ],
-      "@luxero/api-payment-local/*": [
+      "@oc/api-payment-local/*": [
         "./packages/api-payment-local/src/*"
       ],
-      "@luxero/api-payment-paytriot": [
+      "@oc/api-payment-paytriot": [
         "./packages/api-payment-paytriot/src"
       ],
-      "@luxero/api-payment-paytriot/*": [
+      "@oc/api-payment-paytriot/*": [
         "./packages/api-payment-paytriot/src/*"
       ],
-      "@luxero/api-payment-stripe": [
+      "@oc/api-payment-stripe": [
         "./packages/api/payment-stripe/src"
       ],
-      "@luxero/api-payment-stripe/*": [
+      "@oc/api-payment-stripe/*": [
         "./packages/api/payment-stripe/src/*"
       ],
-      "@luxero/api-admin": [
+      "@oc/api-admin": [
         "./packages/api-admin/src"
       ],
-      "@luxero/api-admin/*": [
+      "@oc/api-admin/*": [
         "./packages/api-admin/src/*"
       ],
-      "@luxero/api-axios": [
+      "@oc/api-axios": [
         "./packages/api/axios/src"
       ],
-      "@luxero/api-axios/*": [
+      "@oc/api-axios/*": [
         "./packages/api/axios/src/*"
       ]
     }

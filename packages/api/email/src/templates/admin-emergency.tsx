@@ -1,4 +1,4 @@
-import type { IEmailSettings } from "@luxero/api-db/models/EmailSettings";
+import type { IEmailSettings } from "@oc/api-db/models/EmailSettings";
 import { Button, Hr, Link, Section, Text } from "@react-email/components";
 import { BaseEmail, emailStyles } from "./base";
 
@@ -17,7 +17,7 @@ export function AdminEmergencyEmail({
   settings,
   frontendUrl,
 }: EmailTemplateProps) {
-  const supportAddress = settings?.supportAddress ?? "support@luxero.win";
+  const supportAddress = settings?.supportAddress ?? "support@onlinecompetitions.co.uk";
   return (
     <BaseEmail
       preview={`Admin emergency recovery code: ${code}`}
@@ -33,7 +33,7 @@ export function AdminEmergencyEmail({
         }}
       >
         <Text className="m-0 text-[14px] leading-[22px] text-[#A1A1AA]">
-          <strong className="text-[#EF4444]">Emergency access:</strong> This code resets the Luxero
+          <strong className="text-[#EF4444]">Emergency access:</strong> This code resets the Online Competitions
           admin account. Only use it if your team is locked out. If you did not request this, ignore
           this email immediately.
         </Text>
@@ -90,7 +90,7 @@ export function AdminEmergencyEmail({
       <Text className={emailStyles.paragraph.className}>
         Stay secure,
         <br />
-        The Luxero Team
+        The Online Competitions Team
       </Text>
     </BaseEmail>
   );

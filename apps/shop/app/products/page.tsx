@@ -37,7 +37,7 @@ export default async function ProductsPage({
   }
 
   return (
-    <main className="luxero-container py-12">
+    <main className="oc-container py-12">
       <h1 className="text-3xl font-bold tracking-tight">Products</h1>
 
       {/* Category Filter */}

@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@luxero/utils";
+import { cn } from "@oc/utils";
 import type { ReactNode } from "react";
 import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet";
 import { mobileNavSheetPanelClass } from "./mobile-nav-styles";

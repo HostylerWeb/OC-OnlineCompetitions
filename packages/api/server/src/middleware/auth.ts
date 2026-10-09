@@ -1,15 +1,15 @@
 import {
   reconcileSelfExclusionOnRead,
   resolveEffectiveSelfExclusion,
-} from "@luxero/api-compliance/compliance-user-service";
+} from "@oc/api-compliance/compliance-user-service";
 import {
   getComplianceSettings,
   isComplianceEnforcementActive,
-} from "@luxero/api-compliance/settings";
-import { Profile } from "@luxero/api-db/models";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { error } from "@luxero/api-infra/response";
-import type { AuthSessionData, AuthUser } from "@luxero/auth-admin/auth-client";
+} from "@oc/api-compliance/settings";
+import { Profile } from "@oc/api-db/models";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { error } from "@oc/api-infra/response";
+import type { AuthSessionData, AuthUser } from "@oc/auth-admin/auth-client";
 import type { Context, Next } from "hono";
 
 declare module "hono" {
@@ -165,7 +165,7 @@ export async function requireGuestCheckout(c: Context, next: Next) {
 async function checkSelfExclusion(c: Context, userId: string | null): Promise<Response | null> {
   if (!userId) return null;
 
-  const { default: dbConnect } = await import("@luxero/api-infra/db");
+  const { default: dbConnect } = await import("@oc/api-infra/db");
   await dbConnect();
 
   const settings = await getComplianceSettings();

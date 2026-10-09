@@ -1,7 +1,7 @@
 "use client";
 
-import type { PublicBonusAwardEntry, PublicBonusAwardWinDTO } from "@luxero/types";
-import { cn, formatTicketNumber } from "@luxero/utils";
+import type { PublicBonusAwardEntry, PublicBonusAwardWinDTO } from "@oc/types";
+import { cn, formatTicketNumber } from "@oc/utils";
 import { CheckIcon, Star } from "lucide-react";
 import { CORNER_BADGE_CLASS, TICKET_CARD_SHELL_CLASS } from "@/components/shared/ticketCardShared";
 import { formatCurrency, useTranslation } from "@/lib/i18n";

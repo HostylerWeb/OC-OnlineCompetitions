@@ -1,7 +1,7 @@
 "use client";
 
-import { authClient, TurnstileWidget } from "@luxero/api-admin";
-import { Eye, EyeOff } from "@luxero/icons";
+import { authClient, TurnstileWidget } from "@oc/api-admin";
+import { Eye, EyeOff } from "@oc/icons";
 import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";

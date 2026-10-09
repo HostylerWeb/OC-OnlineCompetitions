@@ -121,11 +121,11 @@ export function useTranslation() {
 // --- Cookie ---
 
 export function setLocaleCookie(locale: string): void {
-  document.cookie = `luxero-locale=${locale};path=/;max-age=${365 * 24 * 60 * 60};SameSite=Lax`;
+  document.cookie = `onlinecompetitions-locale=${locale};path=/;max-age=${365 * 24 * 60 * 60};SameSite=Lax`;
 }
 
 export function getLocaleCookie(): string | null {
-  const match = document.cookie.match(/(?:^|;\s*)luxero-locale=([^;]*)/);
+  const match = document.cookie.match(/(?:^|;\s*)onlinecompetitions-locale=([^;]*)/);
   return match ? (match[1] ?? null) : null;
 }
 

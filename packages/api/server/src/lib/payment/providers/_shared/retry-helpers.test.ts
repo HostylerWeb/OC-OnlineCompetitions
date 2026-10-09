@@ -11,7 +11,7 @@ const __mocks = vi.hoisted(() => ({
   }),
 }));
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   Order: {
     findById: __mocks.findById,
     findByIdAndUpdate: __mocks.findByIdAndUpdate,

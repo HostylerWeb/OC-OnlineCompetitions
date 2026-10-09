@@ -1,7 +1,7 @@
 import { readdir, readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { authUrlIsHttps, isLocalDevRuntime, runtimeConfig } from "@luxero/api-infra/runtime-config";
+import { authUrlIsHttps, isLocalDevRuntime, runtimeConfig } from "@oc/api-infra/runtime-config";
 import { afterEach, describe, expect, test } from "vitest";
 
 const RUNTIME_KEYS = [
@@ -47,7 +47,7 @@ describe("runtime-config", () => {
   });
 
   test("authUrlIsHttps derives from APP_URL", () => {
-    process.env.APP_URL = "https://staging.luxero.win";
+    process.env.APP_URL = "https://staging.onlinecompetitions.co.uk";
     expect(authUrlIsHttps()).toBe(true);
 
     process.env.APP_URL = "http://localhost:3111";
@@ -55,7 +55,7 @@ describe("runtime-config", () => {
   });
 
   test("secureCookies defaults to HTTPS app URL when SECURE_COOKIES unset", () => {
-    process.env.APP_URL = "https://luxero.win";
+    process.env.APP_URL = "https://onlinecompetitions.co.uk";
     expect(runtimeConfig.secureCookies).toBe(true);
 
     clearRuntimeEnv();
@@ -64,7 +64,7 @@ describe("runtime-config", () => {
   });
 
   test("isLocalDevRuntime is false for staging app URL", () => {
-    process.env.APP_URL = "https://staging.luxero.win";
+    process.env.APP_URL = "https://staging.onlinecompetitions.co.uk";
     expect(isLocalDevRuntime()).toBe(false);
   });
 });

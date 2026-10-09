@@ -1,6 +1,6 @@
 "use client";
 
-import { useAuth } from "@luxero/api-client";
+import { useAuth } from "@oc/api-client";
 import type { ReactNode } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import { Spinner } from "@/components/ui/spinner";

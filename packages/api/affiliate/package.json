@@ -1,5 +1,5 @@
 {
-  "name": "@luxero/api-affiliate",
+  "name": "@oc/api-affiliate",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -12,9 +12,9 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@luxero/api-axios": "workspace:*",
-    "@luxero/api-db": "workspace:*",
-    "@luxero/api-infra": "workspace:*"
+    "@oc/api-axios": "workspace:*",
+    "@oc/api-db": "workspace:*",
+    "@oc/api-infra": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

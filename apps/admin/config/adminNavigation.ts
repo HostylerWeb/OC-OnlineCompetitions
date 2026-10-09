@@ -1,4 +1,4 @@
-import type { AdminRole } from "@luxero/types";
+import type { AdminRole } from "@oc/types";
 import {
   Award,
   BarChart3,
@@ -23,7 +23,7 @@ import {
   TrendingUp,
   Trophy,
   Users,
-} from "@luxero/icons";
+} from "@oc/icons";
 import type { ComponentType } from "react";
 
 export interface NavItem {

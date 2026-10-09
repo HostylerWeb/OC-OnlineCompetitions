@@ -1,4 +1,4 @@
-import type { StripeWebhookEvent } from "@luxero/api-payment-stripe";
+import type { StripeWebhookEvent } from "@oc/api-payment-stripe";
 
 export function getStripePaymentIntentIdFromEvent(event: StripeWebhookEvent): string {
   return event.data.object.id as string;

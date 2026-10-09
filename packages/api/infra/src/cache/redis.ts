@@ -7,7 +7,7 @@
  * - For tests: `setRedisClient(ioredisMock)` injects a mock before any call.
  */
 
-import { getBool, getEnv, getNum } from "@luxero/env/server";
+import { getBool, getEnv, getNum } from "@oc/env/server";
 import { Redis, type RedisOptions } from "ioredis";
 
 let _client: Redis | null = null;
@@ -87,7 +87,7 @@ export async function closeRedis(): Promise<void> {
 }
 
 export function getRedisNamespace(): string {
-  return getEnv("REDIS_NAMESPACE")?.trim() || "luxero";
+  return getEnv("REDIS_NAMESPACE")?.trim() || "onlinecompetitions";
 }
 
 export function getRedisTtlDefault(): number {

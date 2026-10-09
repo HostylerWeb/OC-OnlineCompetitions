@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
-import { getRedis } from "@luxero/api-infra/cache/redis";
-import { getEnv } from "@luxero/env/server";
+import { getRedis } from "@oc/api-infra/cache/redis";
+import { getEnv } from "@oc/env/server";
 import type { Context, MiddlewareHandler, Next } from "hono";
 
 interface RateLimitRule {

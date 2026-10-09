@@ -1,5 +1,5 @@
 {
-  "name": "@luxero/api-storage",
+  "name": "@oc/api-storage",
   "private": true,
   "type": "module",
   "exports": {
@@ -13,9 +13,9 @@
     "format": "biome format --write src/"
   },
   "dependencies": {
-    "@luxero/auth-admin": "workspace:*",
-    "@luxero/api-db": "workspace:*",
-    "@luxero/env": "workspace:*",
+    "@oc/auth-admin": "workspace:*",
+    "@oc/api-db": "workspace:*",
+    "@oc/env": "workspace:*",
     "mongoose": "^9.6.0",
     "s3mini": "^0.9.5"
   },

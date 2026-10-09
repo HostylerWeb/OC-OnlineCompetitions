@@ -1,10 +1,10 @@
-import { Competition, Order, ShopOrder, Ticket } from "@luxero/api-db/models";
-import dbConnect from "@luxero/api-infra/db";
+import { Competition, Order, ShopOrder, Ticket } from "@oc/api-db/models";
+import dbConnect from "@oc/api-infra/db";
 import {
   sendOrderConfirmationEmail,
   type OrderEmailItem,
-} from "@luxero/api-server/lib/orders";
-import { sendShopOrderConfirmationEmail } from "@luxero/api-shop/email";
+} from "@oc/api-server/lib/orders";
+import { sendShopOrderConfirmationEmail } from "@oc/api-shop/email";
 
 const MAX_ATTEMPTS = 5;
 const LOOKBACK_MS = 7 * 24 * 60 * 60 * 1000;

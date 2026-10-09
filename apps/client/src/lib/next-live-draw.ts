@@ -1,5 +1,5 @@
-import type { Competition } from "@luxero/types";
-import { getCompetitionCountdownTarget } from "@luxero/utils";
+import type { Competition } from "@oc/types";
+import { getCompetitionCountdownTarget } from "@oc/utils";
 
 export type NextLiveDrawGroup = {
   targetIso: string;

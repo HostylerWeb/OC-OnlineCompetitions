@@ -1,7 +1,7 @@
 // +server.ts — Hono entry that mounts the Hono API and Vike SSR.
 //
 //  1. `/api/*` (auth, cart, payments, etc.) — handled by the shared Hono app
-//     from `@luxero/api-server/app`.
+//     from `@oc/api-server/app`.
 //  2. Everything else — handled by Vike for SSR + client-side hydration.
 //
 // In dev, `vike dev` uses this as the server entry via Vike's `+server.ts` convention.
@@ -17,8 +17,8 @@ process.on("unhandledRejection", (reason) => {
   console.error("[unhandledRejection]", reason);
 });
 
-import { app as apiApp } from "@luxero/api-server/app";
-import { getEnv } from "@luxero/env/vike";
+import { app as apiApp } from "@oc/api-server/app";
+import { getEnv } from "@oc/env/vike";
 import * as Sentry from "@sentry/node";
 import vike from "@vikejs/hono";
 import { Hono } from "hono";
@@ -49,7 +49,7 @@ app.get("/apple-developer-merchantid-domain-association", (c) =>
 );
 
 app.get("/sitemap.xml", async (c) => {
-  const SITE_URL = getEnv("APP_URL").trim().replace(/\/$/, "") || "https://luxero.win";
+  const SITE_URL = getEnv("APP_URL").trim().replace(/\/$/, "") || "https://onlinecompetitions.co.uk";
 
   const STATIC_PAGES = [
     { loc: "/", changefreq: "daily", priority: "1.0" },
@@ -104,7 +104,7 @@ app.route("/", apiApp);
 app.use(async (c, next) => {
   const nonce = c.get("nonce");
   if (nonce) {
-    globalThis.__luxero_nonce = nonce;
+    globalThis.__onlinecompetitions_nonce = nonce;
   }
   await next();
 });
@@ -135,7 +135,7 @@ app.use("*", async (c, next) => {
     if (ref && ref.length > 0 && ref.length <= 64 && REF_CODE_PATTERN.test(ref)) {
       c.res.headers.append(
         "Set-Cookie",
-        `luxero_ref=${encodeURIComponent(ref.trim().toUpperCase())}; Path=/; Max-Age=${REF_COOKIE_MAX_AGE}; SameSite=Lax`
+        `onlinecompetitions_ref=${encodeURIComponent(ref.trim().toUpperCase())}; Path=/; Max-Age=${REF_COOKIE_MAX_AGE}; SameSite=Lax`
       );
     }
     if (clickId && clickId.length <= CLICK_ID_MAX_LENGTH && CLICK_ID_PATTERN.test(clickId)) {

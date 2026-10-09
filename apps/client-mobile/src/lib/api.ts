@@ -1,4 +1,4 @@
-import type { ApiResponse } from "@luxero/types";
+import type { ApiResponse } from "@oc/types";
 import axios, { type AxiosError, type AxiosInstance } from "axios";
 
 const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:3000";

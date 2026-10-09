@@ -1,9 +1,9 @@
 "use client";
 
-import { api } from "@luxero/api-admin";
-import { Ticket } from "@luxero/icons";
-import type { ApiResponse } from "@luxero/types";
-import { formatDate } from "@luxero/utils";
+import { api } from "@oc/api-admin";
+import { Ticket } from "@oc/icons";
+import type { ApiResponse } from "@oc/types";
+import { formatDate } from "@oc/utils";
 import { useQuery } from "@tanstack/react-query";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";

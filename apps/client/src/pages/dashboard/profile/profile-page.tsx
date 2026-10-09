@@ -7,10 +7,10 @@ import {
   usePublicComplianceSettings,
   useUpdateProfile,
   useUploadAvatar,
-} from "@luxero/api-client";
-import { Globe, Lock, MapPin, PoundSterling, Shield, Ticket, Trophy, User } from "@luxero/icons";
-import type { ProfileAddress } from "@luxero/types";
-import { formatDate, getProfileInitials } from "@luxero/utils";
+} from "@oc/api-client";
+import { Globe, Lock, MapPin, PoundSterling, Shield, Ticket, Trophy, User } from "@oc/icons";
+import type { ProfileAddress } from "@oc/types";
+import { formatDate, getProfileInitials } from "@oc/utils";
 import { Suspense, useCallback, useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import { navigate } from "vike/client/router";

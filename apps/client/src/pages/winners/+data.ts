@@ -1,4 +1,4 @@
-import type { Winner } from "@luxero/types";
+import type { Winner } from "@oc/types";
 import type { PageContextServer } from "vike/types";
 import { serverFetch } from "@/lib/server-fetch";
 

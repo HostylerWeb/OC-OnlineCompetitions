@@ -1,4 +1,4 @@
-import type { User } from "@luxero/types";
+import type { User } from "@oc/types";
 import { describe, expect, test } from "vitest";
 import {
   applyAuthenticatedDestination,

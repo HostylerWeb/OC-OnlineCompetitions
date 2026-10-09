@@ -1,4 +1,4 @@
-import { Order, Profile, ReferralPurchase, ReferralSettings } from "@luxero/api-db/models";
+import { Order, Profile, ReferralPurchase, ReferralSettings } from "@oc/api-db/models";
 import mongoose from "mongoose";
 import { getReferrerUniqueActiveCount, type LeaderboardOptions } from "./leaderboard";
 import { findCurrentTier, isQualifyingReferralPurchase, sortTiers } from "./referral-tier-math";

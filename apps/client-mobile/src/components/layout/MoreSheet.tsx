@@ -10,7 +10,7 @@ import {
   Shield,
   Smartphone,
   X,
-} from "@luxero/icons";
+} from "@oc/icons";
 import { Drawer } from "vaul";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/lib/i18n";

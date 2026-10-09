@@ -7,7 +7,7 @@ import {
   useCompetitionStream,
   useDashboardData,
   useMyReferralTickets,
-} from "@luxero/api-client";
+} from "@oc/api-client";
 import {
   ArrowRight,
   Gift,
@@ -18,9 +18,9 @@ import {
   User,
   Users,
   Zap,
-} from "@luxero/icons";
-import type { Entry, MeOrderDto } from "@luxero/types";
-import { formatDate, getDisplayName, OrderNumberCell } from "@luxero/utils";
+} from "@oc/icons";
+import type { Entry, MeOrderDto } from "@oc/types";
+import { formatDate, getDisplayName, OrderNumberCell } from "@oc/utils";
 import { useEffect, useState } from "react";
 import { ActivityTable } from "@/components/ActivityTable";
 import { DashboardStatCard } from "@/components/DashboardStatCard";

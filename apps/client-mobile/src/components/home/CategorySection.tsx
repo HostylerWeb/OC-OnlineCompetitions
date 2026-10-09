@@ -1,5 +1,5 @@
-import { ChevronRight } from "@luxero/icons";
-import type { Category, Competition } from "@luxero/types";
+import { ChevronRight } from "@oc/icons";
+import type { Category, Competition } from "@oc/types";
 import { CompetitionCard } from "@/components/home/CompetitionCard";
 import { useTranslation } from "@/lib/i18n";
 
@@ -34,7 +34,7 @@ export function CategorySection({
       <div className="absolute top-0 right-0 w-48 h-48 sm:w-64 sm:h-64 bg-gold/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 w-48 h-48 sm:w-64 sm:h-64 bg-gold/5 rounded-full blur-3xl" />
 
-      <div className="luxero-container-wide relative z-10">
+      <div className="oc-container-wide relative z-10">
         <div className="mb-6 sm:mb-8 flex items-center justify-between gap-4">
           <div className="min-w-0">
             <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-1 sm:mb-2">{title}</h2>
@@ -55,7 +55,7 @@ export function CategorySection({
           )}
         </div>
 
-        <div className="grid luxero-grid-competitions">
+        <div className="grid onlinecompetitions-grid-competitions">
           {competitions.map((comp, index) => (
             <CompetitionCard
               key={comp.id || comp._id}

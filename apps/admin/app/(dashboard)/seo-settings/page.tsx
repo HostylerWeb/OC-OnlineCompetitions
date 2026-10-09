@@ -1,7 +1,7 @@
 "use client";
 
-import { useAdminSeoSettings, useAdminSeoSettingsMutations } from "@luxero/api-admin";
-import { Search, Settings, Share2 } from "@luxero/icons";
+import { useAdminSeoSettings, useAdminSeoSettingsMutations } from "@oc/api-admin";
+import { Search, Settings, Share2 } from "@oc/icons";
 import { AssetImage } from "@/components/AssetImage";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -36,7 +36,7 @@ type SeoSettingsFormValues = z.infer<typeof seoSettingsSchema>;
 const DEFAULTS: SeoSettingsFormValues = {
   defaultOgImageUrl: "",
   referralOgImageUrl: "",
-  defaultTitle: "Luxero — Win Amazing Prizes",
+  defaultTitle: "Online Competitions — Win Amazing Prizes",
   defaultDescription: "Enter competitions to win luxury prizes.",
 };
 
@@ -207,7 +207,7 @@ export default function SeoSettingsAdminPage() {
                 <FormItem>
                   <FormLabel>Default OG image URL</FormLabel>
                   <FormControl>
-                    <Input {...field} placeholder="https://assets.luxero.win/og-images/..." />
+                    <Input {...field} placeholder="https://assets.onlinecompetitions.co.uk/og-images/..." />
                   </FormControl>
                   <FormDescription>
                     Upload an image via{" "}
@@ -230,7 +230,7 @@ export default function SeoSettingsAdminPage() {
                 <FormItem>
                   <FormLabel>Referral OG image URL</FormLabel>
                   <FormControl>
-                    <Input {...field} placeholder="https://assets.luxero.win/og-images/..." />
+                    <Input {...field} placeholder="https://assets.onlinecompetitions.co.uk/og-images/..." />
                   </FormControl>
                   <FormDescription>
                     Used as og:image when the URL contains <code>?ref=...</code>. Falls back to the

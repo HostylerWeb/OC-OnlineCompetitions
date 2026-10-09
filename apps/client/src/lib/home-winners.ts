@@ -1,4 +1,4 @@
-import type { Winner } from "@luxero/types";
+import type { Winner } from "@oc/types";
 
 export const HOMEPAGE_WINNERS_LIMIT = 6;
 

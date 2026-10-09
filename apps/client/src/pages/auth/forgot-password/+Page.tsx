@@ -1,5 +1,5 @@
-import { ForgotPasswordForm } from "@luxero/api-client";
-import { getEnv } from "@luxero/env/vike";
+import { ForgotPasswordForm } from "@oc/api-client";
+import { getEnv } from "@oc/env/vike";
 import { useTranslation } from "@/lib/i18n";
 
 export default function ForgotPasswordPage() {

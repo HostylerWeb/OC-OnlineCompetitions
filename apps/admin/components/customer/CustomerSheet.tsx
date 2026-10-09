@@ -8,10 +8,10 @@ import {
   useAdminUserReferralPurchases,
   useAdminUserReferralStats,
   useAuth,
-} from "@luxero/api-admin";
-import { FileText, Pencil, Shield, User } from "@luxero/icons";
-import type { AdminReferralPurchase, Profile } from "@luxero/types";
-import { getDisplayName } from "@luxero/utils";
+} from "@oc/api-admin";
+import { FileText, Pencil, Shield, User } from "@oc/icons";
+import type { AdminReferralPurchase, Profile } from "@oc/types";
+import { getDisplayName } from "@oc/utils";
 import { useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";

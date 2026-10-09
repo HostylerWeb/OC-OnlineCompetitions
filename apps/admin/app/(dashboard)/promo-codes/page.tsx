@@ -5,10 +5,10 @@ import {
   useAdminPromoCodeMutations,
   useAdminPromoCodes,
   useServerPagination,
-} from "@luxero/api-admin";
-import { Filter, MoreHorizontal, Plus, RefreshCw, Trash2 } from "@luxero/icons";
-import type { AdminPromoCode } from "@luxero/types";
-import { ADMIN_PROMO_CODE_TABLE } from "@luxero/types";
+} from "@oc/api-admin";
+import { Filter, MoreHorizontal, Plus, RefreshCw, Trash2 } from "@oc/icons";
+import type { AdminPromoCode } from "@oc/types";
+import { ADMIN_PROMO_CODE_TABLE } from "@oc/types";
 import { useQueryClient } from "@tanstack/react-query";
 import type { ColumnDef, SortingState, Updater, VisibilityState } from "@tanstack/react-table";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";

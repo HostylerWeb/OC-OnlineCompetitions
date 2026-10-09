@@ -1,7 +1,7 @@
 "use client";
 
-import { useAdminUserCompliance } from "@luxero/api-admin";
-import { formatDate } from "@luxero/utils";
+import { useAdminUserCompliance } from "@oc/api-admin";
+import { formatDate } from "@oc/utils";
 import { useMemo } from "react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";

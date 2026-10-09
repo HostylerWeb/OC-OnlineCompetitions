@@ -1,9 +1,9 @@
 "use client";
 
-import { useEntryCompetitions } from "@luxero/api-client";
+import { useEntryCompetitions } from "@oc/api-client";
 
-import { ArrowRight, Ticket } from "@luxero/icons";
-import type { ApiResponse, EntryCompetition } from "@luxero/types";
+import { ArrowRight, Ticket } from "@oc/icons";
+import type { ApiResponse, EntryCompetition } from "@oc/types";
 import { useEffect, useRef, useState } from "react";
 import { useData } from "vike-react/useData";
 import { GoldButton } from "@/components/buttons";
@@ -64,7 +64,7 @@ export default function EntriesPage() {
   return (
     <>
       <section className="py-8 lg:py-16 border-b border-gold/10">
-        <div className="luxero-container-wide text-center">
+        <div className="oc-container-wide text-center">
           <Badge
             variant="outline"
             className="text-[10px] border-gold/30 text-gold bg-gold/10 mb-3 lg:mb-4"
@@ -81,7 +81,7 @@ export default function EntriesPage() {
       </section>
 
       <section className="py-8">
-        <div className="luxero-container-wide">
+        <div className="oc-container-wide">
           {isError ? (
             <div className="text-center py-16">
               <p className="text-muted-foreground text-lg mb-2">
@@ -96,7 +96,7 @@ export default function EntriesPage() {
               </GoldButton>
             </div>
           ) : competitions.length > 0 ? (
-            <div className="grid luxero-grid-competitions">
+            <div className="grid onlinecompetitions-grid-competitions">
               {competitions.map((comp) => (
                 <CompetitionCard
                   key={comp.id}
@@ -137,7 +137,7 @@ export default function EntriesPage() {
 
       {competitions.length > 0 && (
         <section className="py-6 border-t border-gold/10">
-          <div className="luxero-container-wide text-center">
+          <div className="oc-container-wide text-center">
             <p className="text-sm text-muted-foreground flex items-center justify-center gap-1.5">
               <Ticket className="w-4 h-4 text-gold/60" />
               {t("staticPages.entries.footerDisclaimer")}

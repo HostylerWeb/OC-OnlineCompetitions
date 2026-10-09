@@ -1,7 +1,7 @@
-import { Competition, Profile, ReferralPurchase, Ticket } from "@luxero/api-db/models";
-import { invalidateUser } from "@luxero/api-infra/cache";
-import { createLogger } from "@luxero/api-logger";
-import { claimTicketsForOrder } from "@luxero/api-tickets/ticket-service";
+import { Competition, Profile, ReferralPurchase, Ticket } from "@oc/api-db/models";
+import { invalidateUser } from "@oc/api-infra/cache";
+import { createLogger } from "@oc/api-logger";
+import { claimTicketsForOrder } from "@oc/api-tickets/ticket-service";
 import { type Types } from "mongoose";
 import { qualifyPurchaseForTier } from "./qualify-purchase";
 import { calculateTierGrant } from "./tier-ladder";

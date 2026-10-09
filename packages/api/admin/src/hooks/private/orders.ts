@@ -5,7 +5,7 @@ import type {
   MeOrderDetailDto,
   MeOrderDto,
   MyEntriesStats,
-} from "@luxero/types";
+} from "@oc/types";
 import { useInfiniteQuery, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useMemo } from "react";
 import { api } from "../../client";

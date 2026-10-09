@@ -1,6 +1,6 @@
 "use client";
 
-import { type SearchResultGroup, useAdminSearch, useAuth } from "@luxero/api-admin";
+import { type SearchResultGroup, useAdminSearch, useAuth } from "@oc/api-admin";
 import {
   CreditCard,
   FolderTree,
@@ -14,9 +14,9 @@ import {
   TrendingUp,
   Trophy,
   Users,
-} from "@luxero/icons";
+} from "@oc/icons";
 import { AlertCircle, Search } from "lucide-react";
-import type { AdminRole } from "@luxero/types";
+import type { AdminRole } from "@oc/types";
 import { useRouter } from "next/navigation";
 import * as React from "react";
 import { useEffect, useMemo, useState } from "react";

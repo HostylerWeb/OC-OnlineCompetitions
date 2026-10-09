@@ -1,4 +1,4 @@
-import { authClient, safelyRunAuthRequest } from "@luxero/auth-client";
+import { authClient, safelyRunAuthRequest } from "@oc/auth-client";
 import { getOrigin } from "./helpers";
 import { normalizeAuthEmail } from "./normalize-email";
 

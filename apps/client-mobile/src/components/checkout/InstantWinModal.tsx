@@ -1,7 +1,7 @@
 "use client";
 
-import { PartyPopper, Sparkles, Ticket, Trophy, X } from "@luxero/icons";
-import { cn, formatTicketNumber, getGrantedTicketIds } from "@luxero/utils";
+import { PartyPopper, Sparkles, Ticket, Trophy, X } from "@oc/icons";
+import { cn, formatTicketNumber, getGrantedTicketIds } from "@oc/utils";
 import { useEffect, useRef } from "react";
 import { Link } from "@/components/Link";
 import { Button } from "@/components/ui/button";

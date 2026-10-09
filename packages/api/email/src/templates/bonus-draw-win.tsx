@@ -1,5 +1,5 @@
-import type { IEmailSettings } from "@luxero/api-db/models/EmailSettings";
-import { formatCurrency } from "@luxero/utils";
+import type { IEmailSettings } from "@oc/api-db/models/EmailSettings";
+import { formatCurrency } from "@oc/utils";
 import { Button, Hr, Link, Section, Text } from "@react-email/components";
 import { BaseEmail, emailStyles } from "./base";
 
@@ -28,7 +28,7 @@ export function BonusDrawWinEmail({
   settings,
   frontendUrl,
 }: BonusDrawWinEmailProps) {
-  const supportAddress = settings?.supportAddress ?? "support@luxero.win";
+  const supportAddress = settings?.supportAddress ?? "support@onlinecompetitions.co.uk";
   return (
     <BaseEmail
       preview={`🎉 You won a bonus draw in ${competitionName}!`}
@@ -99,7 +99,7 @@ export function BonusDrawWinEmail({
       <Text className={emailStyles.paragraph.className}>
         Good luck!
         <br />
-        The Luxero Team
+        The Online Competitions Team
       </Text>
     </BaseEmail>
   );

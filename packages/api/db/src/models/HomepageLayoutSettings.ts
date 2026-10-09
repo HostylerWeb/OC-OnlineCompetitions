@@ -1,4 +1,4 @@
-import type { HomepageSectionConfig } from "@luxero/types";
+import type { HomepageSectionConfig } from "@oc/types";
 import { Schema } from "mongoose";
 import { m } from "../db";
 

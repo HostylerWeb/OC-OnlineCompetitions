@@ -1,4 +1,4 @@
-import type { AdminReferralSummary, EntryCompetitionsSummary } from "@luxero/types";
+import type { AdminReferralSummary, EntryCompetitionsSummary } from "@oc/types";
 import type { Context } from "hono";
 import type { ContentfulStatusCode } from "hono/utils/http-status";
 

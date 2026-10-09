@@ -1,6 +1,6 @@
-import { success } from "@luxero/api-infra/response";
-import { isLocalDevRuntime } from "@luxero/api-infra/runtime-config";
-import { getEnv } from "@luxero/env/server";
+import { success } from "@oc/api-infra/response";
+import { isLocalDevRuntime } from "@oc/api-infra/runtime-config";
+import { getEnv } from "@oc/env/server";
 import { Hono } from "hono";
 
 const app = new Hono();

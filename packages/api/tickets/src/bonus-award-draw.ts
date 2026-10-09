@@ -6,8 +6,8 @@ import {
   CompetitionBonusAwardAssignment,
   type IBonusAwardWin,
   Ticket,
-} from "@luxero/api-db/models";
-import { CH, invalidateByChannelSafe } from "@luxero/api-infra/cache";
+} from "@oc/api-db/models";
+import { CH, invalidateByChannelSafe } from "@oc/api-infra/cache";
 import { type ClientSession, Types } from "mongoose";
 
 function sessionOpts(session?: ClientSession) {

@@ -7,14 +7,14 @@ import {
   Profile,
   PromoCode,
   Winner,
-} from "@luxero/api-db/models";
-import dbConnect from "@luxero/api-infra/db";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { escapeRegex, substringRegex } from "@luxero/api-infra/fuzzy-search";
-import { parseSearch } from "@luxero/api-infra/pagination";
-import { error } from "@luxero/api-infra/response";
-import { captureRouteError } from "@luxero/api-infra/sentry";
-import { requireAdmin } from "@luxero/api-server/middleware/auth";
+} from "@oc/api-db/models";
+import dbConnect from "@oc/api-infra/db";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { escapeRegex, substringRegex } from "@oc/api-infra/fuzzy-search";
+import { parseSearch } from "@oc/api-infra/pagination";
+import { error } from "@oc/api-infra/response";
+import { captureRouteError } from "@oc/api-infra/sentry";
+import { requireAdmin } from "@oc/api-server/middleware/auth";
 import { Hono } from "hono";
 import type { PipelineStage } from "mongoose";
 
@@ -44,7 +44,7 @@ app.get("/users", async (c) => {
     await dbConnect();
     const filter: Record<string, unknown> = {};
     filter.isGuestCheckout = { $ne: true };
-    filter.email = { $not: { $regex: /@guest\.luxero\.local$/i } };
+    filter.email = { $not: { $regex: /@guest\.onlinecompetitions\.local$/i } };
     const search = c.req.query("search")?.trim();
     if (search) {
       const safe = escapeRegex(search);

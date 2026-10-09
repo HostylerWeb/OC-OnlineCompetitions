@@ -1,4 +1,4 @@
-import { getEnv } from "@luxero/env/vike";
+import { getEnv } from "@oc/env/vike";
 
 export function resolveSentryRelease(): string | undefined {
   const release = getEnv("SENTRY_RELEASE").trim();

@@ -1,7 +1,7 @@
-import { Notification } from "@luxero/api-db/models";
-import dbConnect from "@luxero/api-infra/db";
-import { captureRouteError } from "@luxero/api-infra/sentry";
-import { sendPushNotification } from "@luxero/api-server/lib/push";
+import { Notification } from "@oc/api-db/models";
+import dbConnect from "@oc/api-infra/db";
+import { captureRouteError } from "@oc/api-infra/sentry";
+import { sendPushNotification } from "@oc/api-server/lib/push";
 import mongoose from "mongoose";
 
 export type ProcessScheduledNotificationsSummary = {

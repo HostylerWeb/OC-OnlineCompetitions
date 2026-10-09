@@ -1,6 +1,6 @@
-import type { IShopOrderShippingAddress } from "@luxero/api-db/models";
-import { ShopOrder } from "@luxero/api-db/models";
-import dbConnect from "@luxero/api-infra/db";
+import type { IShopOrderShippingAddress } from "@oc/api-db/models";
+import { ShopOrder } from "@oc/api-db/models";
+import dbConnect from "@oc/api-infra/db";
 import { Types } from "mongoose";
 import { afterAll, beforeAll, beforeEach, describe, expect, test } from "vitest";
 import {

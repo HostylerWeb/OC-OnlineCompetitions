@@ -1,7 +1,7 @@
 "use client";
 
-import { authClient, getAuthErrorMessage, useImportGoogleAvatar } from "@luxero/api-client";
-import { Check, Link2 } from "@luxero/icons";
+import { authClient, getAuthErrorMessage, useImportGoogleAvatar } from "@oc/api-client";
+import { Check, Link2 } from "@oc/icons";
 import { useEffect, useState } from "react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";

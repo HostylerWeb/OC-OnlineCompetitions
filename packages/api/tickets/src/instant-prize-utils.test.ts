@@ -3,7 +3,7 @@ import { afterEach, describe, expect, test, vi } from "vitest";
 
 const mockAggregate = vi.hoisted(() => vi.fn());
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   Ticket: {
     aggregate: mockAggregate,
   },
@@ -11,11 +11,11 @@ vi.mock("@luxero/api-db/models", () => ({
   InstantPrizeWin: {},
 }));
 
-vi.mock("@luxero/api-tickets/ticket-service", () => ({
+vi.mock("@oc/api-tickets/ticket-service", () => ({
   buildExcludeSetForInstantPrizes: vi.fn(async () => new Set<number>()),
 }));
 
-import { generateWinningEntryNumbers } from "@luxero/api-tickets/instant-prize-utils";
+import { generateWinningEntryNumbers } from "@oc/api-tickets/instant-prize-utils";
 
 describe("generateWinningEntryNumbers", () => {
   const competitionId = new Types.ObjectId();

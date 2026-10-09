@@ -1,6 +1,6 @@
-import type { IShopOrder, IShopOrderShippingAddress } from "@luxero/api-db/models";
-import { ShopOrder, ShopProduct, ShopProductVariant } from "@luxero/api-db/models";
-import { isDuplicateKeyError } from "@luxero/api-infra/mongo-errors";
+import type { IShopOrder, IShopOrderShippingAddress } from "@oc/api-db/models";
+import { ShopOrder, ShopProduct, ShopProductVariant } from "@oc/api-db/models";
+import { isDuplicateKeyError } from "@oc/api-infra/mongo-errors";
 import { Types } from "mongoose";
 
 export interface ShopCheckoutItem {

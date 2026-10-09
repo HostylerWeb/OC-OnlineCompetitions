@@ -1,4 +1,4 @@
-import { getSessionCookiePrefix } from "@luxero/utils";
+import { getSessionCookiePrefix } from "@oc/utils";
 import { anonymousClient, emailOTPClient } from "better-auth/client/plugins";
 import { createAuthClient } from "better-auth/react";
 

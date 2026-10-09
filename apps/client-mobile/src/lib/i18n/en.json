@@ -1,8 +1,8 @@
 {
   "head": {
-    "title": "Luxero — Win Amazing Prizes & Luxury Experiences",
-    "description": "Enter competitions on Luxero to win incredible prizes, from premium electronics and designer fashion to unforgettable luxury experiences. Play skill-based contests and try instant win games.",
-    "siteName": "Luxero"
+    "title": "Online Competitions — Win Amazing Prizes & Luxury Experiences",
+    "description": "Enter competitions on Online Competitions to win incredible prizes, from premium electronics and designer fashion to unforgettable luxury experiences. Play skill-based contests and try instant win games.",
+    "siteName": "Online Competitions"
   },
   "common": {
     "loading": "Loading",
@@ -117,7 +117,7 @@
     "cookiePolicy": "Cookie Policy",
     "freePostalEntry": "Free Postal Entry",
     "acceptedPayments": "Accepted payment methods",
-    "copyright": "© {year} LUXERO COMPETITIONS LTD SC888260. All rights reserved.",
+    "copyright": "© {year} ONLINE COMPETITIONS LTD SC729481. All rights reserved.",
     "installApp": "Install App"
   },
   "pwa": {
@@ -195,11 +195,11 @@
   "auth": {
     "login": {
       "heading": "Welcome back",
-      "subtitle": "Sign in to your Luxero account"
+      "subtitle": "Sign in to your Online Competitions account"
     },
     "signUp": {
       "heading": "Create your account",
-      "subtitle": "Join Luxero and start winning",
+      "subtitle": "Join Online Competitions and start winning",
       "dobPlaceholder": "Select your date of birth"
     },
     "verify": {
@@ -297,10 +297,10 @@
       "returnToHint": "After signing in, you'll return to where you left off.",
       "referenceCode": "Reference: {errorCode}",
       "hints": {
-        "emailVerification": "Open the latest email from Luxero and enter your verification code on the sign-in page.",
+        "emailVerification": "Open the latest email from Online Competitions and enter your verification code on the sign-in page.",
         "passwordReset": "Request a new reset link from the forgot-password page if yours has expired.",
         "rateLimited": "Wait a minute before trying again so we can keep your account secure.",
-        "oauthRetry": "Start sign-in from the Luxero website rather than a saved or shared link."
+        "oauthRetry": "Start sign-in from the Online Competitions website rather than a saved or shared link."
       }
     },
     "errorActions": {
@@ -356,7 +356,7 @@
     },
     "SOCIAL_ACCOUNT_ALREADY_LINKED": {
       "title": "Account already linked",
-      "message": "This social account is already linked to another Luxero account."
+      "message": "This social account is already linked to another Online Competitions account."
     },
     "PROVIDER_NOT_FOUND": {
       "title": "Sign-in provider unavailable",
@@ -432,7 +432,7 @@
     },
     "CROSS_SITE_NAVIGATION_LOGIN_BLOCKED": {
       "title": "Sign-in blocked",
-      "message": "This sign-in request was blocked for security reasons. Open Luxero in your browser and try again."
+      "message": "This sign-in request was blocked for security reasons. Open Online Competitions in your browser and try again."
     },
     "VERIFICATION_EMAIL_NOT_ENABLED": {
       "title": "Verification unavailable",
@@ -444,7 +444,7 @@
     },
     "EMAIL_MISMATCH": {
       "title": "Email doesn't match",
-      "message": "The email from your sign-in provider doesn't match your Luxero account email."
+      "message": "The email from your sign-in provider doesn't match your Online Competitions account email."
     },
     "SESSION_NOT_FRESH": {
       "title": "Please sign in again",
@@ -460,11 +460,11 @@
     },
     "INVALID_CALLBACK_URL": {
       "title": "Sign-in interrupted",
-      "message": "The return address for sign-in wasn't valid. Start again from the Luxero website."
+      "message": "The return address for sign-in wasn't valid. Start again from the Online Competitions website."
     },
     "INVALID_REDIRECT_URL": {
       "title": "Sign-in interrupted",
-      "message": "The redirect after sign-in wasn't valid. Start again from the Luxero website."
+      "message": "The redirect after sign-in wasn't valid. Start again from the Online Competitions website."
     },
     "INVALID_ERROR_CALLBACK_URL": {
       "title": "Sign-in interrupted",
@@ -476,7 +476,7 @@
     },
     "MISSING_OR_NULL_ORIGIN": {
       "title": "Invalid request",
-      "message": "This sign-in request was incomplete. Open Luxero in your browser and try again."
+      "message": "This sign-in request was incomplete. Open Online Competitions in your browser and try again."
     },
     "CALLBACK_URL_REQUIRED": {
       "title": "Sign-in interrupted",
@@ -540,7 +540,7 @@
     },
     "signup_disabled": {
       "title": "Account not found",
-      "message": "This Google account isn't registered with Luxero. Create a new account to get started."
+      "message": "This Google account isn't registered with Online Competitions. Create a new account to get started."
     }
   },
   "cart": {
@@ -607,9 +607,9 @@
   },
   "checkout": {
     "meta": {
-      "title": "Checkout — Luxero",
-      "description": "Complete your purchase securely on Luxero. Review your cart, enter shipping details, and choose a payment method. Win amazing prizes with every entry.",
-      "ogDescription": "Complete your purchase securely on Luxero. Review your cart, enter shipping details, and choose a payment method."
+      "title": "Checkout — Online Competitions",
+      "description": "Complete your purchase securely on Online Competitions. Review your cart, enter shipping details, and choose a payment method. Win amazing prizes with every entry.",
+      "ogDescription": "Complete your purchase securely on Online Competitions. Review your cart, enter shipping details, and choose a payment method."
     },
     "heading": "Secure Checkout",
     "subtitle": "Complete your purchase in just a few steps",
@@ -708,7 +708,7 @@
     "redirectingSecure": "Redirecting to secure page…",
     "openingPopup": "Opening secure payment…",
     "cardPaymentInfo": "Pay securely by debit or credit card. You'll be redirected to a secure payment page to complete your transaction.",
-    "ticketConfirmNote": "Your tickets are issued as soon as your payment is confirmed. No card details are stored by Luxero.",
+    "ticketConfirmNote": "Your tickets are issued as soon as your payment is confirmed. No card details are stored by Online Competitions.",
     "popupAlert": "A secure popup window will open to complete your payment. Please ensure popups are allowed for this site.",
     "redirectAlert": "By continuing, you will be redirected to our secure payment page to complete your transaction. Payments are processed in accordance with PSD2 strong customer authentication requirements.",
     "cardUnavailable": "Card payment is currently unavailable. Please contact support or try again later.",
@@ -1490,7 +1490,7 @@
       "subtitle": "Find answers to common questions about our competitions",
       "ctaHeading": "Didn't find your answer?",
       "ctaBody": "Contact our support team at {email} or use the contact form.",
-      "contactEmail": "contact@luxero.win",
+      "contactEmail": "contact@onlinecompetitions.co.uk",
       "getInTouch": "Get in touch",
       "howItWorks": "How It Works",
       "noFaqs": "No FAQs in this category yet.",
@@ -1503,8 +1503,8 @@
     "howItWorks": {
       "heading": "How It Works",
       "subtitle": "Getting started is easy. Follow these steps to enter our luxury prize competitions.",
-      "whyLuxero": "Why Luxero",
-      "whyChooseLuxero": "Why Choose",
+      "whyOnlineCompetitions": "Why Online Competitions",
+      "whyChooseOnlineCompetitions": "Why Choose",
       "yourJourney": "Your journey",
       "fromBrowseToWin": "From browse to win",
       "stepDescription": "Seven simple steps — online checkout or free postal entry.",
@@ -1538,7 +1538,7 @@
       "messageSent": "Message sent! We'll get back to you within 24 hours.",
       "sendError": "Something went wrong. Please try again.",
       "followUs": "Follow Us",
-      "followUsSubtitle": "Stay up to date with Luxero",
+      "followUsSubtitle": "Stay up to date with Online Competitions",
       "preferSelfHelp": "Prefer to help yourself?",
       "browseFaq": "Browse our FAQ →",
       "infoCards": {
@@ -1548,12 +1548,12 @@
         "registered": "Registered"
       },
       "companyInfo": {
-        "email": "contact@luxero.win",
-        "phone": "+44 744 328 9228",
+        "email": "contact@onlinecompetitions.co.uk",
+        "phone": "123 123 1234",
         "hours": "Mon–Fri, 9am–5pm GMT",
-        "address": "107 Dalriada Crescent, Motherwell, ML1 3XT, Scotland",
-        "companyName": "LUXERO COMPETITIONS LTD",
-        "companyNumber": "Company No. SC888260 (Scotland)"
+        "address": "42 Meadowbank Drive, Edinburgh, EH8 7AQ, Scotland",
+        "companyName": "ONLINE COMPETITIONS LTD",
+        "companyNumber": "Company No. SC729481 (Scotland)"
       },
       "footerNote": "We respond within 24 hours on business days (Mon–Fri, 9am–5pm GMT)."
     },
@@ -1579,7 +1579,7 @@
     },
     "responsiblePlay": {
       "heading": "Responsible Play",
-      "subtitle": "How Luxero meets the UK Voluntary Code on player protections — and tools to stay in control.",
+      "subtitle": "How Online Competitions meets the UK Voluntary Code on player protections — and tools to stay in control.",
       "supportOrgs": "Support organisations"
     },
     "entries": {
@@ -1610,9 +1610,9 @@
       "subtitle": "Enter any competition by post — completely free of charge",
       "intro": "You may enter the competition using the Postal Entry Route by complying with the following conditions.",
       "sendTo": "Send your entry to",
-      "companyName": "Luxero Competitions",
-      "address": "107 Dalriada Crescent, Motherwell, ML1 3XT, Scotland",
-      "companyRegistration": "LUXERO COMPETITIONS LTD — Company No. SC888260 (Scotland)",
+      "companyName": "Online Competitions",
+      "address": "42 Meadowbank Drive, Edinburgh, EH8 7AQ, Scotland",
+      "companyRegistration": "ONLINE COMPETITIONS LTD — Company No. SC729481 (Scotland)",
       "includeHeading": "Include with your entry",
       "includeItems": [
         "your full name;",
@@ -1635,7 +1635,7 @@
     "winners": {
       "heading": "Real winners.",
       "subheading": "Real prizes.",
-      "heroDesc": "Every draw is transparent and every winner is celebrated here. Browse recent results and see what Luxero members have taken home.",
+      "heroDesc": "Every draw is transparent and every winner is celebrated here. Browse recent results and see what Online Competitions members have taken home.",
       "publicGallery": "Public winner gallery",
       "totalPrizesAwarded": "Total prizes awarded",
       "happyWinners": "Happy winners",

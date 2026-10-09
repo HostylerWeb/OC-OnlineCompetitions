@@ -1,5 +1,5 @@
-import { AlertCircle, CheckCircle, LoaderCircle } from "@luxero/icons";
-import { cn } from "@luxero/utils";
+import { AlertCircle, CheckCircle, LoaderCircle } from "@oc/icons";
+import { cn } from "@oc/utils";
 import { useEffect, useRef, useState } from "react";
 import { useResendVerification, useVerifyEmail } from "../../hooks/auth";
 import { getAuthErrorMessage } from "../actions";

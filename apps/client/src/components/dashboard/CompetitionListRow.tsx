@@ -1,6 +1,6 @@
 "use client";
 
-import type { Competition } from "@luxero/types";
+import type { Competition } from "@oc/types";
 import { CompetitionCard } from "./CompetitionCard";
 import {
   DASHBOARD_LIST_GAP,

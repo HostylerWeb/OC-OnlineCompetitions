@@ -1,8 +1,8 @@
-# MongoDB → PostgreSQL migration plan (Luxero)
+# MongoDB → PostgreSQL migration plan (Online Competitions)
 
 **Status:** Draft for engineering planning  
 **Date:** 2026-10-04  
-**Context:** [database-audit.md](./database-audit.md), ~45 Mongoose models, Better Auth on Mongo (`user`, `session`, `account`), product data in `@luxero/api-db`.
+**Context:** [database-audit.md](./database-audit.md), ~45 Mongoose models, Better Auth on Mongo (`user`, `session`, `account`), product data in `@oc/api-db`.
 
 ---
 
@@ -26,7 +26,7 @@
 
 ## 2. Why migrate (project-specific)
 
-Luxero is modeled as **many linked entities** (competitions, tickets, orders, profiles, instant prizes, shop, referrals). Mongo is used with **Mongoose schemas + `$lookup` aggregations**—effectively a relational model on a document store. That works but increases cost for:
+Online Competitions is modeled as **many linked entities** (competitions, tickets, orders, profiles, instant prizes, shop, referrals). Mongo is used with **Mongoose schemas + `$lookup` aggregations**—effectively a relational model on a document store. That works but increases cost for:
 
 - Integrity enforcement at the DB layer (unique ticket per competition, order idempotency, promo redemptions).
 - Admin/global search and heavy aggregations ([database-audit.md § Performance hotspots](./database-audit.md)).

@@ -1,5 +1,5 @@
 {
-  "name": "@luxero/api-shop",
+  "name": "@oc/api-shop",
   "private": true,
   "type": "module",
   "exports": {
@@ -16,15 +16,15 @@
     "seed": "bun run src/seed.ts"
   },
   "dependencies": {
-    "@luxero/api-db": "workspace:*",
-    "@luxero/api-infra": "workspace:*",
-    "@luxero/api-errors": "workspace:*",
-    "@luxero/types": "workspace:*",
-    "@luxero/api-logger": "workspace:*",
-    "@luxero/api-payment-local": "workspace:*",
-    "@luxero/utils": "workspace:*",
-    "@luxero/api-email": "workspace:*",
-    "@luxero/env": "workspace:*",
+    "@oc/api-db": "workspace:*",
+    "@oc/api-infra": "workspace:*",
+    "@oc/api-errors": "workspace:*",
+    "@oc/types": "workspace:*",
+    "@oc/api-logger": "workspace:*",
+    "@oc/api-payment-local": "workspace:*",
+    "@oc/utils": "workspace:*",
+    "@oc/api-email": "workspace:*",
+    "@oc/env": "workspace:*",
     "@react-email/render": "^2.0.8",
     "mongoose": "^9.6.0"
   },

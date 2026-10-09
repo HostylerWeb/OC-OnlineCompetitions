@@ -1,18 +1,25 @@
 import type { Metadata } from "next";
+import {
+  CompanyContactEmail,
+  LEGAL_COMPANY_NAME,
+  LEGAL_COMPANY_NUMBER,
+  LEGAL_REGISTERED_OFFICE,
+  LEGAL_WEBSITE,
+} from "@/components/company-details";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Luxero",
+  title: "Privacy Policy — Online Competitions",
   description:
     "Privacy policy explaining how we collect, use, and protect your personal data in compliance with UK GDPR.",
   openGraph: {
-    title: "Privacy Policy — Luxero",
+    title: "Privacy Policy — Online Competitions",
     description: "Privacy policy explaining how we collect, use, and protect your personal data.",
   },
 };
 
 export default function PrivacyPage() {
   return (
-    <main className="luxero-container py-12">
+    <main className="oc-container py-12">
       <div className="mx-auto max-w-3xl">
         <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-gold">
           Legal
@@ -24,21 +31,16 @@ export default function PrivacyPage() {
           <section>
             <h2 className="text-xl font-semibold tracking-tight text-foreground">1. Who We Are</h2>
             <p className="mt-3">
-              LUXERO COMPETITIONS LTD (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;)
-              operates the website at luxero.win. We are a company registered in Scotland (company
-              number SC888260) with our registered address at 107 Dalriada Crescent, Motherwell, ML1
-              3XT, Scotland. We are the data controller of your personal data for the purposes of UK
+              {LEGAL_COMPANY_NAME} (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;)
+              operates the website at {LEGAL_WEBSITE}. We are a company registered in Scotland (company
+              number {LEGAL_COMPANY_NUMBER}) with our registered address at {LEGAL_REGISTERED_OFFICE}.
+              We are the data controller of your personal data for the purposes of UK
               data protection law.
             </p>
             <p className="mt-2">
               If you have any questions about this policy or how we handle your data, please contact
               our Data Protection Officer at{" "}
-              <a
-                href="mailto:contact@luxero.win"
-                className="text-gold transition-colors hover:text-gold/80"
-              >
-                contact@luxero.win
-              </a>
+              <CompanyContactEmail className="text-gold transition-colors hover:text-gold/80" />
               .
             </p>
           </section>
@@ -194,12 +196,7 @@ export default function PrivacyPage() {
             </ul>
             <p className="mt-2">
               To exercise any of these rights, please contact us at{" "}
-              <a
-                href="mailto:contact@luxero.win"
-                className="text-gold transition-colors hover:text-gold/80"
-              >
-                contact@luxero.win
-              </a>
+              <CompanyContactEmail className="text-gold transition-colors hover:text-gold/80" />
               . We will respond within one month. If you are not satisfied with our response, you
               have the right to lodge a complaint with the Information Commissioner&rsquo;s Office
               (ICO).
@@ -289,12 +286,7 @@ export default function PrivacyPage() {
             <p className="mt-2">
               If you would like further information about the safeguards used for international
               transfers, please contact us at{" "}
-              <a
-                href="mailto:contact@luxero.win"
-                className="text-gold transition-colors hover:text-gold/80"
-              >
-                contact@luxero.win
-              </a>
+              <CompanyContactEmail className="text-gold transition-colors hover:text-gold/80" />
               .
             </p>
           </section>
@@ -308,16 +300,10 @@ export default function PrivacyPage() {
             <ul className="mt-2 list-none space-y-1 pl-0">
               <li>
                 Data Protection Officer:{" "}
-                <a
-                  href="mailto:contact@luxero.win"
-                  className="text-gold transition-colors hover:text-gold/80"
-                >
-                  contact@luxero.win
-                </a>
+                <CompanyContactEmail className="text-gold transition-colors hover:text-gold/80" />
               </li>
               <li>
-                Post: LUXERO COMPETITIONS LTD, 107 Dalriada Crescent, Motherwell, ML1 3XT, Scotland,
-                United Kingdom
+                Post: {LEGAL_COMPANY_NAME}, {LEGAL_REGISTERED_OFFICE}
               </li>
             </ul>
             <p className="mt-2">

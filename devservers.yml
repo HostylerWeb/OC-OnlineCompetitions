@@ -2,13 +2,13 @@ servers:
   admin:
     command: 'cd ./apps/admin && bun run dev'
     working_dir: './'
-    port: 3222
+    port: 4222
     autostart: false
 
   client:
     command: 'cd ./apps/client && bun run dev'
     working_dir: './'
-    port: 3555
+    port: 4555
     autostart: true
 
   shop:

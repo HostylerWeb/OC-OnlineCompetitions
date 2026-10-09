@@ -1,6 +1,6 @@
 "use client";
 
-import { useAuth, useComplianceFeatures } from "@luxero/api-client";
+import { useAuth, useComplianceFeatures } from "@oc/api-client";
 import {
   Gift,
   HelpCircle,
@@ -10,13 +10,14 @@ import {
   Mail,
   Ticket,
   Trophy,
+  SocialLinksChips,
   X,
-} from "@luxero/icons";
-import { cn } from "@luxero/utils";
+} from "@oc/icons";
+import { cn } from "@oc/utils";
 import { createContext, type ReactNode, useCallback, useContext, useMemo, useState } from "react";
 import { toast } from "sonner";
 import { usePageContext } from "vike-react/usePageContext";
-import { LuxeroLogo } from "@/components/LuxeroLogo";
+import { BrandLogo } from "@/components/BrandLogo";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { type TranslationKey, useLogicalPathname, useTranslation } from "@/lib/i18n";
@@ -153,7 +154,7 @@ function HeaderMobileNavContent({
   showPostalEntry: boolean;
   authLoading: boolean;
   isAnonymous: boolean;
-  user: import("@luxero/types").User | null;
+  user: import("@oc/types").User | null;
   logout: () => Promise<void>;
   onClose: () => void;
   isActive: (href: string) => boolean;
@@ -171,7 +172,7 @@ function HeaderMobileNavContent({
           className="hover:brightness-110 transition-all"
           data-umami-event="mobile-nav:logo-click"
         >
-          <LuxeroLogo className="h-7 w-auto text-gold" />
+          <BrandLogo className="text-gold" />
         </NavSheetLink>
         <Button
           variant="ghost"
@@ -275,6 +276,11 @@ function HeaderMobileNavContent({
               {t("footer.freePostalEntry")}
             </NavSheetLink>
           ) : null}
+        </div>
+
+        <div className="px-3 py-3 mt-1 border-t border-gold/10">
+          <p className={mobileNavSectionClass()}>{t("header.followUs")}</p>
+          <SocialLinksChips umamiEvent="mobile-nav:social-click" />
         </div>
       </div>
 

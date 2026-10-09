@@ -1,7 +1,7 @@
-import { PaymentMethod } from "@luxero/api-db/models";
-import { CH, invalidateByChannelSafe } from "@luxero/api-infra/cache";
-import type { PaytriotCredentials } from "@luxero/api-payment-paytriot";
-import { getEnv } from "@luxero/env/server";
+import { PaymentMethod } from "@oc/api-db/models";
+import { CH, invalidateByChannelSafe } from "@oc/api-infra/cache";
+import type { PaytriotCredentials } from "@oc/api-payment-paytriot";
+import { getEnv } from "@oc/env/server";
 
 export function hasPaytriotEnvCredentials(): boolean {
   const merchantId = getEnv("PAYTRIOT_MERCHANT_ID")?.trim();

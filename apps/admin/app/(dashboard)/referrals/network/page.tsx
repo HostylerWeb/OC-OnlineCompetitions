@@ -1,6 +1,6 @@
 "use client";
 
-import type { ReferralMindmapResponse } from "@luxero/api-referrals/mindmap";
+import type { ReferralMindmapResponse } from "@oc/api-referrals/mindmap";
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";

@@ -12,19 +12,19 @@ const __mocks = vi.hoisted(() => ({
   })),
 }));
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   Order: {
     findByIdAndUpdate: __mocks.findByIdAndUpdate,
     findOne: __mocks.findOne,
   },
 }));
 
-vi.mock("@luxero/api-compliance/spend-tracking", () => ({
+vi.mock("@oc/api-compliance/spend-tracking", () => ({
   releaseReservedSpend: __mocks.releaseReservedSpend,
 }));
 
-vi.mock("@luxero/api-tickets/promo-codes", async () => {
-  const actual = await vi.importActual("@luxero/api-tickets/promo-codes");
+vi.mock("@oc/api-tickets/promo-codes", async () => {
+  const actual = await vi.importActual("@oc/api-tickets/promo-codes");
   return { ...actual, releasePromoCodeUsage: __mocks.releasePromoCodeUsage };
 });
 

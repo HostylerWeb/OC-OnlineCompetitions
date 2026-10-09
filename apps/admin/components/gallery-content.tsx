@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronLeft, ChevronRight, Minus, Plus, Video, X } from "@luxero/icons";
+import { ChevronLeft, ChevronRight, Minus, Plus, Video, X } from "@oc/icons";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { AssetImage } from "@/components/AssetImage";
 import type { ReactZoomPanPinchRef } from "react-zoom-pan-pinch";

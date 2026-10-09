@@ -2,7 +2,7 @@ import { Types } from "mongoose";
 import { beforeEach, describe, expect, test, vi } from "vitest";
 import { resolveOrderReadScope } from "./guest-order-owners";
 
-vi.mock("@luxero/auth-admin/auth-hooks", () => ({
+vi.mock("@oc/auth-admin/auth-hooks", () => ({
   canonicalizeEmail: (email: string) => {
     const parts = email.toLowerCase().split("@");
     const local = parts[0]!;
@@ -18,7 +18,7 @@ vi.mock("@luxero/auth-admin/auth-hooks", () => ({
 const __profileFindById = vi.fn();
 const __profileFind = vi.fn();
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   Profile: {
     findById: (id: unknown) => ({
       select: () => ({ lean: async () => __profileFindById(id) }),
@@ -48,7 +48,7 @@ describe("resolveOrderReadScope", () => {
   test("skips email resolution for anonymous guest profiles", async () => {
     __profileFindById.mockResolvedValue({
       _id: new Types.ObjectId(),
-      email: "guest-abc123@guest.luxero.local",
+      email: "guest-abc123@guest.onlinecompetitions.local",
     });
 
     const sessionUserId = new Types.ObjectId().toString();

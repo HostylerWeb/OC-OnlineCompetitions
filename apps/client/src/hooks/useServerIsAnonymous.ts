@@ -1,4 +1,4 @@
-import type { SessionUser } from "@luxero/types";
+import type { SessionUser } from "@oc/types";
 import { usePageContext } from "vike-react/usePageContext";
 
 export function useServerIsAnonymous(): boolean {

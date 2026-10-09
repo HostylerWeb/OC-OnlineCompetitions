@@ -1,15 +1,15 @@
-import { dbConnect } from "@luxero/api-db";
-import { Profile } from "@luxero/api-db/models";
-import { sendEmail } from "@luxero/api-email/client";
-import { getEmailConfig } from "@luxero/api-email/config";
-import { AdminEmergencyEmail } from "@luxero/api-email/templates/admin-emergency";
-import { EmailVerificationEmail } from "@luxero/api-email/templates/email-verification";
-import { MagicLinkSignInEmail } from "@luxero/api-email/templates/magic-link-sign-in";
-import { PasswordResetEmail } from "@luxero/api-email/templates/password-reset";
-import { WelcomeEmail } from "@luxero/api-email/templates/welcome";
-import { getCurrentContext } from "@luxero/api-infra/env";
+import { dbConnect } from "@oc/api-db";
+import { Profile } from "@oc/api-db/models";
+import { sendEmail } from "@oc/api-email/client";
+import { getEmailConfig } from "@oc/api-email/config";
+import { AdminEmergencyEmail } from "@oc/api-email/templates/admin-emergency";
+import { EmailVerificationEmail } from "@oc/api-email/templates/email-verification";
+import { MagicLinkSignInEmail } from "@oc/api-email/templates/magic-link-sign-in";
+import { PasswordResetEmail } from "@oc/api-email/templates/password-reset";
+import { WelcomeEmail } from "@oc/api-email/templates/welcome";
+import { getCurrentContext } from "@oc/api-infra/env";
 import { render } from "@react-email/render";
-import { isGuestProfileEmail, type HookAuthUser } from "@luxero/auth-admin/auth-hooks";
+import { isGuestProfileEmail, type HookAuthUser } from "@oc/auth-admin/auth-hooks";
 
 async function resolveUserName(email: string): Promise<string> {
   try {
@@ -56,7 +56,7 @@ export async function sendOtpEmail({
       );
       await sendEmail({
         to: email,
-        subject: "Reset your Luxero password",
+        subject: "Reset your Online Competitions password",
         html,
         text: `Hi ${displayName}, your password reset code is ${otp}. It expires in 5 minutes. Or visit: ${resetUrl}`,
       });
@@ -75,7 +75,7 @@ export async function sendOtpEmail({
       })
     );
 
-    const subject = type === "sign-in" ? "Your Luxero sign-in code" : "Verify your Luxero email";
+    const subject = type === "sign-in" ? "Your Online Competitions sign-in code" : "Verify your Online Competitions email";
 
     await sendEmail({
       to: email,
@@ -112,9 +112,9 @@ export async function sendMagicLinkEmail({
 
     await sendEmail({
       to: email,
-      subject: "Sign in to Luxero",
+      subject: "Sign in to Online Competitions",
       html,
-      text: `Hi ${userName}, sign in to Luxero: ${url}`,
+      text: `Hi ${userName}, sign in to Online Competitions: ${url}`,
     });
   } catch (error) {
     logEmailFailure("magic link email", error);
@@ -147,7 +147,7 @@ export async function sendEmergencyOtpEmail({
 
     await sendEmail({
       to: email,
-      subject: "Luxero admin emergency recovery code",
+      subject: "Online Competitions admin emergency recovery code",
       html,
       text: `Hi ${displayName}, your admin emergency recovery code is ${otp}. It expires in 5 minutes. Open: ${recoveryUrl}`,
     });
@@ -173,9 +173,9 @@ export async function sendWelcomeEmail({ email }: { email: string }): Promise<vo
 
     await sendEmail({
       to: email,
-      subject: "Welcome to Luxero — you're in!",
+      subject: "Welcome to Online Competitions — you're in!",
       html,
-      text: `Hi ${userName}, welcome to Luxero! Your email is verified. Browse competitions: ${frontendUrl}/competitions`,
+      text: `Hi ${userName}, welcome to Online Competitions! Your email is verified. Browse competitions: ${frontendUrl}/competitions`,
     });
   } catch (error) {
     logEmailFailure("welcome email", error);

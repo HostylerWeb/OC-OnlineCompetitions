@@ -34,11 +34,11 @@ function pushCall(name: string, ...args: unknown[]) {
   modelCalls[name].push(...args);
 }
 
-vi.mock("@luxero/api-db", () => ({
+vi.mock("@oc/api-db", () => ({
   dbConnect: vi.fn(async () => {}),
 }));
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   Profile: {
     findById: vi.fn(async () => null),
     updateOne: vi.fn((filter: any, update: any) => {
@@ -151,7 +151,7 @@ vi.mock("@luxero/api-db/models", () => ({
   },
 }));
 
-vi.mock("@luxero/api-infra/cache", () => ({
+vi.mock("@oc/api-infra/cache", () => ({
   CH: {
     competitionAvailability: "competitionAvailability",
     competitionsAvailabilityBatch: "competitionsAvailabilityBatch",
@@ -169,18 +169,18 @@ vi.mock("@luxero/api-infra/cache", () => ({
   invalidateByChannelSafe: vi.fn(async () => {}),
 }));
 
-vi.mock("@luxero/auth-admin/admin-auth", () => ({
+vi.mock("@oc/auth-admin/admin-auth", () => ({
   getAdminAuth: vi.fn(async () => ({
     api: { removeUser: mockRemoveUser },
   })),
 }));
 
-vi.mock("@luxero/auth-admin/auth-mongo", () => ({
+vi.mock("@oc/auth-admin/auth-mongo", () => ({
   getMongoDb: vi.fn(() => mockDb),
 }));
 
 async function loadDeleteUserAccount() {
-  const mod = await import("@luxero/auth-admin/user-deletion");
+  const mod = await import("@oc/auth-admin/user-deletion");
   return mod.deleteUserAccount;
 }
 
@@ -223,7 +223,7 @@ describe("deleteUserAccount", () => {
     }
 
     // Reset profile mock
-    const models = await import("@luxero/api-db/models");
+    const models = await import("@oc/api-db/models");
     (models.Profile as any).findById = vi.fn(async () => ({
       ...mockProfile,
       save: vi.fn(async function (this: any) {
@@ -288,7 +288,7 @@ describe("deleteUserAccount", () => {
   });
 
   test("throws if profile not found", async () => {
-    const models = await import("@luxero/api-db/models");
+    const models = await import("@oc/api-db/models");
     (models.Profile as any).findById = vi.fn(async () => null);
 
     await expect(deleteUserAccount(mockUserId)).rejects.toThrow("Profile not found");

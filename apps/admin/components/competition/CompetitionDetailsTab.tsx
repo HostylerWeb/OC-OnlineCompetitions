@@ -1,6 +1,6 @@
 "use client";
 
-import type { AdminCategory } from "@luxero/types";
+import type { AdminCategory } from "@oc/types";
 import { Combobox } from "@/components/ui/combobox";
 import {
   Field,

@@ -1,8 +1,8 @@
 "use client";
 
-import { api } from "@luxero/api-admin";
-import type { AdminOrder } from "@luxero/types";
-import { formatDate, OrderNumberCell } from "@luxero/utils";
+import { api } from "@oc/api-admin";
+import type { AdminOrder } from "@oc/types";
+import { formatDate, OrderNumberCell } from "@oc/utils";
 import { useQuery } from "@tanstack/react-query";
 import { PriceCell } from "@/components/admin/PriceCell";
 import { Badge } from "@/components/ui/badge";

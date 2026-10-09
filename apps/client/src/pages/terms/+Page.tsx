@@ -1,10 +1,10 @@
 import {
   termsIntro as termsIntroEN,
   termsSections as termsSectionsEN,
-} from "@luxero/content/legal";
-import { resolveContent } from "@luxero/content/locales";
-import { termsIntro as termsIntroRO, termsSections as termsSectionsRO } from "@luxero/content/ro";
-import { Hash } from "@luxero/icons";
+} from "@oc/content/legal";
+import { resolveContent } from "@oc/content/locales";
+import { termsIntro as termsIntroRO, termsSections as termsSectionsRO } from "@oc/content/ro";
+import { Hash } from "@oc/icons";
 import { GoldOutlineButton } from "@/components/buttons";
 import { Link } from "@/components/Link";
 import { useTranslation } from "@/lib/i18n";
@@ -15,7 +15,7 @@ export default function TermsPage() {
   const sections = resolveContent(locale, termsSectionsEN, termsSectionsRO);
 
   return (
-    <div className="luxero-container-content pb-8">
+    <div className="oc-container-content pb-8">
       <div className="py-8 lg:py-16">
         <div className="text-center mb-12">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4 text-balance">

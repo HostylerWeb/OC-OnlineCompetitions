@@ -1,5 +1,5 @@
-import { Balance } from "@luxero/api-db/models";
-import { roundCurrency } from "@luxero/utils";
+import { Balance } from "@oc/api-db/models";
+import { roundCurrency } from "@oc/utils";
 import { Types } from "mongoose";
 
 export async function resolveSiteCreditForCheckout(params: {

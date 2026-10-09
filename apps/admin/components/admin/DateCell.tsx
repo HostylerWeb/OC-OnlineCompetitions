@@ -1,4 +1,4 @@
-import { formatDate } from "@luxero/utils";
+import { formatDate } from "@oc/utils";
 import { cn } from "@/lib/utils";
 
 const variantClasses = {

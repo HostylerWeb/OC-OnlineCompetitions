@@ -1,9 +1,9 @@
-import { Profile, ReferralPurchase, ReferralSettings } from "@luxero/api-db/models";
-import dbConnect from "@luxero/api-infra/db";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { error, success } from "@luxero/api-infra/response";
-import { captureRouteError } from "@luxero/api-infra/sentry";
-import { getTopActiveReferrers } from "@luxero/api-referrals/leaderboard";
+import { Profile, ReferralPurchase, ReferralSettings } from "@oc/api-db/models";
+import dbConnect from "@oc/api-infra/db";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { error, success } from "@oc/api-infra/response";
+import { captureRouteError } from "@oc/api-infra/sentry";
+import { getTopActiveReferrers } from "@oc/api-referrals/leaderboard";
 import {
   type CalculusMethod,
   calculateTierGrant,
@@ -14,9 +14,9 @@ import {
   type ReferralQualificationSettings,
   type ReferralTier,
   type ReferredUserQualificationSlice,
-} from "@luxero/api-referrals/referral-tier-math";
-import { auth } from "@luxero/api-server/middleware/auth";
-import { getDisplayName } from "@luxero/utils";
+} from "@oc/api-referrals/referral-tier-math";
+import { auth } from "@oc/api-server/middleware/auth";
+import { getDisplayName } from "@oc/utils";
 import { Hono } from "hono";
 import mongoose from "mongoose";
 
@@ -167,7 +167,7 @@ app.get("/", async (c) => {
         .map((r) => ({
           id: r._id.toString(),
           name:
-            r.email && /@guest\.luxero\.local$/i.test(r.email)
+            r.email && /@guest\.onlinecompetitions\.local$/i.test(r.email)
               ? "Unregistered"
               : getDisplayName(r, r.email ?? ""),
           email: r.email,

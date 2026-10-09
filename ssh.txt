@@ -1,4 +1,4 @@
-Luxero — SSH access to the three servers
+Online Competitions — SSH access to the three servers
 ============================================
 This machine: use the Hostyler private key at ~/.ssh/id_ed25519 (mode 600).
 Login user on all servers: root
@@ -23,66 +23,69 @@ Method 1 — SSH with key (what we use today; no password)
 --------------------------------------------------------
 This is the normal way. It does not use sshpass.
 
-  # Production / live site (luxero-runtime)
+  # Production / live site (onlinecompetitions-runtime)
   ssh -i ~/.ssh/id_ed25519 -o IdentitiesOnly=yes root@167.233.52.87
 
-  # Build / CI server (luxero-build)
+  # Build / CI server (onlinecompetitions-build)
   ssh -i ~/.ssh/id_ed25519 -o IdentitiesOnly=yes root@95.216.158.37
 
-  # Hostinger migration VPS (srv2011364)
+  # Hostinger OC VPS (srv2022090 — infra + apps)
+  ssh -i ~/.ssh/id_ed25519_github -o IdentitiesOnly=yes root@187.77.180.24
+
+  # Legacy Hostinger box (older stack; do not use for Online Competitions)
   ssh -i ~/.ssh/id_ed25519 -o IdentitiesOnly=yes root@187.7.28.125
 
 Quick test (should print hostname and login_ok):
 
   ssh -i ~/.ssh/id_ed25519 -o IdentitiesOnly=yes root@167.233.52.87 'hostname; echo login_ok'
   ssh -i ~/.ssh/id_ed25519 -o IdentitiesOnly=yes root@95.216.158.37 'hostname; echo login_ok'
-  ssh -i ~/.ssh/id_ed25519 -o IdentitiesOnly=yes root@187.7.28.125 'hostname; echo login_ok'
+  ssh -i ~/.ssh/id_ed25519_github -o IdentitiesOnly=yes root@187.77.180.24 'hostname; echo login_ok'
 
 Expected hostnames:
   167.233.52.87  -> ubuntu-16gb-fsn1-1
-  95.216.158.37  -> luxero-build
-  187.7.28.125   -> srv2011364
+  95.216.158.37  -> onlinecompetitions-build
+  187.77.180.24  -> srv2022090
 
 Subdomains (167.233.52.87 — Hetzner, Coolify + Caddy)
 ------------------------------------------------------
 A — Customer site (Vike client + /api)
-   1. Main URL: luxero.win, www.luxero.win
-   2. Duplicate alias (same app): app.luxero.win, www.app.luxero.win
-   3. Set APP_URL to https://luxero.win
+   1. Main URL: onlinecompetitions.co.uk, www.onlinecompetitions.co.uk
+   2. Duplicate alias (same app): app.onlinecompetitions.co.uk, www.app.onlinecompetitions.co.uk
+   3. Set APP_URL to https://onlinecompetitions.co.uk
 
 B — Shop (Next.js shop)
-   1. shop.luxero.win, www.shop.luxero.win
+   1. shop.onlinecompetitions.co.uk, www.shop.onlinecompetitions.co.uk
 
 C — Admin (Next.js admin)
-   1. admin.luxero.win, www.admin.luxero.win
+   1. admin.onlinecompetitions.co.uk, www.admin.onlinecompetitions.co.uk
 
 D — Uploaded media (SeaweedFS S3, not a website)
-   1. Public files + S3 API: assets.luxero.win
-   2. Staging bucket host: assets.staging.luxero.win
-   3. Storage admin GUI: admin.assets.luxero.win (+ staging) — skip on Hostinger
+   1. Public files + S3 API: assets.onlinecompetitions.co.uk
+   2. Staging bucket host: assets.staging.onlinecompetitions.co.uk
+   3. Storage admin GUI: admin.assets.onlinecompetitions.co.uk (+ staging) — skip on Hostinger
 
 E — Staging copies of A/B/C (+ assets, glitchtip)
-   1. staging.luxero.win, app.staging.*, shop.staging.*, admin.staging.*, etc.
+   1. staging.onlinecompetitions.co.uk, app.staging.*, shop.staging.*, admin.staging.*, etc.
    2. Not wanted on Hostinger
 
 F — Ops panels (not customer-facing)
-   1. coolify.luxero.win, umami.luxero.win, chat.luxero.win, glitchtip.luxero.win (+ staging)
+   1. coolify.onlinecompetitions.co.uk, umami.onlinecompetitions.co.uk, chat.onlinecompetitions.co.uk, glitchtip.onlinecompetitions.co.uk (+ staging)
 
 G — Agro product (separate DB/stack)
-   1. agro.luxero.win, admin.agro.luxero.win
+   1. agro.onlinecompetitions.co.uk, admin.agro.onlinecompetitions.co.uk
 
 H — Dead DNS (not in Caddy; HTTP 503 — do not create on Hostinger)
-   1. competition.luxero.win — confirmed broken (Oct 2026)
-   2. lander.luxero.win — confirmed broken (Oct 2026)
+   1. competition.onlinecompetitions.co.uk — confirmed broken (Oct 2026)
+   2. lander.onlinecompetitions.co.uk — confirmed broken (Oct 2026)
 
 Hostinger — only create these (prod, terminal/nginx, no Coolify, no staging, no panels)
 ---------------------------------------------------------------------------------------
-A — luxero.win, www.luxero.win          (customer; do not create app.*)
-B — shop.luxero.win, www.shop.luxero.win
-C — admin.luxero.win, www.admin.luxero.win
-D — assets.luxero.win                   (S3 + public image URLs; bucket luxero-assets)
+A — onlinecompetitions.co.uk, www.onlinecompetitions.co.uk          (customer; do not create app.*)
+B — shop.onlinecompetitions.co.uk, www.shop.onlinecompetitions.co.uk
+C — admin.onlinecompetitions.co.uk, www.admin.onlinecompetitions.co.uk
+D — assets.onlinecompetitions.co.uk                   (S3 + public image URLs; bucket onlinecompetitions-assets)
 
-Env: APP_URL=https://luxero.win, S3_ENDPOINT=https://assets.luxero.win, ASSET_BASE_URL=https://assets.luxero.win/luxero-assets
+Env: APP_URL=https://onlinecompetitions.co.uk, S3_ENDPOINT=https://assets.onlinecompetitions.co.uk, ASSET_BASE_URL=https://assets.onlinecompetitions.co.uk/onlinecompetitions-assets
 Local dev: MinIO http://localhost:9011 (not :9010 — that is console only).
 Manage files via admin Media Library (/media), not a storage GUI.
 
@@ -91,7 +94,7 @@ Hostinger — move data (not DNS alone; Mongo alone is not enough)
 Two separate stores on Hetzner today:
 
   1) MongoDB — users, orders, competitions, settings, and image URL strings in documents
-  2) SeaweedFS bucket luxero-assets — actual files (uploads/, prizes/, avatars/, frames/, etc.)
+  2) SeaweedFS bucket onlinecompetitions-assets — actual files (uploads/, prizes/, avatars/, frames/, etc.)
 
 Admin Media library lists bucket objects via S3 API — not a Mongo "gallery" table.
 Importing prod Mongo locally without copying MinIO → local gallery looks empty; that is expected.
@@ -101,40 +104,40 @@ Where images actually load from (three different things)
   A) S3 bucket — binary files. Apps read/write via S3_ENDPOINT + credentials.
   B) ASSET_BASE_URL (and NEXT_PUBLIC_ASSET_BASE_URL on client/shop/lander) — base URL the
      API uses when it builds NEW public links after upload.
-  C) Strings already saved in Mongo — often full https://assets.luxero.win/luxero-assets/…
+  C) Strings already saved in Mongo — often full https://assets.onlinecompetitions.co.uk/onlinecompetitions-assets/…
      on competitions, products, settings. The browser requests those URLs as-is.
 
 After mongorestore only: (B) and bucket may be local, but (C) still points at live Hetzner CDN.
 That is why competitions can show images while /media looks empty until you sync the bucket.
 
-Use local MinIO for files (not assets.luxero.win)
+Use local MinIO for files (not assets.onlinecompetitions.co.uk)
 -------------------------------------------------
   1) Start MinIO: docker compose -f docker-compose.dev.yml up -d minio
-  2) Copy bucket from prod (see example script below) — mc mirror prod → local/luxero-assets
+  2) Copy bucket from prod (see example script below) — mc mirror prod → local/onlinecompetitions-assets
   3) Point app env at local S3 (admin .env.local, client .env, etc.):
        S3_ENDPOINT=http://localhost:9011
-       S3_BUCKET=luxero-assets
+       S3_BUCKET=onlinecompetitions-assets
        S3_FORCE_PATH_STYLE=true
        AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY = MinIO dev keys (see docker-compose.dev.yml)
-       ASSET_BASE_URL=http://localhost:9011/luxero-assets
-       NEXT_PUBLIC_ASSET_BASE_URL=http://localhost:9011/luxero-assets   (where the app exposes it)
+       ASSET_BASE_URL=http://localhost:9011/onlinecompetitions-assets
+       NEXT_PUBLIC_ASSET_BASE_URL=http://localhost:9011/onlinecompetitions-assets   (where the app exposes it)
   4) New uploads and admin /media then use local storage. API-generated URLs use ASSET_BASE_URL.
 
-Still seeing assets.luxero.win in the browser?
+Still seeing assets.onlinecompetitions.co.uk in the browser?
   — Field in Mongo still has the prod URL (layer C). Options:
     • Leave it: fine for checking content against live CDN while DB is a prod copy.
     • Fully offline / only local files: bulk-replace in Mongo
-      https://assets.luxero.win → http://localhost:9011
-      (same path /luxero-assets/… must exist after sync).
-    • Hostinger prod with same hostname assets.luxero.win: keep Mongo URLs unchanged after bucket sync.
+      https://assets.onlinecompetitions.co.uk → http://localhost:9011
+      (same path /onlinecompetitions-assets/… must exist after sync).
+    • Hostinger prod with same hostname assets.onlinecompetitions.co.uk: keep Mongo URLs unchanged after bucket sync.
 
-Production / Hostinger: S3_ENDPOINT=https://assets.luxero.win,
-ASSET_BASE_URL=https://assets.luxero.win/luxero-assets — Mongo URLs and env then align.
+Production / Hostinger: S3_ENDPOINT=https://assets.onlinecompetitions.co.uk,
+ASSET_BASE_URL=https://assets.onlinecompetitions.co.uk/onlinecompetitions-assets — Mongo URLs and env then align.
 
 Example ops scripts (gitignored — laptop-only references; not in the repo)
 --------------------------------------------------------------------------
   scripts/sync-assets-from-hetzner.sh
-    — Example: mc mirror Hetzner prod bucket luxero-assets → local MinIO (:9011).
+    — Example: mc mirror Hetzner prod bucket onlinecompetitions-assets → local MinIO (:9011).
     — Needs SSH to 167.233.52.87; reads S3 keys from a running prod app container (not stored in repo).
     — ./scripts/sync-assets-from-hetzner.sh
     — ./scripts/sync-assets-from-hetzner.sh --dry-run
@@ -147,31 +150,31 @@ Local proof (Oct 2026): sync + ~303 MiB / 154 objects matched prod; ~40s over S3
 On cutover, copy both:
 
   A — Mongo: mongodump from Hetzner prod → mongorestore on Hostinger (main site DB, not agro unless needed)
-  B — Files: sync bucket luxero-assets Hetzner → Hostinger (mc mirror, rclone, or equivalent)
+  B — Files: sync bucket onlinecompetitions-assets Hetzner → Hostinger (mc mirror, rclone, or equivalent)
   C — Redis: optional fresh start or dump/restore if you rely on non-cache data
 
 Then: deploy apps, point env (MONGODB_URI, S3_*, APP_URL), flip DNS for A–D subdomains above.
-Keep assets.luxero.win URLs in Mongo if the public asset hostname stays the same after bucket sync.
+Keep assets.onlinecompetitions.co.uk URLs in Mongo if the public asset hostname stays the same after bucket sync.
 Smoke-test: admin login, media library grid, one competition image, checkout upload.
 
 
 Optional: ~/.ssh/config shortcuts
 -----------------------------------
-Add to ~/.ssh/config (then use: ssh luxero-runtime, etc.):
+Add to ~/.ssh/config (then use: ssh onlinecompetitions-runtime, etc.):
 
-  Host luxero-runtime
+  Host onlinecompetitions-runtime
       HostName 167.233.52.87
       User root
       IdentityFile ~/.ssh/id_ed25519
       IdentitiesOnly yes
 
-  Host luxero-build
+  Host onlinecompetitions-build
       HostName 95.216.158.37
       User root
       IdentityFile ~/.ssh/id_ed25519
       IdentitiesOnly yes
 
-  Host luxero-hostinger
+  Host onlinecompetitions-hostinger
       HostName 187.7.28.125
       User root
       IdentityFile ~/.ssh/id_ed25519
@@ -201,11 +204,14 @@ Hetzner servers may be key-only; sshpass only works if password login is enabled
 
 Server roles (reminder)
 -----------------------
-1) 167.233.52.87  — Production runtime (luxero.win, Docker/Caddy, staging + prod)
+1) 167.233.52.87  — Production runtime (onlinecompetitions.co.uk, Docker/Caddy, staging + prod)
 2) 95.216.158.37  — Build server (CI/build; not the public website)
-3) 187.7.28.125   — Hostinger target (Mongo/Redis infra; prod apps TBD, terminal-managed, no Coolify)
-   Infra on Hostinger: /var/www/luxero/docker-compose.infra.yml
-   Secrets: /root/luxero-secrets.env
+3) 187.77.180.24  — Hostinger OC VPS (srv2022090.hstgr.cloud) — Docker infra + app deploy
+   Infra: /var/www/onlinecompetitions/docker-compose.infra.yml
+   App clone: /var/www/onlinecompetitions/app (from OC-OnlineCompetitions)
+   Secrets: /root/onlinecompetitions-secrets.env
+   Containers: onlinecompetitions_mongo, onlinecompetitions_redis, onlinecompetitions_minio (not other brands)
+4) 187.7.28.125   — Legacy Hostinger host (ignore for Online Competitions)
 
 
 If SSH warns "REMOTE HOST IDENTIFICATION HAS CHANGED"

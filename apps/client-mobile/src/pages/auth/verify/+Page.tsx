@@ -5,8 +5,8 @@ import {
   sendVerificationOtp,
   useReturnToSearchParam,
   VerifyEmailForm,
-} from "@luxero/api-client";
-import { CheckCircle } from "@luxero/icons";
+} from "@oc/api-client";
+import { CheckCircle } from "@oc/icons";
 import { useEffect, useState } from "react";
 import { Link } from "@/components/Link";
 import { localeHref, useTranslation } from "@/lib/i18n";

@@ -1,6 +1,6 @@
 "use client";
 
-import { Eye, Flag, Image as ImageIcon, RotateCcw, Search, Share2, Star } from "@luxero/icons";
+import { Eye, Flag, Image as ImageIcon, RotateCcw, Search, Share2, Star } from "@oc/icons";
 import { useState } from "react";
 import { AssetImage } from "@/components/AssetImage";
 import type { CompetitionImage } from "@/components/competition/types";

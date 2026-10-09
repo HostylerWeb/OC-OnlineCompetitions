@@ -1,13 +1,13 @@
 import {
   FAQ_CATEGORIES as FAQ_CATEGORIES_EN,
   FAQS_BY_CATEGORY as FAQS_BY_CATEGORY_EN,
-} from "@luxero/content/faqs";
-import { resolveContent } from "@luxero/content/locales";
+} from "@oc/content/faqs";
+import { resolveContent } from "@oc/content/locales";
 import {
   FAQ_CATEGORIES as FAQ_CATEGORIES_RO,
   FAQS_BY_CATEGORY as FAQS_BY_CATEGORY_RO,
-} from "@luxero/content/ro";
-import { ArrowRight, HelpCircle } from "@luxero/icons";
+} from "@oc/content/ro";
+import { ArrowRight, HelpCircle } from "@oc/icons";
 import { GoldGhostButton, GoldOutlineButton } from "@/components/buttons";
 import FaqTabs from "@/components/faq/FaqTabs";
 import { Link } from "@/components/Link";
@@ -22,7 +22,7 @@ export default function FaqPage() {
   );
 
   return (
-    <div className="luxero-container-content pb-8">
+    <div className="oc-container-content pb-8">
       <div className="py-8 lg:py-16">
         <div className="text-center mb-12">
           <div className="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center mx-auto mb-4">

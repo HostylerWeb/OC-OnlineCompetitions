@@ -1,5 +1,5 @@
-import { PendingWebhook } from "@luxero/api-db/models";
-import { createLogger } from "@luxero/api-logger";
+import { PendingWebhook } from "@oc/api-db/models";
+import { createLogger } from "@oc/api-logger";
 
 const log = createLogger("pending-webhooks");
 

@@ -13,15 +13,15 @@ import {
   useEndingSoonSettingsMutations,
   useInstantPrizeDrawerStore,
   useServerPagination,
-} from "@luxero/api-admin";
-import { Award, Film, Plus, RefreshCw, Settings, Trophy, Zap } from "@luxero/icons";
+} from "@oc/api-admin";
+import { Award, Film, Plus, RefreshCw, Settings, Trophy, Zap } from "@oc/icons";
 import type {
   AdminCategory,
   AdminCompetition,
   ApiResponse,
   EndingSoonSettings,
-} from "@luxero/types";
-import { filterEndingSoonCompetitions } from "@luxero/utils";
+} from "@oc/types";
+import { filterEndingSoonCompetitions } from "@oc/utils";
 import { useQueryClient } from "@tanstack/react-query";
 import type { ColumnDef, SortingState } from "@tanstack/react-table";
 import { format } from "date-fns";
@@ -1383,7 +1383,7 @@ export default function CompetitionsAdminPage() {
   );
 }
 
-import { MoreHorizontal, Pencil, Trash2 } from "@luxero/icons";
+import { MoreHorizontal, Pencil, Trash2 } from "@oc/icons";
 // Local dropdown menu to keep the page self-contained.
 import {
   DropdownMenu,

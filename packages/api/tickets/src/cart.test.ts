@@ -1,5 +1,5 @@
-import type { ICartItem } from "@luxero/api-db/models";
-import { Cart, Competition } from "@luxero/api-db/models";
+import type { ICartItem } from "@oc/api-db/models";
+import { Cart, Competition } from "@oc/api-db/models";
 import { Types } from "mongoose";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 
@@ -15,7 +15,7 @@ const __mockHelpers = vi.hoisted(() => {
   return { mockLeanQuery };
 });
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   Cart: {
     findById: vi.fn(() => __mockHelpers.mockLeanQuery(null)),
     findOne: vi.fn(() => __mockHelpers.mockLeanQuery(null)),
@@ -36,7 +36,7 @@ vi.mock("@luxero/api-db/models", () => ({
   ReferralSettings: null,
 }));
 
-vi.mock("@luxero/api-logger", () => ({
+vi.mock("@oc/api-logger", () => ({
   createLogger: vi.fn(() => ({ debug: vi.fn(), warn: vi.fn(), info: vi.fn(), error: vi.fn() })),
 }));
 
@@ -47,30 +47,30 @@ const mockCountEffectiveOwnedByUserBatch = vi.hoisted(() => vi.fn());
 const mockGetCompetitionTicketStatsBatch = vi.hoisted(() => vi.fn());
 const mockMergeWalletIntoCheckoutItems = vi.hoisted(() => vi.fn());
 
-vi.mock("@luxero/api-tickets/cart-enrichment", () => ({
+vi.mock("@oc/api-tickets/cart-enrichment", () => ({
   enrichCartItems: mockEnrichCartItems,
 }));
 
-vi.mock("@luxero/api-tickets/ticket-service", () => ({
+vi.mock("@oc/api-tickets/ticket-service", () => ({
   checkAvailability: mockCheckAvailability,
   countOwnedByUserBatch: mockCountOwnedByUserBatch,
   countEffectiveOwnedByUserBatch: mockCountEffectiveOwnedByUserBatch,
   getCompetitionTicketStatsBatch: mockGetCompetitionTicketStatsBatch,
 }));
 
-vi.mock("@luxero/api-tickets/wallet", () => ({
+vi.mock("@oc/api-tickets/wallet", () => ({
   mergeWalletIntoCheckoutItems: mockMergeWalletIntoCheckoutItems,
   totalWalletTickets: vi.fn(() => 0),
 }));
 
-vi.mock("@luxero/api-tickets/promo-codes", () => ({
+vi.mock("@oc/api-tickets/promo-codes", () => ({
   validatePromoCode: vi.fn(),
   validateReferralCode: vi.fn(),
   releasePromoCodeUsage: vi.fn(),
   reservePromoCodeUsage: vi.fn(),
 }));
 
-vi.mock("@luxero/api-errors", () => ({
+vi.mock("@oc/api-errors", () => ({
   CheckoutError: class extends Error {
     constructor(
       public code: string,
@@ -83,7 +83,7 @@ vi.mock("@luxero/api-errors", () => ({
   },
 }));
 
-vi.mock("@luxero/api-infra/error-codes", () => ({
+vi.mock("@oc/api-infra/error-codes", () => ({
   ErrorCodes: {
     CONFLICT: "CONFLICT",
     NOT_FOUND: "NOT_FOUND",
@@ -92,7 +92,7 @@ vi.mock("@luxero/api-infra/error-codes", () => ({
   },
 }));
 
-vi.mock("@luxero/api-payment-core", () => ({
+vi.mock("@oc/api-payment-core", () => ({
   normalizeAnswerIndex: vi.fn((idx: number) => idx),
 }));
 
@@ -103,8 +103,8 @@ import {
   finalizeCart,
   mergeCartItem,
   saveCartWithRetry,
-} from "@luxero/api-tickets/cart";
-import { loadCartForCheckout } from "@luxero/api-tickets/load-cart";
+} from "@oc/api-tickets/cart";
+import { loadCartForCheckout } from "@oc/api-tickets/load-cart";
 
 describe("computeSubtotal", () => {
   test("sums price * quantity for all items", () => {

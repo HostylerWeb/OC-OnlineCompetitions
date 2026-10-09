@@ -4,7 +4,7 @@ const mockFindOne = vi.fn();
 const mockFindOneAndUpdate = vi.fn();
 const mockInvalidate = vi.fn(async () => {});
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   ConversionSettings: {
     findOne: (...args: unknown[]) => ({
       lean: () => mockFindOne(...args),
@@ -13,7 +13,7 @@ vi.mock("@luxero/api-db/models", () => ({
   },
 }));
 
-vi.mock("@luxero/api-infra/cache", () => ({
+vi.mock("@oc/api-infra/cache", () => ({
   CH: { conversionSettings: "settings.conversion_settings" },
   invalidateByChannelSafe: (...args: unknown[]) => mockInvalidate(...args),
 }));
@@ -21,7 +21,7 @@ vi.mock("@luxero/api-infra/cache", () => ({
 import { ensureAdsterraTracker } from "./ensure-adsterra-tracker";
 
 const DEFAULT_URL =
-  "https://www.pbterra.com/code/GBP/luxero/at?subid_short={clickid}&atpay={payout}";
+  "https://www.pbterra.com/code/GBP/onlinecompetitions/at?subid_short={clickid}&atpay={payout}";
 
 const ADSTERRA_TRACKER = {
   id: "adsterra",

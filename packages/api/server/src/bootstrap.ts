@@ -13,11 +13,11 @@
 
 import "./types";
 
-import { ensureComplianceSettings } from "@luxero/api-compliance/settings";
-import { AVATAR_MAX_BYTES } from "@luxero/api-server/lib/avatar/process-upload";
-import { ensureMediaConverterSettings } from "@luxero/api-server/lib/media-converter/settings";
-import { dbConnect } from "@luxero/api-db";
-import { PaymentMethod } from "@luxero/api-db/models";
+import { ensureComplianceSettings } from "@oc/api-compliance/settings";
+import { AVATAR_MAX_BYTES } from "@oc/api-server/lib/avatar/process-upload";
+import { ensureMediaConverterSettings } from "@oc/api-server/lib/media-converter/settings";
+import { dbConnect } from "@oc/api-db";
+import { PaymentMethod } from "@oc/api-db/models";
 import {
   AllocationError,
   CheckoutError,
@@ -27,68 +27,68 @@ import {
   SetupError,
   TicketAvailabilityError,
   TicketSoldOutError,
-} from "@luxero/api-errors";
-import { closeRedis, getRedis } from "@luxero/api-infra/cache/redis";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { runtimeConfig } from "@luxero/api-infra/runtime-config";
-import { captureRouteError, flushSentry, initSentry } from "@luxero/api-infra/sentry";
-import { ensureAdsterraTracker } from "@luxero/api-server/lib/affiliate/ensure-adsterra-tracker";
-import { buildPublicPaymentConfig } from "@luxero/api-server/lib/payment/build-payment-config";
-import { ensureLocalPaymentMethod } from "@luxero/api-server/lib/payment/ensure-local-payment-method";
-import { ensurePaytriotPaymentMethod } from "@luxero/api-server/lib/payment/ensure-paytriot-payment-method";
-import { ensureStripePaymentMethod } from "@luxero/api-server/lib/payment/ensure-stripe-payment-method";
-import { paymentProcessors } from "@luxero/api-server/lib/payment/providers";
-import { registerStripeWebhooks } from "@luxero/api-server/lib/payment/register-stripe-webhooks";
-import { affiliateMiddleware } from "@luxero/api-server/middleware/affiliate";
-import { sessionMiddleware } from "@luxero/api-server/middleware/auth";
-import { redisCacheRoute } from "@luxero/api-server/middleware/cache";
-import { csrfProtection } from "@luxero/api-server/middleware/csrf";
+} from "@oc/api-errors";
+import { closeRedis, getRedis } from "@oc/api-infra/cache/redis";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { runtimeConfig } from "@oc/api-infra/runtime-config";
+import { captureRouteError, flushSentry, initSentry } from "@oc/api-infra/sentry";
+import { ensureAdsterraTracker } from "@oc/api-server/lib/affiliate/ensure-adsterra-tracker";
+import { buildPublicPaymentConfig } from "@oc/api-server/lib/payment/build-payment-config";
+import { ensureLocalPaymentMethod } from "@oc/api-server/lib/payment/ensure-local-payment-method";
+import { ensurePaytriotPaymentMethod } from "@oc/api-server/lib/payment/ensure-paytriot-payment-method";
+import { ensureStripePaymentMethod } from "@oc/api-server/lib/payment/ensure-stripe-payment-method";
+import { paymentProcessors } from "@oc/api-server/lib/payment/providers";
+import { registerStripeWebhooks } from "@oc/api-server/lib/payment/register-stripe-webhooks";
+import { affiliateMiddleware } from "@oc/api-server/middleware/affiliate";
+import { sessionMiddleware } from "@oc/api-server/middleware/auth";
+import { redisCacheRoute } from "@oc/api-server/middleware/cache";
+import { csrfProtection } from "@oc/api-server/middleware/csrf";
 import {
   emailRateLimit,
   paymentRateLimit,
   rateLimitBodyReader,
-} from "@luxero/api-server/middleware/rate-limit";
-import balance from "@luxero/api-server/routes/client/balance";
-import cart from "@luxero/api-server/routes/client/cart";
-import contact from "@luxero/api-server/routes/client/contact";
-import discounts from "@luxero/api-server/routes/client/discounts";
-import meAvatar from "@luxero/api-server/routes/client/me/avatar";
-import meBonusAwardWins from "@luxero/api-server/routes/client/me/bonus-award-wins";
-import meEntries from "@luxero/api-server/routes/client/me/entries";
-import meInstantPrizeWins from "@luxero/api-server/routes/client/me/instant-prize-wins";
-import meOrders from "@luxero/api-server/routes/client/me/orders";
-import meProfile from "@luxero/api-server/routes/client/me/profile";
-import meReferral from "@luxero/api-server/routes/client/me/referral";
-import meReferrals from "@luxero/api-server/routes/client/me/referrals";
-import meSaferPlay from "@luxero/api-server/routes/client/me/safer-play";
-import meTickets from "@luxero/api-server/routes/client/me/tickets";
-import orders from "@luxero/api-server/routes/client/orders";
-import payments from "@luxero/api-server/routes/client/payments";
-import promoCodes from "@luxero/api-server/routes/client/promo-codes";
-import shopCategories from "@luxero/api-server/routes/client/shop/categories";
-import shopCheckout from "@luxero/api-server/routes/client/shop/checkout";
-import shopOrders from "@luxero/api-server/routes/client/shop/orders";
-import shopProducts from "@luxero/api-server/routes/client/shop/products";
-import verifyEmailLink from "@luxero/api-server/routes/client/verify-email-link";
-import categories from "@luxero/api-server/routes/common/categories";
-import competitions from "@luxero/api-server/routes/common/competitions";
-import competitionsInstantPrizes from "@luxero/api-server/routes/common/competitions/instant-prizes";
-import competitionsLandingPage from "@luxero/api-server/routes/common/competitions/landing-page";
-import complianceSettingsPublic from "@luxero/api-server/routes/common/compliance-settings";
-import endingSoonSettings from "@luxero/api-server/routes/common/ending-soon-settings";
-import entries from "@luxero/api-server/routes/common/entries";
-import homepageLayoutSettings from "@luxero/api-server/routes/common/homepage-layout-settings";
-import landingPage from "@luxero/api-server/routes/common/landing-page";
-import pushSubscriptions from "@luxero/api-server/routes/common/push-subscriptions";
-import referral from "@luxero/api-server/routes/common/referral";
-import referralCode from "@luxero/api-server/routes/common/referral-code";
-import referralCodes from "@luxero/api-server/routes/common/referral-codes";
-import referralSettingsPublic from "@luxero/api-server/routes/common/referral-settings";
-import seoSettingsPublic from "@luxero/api-server/routes/common/seo-settings";
-import stats from "@luxero/api-server/routes/common/stats";
-import winners from "@luxero/api-server/routes/common/winners";
-import { getClientAuth } from "@luxero/auth-admin";
-import { getEnv, validateEnv } from "@luxero/env/server";
+} from "@oc/api-server/middleware/rate-limit";
+import balance from "@oc/api-server/routes/client/balance";
+import cart from "@oc/api-server/routes/client/cart";
+import contact from "@oc/api-server/routes/client/contact";
+import discounts from "@oc/api-server/routes/client/discounts";
+import meAvatar from "@oc/api-server/routes/client/me/avatar";
+import meBonusAwardWins from "@oc/api-server/routes/client/me/bonus-award-wins";
+import meEntries from "@oc/api-server/routes/client/me/entries";
+import meInstantPrizeWins from "@oc/api-server/routes/client/me/instant-prize-wins";
+import meOrders from "@oc/api-server/routes/client/me/orders";
+import meProfile from "@oc/api-server/routes/client/me/profile";
+import meReferral from "@oc/api-server/routes/client/me/referral";
+import meReferrals from "@oc/api-server/routes/client/me/referrals";
+import meSaferPlay from "@oc/api-server/routes/client/me/safer-play";
+import meTickets from "@oc/api-server/routes/client/me/tickets";
+import orders from "@oc/api-server/routes/client/orders";
+import payments from "@oc/api-server/routes/client/payments";
+import promoCodes from "@oc/api-server/routes/client/promo-codes";
+import shopCategories from "@oc/api-server/routes/client/shop/categories";
+import shopCheckout from "@oc/api-server/routes/client/shop/checkout";
+import shopOrders from "@oc/api-server/routes/client/shop/orders";
+import shopProducts from "@oc/api-server/routes/client/shop/products";
+import verifyEmailLink from "@oc/api-server/routes/client/verify-email-link";
+import categories from "@oc/api-server/routes/common/categories";
+import competitions from "@oc/api-server/routes/common/competitions";
+import competitionsInstantPrizes from "@oc/api-server/routes/common/competitions/instant-prizes";
+import competitionsLandingPage from "@oc/api-server/routes/common/competitions/landing-page";
+import complianceSettingsPublic from "@oc/api-server/routes/common/compliance-settings";
+import endingSoonSettings from "@oc/api-server/routes/common/ending-soon-settings";
+import entries from "@oc/api-server/routes/common/entries";
+import homepageLayoutSettings from "@oc/api-server/routes/common/homepage-layout-settings";
+import landingPage from "@oc/api-server/routes/common/landing-page";
+import pushSubscriptions from "@oc/api-server/routes/common/push-subscriptions";
+import referral from "@oc/api-server/routes/common/referral";
+import referralCode from "@oc/api-server/routes/common/referral-code";
+import referralCodes from "@oc/api-server/routes/common/referral-codes";
+import referralSettingsPublic from "@oc/api-server/routes/common/referral-settings";
+import seoSettingsPublic from "@oc/api-server/routes/common/seo-settings";
+import stats from "@oc/api-server/routes/common/stats";
+import winners from "@oc/api-server/routes/common/winners";
+import { getClientAuth } from "@oc/auth-admin";
+import { devAssetCspHosts, getEnv, validateEnv } from "@oc/env/server";
 import { Hono } from "hono";
 import { cors } from "hono/cors";
 import type { ContentfulStatusCode } from "hono/utils/http-status";
@@ -261,7 +261,7 @@ app.use("*", async (c, next) => {
       await dbConnect();
       console.log("[API Init] MongoDB connected");
       const { ensureMongoDatabaseOptimizations } = await import(
-        "@luxero/api-server/lib/mongo-index-maintenance"
+        "@oc/api-server/lib/mongo-index-maintenance"
       );
       await ensureMongoDatabaseOptimizations();
       await ensureBonusAwardFireIndexes();
@@ -377,14 +377,14 @@ app.use("*", async (c, next) => {
     isDev || (await (runtimeConfig as Record<string, unknown>).allowDevScripts) === true;
 
   const scriptSrc = allowDev
-    ? `'self' 'unsafe-eval' 'unsafe-inline' https://challenges.cloudflare.com https://umami.luxero.win https://js.stripe.com`
-    : `'self' 'nonce-${nonce}' https://challenges.cloudflare.com https://umami.luxero.win https://js.stripe.com`;
+    ? `'self' 'unsafe-eval' 'unsafe-inline' https://challenges.cloudflare.com https://umami.onlinecompetitions.co.uk https://js.stripe.com`
+    : `'self' 'nonce-${nonce}' https://challenges.cloudflare.com https://umami.onlinecompetitions.co.uk https://js.stripe.com`;
 
   const styleSrc = allowDev
     ? `'self' 'unsafe-inline' https://fonts.googleapis.com`
     : `'self' 'unsafe-inline' https://fonts.googleapis.com`;
 
-  const devAssetHosts = isDev ? " http://localhost:9011 http://127.0.0.1:9011" : "";
+  const devAssetHosts = devAssetCspHosts(isDev);
 
   c.res.headers.set("X-Frame-Options", "DENY");
   c.res.headers.set("X-Content-Type-Options", "nosniff");
@@ -392,7 +392,7 @@ app.use("*", async (c, next) => {
   c.res.headers.set("Permissions-Policy", "geolocation=(), microphone=(), camera=()");
   c.res.headers.set(
     "Content-Security-Policy",
-    `base-uri 'self'; form-action 'self' https://gateway.paytriot.co.uk; object-src 'none'; default-src 'self'; script-src ${scriptSrc}; frame-src https://challenges.cloudflare.com https://gateway.paytriot.co.uk https://js.stripe.com https://hooks.stripe.com; worker-src 'self' blob:; child-src 'self' blob:; connect-src 'self' https://luxero.win https://staging.luxero.win https://assets.luxero.win https://assets.staging.luxero.win https://umami.luxero.win https://challenges.cloudflare.com https://*.facebook.net https://tiny-glitter-95dd.luxero-win.workers.dev https://api.stripe.com https://www.google.com https://pay.google.com https://payments.google.com https://m.stripe.com https://q.stripe.com${devAssetHosts}; img-src 'self' data: https://assets.luxero.win https://assets.staging.luxero.win https://lh3.googleusercontent.com${devAssetHosts}; media-src 'self' https://assets.luxero.win https://assets.staging.luxero.win${devAssetHosts}; style-src ${styleSrc}; font-src 'self' https://fonts.gstatic.com https://js.stripe.com`
+    `base-uri 'self'; form-action 'self' https://gateway.paytriot.co.uk; object-src 'none'; default-src 'self'; script-src ${scriptSrc}; frame-src https://challenges.cloudflare.com https://gateway.paytriot.co.uk https://js.stripe.com https://hooks.stripe.com; worker-src 'self' blob:; child-src 'self' blob:; connect-src 'self' https://onlinecompetitions.co.uk https://staging.onlinecompetitions.co.uk https://assets.onlinecompetitions.co.uk https://assets.staging.onlinecompetitions.co.uk https://umami.onlinecompetitions.co.uk https://challenges.cloudflare.com https://*.facebook.net https://tiny-glitter-95dd.cdn.onlinecompetitions.co.uk https://api.stripe.com https://www.google.com https://pay.google.com https://payments.google.com https://m.stripe.com https://q.stripe.com${devAssetHosts}; img-src 'self' data: https://assets.onlinecompetitions.co.uk https://assets.staging.onlinecompetitions.co.uk https://lh3.googleusercontent.com${devAssetHosts}; media-src 'self' https://assets.onlinecompetitions.co.uk https://assets.staging.onlinecompetitions.co.uk${devAssetHosts}; style-src ${styleSrc}; font-src 'self' https://fonts.gstatic.com https://js.stripe.com`
   );
   if (runtimeConfig.enableHsts) {
     c.res.headers.set("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
@@ -425,8 +425,8 @@ app.use("*", async (c, next) => {
 const ALLOWED_ORIGIN_PATTERNS = [
   /^https?:\/\/localhost(:\d+)?$/,
   /^capacitor:\/\/localhost(:\d+)?$/,
-  /^https:\/\/.*\.luxero\.win$/,
-  /^https:\/\/luxero\.win$/,
+  /^https:\/\/.*\.onlinecompetitions\.win$/,
+  /^https:\/\/onlinecompetitions\.win$/,
 ];
 
 app.use(
@@ -612,7 +612,7 @@ app.get(
     await ensurePaytriotPaymentMethod();
     await ensureStripePaymentMethod();
     const { ensureSiteCreditPaymentMethod } = await import(
-      "@luxero/api-server/lib/payment/ensure-site-credit-payment-method"
+      "@oc/api-server/lib/payment/ensure-site-credit-payment-method"
     );
     await ensureSiteCreditPaymentMethod();
     void registerStripeWebhooks().catch((err) => {

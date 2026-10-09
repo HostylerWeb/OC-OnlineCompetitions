@@ -1,7 +1,7 @@
-import { ReferralPurchase, ReferralSettings } from "@luxero/api-db/models";
-import { createLogger } from "@luxero/api-logger";
-import { awardPendingReferralTickets } from "@luxero/api-referrals/referral-award";
-import { DEFAULT_REFERRAL_SETTINGS } from "@luxero/api-referrals/referral-defaults";
+import { ReferralPurchase, ReferralSettings } from "@oc/api-db/models";
+import { createLogger } from "@oc/api-logger";
+import { awardPendingReferralTickets } from "@oc/api-referrals/referral-award";
+import { DEFAULT_REFERRAL_SETTINGS } from "@oc/api-referrals/referral-defaults";
 
 const log = createLogger("bootstrap.referrals");
 

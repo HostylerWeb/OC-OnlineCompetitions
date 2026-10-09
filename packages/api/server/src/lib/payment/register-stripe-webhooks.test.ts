@@ -10,7 +10,7 @@ const __mocks = vi.hoisted(() => ({
   __getEnv: vi.fn((key: string) => {
     const env: Record<string, string> = {
       STRIPE_TEST_SECRET_KEY: "sk_test_xxx",
-      APP_URL: "https://api.luxero.win",
+      APP_URL: "https://api.onlinecompetitions.co.uk",
     };
     return env[key];
   }),
@@ -27,23 +27,23 @@ const __mocks = vi.hoisted(() => ({
   })),
   __updateWebhookEndpoint: vi.fn(async (params: { id: string }) => ({
     id: params.id,
-    url: "https://api.luxero.win/api/payments/webhook/stripe",
+    url: "https://api.onlinecompetitions.co.uk/api/payments/webhook/stripe",
     secret: "whsec_auto_123",
   })),
 }));
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   PaymentMethod: {
     findOne: __mocks.__paymentMethodFindOne,
     findOneAndUpdate: __mocks.__paymentMethodFindOneAndUpdate,
   },
 }));
 
-vi.mock("@luxero/env/server", () => ({
+vi.mock("@oc/env/server", () => ({
   getEnv: __mocks.__getEnv,
 }));
 
-vi.mock("@luxero/api-payment-stripe", () => ({
+vi.mock("@oc/api-payment-stripe", () => ({
   createStripeClient: () => ({
     listWebhookEndpoints: __mocks.__listWebhookEndpoints,
     createWebhookEndpoint: __mocks.__createWebhookEndpoint,
@@ -60,8 +60,8 @@ vi.mock("./providers/stripe", () => ({
   setCachedWebhookSecret: __mocks.__setCachedWebhookSecret,
 }));
 
-const UNIFIED_URL = "https://api.luxero.win/api/payments/webhook/stripe";
-const SHOP_URL = "https://api.luxero.win/api/shop/checkout/webhook/stripe";
+const UNIFIED_URL = "https://api.onlinecompetitions.co.uk/api/payments/webhook/stripe";
+const SHOP_URL = "https://api.onlinecompetitions.co.uk/api/shop/checkout/webhook/stripe";
 
 describe("registerStripeWebhooks", () => {
   beforeEach(() => {
@@ -69,7 +69,7 @@ describe("registerStripeWebhooks", () => {
     __mocks.__getEnv.mockImplementation((key: string) => {
       const env: Record<string, string> = {
         STRIPE_TEST_SECRET_KEY: "sk_test_xxx",
-        APP_URL: "https://api.luxero.win",
+        APP_URL: "https://api.onlinecompetitions.co.uk",
       };
       return env[key];
     });

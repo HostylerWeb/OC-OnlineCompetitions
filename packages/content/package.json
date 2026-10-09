@@ -1,5 +1,5 @@
 {
-  "name": "@luxero/content",
+  "name": "@oc/content",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -19,6 +19,9 @@
     "lint": "biome check src/",
     "lint:fix": "biome check --write src/",
     "format": "biome format --write ."
+  },
+  "dependencies": {
+    "@oc/utils": "workspace:*"
   },
   "peerDependencies": {
     "react": "^19.2.4"

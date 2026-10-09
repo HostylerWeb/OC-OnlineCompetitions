@@ -1,6 +1,6 @@
 "use client";
 
-import { api } from "@luxero/api-admin";
+import { api } from "@oc/api-admin";
 import {
   AlertTriangle,
   Check,
@@ -17,7 +17,7 @@ import {
   Search,
   Trash2,
   Video,
-} from "@luxero/icons";
+} from "@oc/icons";
 import { formatDistanceToNow } from "date-fns";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { AssetImage } from "@/components/AssetImage";

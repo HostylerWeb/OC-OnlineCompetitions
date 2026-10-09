@@ -1,11 +1,11 @@
-import "@luxero/api-db/models";
-import { createLogger } from "@luxero/api-logger";
+import "@oc/api-db/models";
+import { createLogger } from "@oc/api-logger";
 import {
   orderCompletedTtlSeconds,
   orderFailedTtlSeconds,
   orderPendingTtlSeconds,
   shouldSyncIndexesOnStartup,
-} from "@luxero/api-infra/mongo-retention";
+} from "@oc/api-infra/mongo-retention";
 import mongoose from "mongoose";
 
 const log = createLogger("mongo-index-maintenance");

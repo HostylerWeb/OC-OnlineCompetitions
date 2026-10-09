@@ -1,10 +1,10 @@
-# @luxero/api-tickets
+# @oc/api-tickets
 
 Ticket purchasing, cart management, wallet operations, promo codes, and competition interaction logic.
 
 ## Source of truth
 
-`luxero-api/packages/tickets/src` — synced to this repo.
+`onlinecompetitions-api/packages/tickets/src` — synced to this repo.
 
 ## Key modules
 
@@ -28,5 +28,5 @@ Ticket purchasing, cart management, wallet operations, promo codes, and competit
 
 ## Dependencies
 
-- `@luxero/api-compliance` — spend limits and safer-play checks during purchase
-- `@luxero/api-payment-core` — order fulfillment after payment
+- `@oc/api-compliance` — spend limits and safer-play checks during purchase
+- `@oc/api-payment-core` — order fulfillment after payment

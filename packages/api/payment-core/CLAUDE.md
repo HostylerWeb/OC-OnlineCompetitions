@@ -1,10 +1,10 @@
-# @luxero/api-payment-core
+# @oc/api-payment-core
 
 Order fulfillment engine and answer index — shared payment logic used by all payment providers.
 
 ## Source of truth
 
-`luxero-api/packages/payment/core/src` — synced to this repo.
+`onlinecompetitions-api/packages/payment/core/src` — synced to this repo.
 
 ## Purpose
 

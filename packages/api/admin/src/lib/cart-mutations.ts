@@ -1,4 +1,4 @@
-import type { ApiResponse, CartItem, ICart } from "@luxero/types";
+import type { ApiResponse, CartItem, ICart } from "@oc/types";
 import type { QueryClient } from "@tanstack/react-query";
 import { getSessionSnapshot } from "../auth/session-snapshot";
 import { queryKeys } from "../keys";

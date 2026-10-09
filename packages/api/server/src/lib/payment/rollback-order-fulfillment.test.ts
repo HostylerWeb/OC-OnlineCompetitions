@@ -64,7 +64,7 @@ const __ctx = vi.hoisted(() => {
   return { ids, state, ticketQueryResult, queryResult, deleteManyMock };
 });
 
-vi.mock("@luxero/api-tickets/ticket-service", () => ({
+vi.mock("@oc/api-tickets/ticket-service", () => ({
   releaseByOrderId: vi.fn(async (oid: string) => {
     __ctx.state.releaseCalled = true;
     __ctx.state.releaseByOrderIdCalls.push(oid);
@@ -76,11 +76,11 @@ vi.mock("@luxero/api-tickets/ticket-service", () => ({
   }),
 }));
 
-vi.mock("@luxero/api-tickets/promo-codes", () => ({
+vi.mock("@oc/api-tickets/promo-codes", () => ({
   releasePromoCodeUsage: vi.fn(async () => null),
 }));
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   Order: {
     findById: vi.fn(() => ({
       select: () => ({ lean: async () => null }),
@@ -183,7 +183,7 @@ describe("rollbackOrderFulfillment", () => {
   });
 
   test("skips all rollback operations when fulfillmentStatus is already rolled_back", async () => {
-    const { Order: MockedOrder } = await import("@luxero/api-db/models");
+    const { Order: MockedOrder } = await import("@oc/api-db/models");
     vi.mocked(MockedOrder.findById).mockReturnValueOnce({
       select: () => ({ lean: async () => ({ fulfillmentStatus: "rolled_back" }) }),
     } as never);

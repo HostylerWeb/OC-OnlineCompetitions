@@ -83,7 +83,7 @@ const AUTH_REDIRECT_ERRORS: Record<string, AuthRedirectErrorDefinition> = {
   SOCIAL_ACCOUNT_ALREADY_LINKED: {
     kind: "account_linking",
     title: "Account already linked",
-    message: "This social account is already linked to another Luxero account.",
+    message: "This social account is already linked to another Online Competitions account.",
   },
   PROVIDER_NOT_FOUND: {
     kind: "oauth_retry",
@@ -187,7 +187,7 @@ const AUTH_REDIRECT_ERRORS: Record<string, AuthRedirectErrorDefinition> = {
     kind: "access_denied",
     title: "Sign-in blocked",
     message:
-      "This sign-in request was blocked for security reasons. Open Luxero in your browser and try again.",
+      "This sign-in request was blocked for security reasons. Open Online Competitions in your browser and try again.",
   },
   VERIFICATION_EMAIL_NOT_ENABLED: {
     kind: "email_verification",
@@ -203,7 +203,7 @@ const AUTH_REDIRECT_ERRORS: Record<string, AuthRedirectErrorDefinition> = {
   EMAIL_MISMATCH: {
     kind: "google_email_mismatch",
     title: "Email doesn't match",
-    message: "The email from your sign-in provider doesn't match your Luxero account email.",
+    message: "The email from your sign-in provider doesn't match your Online Competitions account email.",
   },
   SESSION_NOT_FRESH: {
     kind: "session",
@@ -224,12 +224,12 @@ const AUTH_REDIRECT_ERRORS: Record<string, AuthRedirectErrorDefinition> = {
   INVALID_CALLBACK_URL: {
     kind: "oauth_retry",
     title: "Sign-in interrupted",
-    message: "The return address for sign-in wasn't valid. Start again from the Luxero website.",
+    message: "The return address for sign-in wasn't valid. Start again from the Online Competitions website.",
   },
   INVALID_REDIRECT_URL: {
     kind: "oauth_retry",
     title: "Sign-in interrupted",
-    message: "The redirect after sign-in wasn't valid. Start again from the Luxero website.",
+    message: "The redirect after sign-in wasn't valid. Start again from the Online Competitions website.",
   },
   INVALID_ERROR_CALLBACK_URL: {
     kind: "oauth_retry",
@@ -244,7 +244,7 @@ const AUTH_REDIRECT_ERRORS: Record<string, AuthRedirectErrorDefinition> = {
   MISSING_OR_NULL_ORIGIN: {
     kind: "access_denied",
     title: "Invalid request",
-    message: "This sign-in request was incomplete. Open Luxero in your browser and try again.",
+    message: "This sign-in request was incomplete. Open Online Competitions in your browser and try again.",
   },
   CALLBACK_URL_REQUIRED: {
     kind: "oauth_retry",
@@ -316,23 +316,23 @@ const AUTH_REDIRECT_ERRORS: Record<string, AuthRedirectErrorDefinition> = {
     kind: "google_email_mismatch",
     title: "Google account doesn't match",
     message:
-      "The Google account you chose uses a different email than your Luxero account. Connect the Google account that uses the same email, or sign in with email instead.",
+      "The Google account you chose uses a different email than your Online Competitions account. Connect the Google account that uses the same email, or sign in with email instead.",
   },
   email_doesnt_match: {
     kind: "google_email_mismatch",
     title: "Google account doesn't match",
     message:
-      "The Google account you chose uses a different email than your Luxero account. Connect the Google account that uses the same email, or sign in with email instead.",
+      "The Google account you chose uses a different email than your Online Competitions account. Connect the Google account that uses the same email, or sign in with email instead.",
   },
   invalid_callback_request: {
     kind: "oauth_retry",
     title: "Sign-in interrupted",
-    message: "The sign-in callback wasn't valid. Start sign-in again from the Luxero website.",
+    message: "The sign-in callback wasn't valid. Start sign-in again from the Online Competitions website.",
   },
   state_not_found: {
     kind: "oauth_retry",
     title: "Sign-in interrupted",
-    message: "Your sign-in session was lost. Close this tab, return to Luxero, and try again.",
+    message: "Your sign-in session was lost. Close this tab, return to Online Competitions, and try again.",
   },
   state_mismatch: {
     kind: "oauth_retry",
@@ -342,7 +342,7 @@ const AUTH_REDIRECT_ERRORS: Record<string, AuthRedirectErrorDefinition> = {
   please_restart_the_process: {
     kind: "oauth_retry",
     title: "Start again",
-    message: "Sign-in couldn't be completed. Go back to Luxero and start the process again.",
+    message: "Sign-in couldn't be completed. Go back to Online Competitions and start the process again.",
   },
   no_code: {
     kind: "oauth_retry",
@@ -373,7 +373,7 @@ const AUTH_REDIRECT_ERRORS: Record<string, AuthRedirectErrorDefinition> = {
   no_callback_url: {
     kind: "oauth_retry",
     title: "Sign-in interrupted",
-    message: "Sign-in couldn't return you to the site. Start again from the Luxero homepage.",
+    message: "Sign-in couldn't return you to the site. Start again from the Online Competitions homepage.",
   },
   unable_to_link_account: {
     kind: "account_linking",
@@ -383,13 +383,13 @@ const AUTH_REDIRECT_ERRORS: Record<string, AuthRedirectErrorDefinition> = {
   account_already_linked_to_different_user: {
     kind: "account_linking",
     title: "Account already in use",
-    message: "This Google account is already linked to a different Luxero user.",
+    message: "This Google account is already linked to a different Online Competitions user.",
   },
   email_not_found: {
     kind: "oauth_retry",
     title: "Email required",
     message:
-      "Your Google account must share an email address with Luxero. Check your Google settings or use email sign-in.",
+      "Your Google account must share an email address with Online Competitions. Check your Google settings or use email sign-in.",
   },
   account_not_linked: {
     kind: "account_linking",
@@ -401,7 +401,7 @@ const AUTH_REDIRECT_ERRORS: Record<string, AuthRedirectErrorDefinition> = {
     kind: "signup_disabled",
     title: "Account not found",
     message:
-      "This Google account isn't registered with Luxero. Create a new account to get started.",
+      "This Google account isn't registered with Online Competitions. Create a new account to get started.",
   },
   unable_to_create_user: {
     kind: "default",
@@ -421,7 +421,7 @@ const AUTH_REDIRECT_ERRORS: Record<string, AuthRedirectErrorDefinition> = {
   payload_expired: {
     kind: "oauth_retry",
     title: "Sign-in expired",
-    message: "The sign-in request took too long. Start again from the Luxero website.",
+    message: "The sign-in request took too long. Start again from the Online Competitions website.",
   },
   user_creation_failed: {
     kind: "default",
@@ -442,7 +442,7 @@ const AUTH_REDIRECT_ERRORS: Record<string, AuthRedirectErrorDefinition> = {
   invalid_payload: {
     kind: "oauth_retry",
     title: "Sign-in interrupted",
-    message: "Sign-in data was invalid. Start again from the Luxero website.",
+    message: "Sign-in data was invalid. Start again from the Online Competitions website.",
   },
   oAuth_code_missing: {
     kind: "oauth_retry",
@@ -457,7 +457,7 @@ const AUTH_REDIRECT_ERRORS: Record<string, AuthRedirectErrorDefinition> = {
   issuer_missing: {
     kind: "oauth_retry",
     title: "Sign-in provider error",
-    message: "Sign-in provider information was missing. Try again from the Luxero website.",
+    message: "Sign-in provider information was missing. Try again from the Online Competitions website.",
   },
   oauth_code_verification_failed: {
     kind: "oauth_retry",
@@ -499,7 +499,7 @@ const AUTH_REDIRECT_ERRORS: Record<string, AuthRedirectErrorDefinition> = {
   invalid_client: {
     kind: "access_denied",
     title: "Sign-in unavailable",
-    message: "This sign-in application isn't recognised. Use the main Luxero website to sign in.",
+    message: "This sign-in application isn't recognised. Use the main Online Competitions website to sign in.",
   },
   client_disabled: {
     kind: "access_denied",
@@ -509,7 +509,7 @@ const AUTH_REDIRECT_ERRORS: Record<string, AuthRedirectErrorDefinition> = {
   unsupported_response_type: {
     kind: "access_denied",
     title: "Sign-in not supported",
-    message: "This type of sign-in isn't supported. Use the Luxero website to sign in.",
+    message: "This type of sign-in isn't supported. Use the Online Competitions website to sign in.",
   },
   RATE_LIMIT_EXCEEDED: {
     kind: "rate_limited",

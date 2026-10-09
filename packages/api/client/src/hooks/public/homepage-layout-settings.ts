@@ -1,4 +1,4 @@
-import type { ApiResponse, HomepageLayoutSettings } from "@luxero/types";
+import type { ApiResponse, HomepageLayoutSettings } from "@oc/types";
 import { useQuery } from "@tanstack/react-query";
 import { api } from "../../client";
 import { queryKeys } from "../../keys";

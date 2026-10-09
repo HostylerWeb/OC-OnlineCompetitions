@@ -7,7 +7,7 @@ import {
   useAdminUserBalance,
   useAdminUserCompliance,
   useAdminUserComplianceMutations,
-} from "@luxero/api-admin";
+} from "@oc/api-admin";
 import {
   AlertTriangle,
   ArrowRight,
@@ -16,7 +16,7 @@ import {
   Shield,
   ShieldAlert,
   Wallet,
-} from "@luxero/icons";
+} from "@oc/icons";
 import {
   buildProfileFormFromProfile,
   buildProfilePatchFromDiff,
@@ -30,8 +30,8 @@ import type {
   AdminUserProfilePatch,
   Profile,
   SelfExclusionDuration,
-} from "@luxero/types";
-import { formatDateTime } from "@luxero/utils";
+} from "@oc/types";
+import { formatDateTime } from "@oc/utils";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 import {

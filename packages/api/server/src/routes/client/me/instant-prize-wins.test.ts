@@ -11,11 +11,11 @@ const __mock = vi.hoisted(() => ({
   authUserId: "",
 }));
 
-vi.mock("@luxero/api-infra/db", () => ({
+vi.mock("@oc/api-infra/db", () => ({
   default: vi.fn(async () => {}),
 }));
 
-vi.mock("@luxero/api-server/middleware/auth", () => ({
+vi.mock("@oc/api-server/middleware/auth", () => ({
   isPublicRoute: () => false,
   resolveSession: vi.fn(async () => ({})),
   sessionMiddleware: async (_c: unknown, next: () => Promise<void>) => {
@@ -41,7 +41,7 @@ vi.mock("./instant-prize-wins.mapper", () => ({
   fetchAndMapWins: (...args: unknown[]) => __mock.fetchAndMapWins(...args),
 }));
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   InstantPrizeWin: { countDocuments: vi.fn(async () => 0) },
 }));
 

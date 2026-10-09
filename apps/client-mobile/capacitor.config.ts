@@ -1,8 +1,8 @@
 import type { CapacitorConfig } from "@capacitor/cli";
 
 const config: CapacitorConfig = {
-  appId: "win.luxero.mobile",
-  appName: "Luxero",
+  appId: "win.onlinecompetitions.mobile",
+  appName: "Online Competitions",
   webDir: "dist",
   bundledWebRuntime: false,
   server: {

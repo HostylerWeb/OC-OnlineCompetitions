@@ -1,4 +1,4 @@
-import { getBool, getEnv, getNum } from "@luxero/env/server";
+import { getBool, getEnv, getNum } from "@oc/env/server";
 import { createTransport } from "nodemailer";
 import { getEmailConfig } from "./config";
 

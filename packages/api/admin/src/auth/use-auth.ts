@@ -1,6 +1,6 @@
 "use client";
 
-import type { User } from "@luxero/types";
+import type { User } from "@oc/types";
 import { useCallback, useSyncExternalStore } from "react";
 import { logoutAll } from "../stores/clear-all";
 import { getSessionSnapshot, subscribeToSnapshotChanges } from "./session-snapshot";

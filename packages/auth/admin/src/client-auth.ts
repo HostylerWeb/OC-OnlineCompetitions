@@ -1,10 +1,10 @@
-import { sendMagicLinkEmail, sendOtpEmail, trySendWelcomeEmail } from "@luxero/auth-admin/auth-email";
-import { createGoogleOAuthGuestMergeHook } from "@luxero/auth-admin/auth-google-oauth";
-import { mergeAnonymousAccount } from "@luxero/auth-admin/auth-hooks";
-import { createSignUpProfileAfterHook } from "@luxero/auth-admin/auth-signup-profile";
-import { createUnverifiedSignUpUpsertHook } from "@luxero/auth-admin/auth-signup-upsert";
-import { getEnv } from "@luxero/env/server";
-import { getSessionCookiePrefix } from "@luxero/utils";
+import { sendMagicLinkEmail, sendOtpEmail, trySendWelcomeEmail } from "@oc/auth-admin/auth-email";
+import { createGoogleOAuthGuestMergeHook } from "@oc/auth-admin/auth-google-oauth";
+import { mergeAnonymousAccount } from "@oc/auth-admin/auth-hooks";
+import { createSignUpProfileAfterHook } from "@oc/auth-admin/auth-signup-profile";
+import { createUnverifiedSignUpUpsertHook } from "@oc/auth-admin/auth-signup-upsert";
+import { getEnv } from "@oc/env/server";
+import { getSessionCookiePrefix } from "@oc/utils";
 import { APIError } from "better-auth/api";
 import { betterAuth } from "better-auth/minimal";
 import { admin, anonymous, captcha, emailOTP, magicLink } from "better-auth/plugins";
@@ -22,7 +22,7 @@ let authInstance: any;
 export async function getClientAuth() {
   if (!authInstance) {
     const config: BuildAuthConfig = {
-      appName: "Luxero",
+      appName: "Online Competitions",
       baseURL: getAppUrl(),
       trustedOrigins: getTrustedOrigins(),
       emailAndPassword: {
@@ -81,7 +81,7 @@ export async function getClientAuth() {
           },
           generateRandomEmail: () => {
             const id = crypto.randomUUID();
-            return `guest-${id}@guest.luxero.local`;
+            return `guest-${id}@guest.onlinecompetitions.local`;
           },
         }),
         admin({ defaultRole: "user", adminRoles: ["admin"] }),

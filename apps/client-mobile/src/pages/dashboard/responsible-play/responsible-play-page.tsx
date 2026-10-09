@@ -7,10 +7,10 @@ import {
   useComplianceFeatures,
   useSaferPlay,
   useSaferPlayMutations,
-} from "@luxero/api-client";
-import { SUPPORT_ORGANISATIONS } from "@luxero/content";
-import { AlertTriangle, ExternalLink, Shield } from "@luxero/icons";
-import type { SelfExclusionDuration } from "@luxero/types";
+} from "@oc/api-client";
+import { SUPPORT_ORGANISATIONS } from "@oc/content";
+import { AlertTriangle, ExternalLink, Shield } from "@oc/icons";
+import type { SelfExclusionDuration } from "@oc/types";
 import { useMemo, useState } from "react";
 import { toast } from "sonner";
 import { DashboardPageHeader } from "@/components/dashboard";

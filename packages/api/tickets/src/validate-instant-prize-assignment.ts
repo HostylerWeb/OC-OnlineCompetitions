@@ -1,10 +1,10 @@
-import { Competition, CompetitionInstantPrize, InstantPrize, Ticket } from "@luxero/api-db/models";
-import type { IInstantPrize } from "@luxero/api-db/models/InstantPrize";
+import { Competition, CompetitionInstantPrize, InstantPrize, Ticket } from "@oc/api-db/models";
+import type { IInstantPrize } from "@oc/api-db/models/InstantPrize";
 import {
   buildExcludeSetForInstantPrizes,
   countByStatus,
   provisionTickets,
-} from "@luxero/api-tickets/ticket-service";
+} from "@oc/api-tickets/ticket-service";
 import { Types } from "mongoose";
 
 export interface InstantPrizeAssignmentLimits {

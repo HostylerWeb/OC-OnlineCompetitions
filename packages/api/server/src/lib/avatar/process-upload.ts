@@ -1,6 +1,6 @@
-import { convertImageToWebp } from "@luxero/api-server/lib/media-converter/convert-image";
-import { replaceKeyExtension } from "@luxero/api-server/lib/media-converter/scope";
-import { DEFAULT_MEDIA_CONVERTER_SETTINGS } from "@luxero/types";
+import { convertImageToWebp } from "@oc/api-server/lib/media-converter/convert-image";
+import { replaceKeyExtension } from "@oc/api-server/lib/media-converter/scope";
+import { DEFAULT_MEDIA_CONVERTER_SETTINGS } from "@oc/types";
 
 export const AVATAR_MAX_BYTES = 2 * 1024 * 1024;
 export const AVATAR_MAX_DIMENSION = 512;

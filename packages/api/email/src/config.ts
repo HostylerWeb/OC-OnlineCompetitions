@@ -1,5 +1,7 @@
-import { dbConnect } from "@luxero/api-db";
-import { EmailSettings, type IEmailSettings } from "@luxero/api-db/models";
+import { dbConnect } from "@oc/api-db";
+import { EmailSettings, type IEmailSettings } from "@oc/api-db/models";
+import { DEFAULT_SOCIAL_URLS } from "@oc/utils";
+import { BRAND_NAME, LEGAL_CONTACT_EMAIL } from "@oc/utils";
 
 let _cache: IEmailSettings | null = null;
 let _cacheExpiry = 0;
@@ -9,16 +11,10 @@ export type { IEmailSettings };
 
 const DEFAULTS: Omit<IEmailSettings, "siteUrl"> & { siteUrl?: never } = {
   _id: "email_settings",
-  fromName: "Luxero",
-  fromEmail: "contact@luxero.win",
-  supportAddress: "contact@luxero.win",
-  social: {
-    facebook: "",
-    instagram: "",
-    whatsapp: "",
-    telegram: "",
-    tiktok: "",
-  },
+  fromName: BRAND_NAME,
+  fromEmail: LEGAL_CONTACT_EMAIL,
+  supportAddress: LEGAL_CONTACT_EMAIL,
+  social: { ...DEFAULT_SOCIAL_URLS },
   updatedAt: new Date(),
 };
 

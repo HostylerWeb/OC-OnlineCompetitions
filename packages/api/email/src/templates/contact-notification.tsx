@@ -14,7 +14,7 @@ export function ContactNotificationEmail({
     <BaseEmail preview={`New contact form submission from ${name}`} settings={settings}>
       <Text className={emailStyles.heading.className}>New Contact Form Submission</Text>
       <Text className={emailStyles.paragraph.className}>
-        A new message has been submitted through the contact form on Luxero.win.
+        A new message has been submitted through the contact form on onlinecompetitions.co.uk.
       </Text>
       <Hr className={emailStyles.divider.className} />
       <Section className="mb-[16px]">

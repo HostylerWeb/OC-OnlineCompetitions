@@ -1,6 +1,6 @@
-import type { AuthClientSession } from "@luxero/auth-client";
-import { authClient } from "@luxero/auth-client";
-import type { ApiResponse, Profile, SessionUser } from "@luxero/types";
+import type { AuthClientSession } from "@oc/auth-client";
+import { authClient } from "@oc/auth-client";
+import type { ApiResponse, Profile, SessionUser } from "@oc/types";
 import * as Sentry from "@sentry/react";
 import { useQueryClient } from "@tanstack/react-query";
 import { type ReactNode, useCallback, useEffect, useRef } from "react";

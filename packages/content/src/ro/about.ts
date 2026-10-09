@@ -1,7 +1,13 @@
+import {
+  LEGAL_COMPANY_NAME,
+  LEGAL_COMPANY_NUMBER,
+  LEGAL_CONTACT_EMAIL,
+  LEGAL_REGISTERED_OFFICE_POSTAL,
+} from "@oc/utils";
 import type { AboutSection } from "../content-types";
 
 export const ABOUT_HERO = {
-  title: "Despre Luxero",
+  title: "Despre Online Competitions",
   subtitle:
     "Misiunea noastră este să facem luxul accesibil tuturor prin concursuri corecte și transparente cu premii.",
 };
@@ -12,13 +18,13 @@ export const ABOUT_SECTIONS: AboutSection[] = [
     title: "Misiunea Noastră",
     icon: "Sparkles",
     paragraphs: [
-      "Luxero a fost fondat cu o credință simplă: toată lumea merită o șansă de a câștiga premii uimitoare. Selectăm articole de lux exclusive și le oferim la prețuri accesibile pentru bilete.",
+      "Online Competitions a fost fondat cu o credință simplă: toată lumea merită o șansă de a câștiga premii uimitoare. Selectăm articole de lux exclusive și le oferim la prețuri accesibile pentru bilete.",
       "Fiecare concurs este desfășurat cu transparență completă, folosind generare certificată de numere aleatoare pentru a asigura corectitudinea pentru toți participanții.",
     ],
   },
   {
     id: "why-choose",
-    title: "De ce să Alegi Luxero",
+    title: "De ce să Alegi Online Competitions",
     icon: "ShieldCheck",
     iconClass: "from-emerald-500/20 to-emerald-500/5 border-emerald-500/20",
     whyChooseItems: [
@@ -39,7 +45,7 @@ export const ABOUT_SECTIONS: AboutSection[] = [
       {
         title: "Condus de Comunitate",
         description:
-          "Alătură-te miilor de jucători care au încredere în Luxero pentru concursuri corecte și captivante.",
+          "Alătură-te miilor de jucători care au încredere în Online Competitions pentru concursuri corecte și captivante.",
       },
     ],
   },
@@ -58,10 +64,10 @@ export const ABOUT_SECTIONS: AboutSection[] = [
     title: "Informații despre Companie",
     icon: "Building",
     companyInfo: {
-      name: "LUXERO COMPETITIONS LTD",
-      number: "SC888260",
-      address: "107 Dalriada Crescent, Motherwell, Scotland ML1 3XT, United Kingdom",
-      email: "contact@luxero.win",
+      name: LEGAL_COMPANY_NAME,
+      number: LEGAL_COMPANY_NUMBER,
+      address: LEGAL_REGISTERED_OFFICE_POSTAL,
+      email: LEGAL_CONTACT_EMAIL,
     },
   },
   {

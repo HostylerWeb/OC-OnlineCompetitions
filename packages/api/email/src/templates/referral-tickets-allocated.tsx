@@ -1,4 +1,4 @@
-import { formatTicketNumber } from "@luxero/utils";
+import { formatTicketNumber } from "@oc/utils";
 import { Button, Hr, Link, Section, Text } from "@react-email/components";
 import type { EmailTemplateProps } from "../types";
 import { BaseEmail, emailStyles } from "./base";
@@ -13,7 +13,7 @@ export function ReferralTicketsAllocatedEmail({
   settings,
   frontendUrl,
 }: EmailTemplateProps) {
-  const supportAddress = settings?.supportAddress ?? "support@luxero.win";
+  const supportAddress = settings?.supportAddress ?? "support@onlinecompetitions.co.uk";
   const ticketsLabel = totalTickets === 1 ? "ticket" : "tickets";
   const competitionsLabel = competitionCount === 1 ? "competition" : "competitions";
 
@@ -115,7 +115,7 @@ export function ReferralTicketsAllocatedEmail({
       <Text className={emailStyles.paragraph.className}>
         Good luck in the draws,
         <br />
-        The Luxero Team
+        The Online Competitions Team
       </Text>
     </BaseEmail>
   );

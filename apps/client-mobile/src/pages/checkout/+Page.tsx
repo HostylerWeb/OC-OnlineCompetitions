@@ -1,6 +1,6 @@
 "use client";
 
-import type { ContextualError } from "@luxero/api-client";
+import type { ContextualError } from "@oc/api-client";
 import {
   ApiResponseError,
   api,
@@ -23,11 +23,11 @@ import {
   usePaymentConfig,
   usePaymentProviders,
   useSyncProfileAddressIfChanged,
-} from "@luxero/api-client";
-import { Lock } from "@luxero/icons";
-import type { ProfileAddress } from "@luxero/types";
-import { DEFAULT_PROFILE_ADDRESS } from "@luxero/types";
-import { cn } from "@luxero/utils";
+} from "@oc/api-client";
+import { Lock } from "@oc/icons";
+import type { ProfileAddress } from "@oc/types";
+import { DEFAULT_PROFILE_ADDRESS } from "@oc/types";
+import { cn } from "@oc/utils";
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CheckoutErrorBanner } from "@/components/checkout/CheckoutErrorBanner";
@@ -246,7 +246,7 @@ function CheckoutPageContent() {
     let cancelled = false;
     geoResolvedRef.current = true;
 
-    fetch("https://tiny-glitter-95dd.luxero-win.workers.dev/")
+    fetch("https://tiny-glitter-95dd.cdn.onlinecompetitions.co.uk/")
       .then((r) => r.json() as Promise<{ ip: string; country: string }>)
       .then((data) => {
         if (cancelled) return;
@@ -604,7 +604,7 @@ function CheckoutPageContent() {
   const checkoutLoadingLabel = t("common.loading");
 
   return (
-    <main className="flex-1 luxero-container-wide py-4 lg:py-8">
+    <main className="flex-1 oc-container-wide py-4 lg:py-8">
       <div className="mb-5 lg:mb-6 text-center">
         <h1 className="text-2xl lg:text-3xl font-bold tracking-tight mb-1.5 lg:mb-2">
           {t("checkout.heading")}

@@ -1,4 +1,14 @@
 import type { LegalSection } from "../content-types";
+import {
+  BRAND_NAME,
+  CompanyEmailLink,
+  CONTACT_PHONE_DISPLAY,
+  LEGAL_COMPANY_NAME,
+  LEGAL_COMPANY_NUMBER,
+  LEGAL_REGISTERED_OFFICE,
+  LEGAL_WEBSITE,
+  LEGAL_WEBSITE_URL,
+} from "./company-legal";
 
 export const termsSections = [
   {
@@ -7,12 +17,12 @@ export const termsSections = [
     content: (
       <div className="space-y-3 text-muted-foreground">
         <p>
-          We are LUXERO COMPETITIONS LTD, a company incorporated in Scotland with company number
-          SC888260. Our registered office is at 107 Dalriada Crescent, Motherwell, ML1 3XT,
-          Scotland. We are the &ldquo;Promotor&rdquo; of the prize draw (&ldquo;Draw&rdquo;)
-          operated at LUXERO &ndash; Official Site Luxero Competitions &ndash; Donate and win cars,
-          money, instant prizes (luxero.win) (&ldquo;the Website&rdquo;) which means that we are
-          responsible for making sure it runs properly and fairly.
+          We are {LEGAL_COMPANY_NAME}, a company incorporated in Scotland with company number{" "}
+          {LEGAL_COMPANY_NUMBER}. Our registered office is at {LEGAL_REGISTERED_OFFICE}. We are the
+          &ldquo;Promotor&rdquo; of the prize draw (&ldquo;Draw&rdquo;) operated at OC &ndash;
+          Official Site {BRAND_NAME} &ndash; Donate and win cars, money, instant prizes (
+          {LEGAL_WEBSITE}) (&ldquo;the Website&rdquo;) which means that we are responsible for making
+          sure it runs properly and fairly.
         </p>
         <p>
           These Terms apply to you as the participant of the Draw and as our client ("you", "your")
@@ -43,24 +53,20 @@ export const termsSections = [
           2.4. By entering into any Draw you accept that you understand these Terms and our Privacy
           Policy and agree to be legally bound by them. Our Privacy Policy may be found here{" "}
           <a href="/privacy" className="text-gold hover:underline">
-            https://www.luxero.win/privacy
+            {LEGAL_WEBSITE_URL}/privacy
           </a>
           .
         </p>
         <p>
           2.5. Should you have any queries, concerns or complaints about a Draw then please contact
           us at{" "}
-          <a href="mailto:contact@luxero.win" className="text-gold hover:underline">
-            contact@luxero.win
-          </a>{" "}
-          or +44 744 328 9228.
+          <CompanyEmailLink />{" "}
+          or {CONTACT_PHONE_DISPLAY}.
         </p>
         <p>
           2.6. If you have any difficulty accessing or entering this promotion, please contact us at{" "}
-          <a href="mailto:contact@luxero.win" className="text-gold hover:underline">
-            contact@luxero.win
-          </a>{" "}
-          or+44 744 328 9228.
+          <CompanyEmailLink />{" "}
+          or {CONTACT_PHONE_DISPLAY}.
         </p>
         <p>
           2.7. If you would like these terms and conditions in another format (for example: audio,
@@ -129,18 +135,18 @@ export const termsSections = [
       <div className="space-y-3 text-muted-foreground">
         <p>You can enter this promotion in any of the following ways:</p>
         <p>
-          <strong>Online</strong> Complete the entry steps online on our Website at LUXERO –
-          Official Site Luxero Competitions – Donate and win cars, money, instant prizes
-          (luxero.win) The cost of entry shall be displayed on our Website.
+          <strong>Online</strong> Complete the entry steps online on our Website at OC –
+          Official Site Online Competitions – Donate and win cars, money, instant prizes
+          ({LEGAL_WEBSITE}) The cost of entry shall be displayed on our Website.
         </p>
         <p>
           <strong>Post</strong> You can enter by post but you will first have to register an account
           with us (see clause 4.1 below).
         </p>
         <p>
-          Please send a postcard with your name, Luxero account number, postal address, date of
+          Please send a postcard with your name, Online Competitions account number, postal address, date of
           birth, email address and telephone number and the name of the competition you are entering
-          to 107 Dalriada Crescent, Motherwell, ML1 3XT, Scotland.
+          to {LEGAL_REGISTERED_OFFICE}.
         </p>
         <p>Valid free entries will be found within the history of your account.</p>
         <p>One entry per postcard to each Draw.</p>
@@ -246,7 +252,7 @@ export const termsSections = [
         </p>
         <p>5.2. There will be one Winner per Draw unless otherwise stated on our Website.</p>
         <p>
-          5.3. The Draw will be performed and streamed via Facebook live on our page "Luxero
+          5.3. The Draw will be performed and streamed via Facebook live on our page "Online Competitions
           Competitions" and/or such other social media platform that we decide.
         </p>
         <p>
@@ -319,11 +325,9 @@ export const termsSections = [
         </p>
         <p>
           5.17. Partial details of the Winner can be obtained by sending an email to us at{" "}
-          <a href="mailto:contact@luxero.win" className="text-gold hover:underline">
-            contact@luxero.win
-          </a>{" "}
-          and will be published at LUXERO – Official Site Luxero Competitions – Donate and win cars,
-          money, instant prizes (luxero.win) 6 months after the closing date and time.
+          <CompanyEmailLink />{" "}
+          and will be published at OC – Official Site Online Competitions – Donate and win cars,
+          money, instant prizes ({LEGAL_WEBSITE}) 6 months after the closing date and time.
         </p>
         <p>
           5.18. Entrants who do not want their details included on the list of Winners referred to
@@ -496,15 +500,13 @@ export const termsSections = [
           8.13. If you want to contact us about this promotion or have a complaint, you can reach us
           by:
         </p>
-        <p>8.13.1. Telephone: +44 744 328 9228</p>
+        <p>8.13.1. Telephone: {CONTACT_PHONE_DISPLAY}</p>
         <p>
           8.13.2. email:{" "}
-          <a href="mailto:contact@luxero.win" className="text-gold hover:underline">
-            contact@luxero.win
-          </a>{" "}
+          <CompanyEmailLink />{" "}
           ; or
         </p>
-        <p>8.13.3. 107 Dalriada Crescent, Motherwell, ML1 3XT, Scotland</p>
+        <p>8.13.3. {LEGAL_REGISTERED_OFFICE}</p>
         <p>
           8.14. These Terms and any dispute or claim (including non-contractual disputes or claims)
           arising out of or in connection with them or their subject matter or formation shall be
@@ -646,7 +648,7 @@ export const termsSections = [
           embedded or contained within the Website or the Content.
         </p>
         <p>
-          13.4. Trade marks: Luxero is our trademark. Other trade marks and trade names may also be
+          13.4. Trade marks: Online Competitions is our trademark. Other trade marks and trade names may also be
           used on the Website or in the Content. Use by you of any trade marks on the Website or in
           the Content is strictly prohibited unless you have our prior written permission.
         </p>

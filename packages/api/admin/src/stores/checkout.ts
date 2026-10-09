@@ -2,7 +2,7 @@ import type {
   CreatePaymentSessionRequest,
   CreatePaymentSessionResponse,
   PaymentSessionStatusResponse,
-} from "@luxero/types";
+} from "@oc/types";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { getSessionSnapshot } from "../auth/session-snapshot";
@@ -224,12 +224,12 @@ export const useCheckout = create<CheckoutState>()(
 
       clearPersistedState: () => {
         try {
-          localStorage.removeItem("luxero-checkout");
+          localStorage.removeItem("onlinecompetitions-checkout");
         } catch {}
       },
     }),
     {
-      name: "luxero-checkout",
+      name: "onlinecompetitions-checkout",
       partialize: (state) => ({
         provider: state.provider,
         sessionId: state.sessionId,

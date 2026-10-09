@@ -1,5 +1,5 @@
 {
-  "name": "@luxero/api-db",
+  "name": "@oc/api-db",
   "private": true,
   "type": "module",
 "exports": {
@@ -17,8 +17,9 @@
     "format": "biome format --write src/"
   },
   "dependencies": {
-    "@luxero/api-infra": "workspace:*",
-    "@luxero/types": "workspace:*",
+    "@oc/api-infra": "workspace:*",
+    "@oc/types": "workspace:*",
+    "@oc/utils": "workspace:*",
     "mongoose": "^9.6.0"
   },
   "devDependencies": {

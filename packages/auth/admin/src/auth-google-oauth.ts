@@ -1,4 +1,4 @@
-import { mergeGuestProfileIntoVerifiedUser } from "@luxero/auth-admin/auth-hooks";
+import { mergeGuestProfileIntoVerifiedUser } from "@oc/auth-admin/auth-hooks";
 import type { AuthMiddleware } from "better-auth/api";
 import { createAuthMiddleware } from "better-auth/api";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, Plus, Trash2 } from "@luxero/icons";
+import { Check, Plus, Trash2 } from "@oc/icons";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import {

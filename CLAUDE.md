@@ -1,4 +1,4 @@
-# Luxero Turborepo — Workspace Context
+# Online Competitions Turborepo — Workspace Context
 
 ## Project
 Next.js 16 turborepo: 1 Next.js app, 1 Vike app, 1 lander + ~20 internal packages. No shared React components — each app maintains its own shadcn/ui components locally.
@@ -15,7 +15,7 @@ Next.js 16 turborepo: 1 Next.js app, 1 Vike app, 1 lander + ~20 internal package
 - **Database**: MongoDB with Mongoose, replica set required
 - **Cache**: Redis via `packages/api-infra/src/cache/`, Next.js Data Cache with `cache: "public"` + tags
 - **Validation**: Zod schemas in `packages/api-validation/`
-- **UI**: shadcn/ui per app (`apps/*/components/ui/`), no shared UI packages. `@luxero/icons` kept as leaf package for brand SVGs + lucide-react re-exports.
+- **UI**: shadcn/ui per app (`apps/*/components/ui/`), no shared UI packages. `@oc/icons` kept as leaf package for brand SVGs + lucide-react re-exports.
 
 ## Key Packages
 - `packages/api-server/` — Hono API routes (client/, admin/, common/)

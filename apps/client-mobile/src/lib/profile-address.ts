@@ -1,5 +1,5 @@
-import type { Profile, ProfileAddress } from "@luxero/types";
-import { DEFAULT_PROFILE_ADDRESS } from "@luxero/types";
+import type { Profile, ProfileAddress } from "@oc/types";
+import { DEFAULT_PROFILE_ADDRESS } from "@oc/types";
 
 type ProfileAddressSource = Pick<
   Profile,

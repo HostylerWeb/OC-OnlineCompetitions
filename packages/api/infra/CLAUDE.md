@@ -1,10 +1,10 @@
-# @luxero/api-infra
+# @oc/api-infra
 
 Shared server infrastructure for the Hono-based API.
 
 ## Source of truth
 
-`luxero-api/packages/infra/src` — synced to this repo.
+`onlinecompetitions-api/packages/infra/src` — synced to this repo.
 
 ## Key modules
 
@@ -34,4 +34,4 @@ Shared server infrastructure for the Hono-based API.
 
 ## Dependencies
 
-hono, mongoose, @sentry/node, @luxero/types, @luxero/api-validation
+hono, mongoose, @sentry/node, @oc/types, @oc/api-validation

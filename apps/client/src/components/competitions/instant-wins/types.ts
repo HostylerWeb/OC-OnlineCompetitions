@@ -1,4 +1,4 @@
-import type { CompetitionInstantPrizePublicDTO } from "@luxero/api-client";
+import type { CompetitionInstantPrizePublicDTO } from "@oc/api-client";
 import type { PrizeTicketState } from "@/components/shared/TicketCard";
 import {
   TICKET_ROW_GAP as ROW_GAP,

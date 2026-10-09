@@ -1,7 +1,7 @@
 "use client";
 
-import { api } from "@luxero/api-admin";
-import { RefreshCw, RotateCcw } from "@luxero/icons";
+import { api } from "@oc/api-admin";
+import { RefreshCw, RotateCcw } from "@oc/icons";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { formatDistanceToNow } from "date-fns";
 import { useState } from "react";

@@ -1,6 +1,6 @@
 export default function ProductsLoading() {
   return (
-    <main className="luxero-container py-12">
+    <main className="oc-container py-12">
       <div className="h-9 w-32 animate-pulse rounded-lg bg-zinc-800/50" />
 
       {/* Category filter skeleton */}

@@ -1,7 +1,7 @@
 "use client";
 
-import { useAdminEmailSettings, useAdminEmailSettingsMutations } from "@luxero/api-admin";
-import { Mail, Settings } from "@luxero/icons";
+import { useAdminEmailSettings, useAdminEmailSettingsMutations } from "@oc/api-admin";
+import { Mail, Settings } from "@oc/icons";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -20,6 +20,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { BRAND_NAME, LEGAL_CONTACT_EMAIL } from "@oc/utils";
 import { handleFormError } from "@/lib/handle-form-error";
 import { createZodResolver } from "@/lib/zod-resolver";
 
@@ -31,9 +32,9 @@ const emailSettingsSchema = z.object({
 type EmailSettingsFormValues = z.infer<typeof emailSettingsSchema>;
 
 const DEFAULTS: EmailSettingsFormValues = {
-  fromName: "Luxero",
-  fromEmail: "contact@luxero.win",
-  supportAddress: "contact@luxero.win",
+  fromName: BRAND_NAME,
+  fromEmail: LEGAL_CONTACT_EMAIL,
+  supportAddress: LEGAL_CONTACT_EMAIL,
 };
 
 function InfoCard({ label, value }: { label: string; value: string }) {

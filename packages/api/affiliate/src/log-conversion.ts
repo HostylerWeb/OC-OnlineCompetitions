@@ -1,5 +1,5 @@
-import { ConversionPostbackLog } from "@luxero/api-db/models";
-import dbConnect from "@luxero/api-infra/db";
+import { ConversionPostbackLog } from "@oc/api-db/models";
+import dbConnect from "@oc/api-infra/db";
 import type { AffiliateConversionData } from "./types";
 
 export interface PostbackLogEntry {

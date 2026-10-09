@@ -1,6 +1,6 @@
-import type { CardBrand } from "@luxero/icons";
-import { CARD_BRAND_COMPONENT, CreditCard, type LucideIcon, Sparkles } from "@luxero/icons";
-import type { PaymentProviderId } from "@luxero/types";
+import type { CardBrand } from "@oc/icons";
+import { CARD_BRAND_COMPONENT, CreditCard, type LucideIcon, Sparkles } from "@oc/icons";
+import type { PaymentProviderId } from "@oc/types";
 import { translate } from "@/lib/i18n";
 
 export interface ProviderDisplay {

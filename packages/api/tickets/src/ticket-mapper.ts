@@ -57,7 +57,7 @@ function isPopulatedCompetition(value: unknown): value is PopulatedCompetition {
   return typeof value === "object" && value !== null && "_id" in value;
 }
 
-/** Maps a sold Ticket to the legacy Entry API shape consumed by luxero-web. */
+/** Maps a sold Ticket to the legacy Entry API shape consumed by onlinecompetitions-web. */
 export function ticketToEntryDto(ticket: TicketLike): EntryDto {
   const id = ticket._id.toString();
   const competitionId = isPopulatedCompetition(ticket.competitionId)

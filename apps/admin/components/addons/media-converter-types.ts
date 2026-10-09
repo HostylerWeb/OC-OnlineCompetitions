@@ -1,9 +1,9 @@
-import type { MediaConverterScope } from "@luxero/types";
+import type { MediaConverterScope } from "@oc/types";
 import {
   DEFAULT_MEDIA_CONVERTER_SCOPES,
   DEFAULT_MEDIA_CONVERTER_SETTINGS,
   DEFAULT_MEDIA_CONVERTER_VIDEO_SCOPES,
-} from "@luxero/types";
+} from "@oc/types";
 
 export type { MediaConverterScope };
 

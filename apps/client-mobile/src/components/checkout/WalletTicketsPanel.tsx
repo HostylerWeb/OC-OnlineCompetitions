@@ -7,8 +7,8 @@ import {
   useCartWallet,
   useIsApplyingCartMutation,
   useMyReferralTickets,
-} from "@luxero/api-client";
-import { Ticket } from "@luxero/icons";
+} from "@oc/api-client";
+import { Ticket } from "@oc/icons";
 import { useMemo, useState } from "react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";

@@ -4,8 +4,8 @@ import {
   useAdminNotificationMutations,
   useAdminNotificationStats,
   useAdminNotifications,
-} from "@luxero/api-admin";
-import { Bell, Send, Smartphone, Users } from "@luxero/icons";
+} from "@oc/api-admin";
+import { Bell, Send, Smartphone, Users } from "@oc/icons";
 import { useQueryClient } from "@tanstack/react-query";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";

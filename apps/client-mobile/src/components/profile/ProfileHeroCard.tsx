@@ -1,7 +1,7 @@
 "use client";
 
-import { BadgeCheck, Mail, Phone } from "@luxero/icons";
-import { cn, getDisplayName, getProfileInitials } from "@luxero/utils";
+import { BadgeCheck, Mail, Phone } from "@oc/icons";
+import { cn, getDisplayName, getProfileInitials } from "@oc/utils";
 import { UserAvatar } from "@/components/user-avatar";
 import { useTranslation } from "@/lib/i18n";
 

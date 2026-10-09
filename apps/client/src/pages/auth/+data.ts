@@ -1,5 +1,5 @@
-import { getReferralCookieFromHeader } from "@luxero/api-client";
-import type { ComplianceSettings } from "@luxero/types";
+import { getReferralCookieFromHeader } from "@oc/api-client";
+import type { ComplianceSettings } from "@oc/types";
 import type { PageContextServer } from "vike/types";
 import { serverFetch } from "@/lib/server-fetch";
 

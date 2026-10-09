@@ -1,7 +1,7 @@
 "use client";
 
-import { ChevronLeft, PanelLeft } from "@luxero/icons";
-import { cn } from "@luxero/utils";
+import { ChevronLeft, PanelLeft } from "@oc/icons";
+import { cn } from "@oc/utils";
 import { Fragment } from "react";
 import { Link } from "@/components/Link";
 import { Button } from "@/components/ui/button";

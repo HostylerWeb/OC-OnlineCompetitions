@@ -1,17 +1,17 @@
-import { Category, Competition, type ICompetition } from "@luxero/api-db/models";
-import dbConnect from "@luxero/api-infra/db";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { parsePagination } from "@luxero/api-infra/pagination";
-import { error, paginated, success } from "@luxero/api-infra/response";
-import { captureRouteError } from "@luxero/api-infra/sentry";
-import { createLogger } from "@luxero/api-logger";
-import { onCompetitionUpdate } from "@luxero/api-server/lib/utils/competition-events";
-import { resolveSession } from "@luxero/api-server/middleware/auth";
-import { redisCacheRoute } from "@luxero/api-server/middleware/cache";
+import { Category, Competition, type ICompetition } from "@oc/api-db/models";
+import dbConnect from "@oc/api-infra/db";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { parsePagination } from "@oc/api-infra/pagination";
+import { error, paginated, success } from "@oc/api-infra/response";
+import { captureRouteError } from "@oc/api-infra/sentry";
+import { createLogger } from "@oc/api-logger";
+import { onCompetitionUpdate } from "@oc/api-server/lib/utils/competition-events";
+import { resolveSession } from "@oc/api-server/middleware/auth";
+import { redisCacheRoute } from "@oc/api-server/middleware/cache";
 import {
   enrichCompetitionsWithTicketStats,
   enrichCompetitionWithTicketStats,
-} from "@luxero/api-tickets/competition-stats";
+} from "@oc/api-tickets/competition-stats";
 import { Hono } from "hono";
 import { streamSSE } from "hono/streaming";
 import mongoose from "mongoose";
@@ -198,7 +198,7 @@ app.get(
         .select("maxTickets maxTicketsPerUser status")
         .lean();
 
-      const { getCompetitionTicketStatsBatch } = await import("@luxero/api-tickets/ticket-service");
+      const { getCompetitionTicketStatsBatch } = await import("@oc/api-tickets/ticket-service");
       const statsMap = await getCompetitionTicketStatsBatch(
         competitions.map((competition) => ({
           id: competition._id.toString(),
@@ -280,7 +280,7 @@ app.get(
       await dbConnect();
 
       const { getCompetitionTicketStats, countOwnedByUser, getCartQtyForUser } = await import(
-        "@luxero/api-tickets/ticket-service"
+        "@oc/api-tickets/ticket-service"
       );
 
       let userId: string | null = null;
@@ -297,7 +297,7 @@ app.get(
 
       const competitionMap = new Map(competitions.map((comp) => [comp._id.toString(), comp]));
 
-      const { Profile } = await import("@luxero/api-db/models");
+      const { Profile } = await import("@oc/api-db/models");
       let walletBalance = 0;
       if (userId) {
         const profile = await Profile.findById(userId).select("referralTierAwardedTickets").lean();
@@ -480,7 +480,7 @@ app.get(
       }
 
       const { getCompetitionTicketStats, countOwnedByUser, getCartQtyForUser } = await import(
-        "@luxero/api-tickets/ticket-service"
+        "@oc/api-tickets/ticket-service"
       );
       const stats = await getCompetitionTicketStats(id, {
         status: competition.status,
@@ -566,7 +566,7 @@ app.get(
       }
 
       const { getCompetitionTicketStats, countOwnedByUser, getCartQtyForUser } = await import(
-        "@luxero/api-tickets/ticket-service"
+        "@oc/api-tickets/ticket-service"
       );
       const stats = await getCompetitionTicketStats(id, {
         status: competition.status,
@@ -591,7 +591,7 @@ app.get(
 
       let walletSpendable = 0;
       if (userId && remainingForUser > 0) {
-        const { Profile } = await import("@luxero/api-db/models");
+        const { Profile } = await import("@oc/api-db/models");
         const profile = await Profile.findById(userId).lean();
         const walletBalance = profile?.referralTierAwardedTickets ?? 0;
         walletSpendable = Math.min(walletBalance, remainingForUser);

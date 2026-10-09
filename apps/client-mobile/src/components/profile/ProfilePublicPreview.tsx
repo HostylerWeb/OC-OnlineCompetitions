@@ -1,7 +1,7 @@
 "use client";
 
-import { Eye, EyeOff, MapPin, SocialIcon, Ticket, Trophy } from "@luxero/icons";
-import { cn, getDisplayName, getProfileInitials } from "@luxero/utils";
+import { Eye, EyeOff, MapPin, SocialIcon, Ticket, Trophy } from "@oc/icons";
+import { cn, getDisplayName, getProfileInitials } from "@oc/utils";
 import { COUNTRIES } from "@/components/ui/countries";
 import { UserAvatar } from "@/components/user-avatar";
 import { useTranslation } from "@/lib/i18n";

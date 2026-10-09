@@ -3,9 +3,9 @@
  *
  *   bun run packages/api/server/src/lib/jobs/sync-mongo-indexes.ts
  */
-import "@luxero/api-db/models";
-import dbConnect from "@luxero/api-infra/db";
-import { ensureMongoDatabaseOptimizations } from "@luxero/api-server/lib/mongo-index-maintenance";
+import "@oc/api-db/models";
+import dbConnect from "@oc/api-infra/db";
+import { ensureMongoDatabaseOptimizations } from "@oc/api-server/lib/mongo-index-maintenance";
 
 async function main(): Promise<void> {
   await dbConnect();

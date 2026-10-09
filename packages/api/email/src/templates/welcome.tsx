@@ -1,4 +1,4 @@
-import type { IEmailSettings } from "@luxero/api-db/models/EmailSettings";
+import type { IEmailSettings } from "@oc/api-db/models/EmailSettings";
 import { Button, Hr, Link, Section, Text } from "@react-email/components";
 import { BaseEmail, emailStyles } from "./base";
 
@@ -9,20 +9,20 @@ type WelcomeEmailProps = {
 };
 
 export function WelcomeEmail({ userName, settings, frontendUrl }: WelcomeEmailProps) {
-  const supportAddress = settings?.supportAddress ?? "support@luxero.win";
+  const supportAddress = settings?.supportAddress ?? "support@onlinecompetitions.co.uk";
   const competitionsUrl = `${frontendUrl ?? ""}/competitions`;
   const dashboardUrl = `${frontendUrl ?? ""}/dashboard`;
 
   return (
     <BaseEmail
-      preview={`Welcome to Luxero, ${userName}! Your email is verified — start winning today.`}
+      preview={`Welcome to Online Competitions, ${userName}! Your email is verified — start winning today.`}
       settings={settings}
       frontendUrl={frontendUrl}
     >
-      <Text className={emailStyles.heading.className}>Welcome to Luxero!</Text>
+      <Text className={emailStyles.heading.className}>Welcome to Online Competitions!</Text>
       <Text className={emailStyles.paragraph.className}>Hi {userName},</Text>
       <Text className={emailStyles.paragraph.className}>
-        Thank you for joining Luxero! Your email is verified and your account is ready — you&apos;re
+        Thank you for joining Online Competitions! Your email is verified and your account is ready — you&apos;re
         now part of a community competing for incredible luxury prizes.
       </Text>
       <Section
@@ -75,7 +75,7 @@ export function WelcomeEmail({ userName, settings, frontendUrl }: WelcomeEmailPr
       <Text className={emailStyles.paragraph.className}>
         Good luck!
         <br />
-        The Luxero Team
+        The Online Competitions Team
       </Text>
     </BaseEmail>
   );

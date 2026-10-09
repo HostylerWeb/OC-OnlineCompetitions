@@ -1,9 +1,9 @@
-import { sendEmail } from "@luxero/api-email/client";
-import { ShopOrderConfirmationEmail } from "@luxero/api-email/templates/shop-order-confirmation";
-import { ShopOrder } from "@luxero/api-db/models";
-import { createLogger } from "@luxero/api-logger";
-import { getEnv } from "@luxero/env/server";
-import { formatOrderNumber } from "@luxero/utils";
+import { sendEmail } from "@oc/api-email/client";
+import { ShopOrderConfirmationEmail } from "@oc/api-email/templates/shop-order-confirmation";
+import { ShopOrder } from "@oc/api-db/models";
+import { createLogger } from "@oc/api-logger";
+import { getEnv } from "@oc/env/server";
+import { formatOrderNumber } from "@oc/utils";
 import { render } from "@react-email/render";
 
 const log = createLogger("shop-email");

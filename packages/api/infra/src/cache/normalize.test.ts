@@ -12,7 +12,7 @@ describe("buildCacheKey", () => {
       scope: "public",
     });
     expect(k1).toBe(k2);
-    expect(k1).toContain("cache:luxero:public:pub:settings:homepage_layout_settings");
+    expect(k1).toContain("cache:onlinecompetitions:public:pub:settings:homepage_layout_settings");
   });
 
   test("includes userId for user-scoped keys", () => {

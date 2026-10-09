@@ -18,7 +18,7 @@ import {
   useIsApplyingCartMutation,
   useMyProfile,
   useRemoveCartDiscount,
-} from "@luxero/api-client";
+} from "@oc/api-client";
 import {
   AlertTriangle,
   ArrowRight,
@@ -27,9 +27,9 @@ import {
   ShoppingCart,
   Trash2,
   Trophy,
-} from "@luxero/icons";
-import type { ApiResponse, CartAdjustment, ICart } from "@luxero/types";
-import { cn, getMaxCartQuantity } from "@luxero/utils";
+} from "@oc/icons";
+import type { ApiResponse, CartAdjustment, ICart } from "@oc/types";
+import { cn, getMaxCartQuantity } from "@oc/utils";
 import { useIsFetching, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
@@ -170,7 +170,7 @@ function SnapBackPill({ label }: { label: string }) {
 
 function CartLoadingFallback() {
   return (
-    <main className="flex-1 luxero-container-content py-5 lg:py-8 animate-pulse">
+    <main className="flex-1 oc-container-content py-5 lg:py-8 animate-pulse">
       <div className="h-9 w-40 bg-gold/10 rounded-lg mb-8" />
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-4">
@@ -521,7 +521,7 @@ function CartView() {
 
   if (items.length === 0) {
     return (
-      <main className="flex-1 luxero-container-content py-5 lg:py-8" suppressHydrationWarning>
+      <main className="flex-1 oc-container-content py-5 lg:py-8" suppressHydrationWarning>
         <div className="mx-auto w-full max-w-2xl px-4 py-12 text-center sm:px-6 lg:py-16">
           <div className="mb-6 inline-flex size-20 items-center justify-center rounded-full bg-gold/10 ring-1 ring-gold/20">
             <ShoppingCart className="size-10 text-gold" />
@@ -572,7 +572,7 @@ function CartView() {
   }
 
   return (
-    <main className="flex-1 luxero-container-content py-4 lg:py-8 relative">
+    <main className="flex-1 oc-container-content py-4 lg:py-8 relative">
       <div
         className={`absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-gold/40 via-gold to-gold/40 transition-opacity duration-300 ${
           isRefreshingAvailability ? "opacity-100" : "opacity-0"

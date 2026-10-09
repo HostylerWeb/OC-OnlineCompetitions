@@ -1,4 +1,4 @@
-import { authClient } from "@luxero/auth-client";
+import { authClient } from "@oc/auth-client";
 import { useCartUiStore } from "./cart-ui";
 import { useCheckout } from "./checkout";
 import { useInstantPrizeDrawerStore } from "./instant-prize-drawer";

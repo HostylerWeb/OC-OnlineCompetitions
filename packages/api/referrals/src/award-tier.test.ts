@@ -12,14 +12,14 @@ const state = vi.hoisted(() => ({
   updatedPurchases: Array<Record<string, unknown>>,
 }));
 
-vi.mock("@luxero/api-tickets/ticket-service", () => ({
+vi.mock("@oc/api-tickets/ticket-service", () => ({
   claimTicketsForOrder: vi.fn(async (opts: Record<string, unknown>) => {
     state.claimCalls.push(opts);
     return state.claimResults.shift() ?? { ticketIds: [], numbers: [] };
   }),
 }));
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   Competition: {
     find: vi.fn(() => ({
       select: () => ({

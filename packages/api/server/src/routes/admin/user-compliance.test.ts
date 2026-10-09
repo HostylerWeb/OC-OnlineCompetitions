@@ -12,11 +12,11 @@ const __mock = vi.hoisted(() => ({
   profileFindByIdAndUpdateImpl: vi.fn(() => ({ lean: async () => ({}) })),
 }));
 
-vi.mock("@luxero/api-infra/db", () => ({
+vi.mock("@oc/api-infra/db", () => ({
   default: vi.fn(async () => {}),
 }));
 
-vi.mock("@luxero/api-server/middleware/auth", () => ({
+vi.mock("@oc/api-server/middleware/auth", () => ({
   isPublicRoute: () => false,
   resolveSession: vi.fn(async () => ({})),
   sessionMiddleware: async (_c: unknown, next: () => Promise<void>) => {
@@ -41,7 +41,7 @@ vi.mock("@luxero/api-server/middleware/auth", () => ({
   },
 }));
 
-vi.mock("@luxero/api-compliance/compliance-user-service", () => ({
+vi.mock("@oc/api-compliance/compliance-user-service", () => ({
   buildAdminUserComplianceState: vi.fn(async () => __mock.mockComplianceState),
   applySpendLimit: (...args: unknown[]) => __mock.applySpendLimit(...args),
   cancelPendingSpendIncrease: vi.fn(async () => ({})),
@@ -50,7 +50,7 @@ vi.mock("@luxero/api-compliance/compliance-user-service", () => ({
   setAgeVerified: vi.fn(async () => ({})),
 }));
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   Profile: {
     findById: vi.fn(() => ({
       select: () => ({

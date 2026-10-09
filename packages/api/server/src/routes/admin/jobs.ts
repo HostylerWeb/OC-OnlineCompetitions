@@ -1,17 +1,17 @@
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { error, success } from "@luxero/api-infra/response";
-import { captureRouteError } from "@luxero/api-infra/sentry";
-import { runCheckBonusAwardMilestones } from "@luxero/api-server/lib/jobs/check-bonus-awards";
-import { runCheckCompetitionsForDraw } from "@luxero/api-server/lib/jobs/check-competitions-for-draw";
-import { runCleanupAbandonedOrders } from "@luxero/api-server/lib/jobs/cleanup-abandoned-orders";
-import { processScheduledNotifications } from "@luxero/api-server/lib/jobs/process-scheduled-notifications";
-import { runRetryOrderConfirmationEmails } from "@luxero/api-server/lib/jobs/retry-order-confirmation-emails";
-import { runTicketingAnomalyChecks } from "@luxero/api-server/lib/jobs/ticketing-anomaly-checks";
-import { runInternalJobWithLock } from "@luxero/api-server/lib/utils/internal-job-runner";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { error, success } from "@oc/api-infra/response";
+import { captureRouteError } from "@oc/api-infra/sentry";
+import { runCheckBonusAwardMilestones } from "@oc/api-server/lib/jobs/check-bonus-awards";
+import { runCheckCompetitionsForDraw } from "@oc/api-server/lib/jobs/check-competitions-for-draw";
+import { runCleanupAbandonedOrders } from "@oc/api-server/lib/jobs/cleanup-abandoned-orders";
+import { processScheduledNotifications } from "@oc/api-server/lib/jobs/process-scheduled-notifications";
+import { runRetryOrderConfirmationEmails } from "@oc/api-server/lib/jobs/retry-order-confirmation-emails";
+import { runTicketingAnomalyChecks } from "@oc/api-server/lib/jobs/ticketing-anomaly-checks";
+import { runInternalJobWithLock } from "@oc/api-server/lib/utils/internal-job-runner";
 import {
   getCronJobsSecretHeaderName,
   validateCronJobsSecret,
-} from "@luxero/auth-admin/internal-jobs-auth";
+} from "@oc/auth-admin/internal-jobs-auth";
 import { Hono } from "hono";
 
 const app = new Hono();

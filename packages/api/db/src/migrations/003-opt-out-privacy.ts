@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const MONGO_URI = process.env.MONGO_URI ?? "mongodb://localhost:27017/luxero";
+const MONGO_URI = process.env.MONGO_URI ?? "mongodb://localhost:27017/onlinecompetitions";
 
 async function migrate() {
   await mongoose.connect(MONGO_URI);

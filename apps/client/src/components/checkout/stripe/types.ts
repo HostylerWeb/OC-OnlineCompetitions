@@ -1,6 +1,6 @@
 "use client";
 
-import type { ApiResponse, PaymentConfigResponse, PaymentProviderInfo } from "@luxero/types";
+import type { ApiResponse, PaymentConfigResponse, PaymentProviderInfo } from "@oc/types";
 import type { CheckoutProviderPanelProps } from "../providers/types";
 
 export interface StripeCheckoutCart {

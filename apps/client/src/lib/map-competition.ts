@@ -1,4 +1,4 @@
-import type { Competition, RawCompetitionResponse } from "@luxero/types";
+import type { Competition, RawCompetitionResponse } from "@oc/types";
 
 export function mapComp(c: RawCompetitionResponse): Competition {
   return {

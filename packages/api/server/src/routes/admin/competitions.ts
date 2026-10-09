@@ -8,43 +8,43 @@ import {
   OrderItem,
   Ticket,
   Winner,
-} from "@luxero/api-db/models";
-import type { CompetitionStatus } from "@luxero/api-db/models/Competition";
-import { CH, invalidateByChannelSafe } from "@luxero/api-infra/cache";
-import dbConnect from "@luxero/api-infra/db";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { substringRegex } from "@luxero/api-infra/fuzzy-search";
-import { applyGroupBy, type GroupByFieldConfig } from "@luxero/api-infra/group-by";
-import { isDuplicateKeyError } from "@luxero/api-infra/mongo-errors";
-import { parsePagination, parseSort } from "@luxero/api-infra/pagination";
-import { created, error, paginated, success } from "@luxero/api-infra/response";
-import { captureRouteError } from "@luxero/api-infra/sentry";
-import { rollbackOrderRefund } from "@luxero/api-payment-core";
-import { buildRefundDeps } from "@luxero/api-server/lib/payment/build-refund-deps";
-import { sendPushNotification } from "@luxero/api-server/lib/push";
-import { onProgress } from "@luxero/api-server/lib/utils/extraction-events";
-import { runExtraction } from "@luxero/api-server/lib/utils/frame-extractor";
-import { requireAdmin, requireStaff } from "@luxero/api-server/middleware/auth";
+} from "@oc/api-db/models";
+import type { CompetitionStatus } from "@oc/api-db/models/Competition";
+import { CH, invalidateByChannelSafe } from "@oc/api-infra/cache";
+import dbConnect from "@oc/api-infra/db";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { substringRegex } from "@oc/api-infra/fuzzy-search";
+import { applyGroupBy, type GroupByFieldConfig } from "@oc/api-infra/group-by";
+import { isDuplicateKeyError } from "@oc/api-infra/mongo-errors";
+import { parsePagination, parseSort } from "@oc/api-infra/pagination";
+import { created, error, paginated, success } from "@oc/api-infra/response";
+import { captureRouteError } from "@oc/api-infra/sentry";
+import { rollbackOrderRefund } from "@oc/api-payment-core";
+import { buildRefundDeps } from "@oc/api-server/lib/payment/build-refund-deps";
+import { sendPushNotification } from "@oc/api-server/lib/push";
+import { onProgress } from "@oc/api-server/lib/utils/extraction-events";
+import { runExtraction } from "@oc/api-server/lib/utils/frame-extractor";
+import { requireAdmin, requireStaff } from "@oc/api-server/middleware/auth";
 import type { Context, Next } from "hono";
-import { extractKeyFromUrl } from "@luxero/api-storage/s3";
+import { extractKeyFromUrl } from "@oc/api-storage/s3";
 import {
   enrichCompetitionsWithTicketStats,
   enrichCompetitionWithTicketStats,
-} from "@luxero/api-tickets/competition-stats";
+} from "@oc/api-tickets/competition-stats";
 import {
   backpropagateCompetitionToWinners,
   type CompetitionWinnerSnapshot,
   countActiveCompetitionInstantPrizes,
   countInstantPrizesLinkedToCompetition,
-} from "@luxero/api-tickets/competitions";
-import { getMinimumAllowedMaxTickets, provisionTickets } from "@luxero/api-tickets/ticket-service";
-import { validateBody } from "@luxero/api-validation";
+} from "@oc/api-tickets/competitions";
+import { getMinimumAllowedMaxTickets, provisionTickets } from "@oc/api-tickets/ticket-service";
+import { validateBody } from "@oc/api-validation";
 import {
   type CreateCompetitionInput,
   createCompetitionSchema,
   type UpdateCompetitionInput,
   updateCompetitionSchema,
-} from "@luxero/api-validation/schemas/competitions";
+} from "@oc/api-validation/schemas/competitions";
 import { Hono } from "hono";
 import { streamSSE } from "hono/streaming";
 import type { PipelineStage } from "mongoose";
@@ -483,11 +483,11 @@ app.put(
         body.landingPageVideoUrl !== existing.landingPageVideoUrl &&
         existing.landingPageVideoUrl
       ) {
-        const { deleteAsset } = await import("@luxero/api-storage/s3");
+        const { deleteAsset } = await import("@oc/api-storage/s3");
         const priorKey = extractKeyFromUrl(existing.landingPageVideoUrl);
         if (priorKey)
           await deleteAsset(priorKey).catch((err) => console.error("S3 delete failed:", err));
-        const { deleteFrames } = await import("@luxero/api-server/lib/utils/frame-extraction");
+        const { deleteFrames } = await import("@oc/api-server/lib/utils/frame-extraction");
         await deleteFrames(existing._id.toString()).catch((err) =>
           console.error("S3 delete failed:", err)
         );
@@ -748,8 +748,8 @@ app.delete("/:id", async (c) => {
     }
 
     // Cascade delete S3 media
-    const { deleteAsset } = await import("@luxero/api-storage/s3");
-    const { deleteFrames } = await import("@luxero/api-server/lib/utils/frame-extraction");
+    const { deleteAsset } = await import("@oc/api-storage/s3");
+    const { deleteFrames } = await import("@oc/api-server/lib/utils/frame-extraction");
     const compId = competition!._id;
 
     async function isUrlReferencedByOtherCompetition(url: string): Promise<boolean> {
@@ -878,7 +878,7 @@ app.post("/:id/landing-video", async (c) => {
       return error(c, ErrorCodes.VALIDATION_ERROR, "File too large. Max 100MB.", 400);
     }
 
-    const { uploadFile, buildAssetUrl, deleteAsset } = await import("@luxero/api-storage/s3");
+    const { uploadFile, buildAssetUrl, deleteAsset } = await import("@oc/api-storage/s3");
 
     const ext = file.name.split(".").pop()?.toLowerCase() ?? "mp4";
     const random = Math.random().toString(36).slice(2);
@@ -891,7 +891,7 @@ app.post("/:id/landing-video", async (c) => {
       if (priorKey)
         await deleteAsset(priorKey).catch((err) => console.error("S3 delete failed:", err));
       // Also delete prior frames
-      const { deleteFrames } = await import("@luxero/api-server/lib/utils/frame-extraction");
+      const { deleteFrames } = await import("@oc/api-server/lib/utils/frame-extraction");
       await deleteFrames(competition._id.toString()).catch((err) =>
         console.error("S3 delete failed:", err)
       );
@@ -901,7 +901,7 @@ app.post("/:id/landing-video", async (c) => {
     let bytes = new Uint8Array(arrayBuffer);
     let contentType = file.type;
 
-    const { transformUploadBytes } = await import("@luxero/api-server/lib/media-converter/transform");
+    const { transformUploadBytes } = await import("@oc/api-server/lib/media-converter/transform");
     const transformed = await transformUploadBytes({ key, bytes, contentType });
     key = transformed.key;
     bytes = transformed.bytes;
@@ -912,7 +912,7 @@ app.post("/:id/landing-video", async (c) => {
     const url = buildAssetUrl(key);
 
     // Extract frames synchronously — the response only returns when frames are ready
-    const { extractFrames } = await import("@luxero/api-server/lib/utils/frame-extraction");
+    const { extractFrames } = await import("@oc/api-server/lib/utils/frame-extraction");
     const { prefix, count, fps, metadata } = await extractFrames(url, competition._id.toString());
 
     await Competition.findByIdAndUpdate(competition._id, {
@@ -971,7 +971,7 @@ app.get("/:id/landing-video/presign", async (c) => {
     const random = Math.random().toString(36).slice(2);
     const key = `landing-videos/${competition._id.toString()}/${Date.now()}-${random}.${ext}`;
 
-    const { getPresignedUploadUrl, buildAssetUrl } = await import("@luxero/api-storage/s3");
+    const { getPresignedUploadUrl, buildAssetUrl } = await import("@oc/api-storage/s3");
     const uploadUrl = await getPresignedUploadUrl(key, contentType);
     const publicUrl = buildAssetUrl(key);
 
@@ -1025,8 +1025,8 @@ app.post("/:id/landing-video/confirm", async (c) => {
       return error(c, ErrorCodes.VALIDATION_ERROR, "Invalid key", 400);
     }
 
-    const { buildAssetUrl, deleteAsset } = await import("@luxero/api-storage/s3");
-    const { normalizeObjectAtKey } = await import("@luxero/api-server/lib/media-converter/transform");
+    const { buildAssetUrl, deleteAsset } = await import("@oc/api-storage/s3");
+    const { normalizeObjectAtKey } = await import("@oc/api-server/lib/media-converter/transform");
 
     let storageKey = body.key;
     try {
@@ -1043,7 +1043,7 @@ app.post("/:id/landing-video/confirm", async (c) => {
       const priorKey = extractKeyFromUrl(priorUrl);
       if (priorKey)
         await deleteAsset(priorKey).catch((err) => console.error("S3 delete failed:", err));
-      const { deleteFrames } = await import("@luxero/api-server/lib/utils/frame-extraction");
+      const { deleteFrames } = await import("@oc/api-server/lib/utils/frame-extraction");
       await deleteFrames(competition._id.toString()).catch((err) =>
         console.error("S3 delete failed:", err)
       );
@@ -1138,7 +1138,7 @@ app.get("/:id/landing-video/extract-stream", async (c) => {
 
     // Terminal state — return directly (no SSE needed)
     if (["completed", "failed", "abandoned"].includes(job.status)) {
-      const { buildAssetUrl } = await import("@luxero/api-storage/s3");
+      const { buildAssetUrl } = await import("@oc/api-storage/s3");
       return success(c, {
         jobId: job._id.toString(),
         status: job.status,
@@ -1223,14 +1223,14 @@ app.delete("/:id/landing-video", async (c) => {
 
     const priorUrl = competition.landingPageVideoUrl;
     if (priorUrl) {
-      const { deleteAsset } = await import("@luxero/api-storage/s3");
+      const { deleteAsset } = await import("@oc/api-storage/s3");
       const priorKey = extractKeyFromUrl(priorUrl);
       if (priorKey)
         await deleteAsset(priorKey).catch((err) => console.error("S3 delete failed:", err));
     }
 
     // Delete all frame files from CDN
-    const { deleteFrames } = await import("@luxero/api-server/lib/utils/frame-extraction");
+    const { deleteFrames } = await import("@oc/api-server/lib/utils/frame-extraction");
     await deleteFrames(competition._id.toString()).catch((err) =>
       console.error("S3 delete failed:", err)
     );

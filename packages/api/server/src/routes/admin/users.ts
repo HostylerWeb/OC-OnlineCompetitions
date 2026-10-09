@@ -4,12 +4,12 @@ import {
   Profile,
   ReferralPurchase,
   ReferralSettings,
-} from "@luxero/api-db/models";
-import { invalidateUser } from "@luxero/api-infra/cache";
-import dbConnect from "@luxero/api-infra/db";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { substringRegex } from "@luxero/api-infra/fuzzy-search";
-import { applyGroupBy, type GroupByFieldConfig } from "@luxero/api-infra/group-by";
+} from "@oc/api-db/models";
+import { invalidateUser } from "@oc/api-infra/cache";
+import dbConnect from "@oc/api-infra/db";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { substringRegex } from "@oc/api-infra/fuzzy-search";
+import { applyGroupBy, type GroupByFieldConfig } from "@oc/api-infra/group-by";
 import {
   buildCursorFilter,
   decodeCursor,
@@ -17,9 +17,9 @@ import {
   parseCursorPagination,
   parsePagination,
   parseSort,
-} from "@luxero/api-infra/pagination";
-import { cursorPaginated, error, paginated, success } from "@luxero/api-infra/response";
-import { captureRouteError } from "@luxero/api-infra/sentry";
+} from "@oc/api-infra/pagination";
+import { cursorPaginated, error, paginated, success } from "@oc/api-infra/response";
+import { captureRouteError } from "@oc/api-infra/sentry";
 import {
   type CalculusMethod,
   calculateTierGrant,
@@ -27,11 +27,11 @@ import {
   findNextTier,
   isQualifyingReferralPurchase,
   type ReferralTier,
-} from "@luxero/api-referrals/referral-tier-math";
-import { requireManager } from "@luxero/api-server/middleware/auth";
-import { isGuestProfileEmail } from "@luxero/auth-admin/auth-hooks";
-import { deleteUserAccount } from "@luxero/auth-admin/user-deletion";
-import { getDisplayName } from "@luxero/utils";
+} from "@oc/api-referrals/referral-tier-math";
+import { requireManager } from "@oc/api-server/middleware/auth";
+import { isGuestProfileEmail } from "@oc/auth-admin/auth-hooks";
+import { deleteUserAccount } from "@oc/auth-admin/user-deletion";
+import { getDisplayName } from "@oc/utils";
 import { Hono } from "hono";
 import type { PipelineStage } from "mongoose";
 import mongoose from "mongoose";
@@ -40,7 +40,7 @@ const app = new Hono();
 
 app.use("*", requireManager);
 
-const GUEST_EMAIL_FILTER = { $not: { $regex: /@guest\.luxero\.local$/i } };
+const GUEST_EMAIL_FILTER = { $not: { $regex: /@guest\.onlinecompetitions\.local$/i } };
 const OBJECT_ID_REGEX = /^[a-f\d]{24}$/i;
 
 function buildUserFilter(c: { req: { query: (k: string) => string | undefined } }) {
@@ -285,8 +285,8 @@ app.put("/:id", async (c) => {
         { isVerified: body.isVerified },
         { returnDocument: "after" }
       );
-      const { getMongoDb } = await import("@luxero/auth-admin/auth-mongo");
-      const { updateAuthUserFields } = await import("@luxero/api-server/lib/auth-user-sync");
+      const { getMongoDb } = await import("@oc/auth-admin/auth-mongo");
+      const { updateAuthUserFields } = await import("@oc/api-server/lib/auth-user-sync");
       await updateAuthUserFields(getMongoDb(), id, { emailVerified: body.isVerified });
       void invalidateUser(id).catch(() => {});
     }
@@ -323,8 +323,8 @@ app.put("/:id", async (c) => {
         { role: nextRole, isAdmin: nextRole !== "user" },
         { returnDocument: "after" }
       );
-      const { getMongoDb } = await import("@luxero/auth-admin/auth-mongo");
-      const { updateAuthUserFields } = await import("@luxero/api-server/lib/auth-user-sync");
+      const { getMongoDb } = await import("@oc/auth-admin/auth-mongo");
+      const { updateAuthUserFields } = await import("@oc/api-server/lib/auth-user-sync");
       await updateAuthUserFields(getMongoDb(), id, { role: nextRole });
       void invalidateUser(id).catch(() => {});
 
@@ -544,7 +544,7 @@ app.get("/:id/referral-stats", async (c) => {
           recentReferralUsers.push({
             id,
             name:
-              referred.email && /@guest\.luxero\.local$/i.test(referred.email)
+              referred.email && /@guest\.onlinecompetitions\.local$/i.test(referred.email)
                 ? "Unregistered"
                 : getDisplayName(
                     {
@@ -602,7 +602,7 @@ app.get("/:id/activity-timeline", async (c) => {
     const limit = Number.isFinite(limitRaw) ? Math.min(Math.max(Math.floor(limitRaw), 1), 200) : 50;
     const includeDeleted = c.req.query("includeDeleted") === "true";
 
-    const { getUserActivityTimeline } = await import("@luxero/api-referrals/timeline");
+    const { getUserActivityTimeline } = await import("@oc/api-referrals/timeline");
     const events = await getUserActivityTimeline(id, {
       limit,
       includeDeleted,

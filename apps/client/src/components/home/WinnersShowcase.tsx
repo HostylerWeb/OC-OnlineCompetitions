@@ -1,8 +1,8 @@
 "use client";
 
-import { ArrowRight, Trophy } from "@luxero/icons";
-import type { Winner } from "@luxero/types";
-import { withAssetCacheVersion } from "@luxero/utils";
+import { ArrowRight, Trophy } from "@oc/icons";
+import type { Winner } from "@oc/types";
+import { withAssetCacheVersion } from "@oc/utils";
 import { useEffect, useMemo, useState } from "react";
 import { GoldOutlineButton } from "@/components/buttons";
 import { Link } from "@/components/Link";
@@ -120,7 +120,7 @@ export function WinnersShowcase({ winners: winnersRaw }: { winners: Winner[] }) 
       <div className="pointer-events-none absolute -right-24 bottom-10 h-80 w-80 rounded-full bg-gold/5 blur-3xl" />
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/25 to-transparent" />
 
-      <div className="luxero-container-wide relative z-10">
+      <div className="oc-container-wide relative z-10">
         <div className="mb-10 flex flex-col gap-6 lg:mb-12 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
             <p className="mb-2 text-xs font-semibold uppercase tracking-[0.22em] text-gold/80">

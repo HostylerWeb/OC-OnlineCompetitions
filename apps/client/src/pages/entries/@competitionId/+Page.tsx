@@ -1,7 +1,7 @@
 "use client";
 
-import { ArrowLeft, List, RefreshCw } from "@luxero/icons";
-import { getTicketsSold } from "@luxero/utils";
+import { ArrowLeft, List, RefreshCw } from "@oc/icons";
+import { getTicketsSold } from "@oc/utils";
 import { useState } from "react";
 import { useData } from "vike-react/useData";
 import { usePageContext } from "vike-react/usePageContext";
@@ -41,7 +41,7 @@ export default function Page() {
 
   return (
     <ErrorBoundary onError={(err) => setError(err)}>
-      <div className="luxero-container-medium pb-10">
+      <div className="oc-container-medium pb-10">
         <div className="py-5 lg:py-8">
           <Link
             href="/entries"

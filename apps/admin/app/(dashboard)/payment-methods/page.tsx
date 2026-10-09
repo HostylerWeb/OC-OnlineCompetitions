@@ -1,7 +1,7 @@
 "use client";
 
-import { useAdminPaymentMethodMutations, useAdminPaymentMethods } from "@luxero/api-admin";
-import type { AdminPaymentMethodRecord } from "@luxero/types";
+import { useAdminPaymentMethodMutations, useAdminPaymentMethods } from "@oc/api-admin";
+import type { AdminPaymentMethodRecord } from "@oc/types";
 import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import { StatusBadge } from "@/components/admin/StatusBadge";

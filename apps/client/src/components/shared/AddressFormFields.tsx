@@ -1,5 +1,5 @@
-import type { ProfileAddress } from "@luxero/types";
-import { cn } from "@luxero/utils";
+import type { ProfileAddress } from "@oc/types";
+import { cn } from "@oc/utils";
 import { Combobox } from "@/components/ui/combobox";
 import { COUNTRIES } from "@/components/ui/countries";
 import { Input } from "@/components/ui/input";

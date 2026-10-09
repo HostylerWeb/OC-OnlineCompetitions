@@ -1,4 +1,4 @@
-# @luxero/api-client-next
+# @oc/api-client-next
 
 Centralized API access: TanStack Query hooks, Better Auth client, Zustand stores, and Axios instance for `apps/admin` (Next.js) and `apps/client` (Vike).
 

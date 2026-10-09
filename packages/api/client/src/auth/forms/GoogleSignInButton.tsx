@@ -1,5 +1,5 @@
-import { AlertCircle, LoaderCircle } from "@luxero/icons";
-import { cn } from "@luxero/utils";
+import { AlertCircle, LoaderCircle } from "@oc/icons";
+import { cn } from "@oc/utils";
 import { useState } from "react";
 import { getAuthErrorMessage, signInWithGoogle, signUpWithGoogle } from "../actions";
 import { authErrorAlertClass, authOutlineButtonClass } from "./styles";

@@ -1,5 +1,5 @@
-import type { LucideIcon } from "@luxero/icons";
-import { Grid3X3, List, Rows3 } from "@luxero/icons";
+import type { LucideIcon } from "@oc/icons";
+import { Grid3X3, List, Rows3 } from "@oc/icons";
 
 export type DashboardListViewMode = "card" | "compact" | "grid";
 

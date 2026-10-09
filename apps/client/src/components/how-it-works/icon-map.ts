@@ -13,7 +13,7 @@ import {
   Ticket,
   Trophy,
   Users,
-} from "@luxero/icons";
+} from "@oc/icons";
 import type { ComponentType } from "react";
 
 export const HOW_IT_WORKS_ICON_MAP: Record<string, ComponentType<{ className?: string }>> = {

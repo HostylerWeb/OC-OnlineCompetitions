@@ -1,11 +1,11 @@
-import { writeComplianceAuditLog } from "@luxero/api-compliance/compliance-user-service";
-import { Profile } from "@luxero/api-db/models";
-import dbConnect from "@luxero/api-infra/db";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { error, success } from "@luxero/api-infra/response";
-import { captureRouteError } from "@luxero/api-infra/sentry";
-import { getRequiredUserId, requireAdmin } from "@luxero/api-server/middleware/auth";
-import { adminUserProfilePatchSchema } from "@luxero/api-validation";
+import { writeComplianceAuditLog } from "@oc/api-compliance/compliance-user-service";
+import { Profile } from "@oc/api-db/models";
+import dbConnect from "@oc/api-infra/db";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { error, success } from "@oc/api-infra/response";
+import { captureRouteError } from "@oc/api-infra/sentry";
+import { getRequiredUserId, requireAdmin } from "@oc/api-server/middleware/auth";
+import { adminUserProfilePatchSchema } from "@oc/api-validation";
 import { Hono } from "hono";
 
 const app = new Hono();
@@ -89,8 +89,8 @@ app.patch("/:id/profile", async (c) => {
 
     await Profile.findByIdAndUpdate(targetUserId, { $set: updates });
     if (typeof updates.email === "string") {
-      const { getMongoDb } = await import("@luxero/auth-admin/auth-mongo");
-      const { updateAuthUserFields } = await import("@luxero/api-server/lib/auth-user-sync");
+      const { getMongoDb } = await import("@oc/auth-admin/auth-mongo");
+      const { updateAuthUserFields } = await import("@oc/api-server/lib/auth-user-sync");
       await updateAuthUserFields(getMongoDb(), targetUserId, { email: updates.email });
     }
     const updated = await Profile.findById(targetUserId).lean();

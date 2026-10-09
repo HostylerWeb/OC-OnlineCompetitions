@@ -8,12 +8,12 @@ const SeoSettingsSchema = new Schema(
     referralOgImageUrl: { type: String, default: "" },
     defaultTitle: {
       type: String,
-      default: "Luxero — Win Amazing Prizes & Luxury Experiences",
+      default: "Online Competitions — Win Amazing Prizes & Luxury Experiences",
     },
     defaultDescription: {
       type: String,
       default:
-        "Enter competitions on Luxero to win incredible prizes, from premium electronics and designer fashion to unforgettable luxury experiences. Play skill-based contests and try instant win games.",
+        "Enter competitions on Online Competitions to win incredible prizes, from premium electronics and designer fashion to unforgettable luxury experiences. Play skill-based contests and try instant win games.",
     },
   },
   { timestamps: false, _id: false }

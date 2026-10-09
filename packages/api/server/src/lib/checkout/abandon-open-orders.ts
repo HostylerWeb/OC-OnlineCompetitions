@@ -1,5 +1,5 @@
-import { Order } from "@luxero/api-db/models";
-import { markOrderFailed } from "@luxero/api-server/lib/payment/providers/_shared/order-helpers";
+import { Order } from "@oc/api-db/models";
+import { markOrderFailed } from "@oc/api-server/lib/payment/providers/_shared/order-helpers";
 
 /** Fail in-flight checkouts so reserved spend and promo holds are released when the user clears the cart. */
 export async function abandonOpenCheckoutOrdersForUser(userId: string): Promise<number> {

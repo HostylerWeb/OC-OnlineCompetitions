@@ -1,9 +1,9 @@
 "use client";
 
-import { useSelfExcludedUsers, useSelfExclusionOverrideMutations } from "@luxero/api-admin";
-import { AlertTriangle } from "@luxero/icons";
-import type { SelfExcludedUser } from "@luxero/types";
-import { formatDate } from "@luxero/utils";
+import { useSelfExcludedUsers, useSelfExclusionOverrideMutations } from "@oc/api-admin";
+import { AlertTriangle } from "@oc/icons";
+import type { SelfExcludedUser } from "@oc/types";
+import { formatDate } from "@oc/utils";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Alert, AlertDescription } from "@/components/ui/alert";

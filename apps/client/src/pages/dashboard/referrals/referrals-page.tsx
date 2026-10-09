@@ -4,9 +4,9 @@ import {
   useMyReferrals,
   useMyReferralTickets,
   usePublicReferralSettings,
-} from "@luxero/api-client";
-import { Check, Copy, Share2, Ticket, Trophy, Users } from "@luxero/icons";
-import type { ApiResponse, ReferralTier, ReferralWalletResponse } from "@luxero/types";
+} from "@oc/api-client";
+import { Check, Copy, Share2, Ticket, Trophy, Users } from "@oc/icons";
+import type { ApiResponse, ReferralTier, ReferralWalletResponse } from "@oc/types";
 import { useMemo, useState } from "react";
 import { useData } from "vike-react/useData";
 import {

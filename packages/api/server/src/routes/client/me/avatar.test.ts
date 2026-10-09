@@ -39,16 +39,16 @@ const __mock = vi.hoisted(() => ({
   }),
 }));
 
-vi.mock("@luxero/api-infra/db", () => ({
+vi.mock("@oc/api-infra/db", () => ({
   default: vi.fn(async () => {}),
 }));
 
-vi.mock("@luxero/api-storage/s3", () => ({
+vi.mock("@oc/api-storage/s3", () => ({
   buildAssetUrl: (key: string) => `${assetProfiles.local.ASSET_BASE_URL}/${key}`,
   uploadFile: __mock.uploadFile,
 }));
 
-vi.mock("@luxero/api-server/lib/avatar/process-upload", () => ({
+vi.mock("@oc/api-server/lib/avatar/process-upload", () => ({
   AvatarUploadValidationError: class AvatarUploadValidationError extends Error {},
   validateAvatarFileMeta: vi.fn(),
   processAvatarUploadBytes: vi.fn(
@@ -60,13 +60,13 @@ vi.mock("@luxero/api-server/lib/avatar/process-upload", () => ({
   ),
 }));
 
-vi.mock("@luxero/api-storage/avatar-storage", () => ({
+vi.mock("@oc/api-storage/avatar-storage", () => ({
   deleteAvatarIfOwned: __mock.deleteAvatarIfOwned,
   getAuthUserImage: __mock.getAuthUserImage,
   hasGoogleAccount: __mock.hasGoogleAccount,
 }));
 
-vi.mock("@luxero/api-server/middleware/auth", () => ({
+vi.mock("@oc/api-server/middleware/auth", () => ({
   isPublicRoute: () => false,
   resolveSession: vi.fn(async () => ({})),
   sessionMiddleware: async (_c: unknown, next: () => Promise<void>) => {
@@ -81,7 +81,7 @@ vi.mock("@luxero/api-server/middleware/auth", () => ({
   },
 }));
 
-vi.mock("@luxero/auth-admin/avatar-sync", () => ({
+vi.mock("@oc/auth-admin/avatar-sync", () => ({
   maybeSyncAvatarFromAuthUser: async (id: string, imageUrl: string) => {
     if (__mock.profileDoc && (__mock.profileDoc as Record<string, unknown>)._id === id) {
       if (!(__mock.profileDoc as Record<string, unknown>).avatarUrl) {
@@ -91,7 +91,7 @@ vi.mock("@luxero/auth-admin/avatar-sync", () => ({
   },
 }));
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   Profile: {
     findById: (id: string) => ({
       select: () => ({

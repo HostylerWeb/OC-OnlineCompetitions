@@ -4,7 +4,7 @@ import type {
   Competition,
   EntryCompetition,
   RawCompetitionResponse,
-} from "@luxero/types";
+} from "@oc/types";
 import {
   type QueryClient,
   useInfiniteQuery,

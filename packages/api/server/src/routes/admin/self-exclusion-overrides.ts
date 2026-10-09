@@ -1,18 +1,18 @@
-import { liftSelfExclusion } from "@luxero/api-compliance/compliance-user-service";
-import { Profile, SelfExclusionOverrideRequest } from "@luxero/api-db/models";
-import { sendEmail } from "@luxero/api-email";
-import { getEmailConfig } from "@luxero/api-email/config";
-import { SelfExclusionOverrideActionEmail } from "@luxero/api-email/templates/self-exclusion-override-action";
-import { ComplianceError } from "@luxero/api-errors";
-import dbConnect from "@luxero/api-infra/db";
-import { getCurrentContext } from "@luxero/api-infra/env";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { error, success } from "@luxero/api-infra/response";
-import { captureRouteError } from "@luxero/api-infra/sentry";
-import { sendPushNotification } from "@luxero/api-server/lib/push";
-import { requireAdmin } from "@luxero/api-server/middleware/auth";
-import { processOverrideRequestSchema, adminLiftSelfExclusionSchema } from "@luxero/api-validation";
-import { getEnv } from "@luxero/env/server";
+import { liftSelfExclusion } from "@oc/api-compliance/compliance-user-service";
+import { Profile, SelfExclusionOverrideRequest } from "@oc/api-db/models";
+import { sendEmail } from "@oc/api-email";
+import { getEmailConfig } from "@oc/api-email/config";
+import { SelfExclusionOverrideActionEmail } from "@oc/api-email/templates/self-exclusion-override-action";
+import { ComplianceError } from "@oc/api-errors";
+import dbConnect from "@oc/api-infra/db";
+import { getCurrentContext } from "@oc/api-infra/env";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { error, success } from "@oc/api-infra/response";
+import { captureRouteError } from "@oc/api-infra/sentry";
+import { sendPushNotification } from "@oc/api-server/lib/push";
+import { requireAdmin } from "@oc/api-server/middleware/auth";
+import { processOverrideRequestSchema, adminLiftSelfExclusionSchema } from "@oc/api-validation";
+import { getEnv } from "@oc/env/server";
 import { render } from "@react-email/render";
 import { Hono } from "hono";
 
@@ -46,8 +46,8 @@ async function sendSelfExclusionLiftEmail(
       to: userEmail,
       subject:
         action === "approved"
-          ? "Your self-exclusion has been lifted — Luxero"
-          : "Your override request has been reviewed — Luxero",
+          ? "Your self-exclusion has been lifted — Online Competitions"
+          : "Your override request has been reviewed — Online Competitions",
       html: emailHtml,
     });
     if (!result.success) {

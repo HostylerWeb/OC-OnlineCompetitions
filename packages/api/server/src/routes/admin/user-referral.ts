@@ -1,14 +1,14 @@
-import { Profile } from "@luxero/api-db/models";
-import dbConnect from "@luxero/api-infra/db";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { error, success } from "@luxero/api-infra/response";
-import { reconcileReferralCountOnReassign } from "@luxero/api-referrals/referral-counter";
-import { requireAdmin } from "@luxero/api-server/middleware/auth";
+import { Profile } from "@oc/api-db/models";
+import dbConnect from "@oc/api-infra/db";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { error, success } from "@oc/api-infra/response";
+import { reconcileReferralCountOnReassign } from "@oc/api-referrals/referral-counter";
+import { requireAdmin } from "@oc/api-server/middleware/auth";
 import {
   type UserReferralReassignInput,
   userReferralReassignSchema,
   validateBody,
-} from "@luxero/api-validation";
+} from "@oc/api-validation";
 import { Hono } from "hono";
 
 const app = new Hono();

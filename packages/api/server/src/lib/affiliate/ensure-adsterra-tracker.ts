@@ -1,10 +1,10 @@
-import { ConversionSettings } from "@luxero/api-db/models";
-import { CH, invalidateByChannelSafe } from "@luxero/api-infra/cache";
+import { ConversionSettings } from "@oc/api-db/models";
+import { CH, invalidateByChannelSafe } from "@oc/api-infra/cache";
 
 const CONVERSION_SETTINGS_ID = "conversion_settings";
 const ADSTERRA_TRACKER_ID = "adsterra";
 const DEFAULT_ADSTERRA_POSTBACK_URL =
-  "https://www.pbterra.com/code/GBP/luxero/at?subid_short={clickid}&atpay={payout}";
+  "https://www.pbterra.com/code/GBP/onlinecompetitions/at?subid_short={clickid}&atpay={payout}";
 
 export async function ensureAdsterraTracker(): Promise<void> {
   try {

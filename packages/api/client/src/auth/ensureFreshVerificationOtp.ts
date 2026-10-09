@@ -3,7 +3,7 @@ import { normalizeAuthEmail } from "./normalize-email";
 import { refreshAuthSession } from "./refresh-session";
 import { getSessionSnapshot } from "./session-snapshot";
 
-export const VERIFY_OTP_ENSURED_KEY_PREFIX = "luxero_verify_otp_ensured_";
+export const VERIFY_OTP_ENSURED_KEY_PREFIX = "onlinecompetitions_verify_otp_ensured_";
 
 export function getVerifyOtpEnsuredStorageKey(email: string): string {
   return `${VERIFY_OTP_ENSURED_KEY_PREFIX}${normalizeAuthEmail(email)}`;

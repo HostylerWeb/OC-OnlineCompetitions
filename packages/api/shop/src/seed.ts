@@ -1,5 +1,5 @@
-import { ShopCategory, ShopProduct } from "@luxero/api-db/models";
-import dbConnect from "@luxero/api-infra/db";
+import { ShopCategory, ShopProduct } from "@oc/api-db/models";
+import dbConnect from "@oc/api-infra/db";
 import mongoose from "mongoose";
 
 async function seed() {
@@ -56,8 +56,8 @@ async function seed() {
   // ── Products ────────────────────────────────────────
   const products = await ShopProduct.insertMany([
     {
-      name: "Luxero Definition Hoodie — Black",
-      slug: "luxero-definition-hoodie-black",
+      name: "Online Competitions Definition Hoodie — Black",
+      slug: "oc-definition-hoodie-black",
       description:
         "500 GSM Heavyweight French Terry\n\nBlack\nGold silicone logo on chest\nDefinition spine print on back\nOversized fit",
       shortDescription: "500 GSM heavyweight French Terry hoodie",
@@ -71,10 +71,10 @@ async function seed() {
       sortOrder: 1,
     },
     {
-      name: "Luxero Definition Hoodie — Gold",
-      slug: "luxero-definition-hoodie-gold",
+      name: "Online Competitions Definition Hoodie — Gold",
+      slug: "oc-definition-hoodie-gold",
       description:
-        "500 GSM Heavyweight French Terry\n\nLuxero Gold\nBlack silicone logo on chest\nDefinition spine print on back\nOversized fit",
+        "500 GSM Heavyweight French Terry\n\nOnline Competitions Gold\nBlack silicone logo on chest\nDefinition spine print on back\nOversized fit",
       shortDescription: "500 GSM heavyweight French Terry hoodie",
       price: 8900,
       sku: "LXR-HD-GLD-001",
@@ -86,8 +86,8 @@ async function seed() {
       sortOrder: 2,
     },
     {
-      name: "Luxero Definition Tee — Black",
-      slug: "luxero-definition-tee-black",
+      name: "Online Competitions Definition Tee — Black",
+      slug: "oc-definition-tee-black",
       description:
         "280 GSM Heavyweight Cotton\n\nBlack\nGold silicone logo on chest\nDefinition spine print on back\nOversized fit",
       shortDescription: "280 GSM heavyweight cotton tee",
@@ -101,10 +101,10 @@ async function seed() {
       sortOrder: 1,
     },
     {
-      name: "Luxero Definition Tee — Gold",
-      slug: "luxero-definition-tee-gold",
+      name: "Online Competitions Definition Tee — Gold",
+      slug: "oc-definition-tee-gold",
       description:
-        "280 GSM Heavyweight Cotton\n\nLuxero Gold\nBlack silicone logo on chest\nDefinition spine print on back\nOversized fit",
+        "280 GSM Heavyweight Cotton\n\nOnline Competitions Gold\nBlack silicone logo on chest\nDefinition spine print on back\nOversized fit",
       shortDescription: "280 GSM heavyweight cotton tee",
       price: 4900,
       sku: "LXR-TE-GLD-001",
@@ -116,8 +116,8 @@ async function seed() {
       sortOrder: 2,
     },
     {
-      name: "Luxero Essential Cap",
-      slug: "luxero-essential-cap",
+      name: "Online Competitions Essential Cap",
+      slug: "oc-essential-cap",
       description: "Black\n3D silicone logo\nAdjustable fit",
       shortDescription: "Adjustable cap with 3D silicone logo",
       price: 3400,
@@ -130,8 +130,8 @@ async function seed() {
       sortOrder: 1,
     },
     {
-      name: "Luxero Essential Cap — Gold Edition",
-      slug: "luxero-essential-cap-gold",
+      name: "Online Competitions Essential Cap — Gold Edition",
+      slug: "oc-essential-cap-gold",
       description: "Gold\nBlack logo\nAdjustable fit",
       shortDescription: "Gold edition adjustable cap",
       price: 3900,
@@ -144,9 +144,9 @@ async function seed() {
       sortOrder: 2,
     },
     {
-      name: "Luxero Premium Mug",
-      slug: "luxero-premium-mug",
-      description: "Matte Black\nGold Luxero logo",
+      name: "Online Competitions Premium Mug",
+      slug: "oc-premium-mug",
+      description: "Matte Black\nGold Online Competitions logo",
       shortDescription: "Matte black ceramic mug with gold logo",
       price: 1900,
       sku: "LXR-MG-001",
@@ -158,8 +158,8 @@ async function seed() {
       sortOrder: 1,
     },
     {
-      name: "Luxero Insulated Bottle",
-      slug: "luxero-insulated-bottle",
+      name: "Online Competitions Insulated Bottle",
+      slug: "oc-insulated-bottle",
       description: "Matte Black\nLaser engraved logo",
       shortDescription: "Insulated bottle with laser engraved logo",
       price: 2900,
@@ -172,9 +172,9 @@ async function seed() {
       sortOrder: 2,
     },
     {
-      name: "Luxero Phone Case",
-      slug: "luxero-phone-case",
-      description: "iPhone & Samsung\nBlack\nGold Luxero logo",
+      name: "Online Competitions Phone Case",
+      slug: "oc-phone-case",
+      description: "iPhone & Samsung\nBlack\nGold Online Competitions logo",
       shortDescription: "Universal phone case with gold logo",
       price: 1700,
       sku: "LXR-PC-001",

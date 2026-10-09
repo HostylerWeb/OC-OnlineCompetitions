@@ -1,8 +1,8 @@
 "use client";
 
-import { Ticket } from "@luxero/icons";
-import type { Entry } from "@luxero/types";
-import { cn } from "@luxero/utils";
+import { Ticket } from "@oc/icons";
+import type { Entry } from "@oc/types";
+import { cn } from "@oc/utils";
 import { useEffect, useMemo, useState } from "react";
 import { Accordion } from "@/components/ui/accordion";
 import { useTranslation } from "@/lib/i18n";

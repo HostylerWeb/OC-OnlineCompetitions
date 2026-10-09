@@ -1,5 +1,5 @@
 "use client";
-import type { ApiResponse, MyInstantPrizeWinDto } from "@luxero/types";
+import type { ApiResponse, MyInstantPrizeWinDto } from "@oc/types";
 import { useQuery } from "@tanstack/react-query";
 import { useMemo } from "react";
 import { api } from "../../client";

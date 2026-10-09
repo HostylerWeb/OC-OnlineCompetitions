@@ -36,7 +36,7 @@ export type { IEmailSettings } from "./EmailSettings";
 export { EmailSettings } from "./EmailSettings";
 export type { IEndingSoonSettings } from "./EndingSoonSettings";
 export { EndingSoonSettings } from "./EndingSoonSettings";
-// NOTE: Entry, Faq, Feature, HowItWorksStep models are in luxero-api source of truth.
+// NOTE: Entry, Faq, Feature, HowItWorksStep models are in onlinecompetitions-api source of truth.
 // Uncomment these exports after running `scripts/sync-shared-packages.sh`:
 // export type { IEntry } from "./Entry";
 // export { Entry } from "./Entry";

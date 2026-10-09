@@ -1,4 +1,4 @@
-import type { NavHomepageSection } from "@luxero/utils";
+import type { NavHomepageSection } from "@oc/utils";
 import { CategoryNav } from "../CategoryNav";
 
 export function CategoryNavSection({

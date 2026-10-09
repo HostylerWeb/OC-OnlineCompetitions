@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowUp, ArrowUpDown } from "@luxero/icons";
+import { ArrowDown, ArrowUp, ArrowUpDown } from "@oc/icons";
 import { cn } from "@/lib/utils";
 
 interface SortIndicatorProps {

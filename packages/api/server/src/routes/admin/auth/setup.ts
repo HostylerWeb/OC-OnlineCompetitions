@@ -1,12 +1,12 @@
-import { SetupError } from "@luxero/api-errors";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { created, error, success } from "@luxero/api-infra/response";
-import { captureRouteError } from "@luxero/api-infra/sentry";
+import { SetupError } from "@oc/api-errors";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { created, error, success } from "@oc/api-infra/response";
+import { captureRouteError } from "@oc/api-infra/sentry";
 import {
   bootstrapAdmin,
   getAdminSetupStatus,
   getSetupSecretHeaderName,
-} from "@luxero/auth-admin/auth-setup";
+} from "@oc/auth-admin/auth-setup";
 import { Hono } from "hono";
 
 const app = new Hono();

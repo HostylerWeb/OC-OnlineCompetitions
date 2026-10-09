@@ -1,6 +1,6 @@
 "use client";
 
-import { formatDateTime } from "@luxero/utils";
+import { formatDateTime } from "@oc/utils";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface NotificationDetailProps {

@@ -1,10 +1,10 @@
 "use client";
-import type { Competition } from "@luxero/types";
+import type { Competition } from "@oc/types";
 import {
   type ResolvedHomepageSection,
   resolveHomepageNavSections,
   resolveHomepageSections,
-} from "@luxero/utils";
+} from "@oc/utils";
 import { useMemo } from "react";
 import { useCompetitionCategories } from "./categories";
 import { useCompetitions } from "./competitions";

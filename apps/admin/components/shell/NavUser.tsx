@@ -1,6 +1,6 @@
 "use client";
 
-import { api, useAuth, usePushSubscription } from "@luxero/api-admin";
+import { api, useAuth, usePushSubscription } from "@oc/api-admin";
 import {
   Bell,
   BellOff,
@@ -9,8 +9,8 @@ import {
   LogOut,
   Smartphone,
   User,
-} from "@luxero/icons";
-import { getDisplayName } from "@luxero/utils";
+} from "@oc/icons";
+import { getDisplayName } from "@oc/utils";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { PushNotificationPreferences } from "@/components/notifications/PushNotificationPreferences";
@@ -54,7 +54,7 @@ function readDismissed(): boolean {
 }
 
 export function NavUser({
-  siteUrl = "https://luxero.win",
+  siteUrl = "https://onlinecompetitions.co.uk",
   loginPath = "/auth/login",
 }: NavUserProps) {
   const { user, logout } = useAuth();

@@ -1,4 +1,4 @@
-import { Ticket } from "@luxero/api-db/models";
+import { Ticket } from "@oc/api-db/models";
 import mongoose, { Types } from "mongoose";
 import { beforeAll, beforeEach, describe, expect, test } from "vitest";
 import {

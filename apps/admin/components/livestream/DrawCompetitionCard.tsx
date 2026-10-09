@@ -1,6 +1,6 @@
 "use client";
 
-import type { AdminCompetition } from "@luxero/types";
+import type { AdminCompetition } from "@oc/types";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardHeader } from "@/components/ui/card";
 import { cn } from "@/lib/utils";

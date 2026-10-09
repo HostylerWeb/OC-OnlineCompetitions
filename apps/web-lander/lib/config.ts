@@ -1,4 +1,4 @@
-import { getEnv } from "@luxero/env/next";
+import { getEnv } from "@oc/env/next";
 
 /** Client app URL for competition CTAs and server-side API calls to the main app. */
 export function getClientAppUrl(): string {

@@ -1,9 +1,9 @@
-import { ArrowRight, Sparkles, Trophy } from "@luxero/icons";
-import type { Winner } from "@luxero/types";
+import { ArrowRight, Sparkles, Trophy } from "@oc/icons";
+import type { Winner } from "@oc/types";
 import { useState } from "react";
 import { GoldOutlineButton } from "@/components/buttons";
 import { Link } from "@/components/Link";
-import { LuxeroDialog } from "@/components/luxero-dialog";
+import { BrandDialog } from "@/components/brand-dialog";
 import { Card, CardContent } from "@/components/ui/card";
 import { formatCurrency, useTranslation } from "@/lib/i18n";
 import { formatDate } from "@/lib/utils";
@@ -64,7 +64,7 @@ export function WinnersShowcase({ winners: winnersRaw }: { winners: Winner[] }) 
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-gold/10 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gold/10 rounded-full blur-3xl" />
 
-      <div className="luxero-container-wide relative z-10">
+      <div className="oc-container-wide relative z-10">
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-6">
             <Trophy className="w-8 h-8 text-gold" />
@@ -211,7 +211,7 @@ export function WinnersShowcase({ winners: winnersRaw }: { winners: Winner[] }) 
         </div>
       </div>
 
-      <LuxeroDialog
+      <BrandDialog
         open={lightboxOpen}
         onOpenChange={setLightboxOpen}
         mode="fullscreen"

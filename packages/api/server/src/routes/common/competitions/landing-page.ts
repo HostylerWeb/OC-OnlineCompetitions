@@ -1,18 +1,18 @@
-import type { ICompetition } from "@luxero/api-db/models";
+import type { ICompetition } from "@oc/api-db/models";
 import {
   Competition,
   CompetitionInstantPrize,
   InstantPrize,
   InstantPrizeWin,
   Winner,
-} from "@luxero/api-db/models";
-import dbConnect from "@luxero/api-infra/db";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { parsePagination } from "@luxero/api-infra/pagination";
-import { error, success } from "@luxero/api-infra/response";
-import { captureRouteError } from "@luxero/api-infra/sentry";
-import { redisCacheRoute } from "@luxero/api-server/middleware/cache";
-import { enrichCompetitionWithTicketStats } from "@luxero/api-tickets/competition-stats";
+} from "@oc/api-db/models";
+import dbConnect from "@oc/api-infra/db";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { parsePagination } from "@oc/api-infra/pagination";
+import { error, success } from "@oc/api-infra/response";
+import { captureRouteError } from "@oc/api-infra/sentry";
+import { redisCacheRoute } from "@oc/api-server/middleware/cache";
+import { enrichCompetitionWithTicketStats } from "@oc/api-tickets/competition-stats";
 import { Hono } from "hono";
 import mongoose, { Types } from "mongoose";
 
@@ -264,7 +264,7 @@ app.get(
             .exec(),
         ]);
 
-      const { getCompetitionTicketStats } = await import("@luxero/api-tickets/ticket-service");
+      const { getCompetitionTicketStats } = await import("@oc/api-tickets/ticket-service");
 
       const [stats] = await Promise.all([
         getCompetitionTicketStats(compId.toString(), {

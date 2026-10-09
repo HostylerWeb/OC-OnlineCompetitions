@@ -1,7 +1,13 @@
+import {
+  LEGAL_COMPANY_NAME,
+  LEGAL_COMPANY_NUMBER,
+  LEGAL_CONTACT_EMAIL,
+  LEGAL_REGISTERED_OFFICE_POSTAL,
+} from "@oc/utils";
 import type { AboutSection } from "./content-types";
 
 export const ABOUT_HERO = {
-  title: "About Luxero",
+  title: "About Online Competitions",
   subtitle:
     "We're on a mission to make luxury accessible to everyone through fair, transparent prize competitions.",
 };
@@ -12,13 +18,13 @@ export const ABOUT_SECTIONS: AboutSection[] = [
     title: "Our Mission",
     icon: "Sparkles",
     paragraphs: [
-      "Luxero was founded with a simple belief: everyone deserves a chance to win amazing prizes. We curate exclusive luxury items and offer them at accessible ticket prices.",
+      "Online Competitions was founded with a simple belief: everyone deserves a chance to win amazing prizes. We curate exclusive luxury items and offer them at accessible ticket prices.",
       "Every competition is conducted with complete transparency, using certified random number generation to ensure fairness for all participants.",
     ],
   },
   {
     id: "why-choose",
-    title: "Why Choose Luxero",
+    title: "Why Choose Online Competitions",
     icon: "ShieldCheck",
     iconClass: "from-emerald-500/20 to-emerald-500/5 border-emerald-500/20",
     whyChooseItems: [
@@ -37,7 +43,7 @@ export const ABOUT_SECTIONS: AboutSection[] = [
       },
       {
         title: "Community Driven",
-        description: "Join thousands of players who trust Luxero for fair, exciting competitions.",
+        description: "Join thousands of players who trust Online Competitions for fair, exciting competitions.",
       },
     ],
   },
@@ -56,10 +62,10 @@ export const ABOUT_SECTIONS: AboutSection[] = [
     title: "Company Information",
     icon: "Building",
     companyInfo: {
-      name: "LUXERO COMPETITIONS LTD",
-      number: "SC888260",
-      address: "107 Dalriada Crescent, Motherwell, Scotland ML1 3XT, United Kingdom",
-      email: "contact@luxero.win",
+      name: LEGAL_COMPANY_NAME,
+      number: LEGAL_COMPANY_NUMBER,
+      address: LEGAL_REGISTERED_OFFICE_POSTAL,
+      email: LEGAL_CONTACT_EMAIL,
     },
   },
   {

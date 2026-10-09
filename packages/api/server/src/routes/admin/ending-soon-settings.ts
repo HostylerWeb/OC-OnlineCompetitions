@@ -1,16 +1,16 @@
-import { EndingSoonSettings } from "@luxero/api-db/models";
-import { CH, invalidateByChannelSafe } from "@luxero/api-infra/cache";
-import dbConnect from "@luxero/api-infra/db";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { error, success } from "@luxero/api-infra/response";
-import { createLogger } from "@luxero/api-logger";
-import { getEndingSoonSettings } from "@luxero/api-server/lib/settings/ending-soon-settings";
-import { requireManager } from "@luxero/api-server/middleware/auth";
+import { EndingSoonSettings } from "@oc/api-db/models";
+import { CH, invalidateByChannelSafe } from "@oc/api-infra/cache";
+import dbConnect from "@oc/api-infra/db";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { error, success } from "@oc/api-infra/response";
+import { createLogger } from "@oc/api-logger";
+import { getEndingSoonSettings } from "@oc/api-server/lib/settings/ending-soon-settings";
+import { requireManager } from "@oc/api-server/middleware/auth";
 import {
   type EndingSoonSettingsUpdateInput,
   endingSoonSettingsUpdateSchema,
   validateBody,
-} from "@luxero/api-validation";
+} from "@oc/api-validation";
 import { Hono } from "hono";
 
 const log = createLogger("admin-ending-soon-settings");

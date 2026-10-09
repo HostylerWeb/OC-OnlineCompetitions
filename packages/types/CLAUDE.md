@@ -1,10 +1,10 @@
-# @luxero/types
+# @oc/types
 
 Shared TypeScript interfaces consumed by both API and frontends. No runtime code.
 
 ## Source of truth
 
-`luxero-api/packages/types/src` — sync into this repo via `scripts/sync-shared-packages.sh`.
+`onlinecompetitions-api/packages/types/src` — sync into this repo via `scripts/sync-shared-packages.sh`.
 
 ## Auth types
 
@@ -29,7 +29,7 @@ Use **`SessionUser`** and Better Auth session shapes from `auth.ts` — not lega
 ## Sync
 
 ```bash
-./scripts/sync-shared-packages.sh   # from luxero-multirepo parent
+./scripts/sync-shared-packages.sh   # from onlinecompetitions-multirepo parent
 ```
 
 Admin-only payment UI fields stay in web components — do not add web-only fields to API types.

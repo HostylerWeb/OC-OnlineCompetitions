@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const SITE_URL = "https://shop.luxero.win";
+const SITE_URL = "https://shop.onlinecompetitions.co.uk";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages: MetadataRoute.Sitemap = [
@@ -10,8 +10,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   let productPages: MetadataRoute.Sitemap = [];
   try {
-    const { default: dbConnect } = await import("@luxero/api-infra/db");
-    const { ShopProduct } = await import("@luxero/api-db/models");
+    const { default: dbConnect } = await import("@oc/api-infra/db");
+    const { ShopProduct } = await import("@oc/api-db/models");
     await dbConnect();
     const products = await ShopProduct.find({ active: true, deletedAt: null })
       .select("slug updatedAt")

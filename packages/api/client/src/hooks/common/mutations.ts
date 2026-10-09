@@ -5,7 +5,7 @@ import type {
   CreatePaymentSessionResponse,
   PaymentProviderId,
   PaymentSessionStatusResponse,
-} from "@luxero/types";
+} from "@oc/types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getSessionSnapshot } from "../../auth/session-snapshot";
 import { api, checkoutRequestOptions } from "../../client";

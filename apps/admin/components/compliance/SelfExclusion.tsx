@@ -1,8 +1,8 @@
 "use client";
 
-import { useAdminUserCompliance } from "@luxero/api-admin";
-import { Clock } from "@luxero/icons";
-import { formatDate } from "@luxero/utils";
+import { useAdminUserCompliance } from "@oc/api-admin";
+import { Clock } from "@oc/icons";
+import { formatDate } from "@oc/utils";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 

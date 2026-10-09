@@ -1,4 +1,4 @@
-import type { Competition } from "@luxero/types";
+import type { Competition } from "@oc/types";
 import { getPrizeDisplayLabel } from "@/lib/competition-display";
 import { formatCurrency, useTranslation } from "@/lib/i18n";
 

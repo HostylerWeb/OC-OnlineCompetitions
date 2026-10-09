@@ -1,6 +1,6 @@
 "use client";
 
-import type { ReferralMindmapNode } from "@luxero/api-referrals/mindmap";
+import type { ReferralMindmapNode } from "@oc/api-referrals/mindmap";
 import {
   ArrowDown,
   ArrowUp,

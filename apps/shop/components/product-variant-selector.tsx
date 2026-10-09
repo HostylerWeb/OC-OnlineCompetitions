@@ -96,7 +96,7 @@ export function ProductVariantSelector({
     }));
   }, [product.options, activeVariants]);
 
-  const storageKey = `luxero:variant-selection:${product._id}`;
+  const storageKey = `onlinecompetitions:variant-selection:${product._id}`;
 
   const findVariantForSelection = (sel: Record<string, string>) => {
     const entries = Object.entries(sel).map(([optionName, value]) => ({ optionName, value }));

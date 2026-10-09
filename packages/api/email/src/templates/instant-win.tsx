@@ -1,4 +1,4 @@
-import { formatTicketNumber } from "@luxero/utils";
+import { formatTicketNumber } from "@oc/utils";
 import { Button, Hr, Link, Section, Text } from "@react-email/components";
 import type { EmailTemplateProps } from "../types";
 import { BaseEmail, emailStyles } from "./base";
@@ -15,7 +15,7 @@ export function InstantWinEmail({
   frontendUrl,
   isGuest,
 }: EmailTemplateProps) {
-  const supportAddress = settings?.supportAddress ?? "support@luxero.win";
+  const supportAddress = settings?.supportAddress ?? "support@onlinecompetitions.co.uk";
   const winItems =
     Array.isArray(wins) && wins.length > 0
       ? wins
@@ -117,7 +117,7 @@ export function InstantWinEmail({
       <Text className={emailStyles.paragraph.className}>
         Good luck!
         <br />
-        The Luxero Team
+        The Online Competitions Team
       </Text>
     </BaseEmail>
   );

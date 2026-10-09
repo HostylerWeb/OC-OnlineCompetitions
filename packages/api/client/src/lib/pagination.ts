@@ -1,4 +1,4 @@
-import type { ApiResponse } from "@luxero/types";
+import type { ApiResponse } from "@oc/types";
 import {
   type InfiniteData,
   keepPreviousData,

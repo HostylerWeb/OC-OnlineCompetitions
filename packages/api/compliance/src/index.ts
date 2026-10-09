@@ -1,4 +1,4 @@
-export { ComplianceError } from "@luxero/api-errors";
+export { ComplianceError } from "@oc/api-errors";
 export * from "./age-verification";
 export * from "./card-scheme";
 export * from "./compliance-checks";

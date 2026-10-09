@@ -1,11 +1,11 @@
-import { Profile, ReferralPurchase, ReferralSettings } from "@luxero/api-db/models";
-import dbConnect from "@luxero/api-infra/db";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { error, paginated } from "@luxero/api-infra/response";
+import { Profile, ReferralPurchase, ReferralSettings } from "@oc/api-db/models";
+import dbConnect from "@oc/api-infra/db";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { error, paginated } from "@oc/api-infra/response";
 import {
   isQualifyingReferralPurchase,
   type ReferralQualificationSettings,
-} from "@luxero/api-referrals/referral-tier-math";
+} from "@oc/api-referrals/referral-tier-math";
 import { Hono } from "hono";
 import { requireManager } from "../../middleware/auth";
 

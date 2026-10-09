@@ -1,5 +1,5 @@
-import { Competition, Ticket } from "@luxero/api-db/models";
-import { defaultAggregateOptions } from "@luxero/api-infra/mongo-query-options";
+import { Competition, Ticket } from "@oc/api-db/models";
+import { defaultAggregateOptions } from "@oc/api-infra/mongo-query-options";
 import type { PipelineStage, Types } from "mongoose";
 
 export type CompetitionMaxTicketsRow = {

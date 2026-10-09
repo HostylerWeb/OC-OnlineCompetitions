@@ -1,7 +1,7 @@
-import { useCompetitionCategories, useCompetitions, useFeaturedCompetitions } from "@luxero/api-client";
-import { ArrowRight } from "@luxero/icons";
-import type { ApiResponse, Category, Competition } from "@luxero/types";
-import { cn } from "@luxero/utils";
+import { useCompetitionCategories, useCompetitions, useFeaturedCompetitions } from "@oc/api-client";
+import { ArrowRight } from "@oc/icons";
+import type { ApiResponse, Category, Competition } from "@oc/types";
+import { cn } from "@oc/utils";
 import { useMemo } from "react";
 import { GoldButton } from "@/components/buttons";
 import { Link } from "@/components/Link";
@@ -74,11 +74,11 @@ export function FeaturedCompetitionsSection({
   if (!isLoading && competitions.length === 0) return null;
 
   return (
-    <section className={cn("w-full luxero-container-wide pb-12 lg:pb-16", className)}>
+    <section className={cn("w-full oc-container-wide pb-12 lg:pb-16", className)}>
       <h2 className="mb-6 text-center text-2xl font-bold text-foreground">
         {title ?? t("home.youMightAlsoLike")}
       </h2>
-      <div className="grid luxero-grid-competitions">
+      <div className="grid onlinecompetitions-grid-competitions">
         {isLoading
           ? Array.from({ length: limit }).map((_, i) => (
               <div key={i} className="overflow-hidden rounded-2xl border border-gold/10 bg-card">

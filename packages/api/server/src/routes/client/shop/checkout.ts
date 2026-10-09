@@ -1,24 +1,24 @@
 import { randomUUID } from "node:crypto";
-import { ShopCart, ShopOrder } from "@luxero/api-db/models";
-import { CH, invalidateByChannelSafe } from "@luxero/api-infra/cache";
-import dbConnect from "@luxero/api-infra/db";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { error, success } from "@luxero/api-infra/response";
-import { captureRouteError } from "@luxero/api-infra/sentry";
-import { createLogger } from "@luxero/api-logger";
-import { createLocalClient } from "@luxero/api-payment-local";
-import { assertComplianceForCheckout } from "@luxero/api-compliance/compliance-checks";
-import { ComplianceError } from "@luxero/api-errors";
-import { isLocalPaymentAllowed } from "@luxero/api-server/lib/payment/local-payment-policy";
-import { reduceInventoryFromOrder } from "@luxero/api-server/lib/payment/shop-webhook-handler";
-import { requireGuestCheckout } from "@luxero/api-server/middleware/auth";
-import { createPendingShopOrder, validateCheckoutItems } from "@luxero/api-shop/checkout";
-import { sendShopOrderConfirmationEmail } from "@luxero/api-shop/email";
+import { ShopCart, ShopOrder } from "@oc/api-db/models";
+import { CH, invalidateByChannelSafe } from "@oc/api-infra/cache";
+import dbConnect from "@oc/api-infra/db";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { error, success } from "@oc/api-infra/response";
+import { captureRouteError } from "@oc/api-infra/sentry";
+import { createLogger } from "@oc/api-logger";
+import { createLocalClient } from "@oc/api-payment-local";
+import { assertComplianceForCheckout } from "@oc/api-compliance/compliance-checks";
+import { ComplianceError } from "@oc/api-errors";
+import { isLocalPaymentAllowed } from "@oc/api-server/lib/payment/local-payment-policy";
+import { reduceInventoryFromOrder } from "@oc/api-server/lib/payment/shop-webhook-handler";
+import { requireGuestCheckout } from "@oc/api-server/middleware/auth";
+import { createPendingShopOrder, validateCheckoutItems } from "@oc/api-shop/checkout";
+import { sendShopOrderConfirmationEmail } from "@oc/api-shop/email";
 import {
   type ShopCreateCheckoutSessionInput,
   shopCreateCheckoutSessionSchema,
   validateBody,
-} from "@luxero/api-validation";
+} from "@oc/api-validation";
 import { Hono } from "hono";
 
 const log = createLogger("shop-checkout");
@@ -43,7 +43,7 @@ app.post(
       }
 
       if (isGuest) {
-        const { createGuestCheckoutProfile } = await import("@luxero/auth-admin/auth-hooks");
+        const { createGuestCheckoutProfile } = await import("@oc/auth-admin/auth-hooks");
         await createGuestCheckoutProfile(userId, { guestEmail: email });
       }
 
@@ -130,14 +130,14 @@ app.post(
       });
 
       if (body.provider === "paytriot") {
-        const { Gateway, sign } = await import("@luxero/api-payment-paytriot");
-        const { PAYTRIOT_HOSTED_URL } = await import("@luxero/api-payment-paytriot");
+        const { Gateway, sign } = await import("@oc/api-payment-paytriot");
+        const { PAYTRIOT_HOSTED_URL } = await import("@oc/api-payment-paytriot");
 
         const { getPaytriotCredentials } = await import(
-          "@luxero/api-server/lib/payment/ensure-paytriot-payment-method"
+          "@oc/api-server/lib/payment/ensure-paytriot-payment-method"
         );
         const creds = getPaytriotCredentials();
-        const frontendUrl = (await import("@luxero/api-infra/env")).getCurrentContext().frontendUrl;
+        const frontendUrl = (await import("@oc/api-infra/env")).getCurrentContext().frontendUrl;
 
         const transactionUnique = `${order._id.toString()}-${randomUUID().slice(0, 8)}`;
 
@@ -222,13 +222,13 @@ app.post(
       }
 
       if (body.provider === "stripe") {
-        const { createStripeClient } = await import("@luxero/api-payment-stripe");
+        const { createStripeClient } = await import("@oc/api-payment-stripe");
         const client = createStripeClient();
 
         // The shop app origin — server-side configured SHOP_URL is the only
         // trustworthy source for Stripe redirect URLs (Origin header is
         // client-controlled and must never drive redirect destinations).
-        const shopOrigin = (await import("@luxero/api-infra/env"))
+        const shopOrigin = (await import("@oc/api-infra/env"))
           .getCurrentContext()
           .shopUrl.trim()
           .replace(/\/+$/, "");

@@ -1,6 +1,6 @@
 "use client";
-import { getEnv } from "@luxero/env/vike";
-import type { AdminCompetition, ApiResponse } from "@luxero/types";
+import { getEnv } from "@oc/env/vike";
+import type { AdminCompetition, ApiResponse } from "@oc/types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { api } from "../../client";

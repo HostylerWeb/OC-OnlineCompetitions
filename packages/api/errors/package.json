@@ -1,5 +1,5 @@
 {
-  "name": "@luxero/api-errors",
+  "name": "@oc/api-errors",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -14,7 +14,7 @@
     "format": "biome format --write src/"
   },
   "dependencies": {
-    "@luxero/api-validation": "workspace:*"
+    "@oc/api-validation": "workspace:*"
   },
   "devDependencies": {
     "@types/bun": "^1.2.19",

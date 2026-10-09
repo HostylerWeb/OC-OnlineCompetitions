@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@luxero/utils";
+import { cn } from "@oc/utils";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export interface DashboardFilterOption<T extends string> {

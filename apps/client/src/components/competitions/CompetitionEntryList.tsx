@@ -1,9 +1,9 @@
 "use client";
 
-import { useCompetitionStream, useInfiniteEntries, type PublicEntry } from "@luxero/api-client";
-import type { ApiResponse } from "@luxero/types";
-import { Search, Ticket, Trophy } from "@luxero/icons";
-import { formatTicketNumber, OrderNumberCell } from "@luxero/utils";
+import { useCompetitionStream, useInfiniteEntries, type PublicEntry } from "@oc/api-client";
+import type { ApiResponse } from "@oc/types";
+import { Search, Ticket, Trophy } from "@oc/icons";
+import { formatTicketNumber, OrderNumberCell } from "@oc/utils";
 import { X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Input } from "@/components/ui/input";

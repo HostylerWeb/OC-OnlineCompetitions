@@ -1,5 +1,5 @@
 {
-  "name": "@luxero/api-compliance",
+  "name": "@oc/api-compliance",
   "private": true,
   "type": "module",
   "exports": {
@@ -15,11 +15,11 @@
     "test:ci": "vitest run"
   },
   "dependencies": {
-    "@luxero/api-axios": "workspace:*",
-    "@luxero/api-db": "workspace:*",
-    "@luxero/api-errors": "workspace:*",
-    "@luxero/api-infra": "workspace:*",
-    "@luxero/types": "workspace:*",
+    "@oc/api-axios": "workspace:*",
+    "@oc/api-db": "workspace:*",
+    "@oc/api-errors": "workspace:*",
+    "@oc/api-infra": "workspace:*",
+    "@oc/types": "workspace:*",
     "mongoose": "^9.6.0"
   },
   "devDependencies": {

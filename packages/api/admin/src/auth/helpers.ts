@@ -1,4 +1,4 @@
-import { getEnv } from "@luxero/env/next";
+import { getEnv } from "@oc/env/next";
 
 export function getOrigin(): string {
   if (typeof window !== "undefined") return window.location.origin;

@@ -32,7 +32,7 @@ import { referralEdgeTypes, referralNodeTypes } from "./types";
 import { useFocusState } from "./use-focus-state";
 import "./focus.css";
 
-const VIEWPORT_STORAGE_KEY = "luxero:referral-network:viewport:v1";
+const VIEWPORT_STORAGE_KEY = "onlinecompetitions:referral-network:viewport:v1";
 const FOCUS_FIT_DURATION_MS = 380;
 const FOCUS_FIT_PADDING = 0.22;
 
@@ -165,7 +165,7 @@ function computeLayout(
 }
 
 interface CanvasProps {
-  initialData: import("@luxero/api-referrals/mindmap").ReferralMindmapResponse;
+  initialData: import("@oc/api-referrals/mindmap").ReferralMindmapResponse;
   selectedUserId: string | null;
   onSelectUser: (id: string | null) => void;
   selectedEdgeId: string | null;
@@ -204,7 +204,7 @@ function ReferralMindmapCanvasInner({
   const { focus } = focusApi;
 
   const nodeMap = useMemo(() => {
-    const m = new Map<string, import("@luxero/api-referrals/mindmap").ReferralMindmapNode>();
+    const m = new Map<string, import("@oc/api-referrals/mindmap").ReferralMindmapNode>();
     for (const n of initialData.nodes) m.set(n.id, n);
     return m;
   }, [initialData.nodes]);
@@ -602,7 +602,7 @@ function ReferralMindmapCanvasInner({
 }
 
 function mapNode(
-  n: import("@luxero/api-referrals/mindmap").ReferralMindmapNode
+  n: import("@oc/api-referrals/mindmap").ReferralMindmapNode
 ): ReferralUserFlowNode {
   const tone: ReferralUserFlowNode["data"]["tone"] = n.isRoot
     ? "root"
@@ -639,7 +639,7 @@ function mapNode(
 }
 
 function mapEdge(
-  e: import("@luxero/api-referrals/mindmap").ReferralMindmapEdge
+  e: import("@oc/api-referrals/mindmap").ReferralMindmapEdge
 ): ReferralPurchaseEdge {
   return {
     id: e.id,

@@ -1,4 +1,4 @@
-import type { ApiResponse, EndingSoonSettings } from "@luxero/types";
+import type { ApiResponse, EndingSoonSettings } from "@oc/types";
 import { useQuery } from "@tanstack/react-query";
 import { api } from "../../client";
 import { STALE_TIME_PUBLIC } from "../../constants";

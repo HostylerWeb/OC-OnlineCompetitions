@@ -1,4 +1,4 @@
-import { buildLoginUrl, buildVerifyRequiredPath, SignUpForm } from "@luxero/api-client";
+import { buildLoginUrl, buildVerifyRequiredPath, SignUpForm } from "@oc/api-client";
 import { DatePicker } from "@/components/DatePicker";
 import { localeHref, useTranslation } from "@/lib/i18n";
 

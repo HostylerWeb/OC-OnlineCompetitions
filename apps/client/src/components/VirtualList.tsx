@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@luxero/utils";
+import { cn } from "@oc/utils";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { ListProps } from "react-window";
 import { List } from "react-window";

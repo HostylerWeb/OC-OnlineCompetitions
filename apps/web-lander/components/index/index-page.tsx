@@ -64,14 +64,14 @@ function Header() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 sm:py-4">
         <span className="flex items-center gap-2 text-base font-semibold text-white sm:text-lg">
           <Award className="h-5 w-5 text-[var(--color-gold)]" />
-          Luxero
+          Online Competitions
         </span>
         <a href={getFrontendUrl()} target="_blank" rel="noreferrer">
           <Button
             size="sm"
             className="rounded-full bg-[var(--color-gold)] px-4 py-2 text-sm font-semibold text-black sm:px-6"
           >
-            Visit Luxero
+            Visit Online Competitions
           </Button>
         </a>
       </div>
@@ -120,7 +120,7 @@ function HeroSection() {
                 variant="outline"
                 className="rounded-full border-white/20 px-8 py-5 text-base font-semibold text-white transition-all duration-300 ease-[var(--ease-premium)] hover:bg-white/5 sm:px-10 sm:py-5 sm:text-lg"
               >
-                Visit Luxero <ArrowRight className="ml-2 h-4 w-4" />
+                Visit Online Competitions <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </a>
           </div>
@@ -310,7 +310,7 @@ function CompetitionsGrid({ competitions }: { competitions: Competition[] }) {
             variant="outline"
             className="rounded-full border-white/20 px-8 py-5 text-base font-semibold text-white transition-all duration-300 ease-[var(--ease-premium)] hover:bg-white/5"
           >
-            View all on Luxero <ArrowRight className="ml-2 h-4 w-4" />
+            View all on Online Competitions <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </a>
       </AutoReveal>
@@ -475,7 +475,7 @@ function FooterCta() {
             size="lg"
             className="rounded-full bg-[var(--color-gold)] px-12 py-6 text-lg font-semibold tracking-wide text-black shadow-[0_12px_64px_var(--color-gold-glow)] transition-all duration-300 ease-[var(--ease-premium)] hover:scale-[1.05] hover:bg-[var(--color-gold)]/90 sm:px-16 sm:py-7"
           >
-            Visit Luxero <ArrowRight className="ml-2 h-5 w-5" />
+            Visit Online Competitions <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
         </a>
       </AutoReveal>

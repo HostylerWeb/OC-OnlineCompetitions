@@ -41,7 +41,7 @@ export function detectLocale(
   cookieHeader: string | undefined,
   acceptLanguageHeader: string | undefined
 ): Locale {
-  const cookieLocale = readCookie("luxero-locale", cookieHeader);
+  const cookieLocale = readCookie("onlinecompetitions-locale", cookieHeader);
   if (cookieLocale && SUPPORTED_LOCALES.includes(cookieLocale as Locale)) {
     return cookieLocale as Locale;
   }

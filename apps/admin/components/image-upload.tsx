@@ -1,5 +1,5 @@
 "use client";
-import { api } from "@luxero/api-admin";
+import { api } from "@oc/api-admin";
 import { useRef, useState } from "react";
 import { S3FilePicker } from "@/components/media/S3FilePicker";
 import { cn } from "@/lib/utils";

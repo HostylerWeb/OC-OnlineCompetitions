@@ -1,5 +1,5 @@
 {
-  "name": "@luxero/api-logger",
+  "name": "@oc/api-logger",
   "private": true,
   "type": "module",
   "exports": {
@@ -13,7 +13,7 @@
     "format": "biome format --write src/"
   },
   "dependencies": {
-    "@luxero/env": "workspace:*"
+    "@oc/env": "workspace:*"
   },
   "devDependencies": {
     "@types/bun": "^1.2.19",

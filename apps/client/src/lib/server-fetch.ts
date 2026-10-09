@@ -2,7 +2,7 @@
 //
 // Replaces the Next.js version that used server-side fetch with retries.
 
-import { app } from "@luxero/api-server/app";
+import { app } from "@oc/api-server/app";
 
 const DEFAULT_TIMEOUT_MS = 30_000;
 const DEFAULT_PUBLIC_TIMEOUT_MS = 25_000;

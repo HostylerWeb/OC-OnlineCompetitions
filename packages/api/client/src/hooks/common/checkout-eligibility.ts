@@ -1,5 +1,5 @@
 "use client";
-import type { ApiResponse, SaferPlayState } from "@luxero/types";
+import type { ApiResponse, SaferPlayState } from "@oc/types";
 import { useMemo } from "react";
 import { useMyProfile } from "../private/profile";
 import { useSaferPlay } from "../private/safer-play";

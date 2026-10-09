@@ -1,4 +1,4 @@
-import { getEnv } from "@luxero/env/server";
+import { getEnv } from "@oc/env/server";
 import { S3mini } from "s3mini";
 
 function hasCustomEndpoint(): boolean {

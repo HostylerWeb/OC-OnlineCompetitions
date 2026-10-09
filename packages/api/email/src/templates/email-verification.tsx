@@ -1,4 +1,4 @@
-import type { IEmailSettings } from "@luxero/api-db/models/EmailSettings";
+import type { IEmailSettings } from "@oc/api-db/models/EmailSettings";
 import { Button, Hr, Link, Section, Text } from "@react-email/components";
 import { BaseEmail, emailStyles } from "./base";
 
@@ -23,8 +23,8 @@ export function EmailVerificationEmail({
   const isSignIn = purpose === "sign-in";
   const heading = isSignIn ? "Your Sign-In Code" : "Verify Your Email";
   const intro = isSignIn
-    ? "Use the code below to sign in to your Luxero account."
-    : "Welcome to Luxero! To complete your registration and start winning incredible prizes, please verify your email address using the code below.";
+    ? "Use the code below to sign in to your Online Competitions account."
+    : "Welcome to Online Competitions! To complete your registration and start winning incredible prizes, please verify your email address using the code below.";
   const codeHint = isSignIn ? "Enter this code to sign in" : "Enter this code to verify your email";
 
   return (
@@ -75,7 +75,7 @@ export function EmailVerificationEmail({
       <Text className={emailStyles.paragraph.className}>
         Good luck!
         <br />
-        The Luxero Team
+        The Online Competitions Team
       </Text>
     </BaseEmail>
   );

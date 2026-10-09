@@ -5,8 +5,8 @@ import {
   useAdminReferralSettings,
   useAdminReferralSummary,
   useAdminTopReferrers,
-} from "@luxero/api-admin";
-import { Info, Trophy, Users, Wallet, Zap } from "@luxero/icons";
+} from "@oc/api-admin";
+import { Info, Trophy, Users, Wallet, Zap } from "@oc/icons";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Skeleton } from "@/components/ui/skeleton";

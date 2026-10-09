@@ -1,6 +1,6 @@
-import { PaymentMethod } from "@luxero/api-db/models";
-import { CH, invalidateByChannelSafe } from "@luxero/api-infra/cache";
-import { getEnv } from "@luxero/env/server";
+import { PaymentMethod } from "@oc/api-db/models";
+import { CH, invalidateByChannelSafe } from "@oc/api-infra/cache";
+import { getEnv } from "@oc/env/server";
 
 export function hasStripeEnvCredentials(): boolean {
   const testKey = getEnv("STRIPE_TEST_SECRET_KEY")?.trim();

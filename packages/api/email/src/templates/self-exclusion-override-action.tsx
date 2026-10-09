@@ -12,7 +12,7 @@ export function SelfExclusionOverrideActionEmail({
   action: "approved" | "rejected";
   adminNote?: string;
 }) {
-  const supportAddress = settings?.supportAddress ?? "support@luxero.win";
+  const supportAddress = settings?.supportAddress ?? "support@onlinecompetitions.co.uk";
 
   return (
     <BaseEmail
@@ -49,7 +49,7 @@ export function SelfExclusionOverrideActionEmail({
       ) : (
         <Section className="my-[32px] text-center">
           <Button
-            href={frontendUrl || "https://luxero.win"}
+            href={frontendUrl || "https://onlinecompetitions.co.uk"}
             className="bg-[#D4AF37] rounded-[6px] px-[32px] py-[16px] text-[17px] font-semibold text-[#0A0A0B] no-underline inline-block text-center"
           >
             Go to Dashboard
@@ -66,7 +66,7 @@ export function SelfExclusionOverrideActionEmail({
       <Text className={emailStyles.paragraph.className}>
         Best regards,
         <br />
-        The Luxero Team
+        The Online Competitions Team
       </Text>
     </BaseEmail>
   );

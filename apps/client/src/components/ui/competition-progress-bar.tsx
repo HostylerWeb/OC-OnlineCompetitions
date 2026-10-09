@@ -1,6 +1,6 @@
 "use client";
 
-import type { Competition, PublicBonusAwardEntry } from "@luxero/types";
+import type { Competition, PublicBonusAwardEntry } from "@oc/types";
 import { Sparkles, Star } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";

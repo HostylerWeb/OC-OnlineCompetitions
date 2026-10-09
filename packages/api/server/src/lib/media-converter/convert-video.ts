@@ -3,7 +3,7 @@ import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { promisify } from "node:util";
-import type { MediaConverterVideoSettings } from "@luxero/types";
+import type { MediaConverterVideoSettings } from "@oc/types";
 import { replaceKeyExtension } from "./scope";
 
 const execFileAsync = promisify(execFile);
@@ -56,7 +56,7 @@ export async function convertVideoToWebm(
     return { bytes, contentType: "video/webm", key, converted: false };
   }
 
-  const tmpDir = await mkdtemp(join(tmpdir(), "luxero-webm-"));
+  const tmpDir = await mkdtemp(join(tmpdir(), "onlinecompetitions-webm-"));
   const inExt = inputExtensionFromContentType(contentType);
   const inputPath = join(tmpDir, `input.${inExt}`);
   const outputPath = join(tmpDir, "output.webm");

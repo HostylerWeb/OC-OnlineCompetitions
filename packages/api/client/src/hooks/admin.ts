@@ -5,7 +5,7 @@ export type {
   InstantPrizeCapacityParams,
   InstantPrizeCapacityResponse,
   UpdateCompetitionInstantPrizePayload,
-} from "@luxero/types";
+} from "@oc/types";
 export { useAdminUserBalance } from "./admin/balances";
 export {
   useAdminCategories,

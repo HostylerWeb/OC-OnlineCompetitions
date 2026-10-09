@@ -5,8 +5,8 @@ import {
   useAdminShopCategories,
   useAdminShopCategoryMutations,
   useServerPagination,
-} from "@luxero/api-admin";
-import { MoreHorizontal, Plus, RefreshCw, Trash2, X } from "@luxero/icons";
+} from "@oc/api-admin";
+import { MoreHorizontal, Plus, RefreshCw, Trash2, X } from "@oc/icons";
 import type { ColumnDef, SortingState } from "@tanstack/react-table";
 import { useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";

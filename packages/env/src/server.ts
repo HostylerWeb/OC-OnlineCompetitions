@@ -11,13 +11,13 @@ const DEFAULTS: Partial<Record<EnvKey, string>> = {
   LOGIN_URL: "/auth/login",
   SENTRY_ENVIRONMENT: "development",
   REDIS_URL: "redis://localhost:6379",
-  REDIS_NAMESPACE: "luxero",
+  REDIS_NAMESPACE: "onlinecompetitions",
   REDIS_TTL_DEFAULT: "60",
   REDIS_ENABLED: "true",
   SMTP_HOST: "localhost",
   SMTP_PORT: "1025",
   S3_ENDPOINT: "http://localhost:9000",
-  S3_BUCKET: "luxero-assets",
+  S3_BUCKET: "onlinecompetitions-assets",
   AWS_REGION: "us-east-1",
   S3_FORCE_PATH_STYLE: "true",
   PAYTRIOT_ENVIRONMENT: "sandbox",
@@ -88,3 +88,4 @@ export function validateEnv(): string[] {
 }
 
 export type { EnvKey } from "./types";
+export * from "./csp.ts";

@@ -2,11 +2,11 @@ import { Types } from "mongoose";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import competitionsApp from "./competitions";
 
-vi.mock("@luxero/api-infra/db", () => ({
+vi.mock("@oc/api-infra/db", () => ({
   default: vi.fn(async () => {}),
 }));
 
-vi.mock("@luxero/api-server/middleware/auth", () => ({
+vi.mock("@oc/api-server/middleware/auth", () => ({
   isPublicRoute: () => false,
   resolveSession: vi.fn(async () => ({})),
   sessionMiddleware: async (_c: unknown, next: () => Promise<void>) => {
@@ -30,7 +30,7 @@ vi.mock("@luxero/api-server/middleware/auth", () => ({
   },
 }));
 
-vi.mock("@luxero/api-tickets/competition-stats", () => ({
+vi.mock("@oc/api-tickets/competition-stats", () => ({
   enrichCompetitionWithTicketStats: vi.fn(async (comp: unknown) => comp),
   enrichCompetitionsWithTicketStats: vi.fn(async (comps: unknown[]) =>
     comps.map((c) => ({
@@ -43,19 +43,19 @@ vi.mock("@luxero/api-tickets/competition-stats", () => ({
   ),
 }));
 
-vi.mock("@luxero/api-tickets/competitions", () => ({
+vi.mock("@oc/api-tickets/competitions", () => ({
   backpropagateCompetitionToWinners: vi.fn(async () => 0),
   countInstantPrizesLinkedToCompetition: vi.fn(async () => 0),
 }));
 
-vi.mock("@luxero/api-tickets/ticket-service", () => ({
+vi.mock("@oc/api-tickets/ticket-service", () => ({
   getMinimumAllowedMaxTickets: vi.fn(async () => 80),
   provisionTickets: vi.fn(async () => 0),
 }));
 
 const competitionId = new Types.ObjectId();
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   Competition: {
     findById: vi.fn(() => ({
       lean: async () => ({

@@ -1,4 +1,4 @@
-import type { Competition } from "@luxero/types";
+import type { Competition } from "@oc/types";
 import { HeroSlider } from "../HeroSlider";
 
 export function HeroSection({ competitions }: { competitions: Competition[] }) {

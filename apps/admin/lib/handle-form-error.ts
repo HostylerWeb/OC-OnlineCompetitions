@@ -1,4 +1,4 @@
-import { ApiResponseError } from "@luxero/api-admin";
+import { ApiResponseError } from "@oc/api-admin";
 import type { FieldPath, FieldValues, UseFormReturn } from "react-hook-form";
 
 interface FieldErrors {

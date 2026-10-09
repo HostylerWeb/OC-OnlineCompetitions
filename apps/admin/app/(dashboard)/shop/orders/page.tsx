@@ -6,9 +6,9 @@ import {
   useAdminShopOrderMutations,
   useAdminShopOrders,
   useServerPagination,
-} from "@luxero/api-admin";
-import { MoreHorizontal, User } from "@luxero/icons";
-import { formatOrderNumber, OrderNumberCell } from "@luxero/utils";
+} from "@oc/api-admin";
+import { MoreHorizontal, User } from "@oc/icons";
+import { formatOrderNumber, OrderNumberCell } from "@oc/utils";
 import type { ColumnDef, SortingState } from "@tanstack/react-table";
 import { useMemo, useState } from "react";
 import { toast } from "sonner";

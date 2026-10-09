@@ -1,6 +1,6 @@
 "use client";
 
-import type { MeOrderDto } from "@luxero/types";
+import type { MeOrderDto } from "@oc/types";
 import {
   DASHBOARD_LIST_GAP,
   DASHBOARD_LIST_HEIGHTS,

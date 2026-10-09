@@ -1,8 +1,8 @@
 "use client";
 
-import { ApiResponseError, api } from "@luxero/api-admin";
-import { Loader2, Trophy } from "@luxero/icons";
-import { getDisplayName } from "@luxero/utils";
+import { ApiResponseError, api } from "@oc/api-admin";
+import { Loader2, Trophy } from "@oc/icons";
+import { getDisplayName } from "@oc/utils";
 import { useState } from "react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";

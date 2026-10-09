@@ -80,7 +80,7 @@ function ResetForm() {
 
   if (success) {
     return (
-      <div className="luxero-container flex min-h-[60vh] items-center justify-center py-16">
+      <div className="oc-container flex min-h-[60vh] items-center justify-center py-16">
         <div className="w-full max-w-sm text-center">
           <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-success/20">
             <svg
@@ -108,7 +108,7 @@ function ResetForm() {
   }
 
   return (
-    <div className="luxero-container flex min-h-[60vh] items-center justify-center py-16">
+    <div className="oc-container flex min-h-[60vh] items-center justify-center py-16">
       <div className="w-full max-w-sm">
         <div className="text-center">
           <h1 className="text-2xl font-bold tracking-tight">Reset your password</h1>

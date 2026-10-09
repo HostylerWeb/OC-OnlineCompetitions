@@ -1,7 +1,7 @@
 "use client";
 
-import { useAdminConversionSettings } from "@luxero/api-admin";
-import { Link2, Settings } from "@luxero/icons";
+import { useAdminConversionSettings } from "@oc/api-admin";
+import { Link2, Settings } from "@oc/icons";
 import { useMemo, useState } from "react";
 import { ConversionSettingsDialog } from "@/components/conversion-tracking/ConversionSettingsDialog";
 import {

@@ -1,6 +1,6 @@
 export default function DashboardLoading() {
   return (
-    <main className="luxero-container py-12">
+    <main className="oc-container py-12">
       <div className="h-8 w-48 animate-pulse rounded-lg bg-zinc-800/50" />
 
       {/* Account info skeleton */}

@@ -1,5 +1,5 @@
 {
-  "name": "@luxero/api-axios",
+  "name": "@oc/api-axios",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -10,7 +10,7 @@
     "axios-retry": "^4.5.0"
   },
   "peerDependencies": {
-    "@luxero/env": "workspace:*",
-    "@luxero/types": "workspace:*"
+    "@oc/env": "workspace:*",
+    "@oc/types": "workspace:*"
   }
 }

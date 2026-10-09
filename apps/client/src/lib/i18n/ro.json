@@ -1,8 +1,8 @@
 {
   "head": {
-    "title": "Luxero — Câștigă Premii Uimitoare și Experiențe de Lux",
-    "description": "Participă la concursurile Luxero pentru a câștiga premii incredibile, de la electronice premium și modă de designer până la experiențe de lux de neuitat. Joacă concursuri bazate pe abilități și încearcă jocurile cu câștig instant.",
-    "siteName": "Luxero"
+    "title": "Online Competitions — Câștigă Premii Uimitoare și Experiențe de Lux",
+    "description": "Participă la concursurile Online Competitions pentru a câștiga premii incredibile, de la electronice premium și modă de designer până la experiențe de lux de neuitat. Joacă concursuri bazate pe abilități și încearcă jocurile cu câștig instant.",
+    "siteName": "Online Competitions"
   },
   "common": {
     "loading": "Se încarcă",
@@ -121,7 +121,7 @@
     "cookiePolicy": "Politica cookie-urilor",
     "freePostalEntry": "Participare gratuită prin poștă",
     "acceptedPayments": "Metode de plată acceptate",
-    "copyright": "© {year} LUXERO COMPETITIONS LTD SC888260. Toate drepturile rezervate.",
+    "copyright": "© {year} ONLINE COMPETITIONS LTD SC729481. Toate drepturile rezervate.",
     "installApp": "Instalează aplicația"
   },
   "pwa": {
@@ -201,11 +201,11 @@
   "auth": {
     "login": {
       "heading": "Bine ai revenit",
-      "subtitle": "Autentifică-te în contul tău Luxero"
+      "subtitle": "Autentifică-te în contul tău Online Competitions"
     },
     "signUp": {
       "heading": "Creează-ți contul",
-      "subtitle": "Alătură-te Luxero și începe să câștigi",
+      "subtitle": "Alătură-te Online Competitions și începe să câștigi",
       "dobPlaceholder": "Selectează-ți data nașterii"
     },
     "verify": {
@@ -303,10 +303,10 @@
       "returnToHint": "După autentificare, vei reveni acolo unde ai rămas.",
       "referenceCode": "Referință: {errorCode}",
       "hints": {
-        "emailVerification": "Deschide ultimul email de la Luxero și introdu codul de verificare pe pagina de autentificare.",
+        "emailVerification": "Deschide ultimul email de la Online Competitions și introdu codul de verificare pe pagina de autentificare.",
         "passwordReset": "Solicită un link nou de resetare de pe pagina de parolă uitată dacă al tău a expirat.",
         "rateLimited": "Așteaptă un minut înainte de a încerca din nou pentru a-ți păstra contul în siguranță.",
-        "oauthRetry": "Începe autentificarea de pe site-ul Luxero, nu dintr-un link salvat sau partajat."
+        "oauthRetry": "Începe autentificarea de pe site-ul Online Competitions, nu dintr-un link salvat sau partajat."
       }
     },
     "errorActions": {
@@ -362,7 +362,7 @@
     },
     "SOCIAL_ACCOUNT_ALREADY_LINKED": {
       "title": "Cont deja conectat",
-      "message": "Acest cont social este deja conectat la un alt cont Luxero."
+      "message": "Acest cont social este deja conectat la un alt cont Online Competitions."
     },
     "PROVIDER_NOT_FOUND": {
       "title": "Furnizor de autentificare indisponibil",
@@ -438,7 +438,7 @@
     },
     "CROSS_SITE_NAVIGATION_LOGIN_BLOCKED": {
       "title": "Autentificare blocată",
-      "message": "Această solicitare de autentificare a fost blocată din motive de securitate. Deschide Luxero în browser și încearcă din nou."
+      "message": "Această solicitare de autentificare a fost blocată din motive de securitate. Deschide Online Competitions în browser și încearcă din nou."
     },
     "VERIFICATION_EMAIL_NOT_ENABLED": {
       "title": "Verificare indisponibilă",
@@ -450,7 +450,7 @@
     },
     "EMAIL_MISMATCH": {
       "title": "Emailul nu se potrivește",
-      "message": "Emailul de la furnizorul tău de autentificare nu se potrivește cu emailul contului tău Luxero."
+      "message": "Emailul de la furnizorul tău de autentificare nu se potrivește cu emailul contului tău Online Competitions."
     },
     "SESSION_NOT_FRESH": {
       "title": "Autentifică-te din nou",
@@ -466,11 +466,11 @@
     },
     "INVALID_CALLBACK_URL": {
       "title": "Autentificare întreruptă",
-      "message": "Adresa de returnare pentru autentificare nu era validă. Începe din nou de pe site-ul Luxero."
+      "message": "Adresa de returnare pentru autentificare nu era validă. Începe din nou de pe site-ul Online Competitions."
     },
     "INVALID_REDIRECT_URL": {
       "title": "Autentificare întreruptă",
-      "message": "Redirecționarea după autentificare nu era validă. Începe din nou de pe site-ul Luxero."
+      "message": "Redirecționarea după autentificare nu era validă. Începe din nou de pe site-ul Online Competitions."
     },
     "INVALID_ERROR_CALLBACK_URL": {
       "title": "Autentificare întreruptă",
@@ -482,7 +482,7 @@
     },
     "MISSING_OR_NULL_ORIGIN": {
       "title": "Solicitare invalidă",
-      "message": "Această solicitare de autentificare era incompletă. Deschide Luxero în browser și încearcă din nou."
+      "message": "Această solicitare de autentificare era incompletă. Deschide Online Competitions în browser și încearcă din nou."
     },
     "CALLBACK_URL_REQUIRED": {
       "title": "Autentificare întreruptă",
@@ -546,7 +546,7 @@
     },
     "signup_disabled": {
       "title": "Cont negăsit",
-      "message": "Acest cont Google nu este înregistrat pe Luxero. Creează un cont nou pentru a începe."
+      "message": "Acest cont Google nu este înregistrat pe Online Competitions. Creează un cont nou pentru a începe."
     }
   },
   "cart": {
@@ -615,9 +615,9 @@
   },
   "checkout": {
     "meta": {
-      "title": "Finalizare comandă — Luxero",
-      "description": "Finalizează-ți achiziția în siguranță pe Luxero. Revizuiește coșul, introdu detaliile de livrare și alege o metodă de plată. Câștigă premii uimitoare cu fiecare participare.",
-      "ogDescription": "Finalizează-ți achiziția în siguranță pe Luxero. Revizuiește coșul, introdu detaliile de livrare și alege o metodă de plată."
+      "title": "Finalizare comandă — Online Competitions",
+      "description": "Finalizează-ți achiziția în siguranță pe Online Competitions. Revizuiește coșul, introdu detaliile de livrare și alege o metodă de plată. Câștigă premii uimitoare cu fiecare participare.",
+      "ogDescription": "Finalizează-ți achiziția în siguranță pe Online Competitions. Revizuiește coșul, introdu detaliile de livrare și alege o metodă de plată."
     },
     "heading": "Finalizare securizată",
     "subtitle": "Finalizează-ți achiziția în doar câțiva pași",
@@ -728,7 +728,7 @@
     "redirectingSecure": "Redirecționare către pagina securizată…",
     "openingPopup": "Deschidere plată securizată…",
     "cardPaymentInfo": "Plătește în siguranță prin card de debit sau credit. Vei fi redirecționat către o pagină de plată securizată pentru a finaliza tranzacția.",
-    "ticketConfirmNote": "Biletele tale sunt emise imediat ce plata este confirmată. Nicio dată a cardului nu este stocată de Luxero.",
+    "ticketConfirmNote": "Biletele tale sunt emise imediat ce plata este confirmată. Nicio dată a cardului nu este stocată de Online Competitions.",
     "popupAlert": "Se va deschide o fereastră pop-up securizată pentru a finaliza plata. Te rugăm să te asiguri că popup-urile sunt permise pentru acest site.",
     "redirectAlert": "Continuând, vei fi redirecționat către pagina noastră securizată de plată pentru a finaliza tranzacția. Plățile sunt procesate în conformitate cu cerințele PSD2 de autentificare puternică a clientului.",
     "cardUnavailable": "Plata cu cardul este momentan indisponibilă. Contactează suportul sau încearcă din nou mai târziu.",
@@ -1564,7 +1564,7 @@
       "subtitle": "Găsește răspunsuri la întrebările comune despre concursurile noastre",
       "ctaHeading": "Nu ți-ai găsit răspunsul?",
       "ctaBody": "Contactează echipa noastră de suport la {email} sau folosește formularul de contact.",
-      "contactEmail": "contact@luxero.win",
+      "contactEmail": "contact@onlinecompetitions.co.uk",
       "getInTouch": "Ia legătura",
       "howItWorks": "Cum funcționează",
       "noFaqs": "Încă nu există întrebări frecvente în această categorie.",
@@ -1578,8 +1578,8 @@
       "heading": "Cum funcționează",
       "subtitle": "Începerea este ușoară. Urmează acești pași pentru a participa la concursurile noastre cu premii de lux.",
       "glance": "Alege un premiu, intră în extragere, tragem corect.",
-      "whyLuxero": "De ce Luxero",
-      "whyChooseLuxero": "De ce să Alegi",
+      "whyOnlineCompetitions": "De ce Online Competitions",
+      "whyChooseOnlineCompetitions": "De ce să Alegi",
       "yourJourney": "Călătoria ta",
       "fromBrowseToWin": "De la navigare la câștig",
       "stepDescription": "Șase pași de la navigare la câștig. Întrebările de abilități doar când concursul le cere.",
@@ -1618,7 +1618,7 @@
       "messageSent": "Mesaj trimis! Vom reveni în maxim 24 de ore.",
       "sendError": "Ceva nu a funcționat. Încearcă din nou.",
       "followUs": "Urmărește-ne",
-      "followUsSubtitle": "Rămâi la curent cu Luxero",
+      "followUsSubtitle": "Rămâi la curent cu Online Competitions",
       "preferSelfHelp": "Preferi să te ajuți singur?",
       "browseFaq": "Vezi întrebările frecvente →",
       "infoCards": {
@@ -1628,12 +1628,12 @@
         "registered": "Înregistrat"
       },
       "companyInfo": {
-        "email": "contact@luxero.win",
-        "phone": "+44 744 328 9228",
+        "email": "contact@onlinecompetitions.co.uk",
+        "phone": "123 123 1234",
         "hours": "Lun–Vin, 9:00–17:00 GMT",
-        "address": "107 Dalriada Crescent, Motherwell, ML1 3XT, Scotland",
-        "companyName": "LUXERO COMPETITIONS LTD",
-        "companyNumber": "Nr. Înreg. SC888260 (Scoția)"
+        "address": "42 Meadowbank Drive, Edinburgh, EH8 7AQ, Scotland",
+        "companyName": "ONLINE COMPETITIONS LTD",
+        "companyNumber": "Nr. Înreg. SC729481 (Scoția)"
       },
       "footerNote": "Răspundem în maxim 24 de ore în zilele lucrătoare (Lun–Vin, 9:00–17:00 GMT)."
     },
@@ -1659,7 +1659,7 @@
     },
     "responsiblePlay": {
       "heading": "Joc responsabil",
-      "subtitle": "Cum îndeplinește Luxero Codul Voluntar din Regatul Unit privind protecția jucătorilor — și instrumente pentru a rămâne sub control.",
+      "subtitle": "Cum îndeplinește Online Competitions Codul Voluntar din Regatul Unit privind protecția jucătorilor — și instrumente pentru a rămâne sub control.",
       "supportOrgs": "Organizații de suport"
     },
     "entries": {
@@ -1693,9 +1693,9 @@
       "subtitle": "Participă la orice concurs prin poștă — complet gratuit",
       "intro": "Poți participa la concurs folosind Ruta de Intrare Poștală, respectând următoarele condiții.",
       "sendTo": "Trimite participarea ta la",
-      "companyName": "Luxero Competitions",
-      "address": "107 Dalriada Crescent, Motherwell, ML1 3XT, Scotland",
-      "companyRegistration": "LUXERO COMPETITIONS LTD — Nr. Înreg. SC888260 (Scoția)",
+      "companyName": "Online Competitions",
+      "address": "42 Meadowbank Drive, Edinburgh, EH8 7AQ, Scotland",
+      "companyRegistration": "ONLINE COMPETITIONS LTD — Nr. Înreg. SC729481 (Scoția)",
       "includeHeading": "Include cu participarea ta",
       "includeItems": [
         "numele tău complet;",
@@ -1718,7 +1718,7 @@
     "winners": {
       "heading": "Câștigători reali.",
       "subheading": "Premii reale.",
-      "heroDesc": "Fiecare extragere este transparentă și fiecare câștigător este sărbătorit aici. Vezi rezultatele recente și află ce au câștigat membrii Luxero.",
+      "heroDesc": "Fiecare extragere este transparentă și fiecare câștigător este sărbătorit aici. Vezi rezultatele recente și află ce au câștigat membrii Online Competitions.",
       "publicGallery": "Galerie publică de câștigători",
       "totalPrizesAwarded": "Total premii acordate",
       "happyWinners": "Câștigători fericiți",

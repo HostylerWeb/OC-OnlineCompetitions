@@ -1,4 +1,4 @@
-import { cn, type SocialIconName } from "@luxero/utils";
+import { cn, type SocialIconName } from "@oc/utils";
 import type { SVGProps } from "react";
 import {
   FacebookIcon,

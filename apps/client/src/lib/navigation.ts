@@ -48,7 +48,7 @@ function attachListeners() {
   if (listenersAttached || typeof window === "undefined") return;
   listenersAttached = true;
   window.addEventListener("popstate", emit);
-  window.addEventListener("luxero:navigate", emit);
+  window.addEventListener("onlinecompetitions:navigate", emit);
 }
 
 export function usePathname(): string {
@@ -84,13 +84,13 @@ export function useRouter(): AppRouter {
       if (href === window.location.pathname + window.location.search) return;
       window.history.pushState({}, "", href);
       if (options.scroll !== false) window.scrollTo({ top: 0, behavior: "instant" });
-      window.dispatchEvent(new Event("luxero:navigate"));
+      window.dispatchEvent(new Event("onlinecompetitions:navigate"));
     },
     replace(href, options = {}) {
       if (typeof window === "undefined") return;
       window.history.replaceState({}, "", href);
       if (options.scroll !== false) window.scrollTo({ top: 0, behavior: "instant" });
-      window.dispatchEvent(new Event("luxero:navigate"));
+      window.dispatchEvent(new Event("onlinecompetitions:navigate"));
     },
     back() {
       if (typeof window === "undefined") return;

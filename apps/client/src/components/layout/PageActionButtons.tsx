@@ -1,7 +1,7 @@
 "use client";
 
-import type { LucideIcon } from "@luxero/icons";
-import { cn } from "@luxero/utils";
+import type { LucideIcon } from "@oc/icons";
+import { cn } from "@oc/utils";
 import { GoldButton, GoldOutlineButton } from "@/components/buttons";
 
 export interface PageAction {

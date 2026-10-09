@@ -1,6 +1,6 @@
 "use client";
 
-import { Info } from "@luxero/icons";
+import { Info } from "@oc/icons";
 import { useEffect, useMemo } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import { z } from "zod";

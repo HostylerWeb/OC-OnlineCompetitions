@@ -5,7 +5,7 @@ import {
   NOTIFICATION_TYPE_LABELS,
   NOTIFICATION_TYPES,
   usePushPreferences,
-} from "@luxero/api-admin";
+} from "@oc/api-admin";
 import { Label } from "../ui/label";
 import { Separator } from "../ui/separator";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "../ui/sheet";

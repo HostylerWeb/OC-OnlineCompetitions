@@ -1,6 +1,6 @@
-# Luxero
+# Online Competitions
 
-Monorepo for the Luxero competition platform — admin (Next.js), customer app (Vike), shop, lander, mobile shell, and ~20 internal packages.
+Monorepo for the Online Competitions competition platform — admin (Next.js), customer app (Vike), shop, lander, mobile shell, and ~20 internal packages.
 
 ## Stack
 

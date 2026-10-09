@@ -7,7 +7,7 @@ import type {
   InstantPrizeCapacityParams,
   InstantPrizeCapacityResponse,
   UpdateCompetitionInstantPrizePayload,
-} from "@luxero/types";
+} from "@oc/types";
 import { keepPreviousData, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useMemo } from "react";
 import { toast } from "sonner";

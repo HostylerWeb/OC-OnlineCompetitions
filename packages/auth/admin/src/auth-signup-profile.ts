@@ -1,5 +1,5 @@
-import { updateProfileFromSignUp } from "@luxero/auth-admin/auth-hooks";
-import { parseNameFields, type SignUpEmailBody } from "@luxero/auth-admin/auth-signup-upsert";
+import { updateProfileFromSignUp } from "@oc/auth-admin/auth-hooks";
+import { parseNameFields, type SignUpEmailBody } from "@oc/auth-admin/auth-signup-upsert";
 import type { AuthMiddleware } from "better-auth/api";
 import { createAuthMiddleware } from "better-auth/api";
 
@@ -18,7 +18,7 @@ export function createSignUpProfileAfterHook(): AuthMiddleware {
     const { firstName, lastName } = parseNameFields(body ?? {});
     const dateOfBirth = body?.dateOfBirth?.trim();
 
-    const { reassignGuestOrdersByEmail } = await import("@luxero/auth-admin/auth-hooks");
+    const { reassignGuestOrdersByEmail } = await import("@oc/auth-admin/auth-hooks");
     const guestData = await reassignGuestOrdersByEmail(email, userId);
     const prefilledFirstName = firstName || guestData?.firstName;
     const prefilledLastName = lastName || guestData?.lastName;

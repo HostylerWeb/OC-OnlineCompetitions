@@ -1,4 +1,4 @@
-import { CompetitionInstantPrize, InstantPrize, Winner } from "@luxero/api-db/models";
+import { CompetitionInstantPrize, InstantPrize, Winner } from "@oc/api-db/models";
 import type { Types } from "mongoose";
 
 export interface CompetitionWinnerSnapshot {

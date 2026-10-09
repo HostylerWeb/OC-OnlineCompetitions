@@ -1,21 +1,21 @@
-import { BonusAward, CompetitionInstantPrize, InstantPrize } from "@luxero/api-db/models";
-import type { IInstantPrize } from "@luxero/api-db/models/InstantPrize";
-import { CH, invalidateByChannelSafe } from "@luxero/api-infra/cache";
-import dbConnect from "@luxero/api-infra/db";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { escapeRegex } from "@luxero/api-infra/fuzzy-search";
-import { applyGroupBy, type GroupByFieldConfig } from "@luxero/api-infra/group-by";
-import { parsePagination, parseSort } from "@luxero/api-infra/pagination";
-import { error, paginated, success } from "@luxero/api-infra/response";
-import { captureRouteError } from "@luxero/api-infra/sentry";
-import { requireManager } from "@luxero/api-server/middleware/auth";
+import { BonusAward, CompetitionInstantPrize, InstantPrize } from "@oc/api-db/models";
+import type { IInstantPrize } from "@oc/api-db/models/InstantPrize";
+import { CH, invalidateByChannelSafe } from "@oc/api-infra/cache";
+import dbConnect from "@oc/api-infra/db";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { escapeRegex } from "@oc/api-infra/fuzzy-search";
+import { applyGroupBy, type GroupByFieldConfig } from "@oc/api-infra/group-by";
+import { parsePagination, parseSort } from "@oc/api-infra/pagination";
+import { error, paginated, success } from "@oc/api-infra/response";
+import { captureRouteError } from "@oc/api-infra/sentry";
+import { requireManager } from "@oc/api-server/middleware/auth";
 import {
   type CreateInstantPrizeInput,
   createInstantPrizeSchema,
   type UpdateInstantPrizeInput,
   updateInstantPrizeSchema,
   validateBody,
-} from "@luxero/api-validation";
+} from "@oc/api-validation";
 import { Hono } from "hono";
 import { PipelineStage, Types } from "mongoose";
 
@@ -236,7 +236,7 @@ app.post(
             400
           );
         }
-        const linked = await (await import("@luxero/api-db/models")).Competition.findById(
+        const linked = await (await import("@oc/api-db/models")).Competition.findById(
           lid
         ).lean();
         if (!linked) {
@@ -332,7 +332,7 @@ app.put(
         if (!lid || !Types.ObjectId.isValid(lid)) {
           return error(c, ErrorCodes.VALIDATION_ERROR, "Invalid linked competition ID", 400);
         }
-        const linked = await (await import("@luxero/api-db/models")).Competition.findById(
+        const linked = await (await import("@oc/api-db/models")).Competition.findById(
           lid
         ).lean();
         if (!linked) {

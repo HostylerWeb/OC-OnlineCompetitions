@@ -1,4 +1,4 @@
-import type { Balance, BalanceTransaction } from "@luxero/types";
+import type { Balance, BalanceTransaction } from "@oc/types";
 import type { PageContextServer } from "vike/types";
 import { serverFetch } from "@/lib/server-fetch";
 

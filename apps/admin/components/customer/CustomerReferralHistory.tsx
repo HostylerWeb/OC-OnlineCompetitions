@@ -1,6 +1,6 @@
 "use client";
 
-import type { AdminReferralPurchase } from "@luxero/types";
+import type { AdminReferralPurchase } from "@oc/types";
 import { StatusBadge } from "@/components/admin/StatusBadge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";

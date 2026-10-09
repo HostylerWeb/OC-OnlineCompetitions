@@ -1,6 +1,6 @@
 "use client";
-import { AlertCircle, Eye, EyeOff } from "@luxero/icons";
-import { cn } from "@luxero/utils";
+import { AlertCircle, Eye, EyeOff } from "@oc/icons";
+import { cn } from "@oc/utils";
 import { useState } from "react";
 import { useResetPassword } from "../../hooks/auth";
 import { getAuthErrorMessage } from "../actions";

@@ -15,7 +15,7 @@ export default function SentryDebugPage() {
     <main className="mx-auto max-w-lg px-4 py-16 text-center">
       <h1 className="mb-3 text-xl font-semibold">GlitchTip test event sent</h1>
       <p className="text-sm text-muted-foreground">
-        Check the luxero-admin project in GlitchTip for a staging test error.
+        Check the onlinecompetitions-admin project in GlitchTip for a staging test error.
       </p>
     </main>
   );

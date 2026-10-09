@@ -18,7 +18,7 @@ const validateState = vi.hoisted(() => ({
   checkTicketAvailabilityThrowMessage: null as string | null,
 }));
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   Competition: {
     findById: vi.fn(() => ({
       lean: async () => validateState.competition,
@@ -31,11 +31,11 @@ vi.mock("@luxero/api-db/models", () => ({
   },
 }));
 
-vi.mock("@luxero/api-tickets/ticket-service", () => ({
+vi.mock("@oc/api-tickets/ticket-service", () => ({
   countOwnedByUser: vi.fn(async () => validateState.countOwnedByUserResult),
 }));
 
-vi.mock("@luxero/api-tickets/cart", () => ({
+vi.mock("@oc/api-tickets/cart", () => ({
   checkTicketAvailability: vi.fn(async () => {
     if (validateState.checkTicketAvailabilityThrowMessage) {
       throw new Error(validateState.checkTicketAvailabilityThrowMessage);

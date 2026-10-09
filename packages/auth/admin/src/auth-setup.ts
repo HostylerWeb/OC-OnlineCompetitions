@@ -1,13 +1,13 @@
 import { randomBytes } from "node:crypto";
-import { dbConnect } from "@luxero/api-db";
-import { Profile } from "@luxero/api-db/models";
-import { SetupError } from "@luxero/api-errors";
-import { invalidateUser } from "@luxero/api-infra/cache";
-import { getAdminAuth } from "@luxero/auth-admin/admin-auth";
-import { secretsEqual } from "@luxero/auth-admin/secret-compare";
-import { createLuxeroProfile } from "@luxero/auth-admin/auth-hooks";
-import { getMongoDb } from "@luxero/auth-admin/auth-mongo";
-import { getEnv } from "@luxero/env/server";
+import { dbConnect } from "@oc/api-db";
+import { Profile } from "@oc/api-db/models";
+import { SetupError } from "@oc/api-errors";
+import { invalidateUser } from "@oc/api-infra/cache";
+import { getAdminAuth } from "@oc/auth-admin/admin-auth";
+import { secretsEqual } from "@oc/auth-admin/secret-compare";
+import { createOnlineCompetitionsProfile } from "@oc/auth-admin/auth-hooks";
+import { getMongoDb } from "@oc/auth-admin/auth-mongo";
+import { getEnv } from "@oc/env/server";
 import { APIError } from "better-auth/api";
 
 const SETUP_SECRET_HEADER = "x-setup-secret";
@@ -60,7 +60,7 @@ async function repairAdminProfile(userId: string, email: string): Promise<void> 
 
   const profile = await Profile.findById(userId);
   if (!profile) {
-    await createLuxeroProfile({
+    await createOnlineCompetitionsProfile({
       id: userId,
       email,
       name: "Admin",

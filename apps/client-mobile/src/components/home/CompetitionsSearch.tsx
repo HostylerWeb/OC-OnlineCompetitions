@@ -1,8 +1,8 @@
 "use client";
 
-import { useCompetitionsFilterStore } from "@luxero/api-client";
-import { Search } from "@luxero/icons";
-import { cn } from "@luxero/utils";
+import { useCompetitionsFilterStore } from "@oc/api-client";
+import { Search } from "@oc/icons";
+import { cn } from "@oc/utils";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { GoldOutlineButton } from "@/components/buttons";
 import { Input } from "@/components/ui/input";

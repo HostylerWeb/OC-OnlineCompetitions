@@ -1,6 +1,6 @@
 "use client";
 
-import { SocialIcon } from "@luxero/icons";
+import { SocialIcon } from "@oc/icons";
 import { Check, Copy, Mail } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "@/lib/i18n";

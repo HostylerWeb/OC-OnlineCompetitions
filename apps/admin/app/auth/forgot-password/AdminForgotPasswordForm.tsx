@@ -1,6 +1,6 @@
 "use client";
 
-import { authClient, TurnstileWidget } from "@luxero/api-admin";
+import { authClient, TurnstileWidget } from "@oc/api-admin";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";

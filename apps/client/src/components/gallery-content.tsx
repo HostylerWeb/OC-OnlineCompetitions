@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronLeft, ChevronRight, Minus, Plus, X } from "@luxero/icons";
+import { ChevronLeft, ChevronRight, Minus, Plus, X } from "@oc/icons";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { ReactZoomPanPinchRef } from "react-zoom-pan-pinch";
 import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";

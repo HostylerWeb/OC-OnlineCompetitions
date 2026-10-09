@@ -1,9 +1,9 @@
-# Luxero Turborepo — Workspace Context
+# Online Competitions Turborepo — Workspace Context
 
 ## Project
 Next.js 16 turborepo: 1 Next.js app, 1 Vike app, 1 lander + ~20 internal packages.
 
-**GitHub:** https://github.com/HostylerWeb/Luxero (`git@github.com:HostylerWeb/Luxero.git`) — configure `origin` when pushing from `/var/www/luxero/turborepo-main`.
+**GitHub:** https://github.com/HostylerWeb/Online Competitions (`git@github.com:HostylerWeb/Online Competitions.git`) — configure `origin` when pushing from `/var/www/onlinecompetitions/turborepo-main`.
 
 ## Apps
 - `apps/admin/` — Admin dashboard (port 3222)
@@ -33,7 +33,7 @@ Next.js 16 turborepo: 1 Next.js app, 1 Vike app, 1 lander + ~20 internal package
 - `bun run test` — All tests
 - `bun run build` — Build all apps
 
-- `bun run dev --filter=@luxero/client` — Vike client dev (port 3555)
+- `bun run dev --filter=@oc/client` — Vike client dev (port 3555)
 
 ## Devserver MCP
 Use `devservers_get_devserver_statuses` to check running servers.
@@ -62,7 +62,7 @@ Three-layer guard system in `src/pages/`:
 2. **Auth guard** (`auth/+guard.ts`) — redirects verified users away from `/auth/*` → `returnTo` or `/dashboard`
 3. **Dashboard guard** (`dashboard/+guard.ts`) — redirects unauthed/anonymous → `/auth/login`; unverified → `/auth/verify`
 - Session fetched server-side in `+onCreatePageContext.server.ts` via in-process Hono API call (`apiApp.fetch()`)
-- Anonymous sessions auto-created client-side by `AuthProvider` from `@luxero/api-client`
+- Anonymous sessions auto-created client-side by `AuthProvider` from `@oc/api-client`
 - All other routes (public pages, cart, competitions, etc.) pass through without auth check
 
 ## Branch
@@ -111,7 +111,7 @@ Working branch: `staging`. Always branch from staging, PR back to staging.
 ## Stripe
 
 - **Payment provider adapter**: `api-server/src/lib/payment/providers/stripe.ts`
-- **Stripe SDK**: `packages/api/payment-stripe/` (`@luxero/api-payment-stripe`)
+- **Stripe SDK**: `packages/api/payment-stripe/` (`@oc/api-payment-stripe`)
 - **Webhook endpoint (unified)**: one endpoint per environment — `POST /api/payments/webhook/stripe` — delivers BOTH shop and orders events. The `stripe-signature` header is verified once at the route against the resolved webhook secret (memory → env → DB); since Stripe retries non-2xx responses, a webhook is never acknowledged until fully processed. Routing is by event type: `checkout.session.completed` → shop fulfillment path (`handleShopStripeWebhook` in `api-server/src/lib/payment/shop-webhook-handler.ts`); everything else → orders flow (`dispatchWebhook` → stripe adapter `handleWebhook`, whose own verification is preserved). There is no separate shop webhook endpoint anymore.
 - **Events handled**: `payment_intent.succeeded`, `payment_intent.payment_failed`, `charge.refunded`, `charge.dispute.created`, `charge.dispute.closed`, plus `checkout.session.completed` (shop). Events that cannot be matched to an order/session are parked in `pending_webhooks` storage and acked 200 (`cleanup-abandoned-orders` job retries them once the order is found); unhandled event types return 200 without side effects. A `payment_intent.succeeded` arriving for an order already marked failed claims an auto-refund (`metadata.refundProcessedAt` guard, never throws).
 - **Env resolution**: `STRIPE_ENVIRONMENT` (`test`|`live`, default `test`) selects `STRIPE_TEST_*` or `STRIPE_LIVE_*` keys; `STRIPE_SECRET_KEY`/`STRIPE_PUBLISHABLE_KEY`/`STRIPE_WEBHOOK_SECRET` act as fallbacks.
@@ -135,7 +135,7 @@ A referral purchase is **active** iff ALL of:
 4. `purchaseAmount ≥ settings.minFirstOrderSpend`
 5. (Grace period: extends #3 by `settings.gracePeriod.days` when enabled and not deferred)
 
-Canonical implementation: `@luxero/api-referrals/leaderboard.ts` (`getTopActiveReferrers`).
+Canonical implementation: `@oc/api-referrals/leaderboard.ts` (`getTopActiveReferrers`).
 
 ### "Active referrer count" — what it means
 
@@ -164,7 +164,7 @@ widgets. It's used for:
 
 Maintenance: updated on every `recordReferralPurchase` (recordReferralPurchase), plus
 reconciliation on admin soft-delete/restore/reassign via
-`@luxero/api-referrals/referral-counter` (`reconcileReferralCountOnDelete`,
+`@oc/api-referrals/referral-counter` (`reconcileReferralCountOnDelete`,
 `reconcileReferralCountOnRestore`, `reconcileReferralCountOnReassign`).
 
 Backfill (idempotent, recomputes from live state):
@@ -186,3 +186,14 @@ bun run packages/api/server/src/lib/jobs/recompute-referral-counts.ts --userId=<
   - Web UI: `http://localhost:1080/`
 - **MongoDB** — port 27017
 - **MinIO** (S3-compatible storage) — port 9011 (S3 API only; use admin Media Library, not MinIO console)
+
+<!-- BEGIN:turborepo-agent-rules -->
+
+# This is NOT the Turborepo you know
+
+Turborepo configuration, task behavior, and CLI commands can vary between installed versions and may differ from your training data. Resolve the `turbo` package from this file's directory or relevant workspace; in monorepos, it may not be visible from the repository root. For example, run `node -p "require.resolve('turbo/package.json')"` from a workspace that depends on `turbo`.
+
+Read `docs/README.md` inside that installed package first, then read the relevant pages from its `docs/` directory before changing Turborepo configuration or commands. Heed deprecation notices. These bundled docs match the installed package version and are available without network access.
+
+This block is written and re-added by `turbo` before repository-scoped commands when an AI agent is detected. In the Turborepo source repository, its template is defined in `crates/turborepo-cli/src/cli/agent_guidance.rs`. Removing the managed block while updates are enabled means a later qualifying invocation will add it again. Set `"agentGuidance": false` in the root `turbo.json` or `turbo.jsonc` to opt out; this does not remove an existing block. Keep the block committed with your work to avoid an uncommitted change on the next agent invocation.
+<!-- END:turborepo-agent-rules -->

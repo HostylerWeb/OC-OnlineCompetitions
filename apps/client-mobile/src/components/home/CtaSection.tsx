@@ -1,7 +1,7 @@
-import { HOME_CTA as HOME_CTA_EN } from "@luxero/content/home";
-import { resolveContent } from "@luxero/content/locales";
-import { HOME_CTA as HOME_CTA_RO } from "@luxero/content/ro";
-import { ArrowRight, Shield, Users, Zap } from "@luxero/icons";
+import { HOME_CTA as HOME_CTA_EN } from "@oc/content/home";
+import { resolveContent } from "@oc/content/locales";
+import { HOME_CTA as HOME_CTA_RO } from "@oc/content/ro";
+import { ArrowRight, Shield, Users, Zap } from "@oc/icons";
 import { GoldOutlineButton } from "@/components/buttons";
 import { Link } from "@/components/Link";
 import { useTranslation } from "@/lib/i18n";
@@ -17,7 +17,7 @@ export function CtaSection() {
       <div className="absolute top-0 left-1/4 w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 bg-gold/20 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-1/4 w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 bg-gold/20 rounded-full blur-3xl" />
 
-      <div className="luxero-container-wide relative z-10">
+      <div className="oc-container-wide relative z-10">
         <div className="text-center space-y-6 sm:space-y-8">
           <div className="inline-flex items-center justify-center space-x-3 mb-4 sm:mb-6">
             <Zap className="w-6 h-6 text-gold" />

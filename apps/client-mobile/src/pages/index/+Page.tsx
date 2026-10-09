@@ -1,10 +1,10 @@
-import { useCompetitionStream } from "@luxero/api-client";
-import type { Competition } from "@luxero/types";
+import { useCompetitionStream } from "@oc/api-client";
+import type { Competition } from "@oc/types";
 import {
   filterEndingSoonCompetitions,
   resolveHomepageNavSections,
   resolveHomepageSections,
-} from "@luxero/utils";
+} from "@oc/utils";
 import { useMemo } from "react";
 import { BuiltDifferentSection } from "@/components/home/BuiltDifferentSection";
 import { CtaSection } from "@/components/home/CtaSection";

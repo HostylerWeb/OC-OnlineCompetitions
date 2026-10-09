@@ -1,4 +1,4 @@
-import type { SessionUser } from "@luxero/types";
+import type { SessionUser } from "@oc/types";
 import { getAdminAuth } from "./admin-auth";
 import { getClientAuth } from "./client-auth";
 

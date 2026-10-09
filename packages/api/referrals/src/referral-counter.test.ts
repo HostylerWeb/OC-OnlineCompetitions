@@ -17,13 +17,13 @@ const state = vi.hoisted(() => ({
   invalidateCalls: [] as string[],
 }));
 
-vi.mock("@luxero/api-infra/cache", () => ({
+vi.mock("@oc/api-infra/cache", () => ({
   invalidateUser: vi.fn(async (id: string) => {
     state.invalidateCalls.push(id);
   }),
 }));
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   Profile: {
     findById: vi.fn((id: unknown) => ({
       select: () => ({

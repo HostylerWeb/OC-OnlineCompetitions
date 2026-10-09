@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
+import { CompanyContactEmail } from "@/components/company-details";
 
 export const metadata: Metadata = {
-  title: "Shipping Policy | LUXERO",
-  description: "UK and international shipping information for LUXERO premium streetwear.",
+  title: "Shipping Policy | OC",
+  description: "UK and international shipping information for OC premium streetwear.",
 };
 
 export default function ShippingPage() {
   return (
-    <main className="luxero-container py-12">
+    <main className="oc-container py-12">
       <h1 className="text-3xl font-bold tracking-tight">Shipping Policy</h1>
       <p className="mt-2 text-sm text-muted-foreground">Last updated: June 2026</p>
 
@@ -64,7 +65,7 @@ export default function ShippingPage() {
           </h2>
           <p className="mt-2 text-muted-foreground leading-relaxed">
             International customers are responsible for any customs fees, import duties, or local
-            taxes levied by their country. LUXERO is not responsible for delays caused by customs
+            taxes levied by their country. OC is not responsible for delays caused by customs
             processing. Please check your local import regulations before ordering.
           </p>
         </section>
@@ -74,12 +75,10 @@ export default function ShippingPage() {
             Shipping Address Accuracy
           </h2>
           <p className="mt-2 text-muted-foreground leading-relaxed">
-            Please ensure your shipping address is correct at the time of purchase. LUXERO cannot be
+            Please ensure your shipping address is correct at the time of purchase. OC cannot be
             held responsible for parcels delivered to an incorrectly provided address. If you spot
             an error immediately after placing your order, contact us at&nbsp;
-            <a href="mailto:contact@luxero.win" className="text-gold hover:underline">
-              contact@luxero.win
-            </a>{" "}
+            <CompanyContactEmail className="text-gold transition-colors hover:text-gold/80" />{" "}
             and we will do our best to update it before dispatch.
           </p>
         </section>
@@ -92,9 +91,7 @@ export default function ShippingPage() {
             If your tracking information shows delivered but you have not received your parcel,
             please contact the carrier directly with your tracking number. For packages lost in
             transit beyond the estimated delivery window, reach out to&nbsp;
-            <a href="mailto:contact@luxero.win" className="text-gold hover:underline">
-              contact@luxero.win
-            </a>{" "}
+            <CompanyContactEmail className="text-gold transition-colors hover:text-gold/80" />{" "}
             and we will investigate on your behalf.
           </p>
         </section>
@@ -113,9 +110,7 @@ export default function ShippingPage() {
           <h2 className="text-xl font-semibold tracking-tight text-gold">Contact</h2>
           <p className="mt-2 text-muted-foreground leading-relaxed">
             For any shipping-related enquiries, email us at&nbsp;
-            <a href="mailto:contact@luxero.win" className="text-gold hover:underline">
-              contact@luxero.win
-            </a>
+            <CompanyContactEmail className="text-gold transition-colors hover:text-gold/80" />
             .
           </p>
         </section>

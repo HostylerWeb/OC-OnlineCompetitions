@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { HOSTYLER_CONSOLE_NOTICE_INLINE } from "@luxero/utils";
+import { BRAND_FAVICON_PATH, BRAND_LOGO_PATH, brandLogoUrl, HOSTYLER_CONSOLE_NOTICE_INLINE } from "@oc/utils";
 import "./globals.css";
 
 export const viewport: Viewport = {
@@ -7,24 +7,25 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-const landerUrl = process.env.NEXT_PUBLIC_APP_URL || "https://agro.luxero.win";
+const landerUrl = process.env.NEXT_PUBLIC_APP_URL || "https://agro.onlinecompetitions.co.uk";
 
 export const metadata: Metadata = {
   title: {
-    default: "Win Premium Prizes — Luxero Competitions",
-    template: "%s — Luxero",
+    default: "Win Premium Prizes — Online Competitions",
+    template: "%s — Online Competitions",
   },
   description:
-    "Enter to win incredible prizes with Luxero Competitions. Browse active competitions, answer skill questions, and win instantly.",
+    "Enter to win incredible prizes with Online Competitions. Browse active competitions, answer skill questions, and win instantly.",
+  icons: [{ rel: "icon", url: BRAND_FAVICON_PATH, type: "image/png" }],
   openGraph: {
-    siteName: "Luxero",
+    siteName: "Online Competitions",
     type: "website",
     locale: "en_GB",
     url: landerUrl,
     images: [
       {
-        url: "/og-default.png",
-        secureUrl: `${landerUrl}/og-default.png`,
+        url: BRAND_LOGO_PATH,
+        secureUrl: brandLogoUrl(landerUrl),
         type: "image/png",
         width: 1200,
         height: 630,
@@ -51,9 +52,9 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              name: "Luxero",
-              url: "https://luxero.win",
-              logo: "https://luxero.win/og-default.svg",
+              name: "Online Competitions",
+              url: "https://onlinecompetitions.co.uk",
+              logo: brandLogoUrl("https://onlinecompetitions.co.uk"),
             }),
           }}
         />

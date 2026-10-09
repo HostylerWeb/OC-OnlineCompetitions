@@ -1,7 +1,7 @@
 "use client";
 
-import { Ban, Clock, ExternalLink, Loader2, Table2, Trophy } from "@luxero/icons";
-import type { AdminCompetition } from "@luxero/types";
+import { Ban, Clock, ExternalLink, Loader2, Table2, Trophy } from "@oc/icons";
+import type { AdminCompetition } from "@oc/types";
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";

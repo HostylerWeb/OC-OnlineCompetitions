@@ -5,9 +5,9 @@ import {
   useAdminBonusAwardWinMutations,
   useAdminBonusAwardWins,
   useServerPagination,
-} from "@luxero/api-admin";
-import { AlertCircle, Award, MoreHorizontal, RefreshCw, Star, Trash2, User } from "@luxero/icons";
-import type { AdminBonusAwardWinItem } from "@luxero/types";
+} from "@oc/api-admin";
+import { AlertCircle, Award, MoreHorizontal, RefreshCw, Star, Trash2, User } from "@oc/icons";
+import type { AdminBonusAwardWinItem } from "@oc/types";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import type { ColumnDef, SortingState, Updater, VisibilityState } from "@tanstack/react-table";
 import Link from "next/link";

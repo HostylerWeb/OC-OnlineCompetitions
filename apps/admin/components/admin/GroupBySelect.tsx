@@ -1,6 +1,6 @@
 "use client";
 
-import { Filter } from "@luxero/icons";
+import { Filter } from "@oc/icons";
 import {
   Select,
   SelectContent,

@@ -6,8 +6,8 @@ import type {
   Profile,
   ProfileAddress,
   Winner,
-} from "@luxero/types";
-import { getProfileInitials, withAssetCacheVersion } from "@luxero/utils";
+} from "@oc/types";
+import { getProfileInitials, withAssetCacheVersion } from "@oc/utils";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useCallback, useMemo } from "react";
 import { useAuth } from "../../auth/use-auth";

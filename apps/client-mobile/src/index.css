@@ -102,13 +102,13 @@
     display: none;
   }
 
-  .luxero-container {
+  .oc-container {
     width: 100%;
     margin-inline: auto;
     padding-inline: clamp(1rem, 2.5vw, 4rem);
   }
 
-  .luxero-container-wide {
+  .oc-container-wide {
     width: 100%;
     margin-inline: auto;
     padding-inline: clamp(1rem, 2.5vw, 4rem);
@@ -127,7 +127,7 @@
     height: env(safe-area-inset-bottom, 0px);
   }
 
-  .luxero-container-auth {
+  .oc-container-auth {
     width: 100%;
     margin-inline: auto;
     padding-inline: 1rem;

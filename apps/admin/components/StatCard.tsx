@@ -1,6 +1,6 @@
 "use client";
 
-import { Info } from "@luxero/icons";
+import { Info } from "@oc/icons";
 import type * as React from "react";
 import { cn } from "@/lib/utils";
 

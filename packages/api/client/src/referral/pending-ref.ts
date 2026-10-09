@@ -21,8 +21,8 @@ export function resolveRefFromUrl(search: string): string | null {
   return normalizeReferralCode(refParam);
 }
 
-const PENDING_REF_KEY = "luxero_pending_ref";
-const REFERRAL_COOKIE_NAME = "luxero_ref";
+const PENDING_REF_KEY = "onlinecompetitions_pending_ref";
+const REFERRAL_COOKIE_NAME = "onlinecompetitions_ref";
 const REFERRAL_COOKIE_MAX_AGE = 30 * 24 * 60 * 60; // 30 days
 
 function setReferralCookie(code: string): void {

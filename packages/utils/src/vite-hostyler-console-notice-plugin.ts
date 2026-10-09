@@ -2,7 +2,7 @@ import { HOSTYLER_CONSOLE_NOTICE_INLINE } from "./hostyler-console-notice.ts";
 
 export function hostylerConsoleNoticeIndexHtmlPlugin() {
   return {
-    name: "luxero-hostyler-console-notice",
+    name: "onlinecompetitions-hostyler-console-notice",
     transformIndexHtml: {
       order: "pre",
       handler(html: string) {

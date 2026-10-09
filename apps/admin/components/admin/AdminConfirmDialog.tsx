@@ -1,5 +1,5 @@
 "use client";
-import { AlertTriangle, Loader2 } from "@luxero/icons";
+import { AlertTriangle, Loader2 } from "@oc/icons";
 import type { ReactNode } from "react";
 import {
   AlertDialog,

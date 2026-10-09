@@ -1,4 +1,4 @@
-import type { ApiResponse, Balance, BalanceTransaction } from "@luxero/types";
+import type { ApiResponse, Balance, BalanceTransaction } from "@oc/types";
 import { type UseQueryOptions, useQuery } from "@tanstack/react-query";
 import { api } from "../../client";
 import { STALE_TIME_USER } from "../../constants";

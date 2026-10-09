@@ -1,11 +1,11 @@
-import type { CompetitionBuyingPower } from "@luxero/api-client";
+import type { CompetitionBuyingPower } from "@oc/api-client";
 import type {
   Balance,
   PaymentConfigResponse,
   PaymentProviderInfo,
   Profile,
   SaferPlayState,
-} from "@luxero/types";
+} from "@oc/types";
 import type { PageContextServer } from "vike/types";
 import { serverFetch } from "@/lib/server-fetch";
 

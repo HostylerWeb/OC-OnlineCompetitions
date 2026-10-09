@@ -1,6 +1,6 @@
 "use client";
 
-import { Ticket } from "@luxero/icons";
+import { Ticket } from "@oc/icons";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";

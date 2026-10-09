@@ -1,6 +1,6 @@
 "use client";
 
-import { Users } from "@luxero/icons";
+import { Users } from "@oc/icons";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import {

@@ -1,5 +1,5 @@
-import { PaymentMethod } from "@luxero/api-db/models";
-import { runtimeConfig } from "@luxero/api-infra/runtime-config";
+import { PaymentMethod } from "@oc/api-db/models";
+import { runtimeConfig } from "@oc/api-infra/runtime-config";
 
 export function isLocalPaymentMethodEnabled(): boolean {
   return runtimeConfig.enableLocalPaymentMethod;

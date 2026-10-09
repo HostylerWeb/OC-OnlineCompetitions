@@ -1,8 +1,8 @@
 "use client";
 
-import { api, useAdminCompetitions, useAuth } from "@luxero/api-admin";
-import { Plus, RefreshCw, Settings, X } from "@luxero/icons";
-import type { AdminCompetition } from "@luxero/types";
+import { api, useAdminCompetitions, useAuth } from "@oc/api-admin";
+import { Plus, RefreshCw, Settings, X } from "@oc/icons";
+import type { AdminCompetition } from "@oc/types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";

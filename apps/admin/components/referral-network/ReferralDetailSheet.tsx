@@ -1,7 +1,7 @@
 "use client";
 
-import type { ReferralMindmapNode } from "@luxero/api-referrals/mindmap";
-import type { TimelineEvent } from "@luxero/api-referrals/timeline";
+import type { ReferralMindmapNode } from "@oc/api-referrals/mindmap";
+import type { TimelineEvent } from "@oc/api-referrals/timeline";
 import { Crosshair, Crown, ExternalLink, Loader2, Mail, Shield, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";

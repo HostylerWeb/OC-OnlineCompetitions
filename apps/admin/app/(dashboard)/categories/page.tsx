@@ -4,9 +4,9 @@ import {
   useAdminCategories,
   useAdminCategoryMutations,
   useServerPagination,
-} from "@luxero/api-admin";
-import { ArrowDown, ArrowUp, MoreHorizontal, Plus, RefreshCw, Trash2 } from "@luxero/icons";
-import type { AdminCategory } from "@luxero/types";
+} from "@oc/api-admin";
+import { ArrowDown, ArrowUp, MoreHorizontal, Plus, RefreshCw, Trash2 } from "@oc/icons";
+import type { AdminCategory } from "@oc/types";
 import type { ColumnDef, SortingState } from "@tanstack/react-table";
 import { useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";

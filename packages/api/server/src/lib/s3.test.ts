@@ -3,7 +3,7 @@ import {
   extractKeyFromUrl,
   getAssetBaseUrl,
   resetS3ClientForTests,
-} from "@luxero/api-storage/s3";
+} from "@oc/api-storage/s3";
 import { afterEach, describe, expect, test, vi } from "vitest";
 
 vi.mock("../../../../config/asset-storage.mjs", () => ({
@@ -108,15 +108,15 @@ describe("S3 endpoint construction (buildEndpoint)", () => {
     getPresignedUploadUrl: (key: string, contentType: string) => Promise<string>;
   }> {
     vi.resetModules();
-    const mod = await import("@luxero/api-storage/s3");
+    const mod = await import("@oc/api-storage/s3");
     return { getPresignedUploadUrl: mod.getPresignedUploadUrl };
   }
 
   test("appends S3_BUCKET to bare S3_ENDPOINT (R2 staging case)", async () => {
     saveEnv();
     delete process.env.ASSET_BASE_URL;
-    process.env.S3_ENDPOINT = "https://assets.luxero.win";
-    process.env.S3_BUCKET = "luxero-assets-staging";
+    process.env.S3_ENDPOINT = "https://assets.onlinecompetitions.co.uk";
+    process.env.S3_BUCKET = "onlinecompetitions-assets-staging";
     process.env.AWS_REGION = "us-east-1";
     process.env.AWS_ACCESS_KEY_ID = "test-key";
     process.env.AWS_SECRET_ACCESS_KEY = "test-secret";
@@ -126,7 +126,7 @@ describe("S3 endpoint construction (buildEndpoint)", () => {
 
     const parsed = new URL(url);
     expect(`${parsed.host}${parsed.pathname}`).toBe(
-      "assets.luxero.win/luxero-assets-staging/prizes/foo/abc.png"
+      "assets.onlinecompetitions.co.uk/onlinecompetitions-assets-staging/prizes/foo/abc.png"
     );
   });
 
@@ -134,7 +134,7 @@ describe("S3 endpoint construction (buildEndpoint)", () => {
     saveEnv();
     delete process.env.ASSET_BASE_URL;
     process.env.S3_ENDPOINT = "http://localhost:9011/";
-    process.env.S3_BUCKET = "luxero-assets";
+    process.env.S3_BUCKET = "onlinecompetitions-assets";
     process.env.AWS_REGION = "us-east-1";
     process.env.AWS_ACCESS_KEY_ID = "k";
     process.env.AWS_SECRET_ACCESS_KEY = "s";
@@ -143,14 +143,14 @@ describe("S3 endpoint construction (buildEndpoint)", () => {
     const url = await presign("uploads/x.png", "image/png");
 
     const parsed = new URL(url);
-    expect(`${parsed.host}${parsed.pathname}`).toBe("localhost:9011/luxero-assets/uploads/x.png");
+    expect(`${parsed.host}${parsed.pathname}`).toBe("localhost:9011/onlinecompetitions-assets/uploads/x.png");
   });
 
   test("does not double-prefix when bucket already in endpoint path", async () => {
     saveEnv();
     delete process.env.ASSET_BASE_URL;
-    process.env.S3_ENDPOINT = "https://assets.luxero.win/luxero-assets-staging";
-    process.env.S3_BUCKET = "luxero-assets-staging";
+    process.env.S3_ENDPOINT = "https://assets.onlinecompetitions.co.uk/onlinecompetitions-assets-staging";
+    process.env.S3_BUCKET = "onlinecompetitions-assets-staging";
     process.env.AWS_REGION = "us-east-1";
     process.env.AWS_ACCESS_KEY_ID = "k";
     process.env.AWS_SECRET_ACCESS_KEY = "s";
@@ -160,15 +160,15 @@ describe("S3 endpoint construction (buildEndpoint)", () => {
 
     const parsed = new URL(url);
     expect(`${parsed.host}${parsed.pathname}`).toBe(
-      "assets.luxero.win/luxero-assets-staging/prizes/x.png"
+      "assets.onlinecompetitions.co.uk/onlinecompetitions-assets-staging/prizes/x.png"
     );
   });
 
   test("strips trailing slash from S3_ENDPOINT before appending bucket", async () => {
     saveEnv();
     delete process.env.ASSET_BASE_URL;
-    process.env.S3_ENDPOINT = "https://assets.luxero.win/";
-    process.env.S3_BUCKET = "luxero-assets-staging";
+    process.env.S3_ENDPOINT = "https://assets.onlinecompetitions.co.uk/";
+    process.env.S3_BUCKET = "onlinecompetitions-assets-staging";
     process.env.AWS_REGION = "us-east-1";
     process.env.AWS_ACCESS_KEY_ID = "k";
     process.env.AWS_SECRET_ACCESS_KEY = "s";
@@ -178,7 +178,7 @@ describe("S3 endpoint construction (buildEndpoint)", () => {
 
     const parsed = new URL(url);
     expect(parsed.origin + parsed.pathname).toBe(
-      "https://assets.luxero.win/luxero-assets-staging/prizes/x.png"
+      "https://assets.onlinecompetitions.co.uk/onlinecompetitions-assets-staging/prizes/x.png"
     );
   });
 });

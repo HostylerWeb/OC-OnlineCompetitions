@@ -1,10 +1,10 @@
-import { sendEmail } from "@luxero/api-email/client";
-import { getEmailConfig } from "@luxero/api-email/config";
-import { ContactNotificationEmail } from "@luxero/api-email/templates/contact-notification";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { error, success } from "@luxero/api-infra/response";
-import { captureRouteError } from "@luxero/api-infra/sentry";
-import { contactRateLimit } from "@luxero/api-server/middleware/rate-limit";
+import { sendEmail } from "@oc/api-email/client";
+import { getEmailConfig } from "@oc/api-email/config";
+import { ContactNotificationEmail } from "@oc/api-email/templates/contact-notification";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { error, success } from "@oc/api-infra/response";
+import { captureRouteError } from "@oc/api-infra/sentry";
+import { contactRateLimit } from "@oc/api-server/middleware/rate-limit";
 import { render } from "@react-email/render";
 import { Hono } from "hono";
 

@@ -1,9 +1,9 @@
-import type { Category } from "@luxero/types";
+import type { Category } from "@oc/types";
 import {
   DEFAULT_HOMEPAGE_SECTIONS,
   type HomepageLayoutSettings,
   type HomepageSectionId,
-} from "@luxero/types";
+} from "@oc/types";
 
 export type ResolvedHomepageSection =
   | { type: "hero" }

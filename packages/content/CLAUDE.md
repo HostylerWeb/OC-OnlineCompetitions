@@ -1,6 +1,6 @@
-# @luxero/content
+# @oc/content
 
-Static English marketing copy for the Luxero platform. Single source of truth for all customer-facing text. No i18n — en-GB only.
+Static English marketing copy for the Online Competitions platform. Single source of truth for all customer-facing text. No i18n — en-GB only.
 
 ## Modules
 
@@ -15,7 +15,7 @@ Static English marketing copy for the Luxero platform. Single source of truth fo
 ## Usage
 
 ```tsx
-import { homeContent } from "@luxero/content";
+import { homeContent } from "@oc/content";
 ```
 
 Shared across `apps/admin`, `apps/client`, and `web-lander`.

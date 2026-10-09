@@ -1,6 +1,6 @@
 "use client";
 
-import { getEnv } from "@luxero/env/next";
+import { getEnv } from "@oc/env/next";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 export type PushSubscriptionState =

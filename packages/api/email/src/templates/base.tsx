@@ -1,10 +1,20 @@
-import type { IEmailSettings } from "@luxero/api-db/models/EmailSettings";
+import type { IEmailSettings } from "@oc/api-db/models/EmailSettings";
+import {
+  BRAND_NAME,
+  brandLogoUrl,
+  LEGAL_COMPANY_NAME,
+  LEGAL_COMPANY_NUMBER,
+  LEGAL_REGISTERED_OFFICE,
+  LEGAL_WEBSITE,
+  SOCIAL_LINKS,
+} from "@oc/utils";
 import {
   Body,
   Container,
   Font,
   Head,
   Html,
+  Img,
   Link,
   Preview,
   Section,
@@ -15,7 +25,7 @@ import {
 export function BaseEmail({
   preview,
   children,
-  settings,
+  settings: _settings,
   frontendUrl,
 }: {
   preview: string;
@@ -23,8 +33,7 @@ export function BaseEmail({
   settings?: IEmailSettings;
   frontendUrl?: string;
 }) {
-  const effectiveUrl = frontendUrl ?? "https://staging.luxero.win";
-  const social = settings?.social ?? ({} as NonNullable<IEmailSettings["social"]>);
+  const effectiveUrl = frontendUrl ?? "https://staging.onlinecompetitions.co.uk";
   return (
     <Tailwind
       config={{
@@ -75,9 +84,12 @@ export function BaseEmail({
           <Container className="mx-auto my-[40px] max-w-[600px]">
             <Section className="p-[32px] text-center">
               <Link href={effectiveUrl}>
-                <Text className="m-0 text-[32px] font-bold text-[#D4AF37] no-underline">
-                  Luxero
-                </Text>
+                <Img
+                  src={brandLogoUrl(effectiveUrl)}
+                  alt={BRAND_NAME}
+                  width={280}
+                  style={{ margin: "0 auto", height: "auto", maxWidth: "100%" }}
+                />
               </Link>
             </Section>
             <Section
@@ -93,42 +105,21 @@ export function BaseEmail({
             </Section>
             <Section className="p-[32px] text-center">
               <Text className="m-[8px] text-center text-[12px] leading-[20px] text-[#A1A1AA]">
-                This email was sent by Luxero.win
+                This email was sent by {BRAND_NAME} ({LEGAL_WEBSITE})
                 <br />
-                Premium Prize Competitions
+                {LEGAL_COMPANY_NAME} · Company No. {LEGAL_COMPANY_NUMBER}
+                <br />
+                {LEGAL_REGISTERED_OFFICE}
               </Text>
               <Text className="m-[16px] text-center text-[12px] text-[#A1A1AA]">
-                {social.facebook && (
-                  <Link href={social.facebook} className="text-[#D4AF37] no-underline">
-                    Facebook
-                  </Link>
-                )}
-                {social.facebook && social.instagram && " | "}
-                {social.instagram && (
-                  <Link href={social.instagram} className="text-[#D4AF37] no-underline">
-                    Instagram
-                  </Link>
-                )}
-                {(social.facebook || social.instagram) &&
-                  (social.whatsapp || social.telegram || social.tiktok) &&
-                  " | "}
-                {social.whatsapp && (
-                  <Link href={social.whatsapp} className="text-[#D4AF37] no-underline">
-                    WhatsApp
-                  </Link>
-                )}
-                {social.whatsapp && social.telegram && " | "}
-                {social.telegram && (
-                  <Link href={social.telegram} className="text-[#D4AF37] no-underline">
-                    Telegram
-                  </Link>
-                )}
-                {(social.whatsapp || social.telegram) && social.tiktok && " | "}
-                {social.tiktok && (
-                  <Link href={social.tiktok} className="text-[#D4AF37] no-underline">
-                    TikTok
-                  </Link>
-                )}
+                {SOCIAL_LINKS.map((link, index) => (
+                  <span key={link.icon}>
+                    {index > 0 ? " | " : null}
+                    <Link href={link.href} className="text-[#D4AF37] no-underline">
+                      {link.label}
+                    </Link>
+                  </span>
+                ))}
               </Text>
               <Text className="m-[8px] text-center text-[12px] text-[#A1A1AA]">
                 <Link href={`${effectiveUrl}/privacy`} className="text-[#A1A1AA] underline">
@@ -144,7 +135,7 @@ export function BaseEmail({
                 </Link>
               </Text>
               <Text className="m-[24px] text-center text-[11px] text-[#A1A1AA]">
-                &copy; {new Date().getFullYear()} Luxero. All rights reserved.
+                &copy; {new Date().getFullYear()} {BRAND_NAME}. All rights reserved.
               </Text>
             </Section>
           </Container>

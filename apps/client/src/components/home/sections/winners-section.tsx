@@ -1,4 +1,4 @@
-import type { Winner } from "@luxero/types";
+import type { Winner } from "@oc/types";
 import { takeRecentWinners } from "@/lib/home-winners";
 import { WinnersShowcase } from "../WinnersShowcase";
 

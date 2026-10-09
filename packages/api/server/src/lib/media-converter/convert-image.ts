@@ -1,4 +1,4 @@
-import type { MediaConverterImageSettings } from "@luxero/types";
+import type { MediaConverterImageSettings } from "@oc/types";
 import sharp from "sharp";
 import { replaceKeyExtension } from "./scope";
 

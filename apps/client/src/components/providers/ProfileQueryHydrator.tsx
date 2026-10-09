@@ -1,6 +1,6 @@
 "use client";
 
-import { queryKeys } from "@luxero/api-client";
+import { queryKeys } from "@oc/api-client";
 import { useQueryClient } from "@tanstack/react-query";
 import { useLayoutEffect } from "react";
 import { useProfileInitialData } from "@/hooks/useProfileInitialData";

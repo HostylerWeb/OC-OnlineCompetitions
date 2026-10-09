@@ -8,8 +8,8 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
-      "@luxero/server": path.resolve(__dirname, "./src"),
-      "@luxero/api-server": path.resolve(__dirname, "./src"),
+      "@oc/server": path.resolve(__dirname, "./src"),
+      "@oc/api-server": path.resolve(__dirname, "./src"),
     },
   },
   test: {

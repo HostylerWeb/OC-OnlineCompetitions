@@ -1,21 +1,21 @@
-import dbConnect from "@luxero/api-infra/db";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { runtimeConfig } from "@luxero/api-infra/runtime-config";
-import { captureRouteError, flushSentry, initSentry } from "@luxero/api-infra/sentry";
-import { sessionMiddleware } from "@luxero/api-server/middleware/auth";
-import { csrfProtection } from "@luxero/api-server/middleware/csrf";
+import dbConnect from "@oc/api-infra/db";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { runtimeConfig } from "@oc/api-infra/runtime-config";
+import { captureRouteError, flushSentry, initSentry } from "@oc/api-infra/sentry";
+import { sessionMiddleware } from "@oc/api-server/middleware/auth";
+import { csrfProtection } from "@oc/api-server/middleware/csrf";
 import {
   emailRateLimit,
   paymentRateLimit,
   rateLimitBodyReader,
-} from "@luxero/api-server/middleware/rate-limit";
-import shopPayments from "@luxero/api-server/routes/client/payments";
-import shopCart from "@luxero/api-server/routes/client/shop/cart";
-import shopCategories from "@luxero/api-server/routes/client/shop/categories";
-import shopCheckout from "@luxero/api-server/routes/client/shop/checkout";
-import shopOrders from "@luxero/api-server/routes/client/shop/orders";
-import shopProducts from "@luxero/api-server/routes/client/shop/products";
-import { getClientAuth } from "@luxero/auth-admin";
+} from "@oc/api-server/middleware/rate-limit";
+import shopPayments from "@oc/api-server/routes/client/payments";
+import shopCart from "@oc/api-server/routes/client/shop/cart";
+import shopCategories from "@oc/api-server/routes/client/shop/categories";
+import shopCheckout from "@oc/api-server/routes/client/shop/checkout";
+import shopOrders from "@oc/api-server/routes/client/shop/orders";
+import shopProducts from "@oc/api-server/routes/client/shop/products";
+import { getClientAuth } from "@oc/auth-admin";
 import { Hono } from "hono";
 import { cors } from "hono/cors";
 import type { ContentfulStatusCode } from "hono/utils/http-status";
@@ -125,8 +125,8 @@ app.use("*", async (c, next) => {
 // CORS
 const ALLOWED_ORIGIN_PATTERNS = [
   /^http:\/\/localhost(:\d+)?$/,
-  /^https:\/\/.*\.luxero\.win$/,
-  /^https:\/\/luxero\.win$/,
+  /^https:\/\/.*\.onlinecompetitions\.win$/,
+  /^https:\/\/onlinecompetitions\.win$/,
 ];
 
 app.use(

@@ -1,5 +1,5 @@
 {
-  "name": "@luxero/api-referrals",
+  "name": "@oc/api-referrals",
   "private": true,
   "type": "module",
   "exports": {
@@ -15,12 +15,12 @@
     "test:ci": "vitest run"
   },
   "dependencies": {
-    "@luxero/api-db": "workspace:*",
-    "@luxero/api-email": "workspace:*",
-    "@luxero/api-infra": "workspace:*",
-    "@luxero/api-logger": "workspace:*",
-    "@luxero/api-tickets": "workspace:*",
-    "@luxero/types": "workspace:*",
+    "@oc/api-db": "workspace:*",
+    "@oc/api-email": "workspace:*",
+    "@oc/api-infra": "workspace:*",
+    "@oc/api-logger": "workspace:*",
+    "@oc/api-tickets": "workspace:*",
+    "@oc/types": "workspace:*",
     "@react-email/render": "^2.0.8",
     "mongoose": "^9.6.0"
   },

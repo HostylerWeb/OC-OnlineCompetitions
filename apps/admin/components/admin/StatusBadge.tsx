@@ -1,4 +1,4 @@
-import { Check, Clock, X } from "@luxero/icons";
+import { Check, Clock, X } from "@oc/icons";
 import { cn } from "@/lib/utils";
 import { Badge } from "../ui/badge";
 

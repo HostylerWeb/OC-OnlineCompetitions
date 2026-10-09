@@ -1,6 +1,6 @@
-import { createApiAxios } from "@luxero/api-axios";
-import { getEnv } from "@luxero/env/next";
-import type { ApiResponse } from "@luxero/types";
+import { createApiAxios } from "@oc/api-axios";
+import { getEnv } from "@oc/env/next";
+import type { ApiResponse } from "@oc/types";
 import type { AxiosError } from "axios";
 import { getSessionSnapshot, setSessionLoggingOut } from "./auth/session-snapshot";
 import { getGlobalQueryClient } from "./query-client";

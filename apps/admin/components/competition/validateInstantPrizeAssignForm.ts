@@ -1,4 +1,4 @@
-import type { InstantPrizeCapacityResponse } from "@luxero/types";
+import type { InstantPrizeCapacityResponse } from "@oc/types";
 import { isProductPrizeSetup, type InstantPrizeSetupMode } from "./instant-prize-capacity-guards";
 
 export interface InstantPrizeAssignFormValues {

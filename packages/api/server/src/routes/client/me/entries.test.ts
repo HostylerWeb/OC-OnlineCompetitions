@@ -7,7 +7,7 @@ const __mock = vi.hoisted(() => ({
   distinct: vi.fn(),
 }));
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   Ticket: {
     countDocuments: (...args: unknown[]) => __mock.countDocuments(...args),
     distinct: (...args: unknown[]) => __mock.distinct(...args),

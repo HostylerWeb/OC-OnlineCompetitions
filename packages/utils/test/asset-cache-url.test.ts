@@ -13,13 +13,13 @@ describe("assetCacheVersion", () => {
 
 describe("withAssetCacheVersion", () => {
   it("appends v from updatedAt", () => {
-    const url = "http://localhost:9011/luxero-assets/prizes/abc.webp";
+    const url = "http://localhost:9011/onlinecompetitions-assets/prizes/abc.webp";
     const v = Date.parse("2024-06-01T00:00:00.000Z");
     expect(withAssetCacheVersion(url, "2024-06-01T00:00:00.000Z")).toBe(`${url}?v=${v}`);
   });
 
   it("infers v from versioned avatar key", () => {
-    const url = "http://localhost:9011/luxero-assets/avatars/u1/1710000000000-abc123.webp";
+    const url = "http://localhost:9011/onlinecompetitions-assets/avatars/u1/1710000000000-abc123.webp";
     expect(withAssetCacheVersion(url)).toBe(`${url}?v=1710000000000`);
   });
 

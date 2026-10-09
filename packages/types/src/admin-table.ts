@@ -4,10 +4,10 @@
  *
  * Usage:
  *   // BE: import sortable fields for parseSort
- *   import { ADMIN_PROMO_CODE_SORTABLE } from "@luxero/types";
+ *   import { ADMIN_PROMO_CODE_SORTABLE } from "@oc/types";
  *
  *   // FE: import config to build column defs and validate params
- *   import { ADMIN_PROMO_CODE_TABLE } from "@luxero/types";
+ *   import { ADMIN_PROMO_CODE_TABLE } from "@oc/types";
  */
 
 /* ─── Field unions ─────────────────────────────────────────────────────────── */

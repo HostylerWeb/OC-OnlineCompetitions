@@ -1,8 +1,8 @@
-import { Profile } from "@luxero/api-db/models";
-import dbConnect from "@luxero/api-infra/db";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { error, success } from "@luxero/api-infra/response";
-import { validatePendingReferralCode, validateReferralCode } from "@luxero/api-tickets/promo-codes";
+import { Profile } from "@oc/api-db/models";
+import dbConnect from "@oc/api-infra/db";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { error, success } from "@oc/api-infra/response";
+import { validatePendingReferralCode, validateReferralCode } from "@oc/api-tickets/promo-codes";
 import { Hono } from "hono";
 
 const app = new Hono();

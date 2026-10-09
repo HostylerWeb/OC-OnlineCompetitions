@@ -1,6 +1,6 @@
 import { type ComponentType, lazy } from "react";
 
-const CHUNK_RELOAD_SESSION_KEY = "luxero-chunk-reload";
+const CHUNK_RELOAD_SESSION_KEY = "onlinecompetitions-chunk-reload";
 
 function isChunkLoadError(error: unknown): boolean {
   if (!(error instanceof Error)) return false;

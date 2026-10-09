@@ -1,61 +1,74 @@
-# Production infrastructure for Luxero on a single VPS.
-# Deploy on server: /var/www/luxero/docker-compose.infra.yml
-# Secrets: /root/luxero-secrets.env (chmod 600, not in git)
-# Network: luxero_net — attach app containers to this network.
+# Production infrastructure for Online Competitions on a single VPS.
+# On server: /var/www/onlinecompetitions/docker-compose.infra.yml
+# Secrets: /root/onlinecompetitions-secrets.env (chmod 600)
+# Before first `up`: chown 999:999 data/mongo-keyfile && chmod 400
+# MinIO: build from deploy/docker/minio (Docker Hub minio/* often blocked on VPS hosts)
 
-name: luxero-infra
+name: onlinecompetitions-infra
 
 services:
   mongo:
     image: mongo:7
-    container_name: luxero_mongo
+    container_name: onlinecompetitions_mongo
     restart: unless-stopped
     env_file:
-      - /root/luxero-secrets.env
+      - /root/onlinecompetitions-secrets.env
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}
     command: ["mongod", "--replSet", "rs0", "--bind_ip_all", "--keyFile", "/etc/mongo-keyfile"]
     volumes:
-      - /var/www/luxero/data/mongo:/data/db
-      - /var/www/luxero/data/mongo-keyfile:/etc/mongo-keyfile:ro
+      - /var/www/onlinecompetitions/data/mongo:/data/db
+      - /var/www/onlinecompetitions/data/mongo-keyfile:/etc/mongo-keyfile:ro
     ports:
       - "127.0.0.1:27017:27017"
     healthcheck:
-      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      test:
+        [
+          "CMD",
+          "mongosh",
+          "-u",
+          "root",
+          "-p",
+          "${MONGO_ROOT_PASSWORD}",
+          "--authenticationDatabase",
+          "admin",
+          "--eval",
+          "db.adminCommand('ping')",
+        ]
       interval: 10s
       timeout: 5s
       retries: 10
-      start_period: 40s
+      start_period: 60s
 
   mongo-init:
     image: mongo:7
-    container_name: luxero_mongo_init
+    container_name: onlinecompetitions_mongo_init
     depends_on:
       mongo:
         condition: service_healthy
     restart: "no"
+    env_file:
+      - /root/onlinecompetitions-secrets.env
     volumes:
-      - /var/www/luxero/scripts/mongo-init.js:/init.js:ro
+      - /var/www/onlinecompetitions/scripts/mongo-init.js:/init.js:ro
     entrypoint: >
       /bin/sh -c "
       sleep 2;
-      mongosh 'mongodb://mongo:27017/admin' --quiet /init.js || true;
+      mongosh \"mongodb://root:$${MONGO_ROOT_PASSWORD}@mongo:27017/admin?authSource=admin\" --quiet /init.js || true;
       exit 0;
       "
 
   redis:
     image: redis:7-alpine
-    container_name: luxero_redis
+    container_name: onlinecompetitions_redis
     restart: unless-stopped
     env_file:
-      - /root/luxero-secrets.env
-    environment:
-      REDIS_PASSWORD: ${REDIS_PASSWORD}
+      - /root/onlinecompetitions-secrets.env
     command: >
       sh -c 'redis-server --requirepass "$$REDIS_PASSWORD" --appendonly yes --maxmemory 512mb --maxmemory-policy allkeys-lru'
     volumes:
-      - /var/www/luxero/data/redis:/data
+      - /var/www/onlinecompetitions/data/redis:/data
     ports:
       - "127.0.0.1:6379:6379"
     healthcheck:
@@ -64,6 +77,52 @@ services:
       timeout: 3s
       retries: 5
 
+  minio:
+    build:
+      context: /var/www/onlinecompetitions/docker/minio
+      dockerfile: Dockerfile.server
+    image: onlinecompetitions/minio:local
+    container_name: onlinecompetitions_minio
+    restart: unless-stopped
+    env_file:
+      - /root/onlinecompetitions-secrets.env
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+    command: server /data/minio --console-address ":9001"
+    volumes:
+      - /var/www/onlinecompetitions/data/minio:/data
+    ports:
+      - "127.0.0.1:9000:9000"
+      - "127.0.0.1:9001:9001"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:9000/minio/health/live"]
+      interval: 10s
+      timeout: 5s
+      retries: 8
+      start_period: 20s
+
+  minio-init:
+    build:
+      context: /var/www/onlinecompetitions/docker/minio
+      dockerfile: Dockerfile.mc
+    image: onlinecompetitions/mc:local
+    container_name: onlinecompetitions_minio_init
+    depends_on:
+      minio:
+        condition: service_healthy
+    restart: "no"
+    env_file:
+      - /root/onlinecompetitions-secrets.env
+    entrypoint: >
+      /bin/sh -c "
+      sleep 3;
+      mc alias set local http://minio:9000 $$MINIO_ROOT_USER $$MINIO_ROOT_PASSWORD;
+      mc mb local/onlinecompetitions-assets --ignore-existing;
+      mc anonymous set download local/onlinecompetitions-assets;
+      exit 0;
+      "
+
 networks:
   default:
-    name: luxero_net
+    name: onlinecompetitions_net

@@ -1,5 +1,5 @@
 {
-  "name": "@luxero/api-admin",
+  "name": "@oc/api-admin",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -20,11 +20,11 @@
     "format": "biome format --write ."
   },
   "dependencies": {
-    "@luxero/api-axios": "workspace:*",
-    "@luxero/env": "workspace:*",
-    "@luxero/icons": "workspace:*",
-    "@luxero/types": "workspace:*",
-    "@luxero/utils": "workspace:*",
+    "@oc/api-axios": "workspace:*",
+    "@oc/env": "workspace:*",
+    "@oc/icons": "workspace:*",
+    "@oc/types": "workspace:*",
+    "@oc/utils": "workspace:*",
     "@sentry/node": "^8.55.2",
     "@sentry/react": "^8.55.2",
     "@tanstack/react-query": "^5.100.6",

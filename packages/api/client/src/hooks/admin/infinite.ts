@@ -1,4 +1,4 @@
-import type { AdminOrder, AdminUser } from "@luxero/types";
+import type { AdminOrder, AdminUser } from "@oc/types";
 import { queryKeys } from "../../keys";
 import { createInfiniteAdminQuery } from "../../lib/pagination";
 

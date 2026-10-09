@@ -1,4 +1,4 @@
-import { ArrowRight, type LucideIcon, Shield, Users, Zap } from "@luxero/icons";
+import { ArrowRight, type LucideIcon, Shield, Users, Zap } from "@oc/icons";
 import { GoldOutlineButton } from "@/components/buttons";
 import { Link } from "@/components/Link";
 import { type TranslationKey, useTranslation } from "@/lib/i18n";

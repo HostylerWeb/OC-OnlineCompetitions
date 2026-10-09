@@ -1,10 +1,10 @@
-import { Competition } from "@luxero/api-db/models";
-import dbConnect from "@luxero/api-infra/db";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { parsePagination } from "@luxero/api-infra/pagination";
-import { error, paginated } from "@luxero/api-infra/response";
-import { captureRouteError } from "@luxero/api-infra/sentry";
-import { enrichCompetitionsWithTicketStats } from "@luxero/api-tickets/competition-stats";
+import { Competition } from "@oc/api-db/models";
+import dbConnect from "@oc/api-infra/db";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { parsePagination } from "@oc/api-infra/pagination";
+import { error, paginated } from "@oc/api-infra/response";
+import { captureRouteError } from "@oc/api-infra/sentry";
+import { enrichCompetitionsWithTicketStats } from "@oc/api-tickets/competition-stats";
 import { Hono } from "hono";
 
 const app = new Hono();

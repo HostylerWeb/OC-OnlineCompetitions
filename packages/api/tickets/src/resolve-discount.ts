@@ -1,10 +1,10 @@
-import { Order } from "@luxero/api-db/models";
-import { createLogger } from "@luxero/api-logger";
+import { Order } from "@oc/api-db/models";
+import { createLogger } from "@oc/api-logger";
 import {
   calculateReferralDiscountAmount,
   validatePromoCode,
   validateReferralCode,
-} from "@luxero/api-tickets/promo-codes";
+} from "@oc/api-tickets/promo-codes";
 
 export interface ResolvedCheckoutDiscount {
   discount: number;

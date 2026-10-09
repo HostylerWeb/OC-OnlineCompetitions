@@ -1,8 +1,8 @@
 "use client";
 
-import { useCompetitionStream, useInfiniteEntries } from "@luxero/api-client";
-import { ArrowLeft, RefreshCw, Search, Ticket } from "@luxero/icons";
-import { formatTicketNumber, getTicketsSold, OrderNumberCell } from "@luxero/utils";
+import { useCompetitionStream, useInfiniteEntries } from "@oc/api-client";
+import { ArrowLeft, RefreshCw, Search, Ticket } from "@oc/icons";
+import { formatTicketNumber, getTicketsSold, OrderNumberCell } from "@oc/utils";
 import { X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -102,7 +102,7 @@ export default function Page() {
 
   return (
     <ErrorBoundary onError={(_err) => setError(_err)}>
-      <div className="luxero-container-medium pb-8">
+      <div className="oc-container-medium pb-8">
         <div className="dashboard-root py-5 lg:py-8">
           <Link
             href="/entries"

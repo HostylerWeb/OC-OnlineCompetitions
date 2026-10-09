@@ -1,10 +1,10 @@
 "use client";
 
-import { useWinners } from "@luxero/api-client";
+import { useWinners } from "@oc/api-client";
 
-import { ArrowRight, Calendar, MapPin, Sparkles, Ticket, Trophy } from "@luxero/icons";
-import type { Winner } from "@luxero/types";
-import { cn, formatDate, getDisplayName } from "@luxero/utils";
+import { ArrowRight, Calendar, MapPin, Sparkles, Ticket, Trophy } from "@oc/icons";
+import type { Winner } from "@oc/types";
+import { cn, formatDate, getDisplayName } from "@oc/utils";
 import { useMemo, useState } from "react";
 import { GoldOutlineButton } from "@/components/buttons";
 import { ImagePreviewDialog } from "@/components/image-preview-dialog";
@@ -320,7 +320,7 @@ export default function Page() {
   const showHero = !isLoading && hasWinnerData;
 
   return (
-    <div className="luxero-container-wide pb-10 animate-fade-in">
+    <div className="oc-container-wide pb-10 animate-fade-in">
       {showHero ? (
         <section className="relative overflow-hidden py-8 sm:py-12 lg:py-16">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-gold/10 to-transparent" />

@@ -1,20 +1,21 @@
 import type { Metadata } from "next";
+import { CompanyContactEmail, RegisteredOfficeAddress } from "@/components/company-details";
+import { CONTACT_PHONE_HOURS } from "@oc/utils";
 
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with LUXERO. General inquiries, order support, returns, and press contacts.",
+    "Get in touch with OC. General inquiries, order support, returns, and press contacts.",
   openGraph: {
-    title: "Contact — Luxero",
+    title: "Contact — Online Competitions",
     description:
-      "Get in touch with LUXERO. General inquiries, order support, returns, and press contacts.",
+      "Get in touch with OC. General inquiries, order support, returns, and press contacts.",
   },
 };
 
 export default function ContactPage() {
   return (
-    <main className="luxero-container py-12">
-      {/* Header */}
+    <main className="oc-container py-12">
       <section className="mx-auto max-w-3xl text-center">
         <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-gold">
           Get in Touch
@@ -26,43 +27,31 @@ export default function ContactPage() {
         </p>
       </section>
 
-      {/* Email Contacts */}
       <section className="mx-auto mt-16 max-w-2xl">
         <h2 className="text-2xl font-bold tracking-tight">Email</h2>
         <p className="mt-2 text-sm text-muted-foreground">
           We aim to respond within 24 hours on business days.
         </p>
         <div className="mt-8 space-y-6">
-          <ContactRow label="General Inquiries" email="contact@luxero.win" />
-          <ContactRow label="Order Support" email="contact@luxero.win" />
-          <ContactRow label="Returns" email="contact@luxero.win" />
-          <ContactRow label="Press" email="contact@luxero.win" />
+          <ContactRow label="General Inquiries" />
+          <ContactRow label="Order Support" />
+          <ContactRow label="Returns" />
+          <ContactRow label="Press" />
         </div>
       </section>
 
-      {/* Business Details */}
       <section className="mx-auto mt-16 max-w-2xl">
         <h2 className="text-2xl font-bold tracking-tight">Business Details</h2>
         <div className="mt-6 grid gap-8 sm:grid-cols-2">
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-gold">Address</h3>
-            <address className="mt-2 not-italic text-muted-foreground leading-relaxed">
-              107 Dalriada Crescent
-              <br />
-              Motherwell, ML1 3XT
-              <br />
-              Scotland, United Kingdom
-            </address>
+            <RegisteredOfficeAddress className="mt-2 not-italic text-muted-foreground leading-relaxed" />
           </div>
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-gold">
               Customer Service Hours
             </h3>
-            <p className="mt-2 text-muted-foreground leading-relaxed">
-              Monday — Friday
-              <br />
-              9:00 — 18:00 GMT
-            </p>
+            <p className="mt-2 text-muted-foreground leading-relaxed">{CONTACT_PHONE_HOURS}</p>
           </div>
         </div>
       </section>
@@ -74,16 +63,11 @@ export default function ContactPage() {
   );
 }
 
-function ContactRow({ label, email }: { label: string; email: string }) {
+function ContactRow({ label }: { label: string }) {
   return (
     <div className="flex items-center justify-between rounded-lg border border-border-subtle px-5 py-4 transition-colors hover:border-gold/40">
       <span className="font-medium text-sm">{label}</span>
-      <a
-        href={`mailto:${email}`}
-        className="text-sm text-gold underline-offset-2 transition-colors hover:underline"
-      >
-        {email}
-      </a>
+      <CompanyContactEmail className="text-sm text-gold underline-offset-2 transition-colors hover:underline" />
     </div>
   );
 }

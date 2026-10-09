@@ -1,7 +1,7 @@
 "use client";
 
-import { MoreHorizontal } from "@luxero/icons";
-import { formatDate } from "@luxero/utils";
+import { MoreHorizontal } from "@oc/icons";
+import { formatDate } from "@oc/utils";
 import { type ColumnDef, type PaginationState } from "@tanstack/react-table";
 import { useMemo, useState } from "react";
 import { toast } from "sonner";

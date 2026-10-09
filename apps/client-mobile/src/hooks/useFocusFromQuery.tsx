@@ -5,7 +5,7 @@ import {
   FRONTEND_CONTEXTUAL_ERRORS,
   resolveContextualError,
   sanitizeReturnTo,
-} from "@luxero/api-client";
+} from "@oc/api-client";
 import { type RefObject, useEffect, useState } from "react";
 import { useConsumeQueryParams } from "@/components/ui";
 import { Alert, AlertDescription } from "@/components/ui/alert";

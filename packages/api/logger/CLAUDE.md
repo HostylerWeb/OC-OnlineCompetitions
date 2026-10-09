@@ -1,10 +1,10 @@
-# @luxero/api-logger
+# @oc/api-logger
 
 Lightweight, namespaced structured logging utility.
 
 ## Source of truth
 
-`luxero-api/packages/logger/src` — synced to this repo.
+`onlinecompetitions-api/packages/logger/src` — synced to this repo.
 
 ## API
 

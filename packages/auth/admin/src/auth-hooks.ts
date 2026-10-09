@@ -1,7 +1,7 @@
-import { fireConversion, getAffiliateContext } from "@luxero/api-affiliate";
-import { dbConnect } from "@luxero/api-db";
-import { Cart, Order, Profile, ReferralPurchase, Ticket } from "@luxero/api-db/models";
-import { CH, invalidateByChannelSafe, invalidateUser } from "@luxero/api-infra/cache";
+import { fireConversion, getAffiliateContext } from "@oc/api-affiliate";
+import { dbConnect } from "@oc/api-db";
+import { Cart, Order, Profile, ReferralPurchase, Ticket } from "@oc/api-db/models";
+import { CH, invalidateByChannelSafe, invalidateUser } from "@oc/api-infra/cache";
 import { Types } from "mongoose";
 import { maybeSyncAvatarFromAuthUser } from "./avatar-sync";
 import {
@@ -10,7 +10,7 @@ import {
   transferProfileData,
 } from "./transfer-profile-data";
 
-const GUEST_EMAIL_SUFFIX = "@guest.luxero.local";
+const GUEST_EMAIL_SUFFIX = "@guest.onlinecompetitions.local";
 
 export function isGuestProfileEmail(email?: string | null): boolean {
   return Boolean(email?.endsWith(GUEST_EMAIL_SUFFIX));
@@ -39,7 +39,7 @@ export type HookAuthUser = {
   lastName?: string | null;
 };
 
-export async function createLuxeroProfile(user: HookAuthUser): Promise<void> {
+export async function createOnlineCompetitionsProfile(user: HookAuthUser): Promise<void> {
   if (user.isAnonymous) return;
 
   await dbConnect();
@@ -63,7 +63,7 @@ export async function createLuxeroProfile(user: HookAuthUser): Promise<void> {
 
       // Transfer all ownership-based data from guest to verified user
       const { transferredCounts } = await transferProfileData(guestId, user.id);
-      console.log("[createLuxeroProfile] Transferred data from guest", {
+      console.log("[createOnlineCompetitionsProfile] Transferred data from guest", {
         guestId,
         userId: user.id,
         ...transferredCounts,
@@ -149,7 +149,7 @@ export async function createLuxeroProfile(user: HookAuthUser): Promise<void> {
   try {
     await reassignGuestOrdersByEmail(user.email, user.id);
   } catch (err) {
-    console.error("[createLuxeroProfile] Failed to reassign guest orders:", err);
+    console.error("[createOnlineCompetitionsProfile] Failed to reassign guest orders:", err);
   }
 }
 
@@ -161,9 +161,9 @@ export async function createGuestCheckoutProfile(
 
   const email = opts.guestEmail
     ? canonicalizeEmail(opts.guestEmail)
-    : `guest-${userId}@guest.luxero.local`;
+    : `guest-${userId}@guest.onlinecompetitions.local`;
 
-  if (!email.endsWith("@guest.luxero.local")) {
+  if (!email.endsWith("@guest.onlinecompetitions.local")) {
     const existingVerified = await Profile.findOne({
       email,
       isVerified: true,
@@ -205,7 +205,7 @@ export async function createGuestCheckoutProfile(
     if (opts.phone) update.phone = opts.phone;
     if (opts.dob) {
       const { buildDateOfBirthProfileUpdate } = await import(
-        "@luxero/api-compliance/age-verification"
+        "@oc/api-compliance/age-verification"
       );
       const dobFields = await buildDateOfBirthProfileUpdate(opts.dob);
       if (dobFields) Object.assign(update, dobFields);
@@ -242,7 +242,7 @@ export async function createGuestCheckoutProfile(
 
   if (opts.dob) {
     const { buildDateOfBirthProfileUpdate } = await import(
-      "@luxero/api-compliance/age-verification"
+      "@oc/api-compliance/age-verification"
     );
     const dobFields = await buildDateOfBirthProfileUpdate(opts.dob);
     if (dobFields) {
@@ -297,7 +297,7 @@ export async function applyReferralToProfile(
   if (!profile) {
     profile = await Profile.create({
       _id: userId,
-      email: `guest-${userId}@guest.luxero.local`,
+      email: `guest-${userId}@guest.onlinecompetitions.local`,
       country: "GB",
       referredBy: referrer._id,
       referredByCode: code,
@@ -452,11 +452,11 @@ export async function mergeAnonymousAccount({
 
     if (!userCart) {
       anonCart.userId = new Types.ObjectId(newId);
-      const { finalizeCart } = await import("@luxero/api-tickets/cart");
+      const { finalizeCart } = await import("@oc/api-tickets/cart");
       await finalizeCart(newId, anonCart);
       await anonCart.save();
     } else {
-      const { mergeCartItem } = await import("@luxero/api-tickets/cart");
+      const { mergeCartItem } = await import("@oc/api-tickets/cart");
       for (const item of anonCart.items) {
         userCart.items = mergeCartItem(userCart.items, item);
       }
@@ -474,7 +474,7 @@ export async function mergeAnonymousAccount({
         userCart.referralDiscountPercent = anonCart.referralDiscountPercent;
       }
 
-      const { finalizeCart } = await import("@luxero/api-tickets/cart");
+      const { finalizeCart } = await import("@oc/api-tickets/cart");
       await finalizeCart(newId, userCart);
       await userCart.save();
       const deleted = await Cart.findOneAndDelete({
@@ -488,7 +488,7 @@ export async function mergeAnonymousAccount({
   }
 
   // Re-assign pending orders from anonymous user to new user
-  const { Order } = await import("@luxero/api-db/models/Order");
+  const { Order } = await import("@oc/api-db/models/Order");
   await Order.updateMany(
     { userId: new Types.ObjectId(anonId), status: { $in: ["pending", "processing"] } },
     { $set: { userId: new Types.ObjectId(newId) } }
@@ -503,7 +503,7 @@ export async function mergeAnonymousAccount({
   void invalidateByChannelSafe(CH.competitions, CH.competitionDetail, CH.entries).catch(() => {});
 
   // Transfer shop cart ownership
-  const { ShopCart, ShopOrder } = await import("@luxero/api-db/models");
+  const { ShopCart, ShopOrder } = await import("@oc/api-db/models");
   const anonShopCart = await ShopCart.findOne({ userId: new Types.ObjectId(anonId) }).exec();
   if (anonShopCart) {
     const userShopCart = await ShopCart.findOne({ userId: new Types.ObjectId(newId) }).exec();
@@ -652,7 +652,7 @@ export async function updateProfileFromSignUp(
 
   if (data.dateOfBirth) {
     const { buildDateOfBirthProfileUpdate } = await import(
-      "@luxero/api-compliance/age-verification"
+      "@oc/api-compliance/age-verification"
     );
     const dobFields = await buildDateOfBirthProfileUpdate(data.dateOfBirth);
     if (dobFields) Object.assign(profileUpdate, dobFields);

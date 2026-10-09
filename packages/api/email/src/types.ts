@@ -1,4 +1,4 @@
-import type { IEmailSettings } from "@luxero/api-db/models/EmailSettings";
+import type { IEmailSettings } from "@oc/api-db/models/EmailSettings";
 
 export type OrderItem = {
   competitionTitle: string;

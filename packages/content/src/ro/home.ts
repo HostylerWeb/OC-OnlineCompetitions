@@ -29,7 +29,7 @@ export const HOME_FEATURES: HomeFeature[] = [
     id: "community",
     title: "Comunitatea pe Primul Loc",
     description:
-      "Alătură-te miilor de jucători care au încredere în Luxero pentru concursuri corecte și captivante.",
+      "Alătură-te miilor de jucători care au încredere în Online Competitions pentru concursuri corecte și captivante.",
     icon: "Users",
     variant: "side",
   },

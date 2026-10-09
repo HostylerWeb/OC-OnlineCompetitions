@@ -1,4 +1,4 @@
-import type { SessionUser, User } from "@luxero/types";
+import type { SessionUser, User } from "@oc/types";
 import type { AuthClientSession } from "./client";
 import { authClient } from "./client";
 import { mapSessionUser } from "./session";

@@ -1,8 +1,8 @@
-import { type IProfile, Profile } from "@luxero/api-db/models";
-import type { IComplianceSettings } from "@luxero/api-db/models/ComplianceSettings";
-import { invalidateUser } from "@luxero/api-infra/cache";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import type { CheckoutComplianceHints } from "@luxero/types";
+import { type IProfile, Profile } from "@oc/api-db/models";
+import type { IComplianceSettings } from "@oc/api-db/models/ComplianceSettings";
+import { invalidateUser } from "@oc/api-infra/cache";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import type { CheckoutComplianceHints } from "@oc/types";
 import { isDobMeetsMinAge } from "./age-verification";
 import { ComplianceError } from "./ComplianceError";
 import {

@@ -1,6 +1,6 @@
-import { Profile } from "@luxero/api-db/models";
-import dbConnect from "@luxero/api-infra/db";
-import { getCurrentContext } from "@luxero/api-infra/env";
+import { Profile } from "@oc/api-db/models";
+import dbConnect from "@oc/api-infra/db";
+import { getCurrentContext } from "@oc/api-infra/env";
 import { Hono } from "hono";
 
 const app = new Hono();

@@ -42,7 +42,7 @@ function sha256Short(s: string, n = 16): string {
 }
 
 export function buildCacheKey(input: NormalizeKeyInput): string {
-  const ns = input.namespace ?? "luxero";
+  const ns = input.namespace ?? "onlinecompetitions";
   const userPart =
     input.scope === "user" || input.scope === "admin"
       ? (input.userId ?? "anon")

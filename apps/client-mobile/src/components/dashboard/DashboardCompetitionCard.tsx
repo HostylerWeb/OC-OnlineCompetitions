@@ -1,7 +1,7 @@
 "use client";
 
-import type { Competition } from "@luxero/types";
-import { cn } from "@luxero/utils";
+import type { Competition } from "@oc/types";
+import { cn } from "@oc/utils";
 import { CompetitionCard } from "./CompetitionCard";
 
 interface DashboardCompetitionCardProps {

@@ -6,11 +6,11 @@ import {
   useAdminBonusAwardTemplateMutations,
   useAdminCompetitions,
   useServerPagination,
-} from "@luxero/api-admin";
-import { Filter, Lock, MoreHorizontal, Plus, RefreshCw, Trash2, X } from "@luxero/icons";
-import type { AdminBonusAward } from "@luxero/types";
-import { ADMIN_BONUS_AWARD_TABLE } from "@luxero/types";
-import { getAvailableTickets } from "@luxero/utils";
+} from "@oc/api-admin";
+import { Filter, Lock, MoreHorizontal, Plus, RefreshCw, Trash2, X } from "@oc/icons";
+import type { AdminBonusAward } from "@oc/types";
+import { ADMIN_BONUS_AWARD_TABLE } from "@oc/types";
+import { getAvailableTickets } from "@oc/utils";
 import type { ColumnDef, SortingState, Updater, VisibilityState } from "@tanstack/react-table";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";

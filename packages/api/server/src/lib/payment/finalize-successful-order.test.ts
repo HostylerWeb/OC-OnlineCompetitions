@@ -56,7 +56,7 @@ const __mocks = vi.hoisted(() => {
   };
 });
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   Order: {
     findOneAndUpdate: __mocks.orderFindOneAndUpdate,
     findById: __mocks.orderFindById,
@@ -69,38 +69,38 @@ vi.mock("@luxero/api-db/models", () => ({
   },
 }));
 
-vi.mock("@luxero/api-affiliate", () => ({
+vi.mock("@oc/api-affiliate", () => ({
   fireConversion: __mocks.fireConversion,
   getAffiliateClickId: __mocks.getAffiliateClickId,
   getAffiliateSource: __mocks.getAffiliateSource,
 }));
 
-vi.mock("@luxero/api-payment-core", () => ({
+vi.mock("@oc/api-payment-core", () => ({
   processOrderFulfillment: __mocks.processOrderFulfillment,
   getItemsFromOrder: vi.fn(() => []),
 }));
 
-vi.mock("@luxero/api-compliance/spend-tracking", () => ({
+vi.mock("@oc/api-compliance/spend-tracking", () => ({
   releaseReservedSpend: __mocks.releaseReservedSpend,
 }));
 
-vi.mock("@luxero/api-infra/mongo-capabilities", () => ({
+vi.mock("@oc/api-infra/mongo-capabilities", () => ({
   withMongoTransactionOptional: __mocks.withMongoTransactionOptional,
 }));
 
-vi.mock("@luxero/api-logger", () => ({
+vi.mock("@oc/api-logger", () => ({
   createLogger: vi.fn(() => ({ debug: vi.fn(), warn: vi.fn() })),
 }));
 
-vi.mock("@luxero/api-server/lib/observability/metrics", () => ({
+vi.mock("@oc/api-server/lib/observability/metrics", () => ({
   incrementCounter: __mocks.incrementCounter,
 }));
 
-vi.mock("@luxero/api-server/lib/push", () => ({
+vi.mock("@oc/api-server/lib/push", () => ({
   sendPushNotification: __mocks.sendPushNotification,
 }));
 
-vi.mock("@luxero/api-tickets/load-cart", () => ({
+vi.mock("@oc/api-tickets/load-cart", () => ({
   clearCheckoutCartFromMetadata: __mocks.clearCheckoutCartFromMetadata,
 }));
 

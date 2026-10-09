@@ -1,7 +1,7 @@
 "use client";
 
-import { useAdminUserReferralStats } from "@luxero/api-admin";
-import { Search, User } from "@luxero/icons";
+import { useAdminUserReferralStats } from "@oc/api-admin";
+import { Search, User } from "@oc/icons";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -36,7 +36,7 @@ export function TestWithUserDrawer({
     setLookupUserId(null);
     if (!searchEmail.trim()) return;
     try {
-      const { api } = await import("@luxero/api-admin");
+      const { api } = await import("@oc/api-admin");
       const res = await api.get(
         `/api/admin/users?search=${encodeURIComponent(searchEmail.trim())}&limit=1`
       );

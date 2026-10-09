@@ -1,8 +1,8 @@
 "use client";
 
-import { useInfiniteEntries } from "@luxero/api-client";
-import { List, Trophy } from "@luxero/icons";
-import { formatTicketNumber } from "@luxero/utils";
+import { useInfiniteEntries } from "@oc/api-client";
+import { List, Trophy } from "@oc/icons";
+import { formatTicketNumber } from "@oc/utils";
 import { CompetitionEntryList } from "@/components/competitions/CompetitionEntryList";
 import {
   Dialog,

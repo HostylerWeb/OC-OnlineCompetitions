@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Luxero</string>
+	<string>Online Competitions</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -24,10 +24,10 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>win.luxero.mobile</string>
+			<string>win.onlinecompetitions.mobile</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>luxero</string>
+				<string>onlinecompetitions</string>
 			</array>
 		</dict>
 	</array>
@@ -41,14 +41,14 @@
 		<false/>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>luxero.win</key>
+			<key>onlinecompetitions.co.uk</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
 				<false/>
 				<key>NSIncludesSubdomains</key>
 				<true/>
 			</dict>
-			<key>api.luxero.win</key>
+			<key>api.onlinecompetitions.co.uk</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
 				<false/>

@@ -1,14 +1,14 @@
 "use client";
 
-import { useComplianceFeatures } from "@luxero/api-client";
+import { useComplianceFeatures } from "@oc/api-client";
 import {
   CARD_BRAND_COMPONENT,
   CARD_BRANDS,
   ChevronDown,
   Smartphone,
-  SocialIcon,
-} from "@luxero/icons";
-import { cn, SOCIAL_LINKS } from "@luxero/utils";
+  SocialLinksIconButtons,
+} from "@oc/icons";
+import { cn, getFooterCopyright } from "@oc/utils";
 import { useEffect, useMemo, useState } from "react";
 import { usePageContext } from "vike-react/usePageContext";
 import { Link } from "@/components/Link";
@@ -186,7 +186,7 @@ export function Footer() {
         "text-foreground"
       )}
     >
-      <div className="luxero-container-wide py-10 sm:py-14">
+      <div className="oc-container-wide py-10 sm:py-14">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           <div className="min-w-0 space-y-4 sm:col-span-2 lg:col-span-1">
             <Link
@@ -194,26 +194,15 @@ export function Footer() {
               className="inline-flex items-center text-xl font-bold text-gold hover:brightness-110 transition-all"
               data-umami-event="footer:logo-click"
             >
-              Luxero
+              Online Competitions
             </Link>
             <p className="text-sm text-muted-foreground max-w-xs leading-relaxed">
               {t("footer.companyDescription")}
             </p>
-            <div className="flex items-center gap-2">
-              {SOCIAL_LINKS.map((link) => (
-                <a
-                  key={link.icon}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={link.label}
-                  className="group flex size-8 items-center justify-center rounded-md border border-gold/20 bg-card/60 text-gold transition-colors hover:bg-gold hover:text-black hover:border-gold"
-                  data-umami-event="footer:social-click"
-                >
-                  <SocialIcon name={link.icon} className="size-4" />
-                </a>
-              ))}
-            </div>
+            <SocialLinksIconButtons
+              buttonClassName="size-8 rounded-md"
+              umamiEvent="footer:social-click"
+            />
             <div className="flex items-center gap-2">
               {dismissed && !installed && (
                 <button
@@ -273,7 +262,7 @@ export function Footer() {
         <div className="mt-10 flex flex-col items-center gap-5 border-t border-border/60 pt-6">
           <PaymentLogos />
           <p className="text-center text-xs text-muted-foreground">
-            {t("footer.copyright", { year })}
+            {getFooterCopyright(year)}
           </p>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { getEnv } from "@luxero/env/vike";
+import { getEnv } from "@oc/env/vike";
 
 export function getOrigin(): string {
   if (typeof window !== "undefined") return window.location.origin;

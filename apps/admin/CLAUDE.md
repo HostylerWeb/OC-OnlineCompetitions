@@ -4,9 +4,9 @@ Next.js 16 App Router with Hono API route handler, admin role gating.
 
 ## Auth
 
-- **Server:** `app/api/[[...route]]/route.ts` mounts a Hono app with `getAdminAuth()` from `@luxero/api-auth`
+- **Server:** `app/api/[[...route]]/route.ts` mounts a Hono app with `getAdminAuth()` from `@oc/api-auth`
 - **Middleware:** `proxy.ts` uses `betterFetch<Session>` to validate session + checks `role === "admin"`
-- **Client:** `authClient` + `useAuthStore` from `@luxero/api-client-next`
+- **Client:** `authClient` + `useAuthStore` from `@oc/api-client-next`
 - **Flows:** Email + password, Google OAuth
 - **Env (required):** `ADMIN_BETTER_AUTH_URL`, `ADMIN_URL`, `NEXT_PUBLIC_APP_URL`
 - **Unique `BETTER_AUTH_SECRET`** — admin sessions are isolated from customer sessions

@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
-import dbConnect from "@luxero/api-infra/db";
-import { captureRouteError } from "@luxero/api-infra/sentry";
-import { getNum } from "@luxero/env/server";
+import dbConnect from "@oc/api-infra/db";
+import { captureRouteError } from "@oc/api-infra/sentry";
+import { getNum } from "@oc/env/server";
 import mongoose from "mongoose";
 
 const DEFAULT_JOB_LOCK_TTL_MS = 15 * 60 * 1000;

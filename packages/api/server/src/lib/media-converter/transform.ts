@@ -1,6 +1,6 @@
-import type { IMediaConverterSettings } from "@luxero/api-db/models/MediaConverterSettings";
-import { createExternalAxios } from "@luxero/api-axios";
-import { deleteAsset, getPresignedDownloadUrl, headObject, uploadFile } from "@luxero/api-storage/s3";
+import type { IMediaConverterSettings } from "@oc/api-db/models/MediaConverterSettings";
+import { createExternalAxios } from "@oc/api-axios";
+import { deleteAsset, getPresignedDownloadUrl, headObject, uploadFile } from "@oc/api-storage/s3";
 import { convertImageToWebp } from "./convert-image";
 import { convertVideoToWebm } from "./convert-video";
 import {

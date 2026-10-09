@@ -7,8 +7,8 @@ import {
   useComplianceFeatures,
   useProfileAvatar,
   useSaferPlay,
-} from "@luxero/api-client";
-import type { LucideIcon } from "@luxero/icons";
+} from "@oc/api-client";
+import type { LucideIcon } from "@oc/icons";
 import {
   Gift,
   Home,
@@ -20,9 +20,9 @@ import {
   Trophy,
   User,
   Wallet,
-} from "@luxero/icons";
-import type { ApiResponse, PublicComplianceSettings } from "@luxero/types";
-import { getDisplayName, getProfileInitials } from "@luxero/utils";
+} from "@oc/icons";
+import type { ApiResponse, PublicComplianceSettings } from "@oc/types";
+import { getDisplayName, getProfileInitials } from "@oc/utils";
 import { useMemo } from "react";
 import { usePageContext } from "vike-react/usePageContext";
 import { UserAvatar } from "@/components/user-avatar";

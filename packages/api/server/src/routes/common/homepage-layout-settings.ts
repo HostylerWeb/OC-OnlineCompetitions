@@ -1,9 +1,9 @@
-import dbConnect from "@luxero/api-infra/db";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { error, success } from "@luxero/api-infra/response";
-import { createLogger } from "@luxero/api-logger";
-import { getHomepageLayoutSettings } from "@luxero/api-server/lib/settings/homepage-layout-settings";
-import { redisCacheRoute } from "@luxero/api-server/middleware/cache";
+import dbConnect from "@oc/api-infra/db";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { error, success } from "@oc/api-infra/response";
+import { createLogger } from "@oc/api-logger";
+import { getHomepageLayoutSettings } from "@oc/api-server/lib/settings/homepage-layout-settings";
+import { redisCacheRoute } from "@oc/api-server/middleware/cache";
 import { Hono } from "hono";
 
 const log = createLogger("homepage-layout-settings");

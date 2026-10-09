@@ -1,4 +1,4 @@
-Luxero — what was fixed
+Online Competitions — what was fixed
 =========================
 Branch: dell-laptop (work from this machine; do not merge to main without review)
 
@@ -40,9 +40,9 @@ Admin setup/emergency UI: It was embedding NEXT_PUBLIC_* secrets in the JS bundl
 
 Internal cron jobs (C2): It was using the same header secret as emergency recovery; now /api/internal/jobs requires X-Cron-Jobs-Secret + CRON_JOBS_SECRET (separate from ADMIN_EMERGENCY_SECRET); we fixed it because leaking one secret triggered all jobs and OTP flows.
 
-CSRF middleware (C6): It only blocked obvious cross-site Origin; now it blocks Sec-Fetch-Site cross-site/none, validates Origin allowlist, and requires same-site Origin or X-Luxero-Client: 1 when Origin is missing; we fixed it because cookie-authenticated POSTs from other sites could mutate state. (SameSite=None cookies unchanged — still rely on Origin checks + CSP.)
+CSRF middleware (C6): It only blocked obvious cross-site Origin; now it blocks Sec-Fetch-Site cross-site/none, validates Origin allowlist, and requires same-site Origin or X-Online Competitions-Client: 1 when Origin is missing; we fixed it because cookie-authenticated POSTs from other sites could mutate state. (SameSite=None cookies unchanged — still rely on Origin checks + CSP.)
 
-Browser API client: It was not identifying same-app requests; now axios sends X-Luxero-Client: 1; we fixed it because CSRF middleware needs a trusted marker for same-origin fetches without Origin.
+Browser API client: It was not identifying same-app requests; now axios sends X-Online Competitions-Client: 1; we fixed it because CSRF middleware needs a trusted marker for same-origin fetches without Origin.
 
 Rate limits: Admin/shop APIs lacked client rate limits; payment/discount validate were unthrottled; IP used spoofable X-Forwarded-For; now email/payment limits on admin/shop, discount paths throttled, IP from cf-connecting-ip/x-real-ip only; we fixed it because brute force and scraping were easier.
 

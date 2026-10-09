@@ -1,4 +1,4 @@
-import { cn } from "@luxero/utils";
+import { cn } from "@oc/utils";
 
 export function mobileNavItemClass(active?: boolean) {
   return cn(

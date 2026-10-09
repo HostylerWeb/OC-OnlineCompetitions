@@ -1,13 +1,13 @@
-import { Cart, Competition } from "@luxero/api-db/models";
-import { CheckoutError } from "@luxero/api-errors";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { createLogger } from "@luxero/api-logger";
-import { normalizeAnswerIndex } from "@luxero/api-payment-core";
+import { Cart, Competition } from "@oc/api-db/models";
+import { CheckoutError } from "@oc/api-errors";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { createLogger } from "@oc/api-logger";
+import { normalizeAnswerIndex } from "@oc/api-payment-core";
 import {
   mergeWalletIntoCheckoutItems,
   totalWalletTickets,
   type WalletTicketAllocation,
-} from "@luxero/api-tickets/wallet";
+} from "@oc/api-tickets/wallet";
 import { Types } from "mongoose";
 
 export interface CheckoutLineItem {

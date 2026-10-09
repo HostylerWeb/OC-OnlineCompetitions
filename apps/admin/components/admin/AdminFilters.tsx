@@ -1,6 +1,6 @@
 "use client";
 
-import { Search, X } from "@luxero/icons";
+import { Search, X } from "@oc/icons";
 import type { ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";

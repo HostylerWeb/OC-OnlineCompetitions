@@ -1,6 +1,6 @@
-import { Competition, Ticket, Winner } from "@luxero/api-db/models";
-import dbConnect from "@luxero/api-infra/db";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
+import { Competition, Ticket, Winner } from "@oc/api-db/models";
+import dbConnect from "@oc/api-infra/db";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
 import {
   buildCursorFilter,
   decodeCursor,
@@ -8,12 +8,12 @@ import {
   isPaginationRequested,
   parseCursorPagination,
   parsePagination,
-} from "@luxero/api-infra/pagination";
-import { cursorPaginated, error, paginated, success } from "@luxero/api-infra/response";
-import { captureRouteError } from "@luxero/api-infra/sentry";
-import { auth } from "@luxero/api-server/middleware/auth";
-import { type TicketLike, ticketsToEntryDtos } from "@luxero/api-tickets/ticket-mapper";
-import type { MyEntriesStats } from "@luxero/types";
+} from "@oc/api-infra/pagination";
+import { cursorPaginated, error, paginated, success } from "@oc/api-infra/response";
+import { captureRouteError } from "@oc/api-infra/sentry";
+import { auth } from "@oc/api-server/middleware/auth";
+import { type TicketLike, ticketsToEntryDtos } from "@oc/api-tickets/ticket-mapper";
+import type { MyEntriesStats } from "@oc/types";
 import { Hono } from "hono";
 import mongoose from "mongoose";
 

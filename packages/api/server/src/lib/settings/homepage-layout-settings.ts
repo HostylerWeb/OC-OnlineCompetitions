@@ -1,6 +1,6 @@
-import { HomepageLayoutSettings } from "@luxero/api-db/models";
-import type { IHomepageLayoutSettings } from "@luxero/api-db/models/HomepageLayoutSettings";
-import { DEFAULT_HOMEPAGE_SECTIONS } from "@luxero/types";
+import { HomepageLayoutSettings } from "@oc/api-db/models";
+import type { IHomepageLayoutSettings } from "@oc/api-db/models/HomepageLayoutSettings";
+import { DEFAULT_HOMEPAGE_SECTIONS } from "@oc/types";
 
 export const DEFAULT_HOMEPAGE_LAYOUT_SETTINGS: IHomepageLayoutSettings = {
   _id: "homepage_layout_settings",

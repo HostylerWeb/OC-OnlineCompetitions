@@ -16,7 +16,7 @@ const sizeClasses = {
 
 type DialogSize = keyof typeof sizeClasses;
 
-interface LuxeroDialogProps {
+interface BrandDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
 
@@ -41,7 +41,7 @@ interface LuxeroDialogProps {
   onConfirm?: () => void;
 }
 
-function LuxeroDialog({
+function BrandDialog({
   open,
   onOpenChange,
   mode = "dialog",
@@ -59,7 +59,7 @@ function LuxeroDialog({
   isPending,
   confirmLabel,
   onConfirm,
-}: LuxeroDialogProps) {
+}: BrandDialogProps) {
   if (mode === "fullscreen" || variant === "gallery") {
     if (!open) return null;
     const galleryImages = images.length > 0 ? images : [];
@@ -68,7 +68,7 @@ function LuxeroDialog({
     if (mode === "fullscreen") {
       return (
         <div
-          data-slot="luxero-dialog-fullscreen"
+          data-slot="brand-dialog-fullscreen"
           className="fixed inset-0 z-[100] bg-black flex flex-col"
         >
           <GalleryContent
@@ -199,5 +199,5 @@ function LuxeroDialog({
   );
 }
 
-export type { LuxeroDialogProps };
-export { LuxeroDialog };
+export type { BrandDialogProps };
+export { BrandDialog };

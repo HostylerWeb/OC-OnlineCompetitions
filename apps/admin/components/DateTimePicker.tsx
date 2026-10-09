@@ -1,6 +1,6 @@
 "use client";
 
-import { cn, formatDateIso, parseIsoDate } from "@luxero/utils";
+import { cn, formatDateIso, parseIsoDate } from "@oc/utils";
 import { format, isValid, parse } from "date-fns";
 import { CalendarIcon, ClockIcon } from "lucide-react";
 import { useMemo, useState } from "react";

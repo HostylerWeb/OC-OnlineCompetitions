@@ -1,6 +1,6 @@
 "use client";
 
-import { Wallet } from "@luxero/icons";
+import { Wallet } from "@oc/icons";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { formatCurrency, useTranslation } from "@/lib/i18n";

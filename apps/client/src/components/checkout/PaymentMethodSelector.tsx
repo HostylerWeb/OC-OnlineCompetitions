@@ -1,22 +1,22 @@
 "use client";
 
-import type { PaymentProviderId, PaymentProviderInfo } from "@luxero/types";
-import { cn } from "@luxero/utils";
+import type { PaymentProviderId, PaymentProviderInfo } from "@oc/types";
+import { cn } from "@oc/utils";
 import { memo, useCallback, useEffect, useMemo, useState } from "react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { roundCurrency } from "@luxero/utils";
+import { roundCurrency } from "@oc/utils";
 import { formatCurrency, useTranslation } from "@/lib/i18n";
 import { FreeCheckout } from "./free/FreeCheckout";
 import { SiteCreditFullCheckout } from "./site-credit/SiteCreditFullCheckout";
-import { Wallet } from "@luxero/icons";
+import { Wallet } from "@oc/icons";
 import { Spinner } from "@/components/ui/spinner";
 import { CARD_BRAND_COMPONENT, providerDisplay } from "./providers/display";
 import { checkoutComponents } from "./providers/registry";
 
-const STORAGE_KEY = "luxero:checkout:selected-provider";
+const STORAGE_KEY = "onlinecompetitions:checkout:selected-provider";
 export const SITE_CREDIT_WALLET_CHECKOUT_ID = "site_credit_wallet";
 
 export interface PaymentMethodSelectorCart {
@@ -49,10 +49,10 @@ export interface PaymentMethodSelectorProps {
   onProcessingChange?: (providerId: string, processing: boolean) => void;
   providers: PaymentProviderInfo[];
   providersError: Error | null;
-  configResponse?: import("@luxero/types").ApiResponse<
-    import("@luxero/types").PaymentConfigResponse
+  configResponse?: import("@oc/types").ApiResponse<
+    import("@oc/types").PaymentConfigResponse
   >;
-  providersResponse?: import("@luxero/types").ApiResponse<PaymentProviderInfo[]>;
+  providersResponse?: import("@oc/types").ApiResponse<PaymentProviderInfo[]>;
   configError: Error | null;
   onLocalBypass?: () => void;
   localBypassPending?: boolean;
@@ -255,10 +255,10 @@ interface ProviderCheckoutPanelProps {
   onBeforePayment?: () => Promise<void>;
   onPaymentError?: (error: { message: string; code?: string }) => void;
   onProcessingChange?: (providerId: string, processing: boolean) => void;
-  configResponse?: import("@luxero/types").ApiResponse<
-    import("@luxero/types").PaymentConfigResponse
+  configResponse?: import("@oc/types").ApiResponse<
+    import("@oc/types").PaymentConfigResponse
   >;
-  providersResponse?: import("@luxero/types").ApiResponse<PaymentProviderInfo[]>;
+  providersResponse?: import("@oc/types").ApiResponse<PaymentProviderInfo[]>;
   configError: Error | null;
   onLocalBypass?: () => void;
   localBypassPending?: boolean;

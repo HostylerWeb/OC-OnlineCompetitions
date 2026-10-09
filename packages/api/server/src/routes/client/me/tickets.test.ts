@@ -10,15 +10,15 @@ const __mock = vi.hoisted(() => ({
   grantInstantPrizes: vi.fn(async () => []),
 }));
 
-vi.mock("@luxero/api-infra/db", () => ({
+vi.mock("@oc/api-infra/db", () => ({
   default: vi.fn(async () => {}),
 }));
 
-vi.mock("@luxero/api-referrals/referral-ticket-validation", () => ({
+vi.mock("@oc/api-referrals/referral-ticket-validation", () => ({
   validateReferralTicketSpend: vi.fn(async () => ({ ok: true as const })),
 }));
 
-vi.mock("@luxero/api-server/middleware/auth", () => ({
+vi.mock("@oc/api-server/middleware/auth", () => ({
   isPublicRoute: () => false,
   resolveSession: vi.fn(async () => ({})),
   sessionMiddleware: async (_c: unknown, next: () => Promise<void>) => {
@@ -40,7 +40,7 @@ vi.mock("@luxero/api-server/middleware/auth", () => ({
   },
 }));
 
-vi.mock("@luxero/api-tickets/ticket-service", () => {
+vi.mock("@oc/api-tickets/ticket-service", () => {
   class TicketAvailabilityError extends Error {
     code = "TICKETS_SOLD_OUT";
   }
@@ -57,16 +57,16 @@ vi.mock("@luxero/api-tickets/ticket-service", () => {
   return { claimTicketsForOrder, TicketAvailabilityError };
 });
 
-vi.mock("@luxero/api-server/lib/payment/rollback-order-fulfillment", () => ({
+vi.mock("@oc/api-server/lib/payment/rollback-order-fulfillment", () => ({
   rollbackOrderFulfillment: (...args: unknown[]) => __mock.rollbackOrderFulfillment(...args),
 }));
 
-vi.mock("@luxero/api-payment-core", () => ({
+vi.mock("@oc/api-payment-core", () => ({
   grantInstantPrizeWinsForAssignedNumbers: (...args: unknown[]) =>
     __mock.grantInstantPrizes(...args),
 }));
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   Competition: {
     findById: vi.fn(() => ({
       lean: async () => ({

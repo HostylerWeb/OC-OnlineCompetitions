@@ -15,8 +15,8 @@ import {
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
-import { api } from "@luxero/api-admin";
-import { LayoutGrid, List, Plus, Upload } from "@luxero/icons";
+import { api } from "@oc/api-admin";
+import { LayoutGrid, List, Plus, Upload } from "@oc/icons";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import type { CompetitionImage } from "@/components/competition/types";

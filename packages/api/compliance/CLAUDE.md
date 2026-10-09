@@ -1,10 +1,10 @@
-# @luxero/api-compliance
+# @oc/api-compliance
 
 Regulatory compliance logic for UK gambling: age verification, card scheme detection, spend tracking, safer-play settings, and instant-win limits.
 
 ## Source of truth
 
-`luxero-api/packages/compliance/src` — synced to this repo.
+`onlinecompetitions-api/packages/compliance/src` — synced to this repo.
 
 ## Key modules
 
@@ -21,4 +21,4 @@ Regulatory compliance logic for UK gambling: age verification, card scheme detec
 
 ## Used by
 
-`@luxero/api-server` for compliance middleware in payment/ticket flows.
+`@oc/api-server` for compliance middleware in payment/ticket flows.

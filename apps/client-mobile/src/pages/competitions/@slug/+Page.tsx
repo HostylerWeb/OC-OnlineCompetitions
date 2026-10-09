@@ -15,7 +15,7 @@ import {
   useMyProfile,
   useMyReferrals,
   useUpdateCartItem,
-} from "@luxero/api-client";
+} from "@oc/api-client";
 import {
   ChevronDown,
   ChevronLeft,
@@ -32,15 +32,15 @@ import {
   Ticket,
   Trophy,
   ZoomIn,
-} from "@luxero/icons";
-import type { PublicBonusAwardEntry, PublicBonusAwardWinDTO } from "@luxero/types";
+} from "@oc/icons";
+import type { PublicBonusAwardEntry, PublicBonusAwardWinDTO } from "@oc/types";
 import {
   clampCartQuantity,
   getAvailableTickets,
   getMaxCartQuantity,
   getMaxPurchasable,
   getTicketsSold,
-} from "@luxero/utils";
+} from "@oc/utils";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "sonner";
@@ -52,7 +52,7 @@ import { CountdownTimer } from "@/components/competitions/CountdownTimer";
 import { InstantWinsSection } from "@/components/competitions/instant-wins";
 import RelatedCompetitions from "@/components/competitions/RelatedCompetitions";
 import { Link } from "@/components/Link";
-import { LuxeroDialog } from "@/components/luxero-dialog";
+import { BrandDialog } from "@/components/brand-dialog";
 import { ShareDialog } from "@/components/share-dialog";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -347,7 +347,7 @@ export default function Page() {
   if (!slug || isLoading) {
     if (!showCompactLoading) {
       return (
-        <div className="luxero-container-wide py-5 lg:py-8">
+        <div className="oc-container-wide py-5 lg:py-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <Skeleton className="aspect-[4/5] rounded-[2rem]" shimmer />
             <div className="space-y-6">
@@ -368,7 +368,7 @@ export default function Page() {
     }
 
     return (
-      <div className="luxero-container-wide py-5 lg:py-8">
+      <div className="oc-container-wide py-5 lg:py-8">
         <div className="flex items-center justify-center w-full py-20">
           <div className="text-center">
             <Spinner size="lg" className="mx-auto mb-4" />
@@ -381,7 +381,7 @@ export default function Page() {
 
   if (!competition) {
     return (
-      <div className="flex items-center justify-center w-full luxero-container-wide py-5 lg:py-8">
+      <div className="flex items-center justify-center w-full oc-container-wide py-5 lg:py-8">
         <div className="text-center">
           <h2 className="text-2xl font-bold mb-2">{t("competitions.detail.notFoundTitle")}</h2>
           <p className="text-muted-foreground mb-4">{t("competitions.detail.notFoundDesc")}</p>
@@ -406,7 +406,7 @@ export default function Page() {
 
   return (
     <>
-      <div className="luxero-container-wide py-4 lg:py-8 pb-20">
+      <div className="oc-container-wide py-4 lg:py-8 pb-20">
         <CompetitionInfo competition={competition} />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
@@ -1063,7 +1063,7 @@ export default function Page() {
         <CompetitionFaq competition={competition} />
       </div>
 
-      <LuxeroDialog
+      <BrandDialog
         open={lightboxOpen}
         onOpenChange={setLightboxOpen}
         mode="fullscreen"

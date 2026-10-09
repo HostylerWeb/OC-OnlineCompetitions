@@ -1,9 +1,9 @@
-import type { IShopOrder } from "@luxero/api-db/models";
-import { ShopOrder, ShopProduct, ShopProductVariant } from "@luxero/api-db/models";
-import { CH, invalidateByChannelSafe } from "@luxero/api-infra/cache";
-import { createLogger } from "@luxero/api-logger";
-import type { StripeWebhookEvent } from "@luxero/api-payment-stripe";
-import { sendShopOrderConfirmationEmail } from "@luxero/api-shop/email";
+import type { IShopOrder } from "@oc/api-db/models";
+import { ShopOrder, ShopProduct, ShopProductVariant } from "@oc/api-db/models";
+import { CH, invalidateByChannelSafe } from "@oc/api-infra/cache";
+import { createLogger } from "@oc/api-logger";
+import type { StripeWebhookEvent } from "@oc/api-payment-stripe";
+import { sendShopOrderConfirmationEmail } from "@oc/api-shop/email";
 import { storePendingWebhook } from "./providers/_shared/pending-webhooks";
 import type { WebhookResult } from "./providers/types";
 

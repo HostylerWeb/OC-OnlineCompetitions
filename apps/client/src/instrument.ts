@@ -1,4 +1,4 @@
-import { getEnv } from "@luxero/env/vike";
+import { getEnv } from "@oc/env/vike";
 import * as Sentry from "@sentry/react";
 import React from "react";
 import { matchRoutes, useLocation, useNavigationType } from "react-router";
@@ -30,10 +30,10 @@ if (typeof window !== "undefined" && dsn) {
         matchRoutes,
       }),
     ],
-    tracePropagationTargets: [/^\/api/, /^https:\/\/api\.(staging\.)?luxero\.win/],
+    tracePropagationTargets: [/^\/api/, /^https:\/\/api\.(staging\.)?onlinecompetitions\.win/],
   });
 
-  Sentry.setTag("app", "luxero-web");
+  Sentry.setTag("app", "onlinecompetitions-web");
   Sentry.setTag("domain", "web");
 }
 
@@ -43,5 +43,5 @@ export function isSentryEnabled(): boolean {
 
 export function captureSentryTestError(): void {
   if (!dsn) return;
-  Sentry.captureException(new Error("GlitchTip staging test error (luxero-web)"));
+  Sentry.captureException(new Error("GlitchTip staging test error (onlinecompetitions-web)"));
 }

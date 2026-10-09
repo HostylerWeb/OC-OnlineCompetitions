@@ -1,5 +1,5 @@
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { error } from "@luxero/api-infra/response";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { error } from "@oc/api-infra/response";
 import type { MiddlewareHandler } from "hono";
 
 const MUTATING = new Set(["POST", "PUT", "PATCH", "DELETE"]);
@@ -16,11 +16,11 @@ const SKIP_PATH_PREFIXES = [
 const ALLOWED_ORIGIN_PATTERNS = [
   /^https?:\/\/localhost(:\d+)?$/,
   /^capacitor:\/\/localhost(:\d+)?$/,
-  /^https:\/\/.*\.luxero\.win$/,
-  /^https:\/\/luxero\.win$/,
+  /^https:\/\/.*\.onlinecompetitions\.win$/,
+  /^https:\/\/onlinecompetitions\.win$/,
 ];
 
-const LUXERO_CLIENT_HEADER = "x-luxero-client";
+const OC_CLIENT_HEADER = "x-onlinecompetitions-client";
 
 function isAllowedOrigin(origin: string): boolean {
   return ALLOWED_ORIGIN_PATTERNS.some((re) => re.test(origin));
@@ -53,7 +53,7 @@ export function csrfProtection(): MiddlewareHandler {
       }
       const sameSite =
         secFetchSite === "same-origin" || secFetchSite === "same-site";
-      const clientMarker = c.req.header(LUXERO_CLIENT_HEADER);
+      const clientMarker = c.req.header(OC_CLIENT_HEADER);
       if (!sameSite && clientMarker !== "1") {
         return error(c, ErrorCodes.FORBIDDEN, "Origin verification required", 403);
       }

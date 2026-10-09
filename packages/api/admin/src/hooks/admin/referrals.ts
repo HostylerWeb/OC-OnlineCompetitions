@@ -1,4 +1,4 @@
-import type { AdminReferralPurchase, ApiResponse } from "@luxero/types";
+import type { AdminReferralPurchase, ApiResponse } from "@oc/types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { api } from "../../client";
 import { STALE_TIME_ADMIN } from "../../constants";

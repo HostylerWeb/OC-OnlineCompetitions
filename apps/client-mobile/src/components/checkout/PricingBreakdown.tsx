@@ -1,6 +1,6 @@
 "use client";
 
-import { Tag } from "@luxero/icons";
+import { Tag } from "@oc/icons";
 import { Separator } from "@/components/ui/separator";
 import { formatCurrency, formatNumber, useTranslation } from "@/lib/i18n";
 

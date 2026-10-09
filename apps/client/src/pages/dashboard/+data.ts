@@ -5,7 +5,7 @@ import type {
   MyReferralsResponse,
   MyStats,
   Profile,
-} from "@luxero/types";
+} from "@oc/types";
 import type { PageContextServer } from "vike/types";
 import { serverFetch } from "@/lib/server-fetch";
 

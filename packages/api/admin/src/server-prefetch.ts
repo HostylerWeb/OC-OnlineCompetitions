@@ -1,4 +1,4 @@
-import type { ApiResponse, Competition, Profile } from "@luxero/types";
+import type { ApiResponse, Competition, Profile } from "@oc/types";
 import type { QueryClient } from "@tanstack/react-query";
 
 import { queryKeys } from "./keys";

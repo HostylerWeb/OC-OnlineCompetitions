@@ -1,6 +1,6 @@
 What this document is
 ---------------------
-We reviewed the Luxero competition website and admin system and made a series of improvements. Most changes are about keeping customer data safe, making payments trustworthy, and helping the site stay fast and reliable as more people use it.
+We reviewed the Online Competitions competition website and admin system and made a series of improvements. Most changes are about keeping customer data safe, making payments trustworthy, and helping the site stay fast and reliable as more people use it.
 
 Nothing in this list changes what customers see on the surface in a big way  - it is mostly “behind the scenes” work that protects the business and prepares the platform for growth.
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { api, type FrameExtractionStatus, useFrameExtractionSSE } from "@luxero/api-admin";
+import { api, type FrameExtractionStatus, useFrameExtractionSSE } from "@oc/api-admin";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { LoadingSpinner } from "@/components/AppLoader";
 import { Button } from "@/components/ui/button";

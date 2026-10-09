@@ -1,4 +1,4 @@
-import { runtimeConfig } from "@luxero/api-infra/runtime-config";
+import { runtimeConfig } from "@oc/api-infra/runtime-config";
 
 /** Real-money bypass via `local` provider (top-up, shop paid inline) — never in production unless explicitly enabled. */
 export function isLocalPaymentAllowed(): boolean {

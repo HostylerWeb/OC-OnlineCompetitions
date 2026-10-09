@@ -1,6 +1,6 @@
 "use client";
 
-import { ApiResponseError, api } from "@luxero/api-admin";
+import { ApiResponseError, api } from "@oc/api-admin";
 import Link from "next/link";
 import { Suspense, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";

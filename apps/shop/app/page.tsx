@@ -17,10 +17,10 @@ export default async function HomePage() {
     <main>
       {/* Hero Section */}
       <section className="relative overflow-hidden border-b border-border-subtle">
-        <div className="luxero-container py-24 md:py-32">
+        <div className="oc-container py-24 md:py-32">
           <div className="mx-auto max-w-2xl text-center">
             <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-gold">
-              Luxero Essentials Vol. 1
+              Online Competitions Essentials Vol. 1
             </span>
             <h1 className="mt-6 text-4xl font-bold tracking-tight md:text-6xl">
               The Definition Collection
@@ -49,7 +49,7 @@ export default async function HomePage() {
 
       {/* Featured Products */}
       {featured.length > 0 && (
-        <section className="luxero-container py-16" style={{ contentVisibility: "auto" }}>
+        <section className="oc-container py-16" style={{ contentVisibility: "auto" }}>
           <div className="flex items-center justify-between">
             <h2 className="text-xl font-semibold tracking-tight">Featured</h2>
             <Link

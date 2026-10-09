@@ -9,7 +9,7 @@ export const RESPONSIBLE_PLAY_SECTIONS: ResponsiblePlaySection[] = [
     id: "age",
     title: "Age verification",
     content:
-      "You must be 18 or over to enter Luxero competitions. We verify age using your date of birth at sign-up and before checkout. Third-party identity providers may be introduced in future to strengthen verification.",
+      "You must be 18 or over to enter Online Competitions competitions. We verify age using your date of birth at sign-up and before checkout. Third-party identity providers may be introduced in future to strengthen verification.",
   },
   {
     id: "credit-cap",
@@ -39,7 +39,7 @@ export const RESPONSIBLE_PLAY_SECTIONS: ResponsiblePlaySection[] = [
     id: "postal",
     title: "Free postal entry",
     content:
-      "Free postal entry is available for active competitions. Send your entry to the address shown on our Free Postal Entry page, including your Luxero account email and competition details. Free and paid entries are treated equally in the draw.",
+      "Free postal entry is available for active competitions. Send your entry to the address shown on our Free Postal Entry page, including your Online Competitions account email and competition details. Free and paid entries are treated equally in the draw.",
   },
   {
     id: "draws",

@@ -1,4 +1,4 @@
-import type { User } from "@luxero/types";
+import type { User } from "@oc/types";
 import { create } from "zustand";
 import type { AuthClientSession } from "../auth/client";
 import { authClient, safelyRunAuthRequest } from "../auth/client";

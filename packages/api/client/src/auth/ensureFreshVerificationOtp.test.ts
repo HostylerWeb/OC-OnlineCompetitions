@@ -105,7 +105,7 @@ describe("decideEnsureFreshVerificationOtp", () => {
 describe("verify OTP ensured sessionStorage flag", () => {
   test("uses normalized email in storage key", () => {
     expect(getVerifyOtpEnsuredStorageKey("  User@Example.COM ")).toBe(
-      "luxero_verify_otp_ensured_user@example.com"
+      "onlinecompetitions_verify_otp_ensured_user@example.com"
     );
   });
 

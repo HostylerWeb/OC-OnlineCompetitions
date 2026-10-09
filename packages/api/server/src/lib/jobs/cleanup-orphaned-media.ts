@@ -21,9 +21,9 @@
  *   bun run packages/api/server/src/lib/jobs/cleanup-orphaned-media.ts --apply --verbose
  */
 
-import { Competition } from "@luxero/api-db/models";
-import { CH, invalidateByChannelSafe } from "@luxero/api-infra/cache";
-import dbConnect from "@luxero/api-infra/db";
+import { Competition } from "@oc/api-db/models";
+import { CH, invalidateByChannelSafe } from "@oc/api-infra/cache";
+import dbConnect from "@oc/api-infra/db";
 
 const HEAD_TIMEOUT_MS = 3000;
 const HEAD_FETCH_PARALLELISM = 16;

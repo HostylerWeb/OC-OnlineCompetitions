@@ -16,10 +16,10 @@
     "plugins": [{ "name": "next" }],
     "paths": {
       "@/*": ["./*"],
-      "@luxero/env": ["../../packages/env/src"],
-      "@luxero/env/*": ["../../packages/env/src/*"],
-      "@luxero/types": ["../../packages/types/src"],
-      "@luxero/utils": ["../../packages/utils/src"]
+      "@oc/env": ["../../packages/env/src"],
+      "@oc/env/*": ["../../packages/env/src/*"],
+      "@oc/types": ["../../packages/types/src"],
+      "@oc/utils": ["../../packages/utils/src"]
     }
   },
   "include": [

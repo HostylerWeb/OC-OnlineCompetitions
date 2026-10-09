@@ -7,11 +7,11 @@ const __mock = vi.hoisted(() => ({
   deleteUserAccount: vi.fn(),
 }));
 
-vi.mock("@luxero/api-infra/db", () => ({
+vi.mock("@oc/api-infra/db", () => ({
   default: vi.fn(async () => {}),
 }));
 
-vi.mock("@luxero/api-server/middleware/auth", () => ({
+vi.mock("@oc/api-server/middleware/auth", () => ({
   isPublicRoute: () => false,
   resolveSession: vi.fn(async () => ({})),
   sessionMiddleware: async (_c: unknown, next: () => Promise<void>) => {
@@ -35,11 +35,11 @@ vi.mock("@luxero/api-server/middleware/auth", () => ({
   },
 }));
 
-vi.mock("@luxero/auth-admin/user-deletion", () => ({
+vi.mock("@oc/auth-admin/user-deletion", () => ({
   deleteUserAccount: (...args: unknown[]) => __mock.deleteUserAccount(...args),
 }));
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   Profile: {
     findById: vi.fn(() => null),
   },
@@ -81,7 +81,7 @@ describe("admin users DELETE /:id", () => {
   });
 
   test("valid ObjectId + existing profile returns 200", async () => {
-    const models = await import("@luxero/api-db/models");
+    const models = await import("@oc/api-db/models");
     (models.Profile as any).findById = vi.fn(() => ({
       lean: async () => ({ _id: __mock.userId, email: "user@test.com" }),
     }));
@@ -109,7 +109,7 @@ describe("admin users DELETE /:id", () => {
   });
 
   test("profile not found returns 404", async () => {
-    const models = await import("@luxero/api-db/models");
+    const models = await import("@oc/api-db/models");
     (models.Profile as any).findById = vi.fn(() => ({
       lean: async () => null,
     }));
@@ -126,7 +126,7 @@ describe("admin users DELETE /:id", () => {
   });
 
   test("deleteUserAccount throws returns 500", async () => {
-    const models = await import("@luxero/api-db/models");
+    const models = await import("@oc/api-db/models");
     (models.Profile as any).findById = vi.fn(() => ({
       lean: async () => ({ _id: __mock.userId, email: "user@test.com" }),
     }));

@@ -1,7 +1,7 @@
 "use client";
 
-import { Clock } from "@luxero/icons";
-import { formatDateTime } from "@luxero/utils";
+import { Clock } from "@oc/icons";
+import { formatDateTime } from "@oc/utils";
 import { useEffect, useState } from "react";
 import { useTranslation } from "@/lib/i18n";
 

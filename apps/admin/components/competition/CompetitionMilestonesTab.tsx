@@ -5,13 +5,13 @@ import {
   useAdminBonusAwardAssignmentMutations,
   useAdminBonusAwardAssignments,
   useAdminBonusAwardCapacity,
-} from "@luxero/api-admin";
-import { ChevronDown, ChevronRight, Gift, Star, Trophy } from "@luxero/icons";
+} from "@oc/api-admin";
+import { ChevronDown, ChevronRight, Gift, Star, Trophy } from "@oc/icons";
 import type {
   AdminBonusAward,
   AdminBonusAwardAssignment,
   BonusAwardCapacityResponse,
-} from "@luxero/types";
+} from "@oc/types";
 import { useEffect, useState } from "react";
 import { AdminConfirmDialog, EmptyState, EntityActionMenu } from "@/components/admin";
 import { StatusBadge } from "@/components/admin/StatusBadge";

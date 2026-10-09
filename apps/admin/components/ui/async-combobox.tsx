@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, ChevronsUpDown } from "@luxero/icons";
+import { Check, ChevronsUpDown } from "@oc/icons";
 import { useQuery } from "@tanstack/react-query";
 import { useCallback, useState } from "react";
 import { cn } from "@/lib/utils";

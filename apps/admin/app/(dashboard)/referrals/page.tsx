@@ -6,7 +6,7 @@ import {
   useAdminReferrals,
   useAdminUserReferralMutation,
   useServerPagination,
-} from "@luxero/api-admin";
+} from "@oc/api-admin";
 import {
   Info,
   Link2,
@@ -18,7 +18,7 @@ import {
   User,
   UserCheck,
   Users,
-} from "@luxero/icons";
+} from "@oc/icons";
 import * as Sentry from "@sentry/react";
 import type { ColumnDef, SortingState, VisibilityState } from "@tanstack/react-table";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";

@@ -1,4 +1,4 @@
-import { getBool } from "@luxero/env/server";
+import { getBool } from "@oc/env/server";
 
 export function getLocalEnabledFromEnv(): boolean {
   return getBool("ENABLE_LOCAL_PAYMENT_METHOD", process.env.NODE_ENV !== "production");

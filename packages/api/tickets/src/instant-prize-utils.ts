@@ -1,10 +1,10 @@
-import { CompetitionInstantPrize, InstantPrizeWin, Ticket } from "@luxero/api-db/models";
-import type { IInstantPrize } from "@luxero/api-db/models/InstantPrize";
+import { CompetitionInstantPrize, InstantPrizeWin, Ticket } from "@oc/api-db/models";
+import type { IInstantPrize } from "@oc/api-db/models/InstantPrize";
 import {
   type AllocationWin,
   getWonSlotIndices,
-} from "@luxero/api-tickets/instant-prize-allocation";
-import { buildExcludeSetForInstantPrizes } from "@luxero/api-tickets/ticket-service";
+} from "@oc/api-tickets/instant-prize-allocation";
+import { buildExcludeSetForInstantPrizes } from "@oc/api-tickets/ticket-service";
 import { type ClientSession, Types } from "mongoose";
 
 export async function generateWinningEntryNumbers(

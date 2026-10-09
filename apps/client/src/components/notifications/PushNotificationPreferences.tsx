@@ -5,7 +5,7 @@ import {
   NOTIFICATION_TYPE_LABELS,
   NOTIFICATION_TYPES,
   usePushPreferences,
-} from "@luxero/api-client";
+} from "@oc/api-client";
 import { useTranslation } from "@/lib/i18n";
 import { Label } from "../ui/label";
 import { Separator } from "../ui/separator";

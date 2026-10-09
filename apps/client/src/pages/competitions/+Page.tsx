@@ -5,12 +5,13 @@ import {
   useCompetitionStream,
   useCompetitions,
   useCompetitionsFilterStore,
-} from "@luxero/api-client";
+} from "@oc/api-client";
 import { useEffect, useMemo, useState } from "react";
 import { prefetch } from "vike/client/router";
 import { useConfig } from "vike-react/useConfig";
 import { useData } from "vike-react/useData";
 import { usePageContext } from "vike-react/usePageContext";
+import { brandLogoUrl } from "@oc/utils";
 import { CompetitionCard } from "@/components/home/CompetitionCard";
 import { CompetitionsSearch } from "@/components/home/CompetitionsSearch";
 import { useTranslation } from "@/lib/i18n";
@@ -26,18 +27,18 @@ export default function Page() {
 
   const config = useConfig();
   const baseUrl =
-    (typeof window !== "undefined" ? window.location.origin : "") || "https://luxero.win";
+    (typeof window !== "undefined" ? window.location.origin : "") || "https://onlinecompetitions.co.uk";
   const heading = t("competitions.listing.heading");
   const description = t("competitions.listing.description");
   const hasRef = urlParsed?.searchAll?.ref !== undefined || urlParsed?.search?.ref !== undefined;
   const globalRefOg = (pageContext as any).referralOgImageUrl as string | null | undefined;
-  const ogSrc = hasRef && globalRefOg ? globalRefOg : `${baseUrl}/og-default.png`;
+  const ogSrc = hasRef && globalRefOg ? globalRefOg : brandLogoUrl(baseUrl);
   const ogUrl = ogSrc.startsWith("/") ? `${baseUrl}${ogSrc}` : ogSrc;
   config({
-    title: `${heading} — Luxero`,
+    title: `${heading} — Online Competitions`,
     Head: (
       <>
-        <meta property="og:title" content={`${heading} — Luxero`} />
+        <meta property="og:title" content={`${heading} — Online Competitions`} />
         <meta property="og:description" content={description} />
         <meta property="og:url" content={`${baseUrl}/competitions`} />
         <meta property="og:image" content={ogUrl} />
@@ -46,7 +47,7 @@ export default function Page() {
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Luxero" />
+        <meta property="og:site_name" content="Online Competitions" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content={ogUrl} />
       </>
@@ -116,7 +117,7 @@ export default function Page() {
   return (
     <>
       <section className="py-6 lg:py-12 border-b border-gold/10">
-        <div className="luxero-container-wide">
+        <div className="oc-container-wide">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-2 lg:mb-4 text-balance">
             <span className="text-gold">{t("competitions.listing.heading")}</span>
           </h1>
@@ -127,7 +128,7 @@ export default function Page() {
       </section>
 
       <section className="py-4 lg:py-6 border-b border-gold/10">
-        <div className="luxero-container-wide">
+        <div className="oc-container-wide">
           <CompetitionsSearch
             categories={categories as unknown as Array<{ slug: string; label: string }>}
           />
@@ -135,7 +136,7 @@ export default function Page() {
       </section>
 
       <section className="py-5 lg:py-8">
-        <div className="luxero-container-wide">
+        <div className="oc-container-wide">
           {isError ? (
             <div className="text-center py-16">
               <p className="text-muted-foreground text-lg mb-2">
@@ -154,7 +155,7 @@ export default function Page() {
               </button>
             </div>
           ) : filteredCompetitions.length > 0 ? (
-            <div className="grid luxero-grid-competitions animate-fade-in-stagger">
+            <div className="grid onlinecompetitions-grid-competitions animate-fade-in-stagger">
               {filteredCompetitions.map((competition, index) => (
                 <CompetitionCard
                   key={competition.id || competition._id}

@@ -1,4 +1,4 @@
-import type { ApiResponse, ComplianceSettings } from "@luxero/types";
+import type { ApiResponse, ComplianceSettings } from "@oc/types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { api } from "../../client";
 import { STALE_TIME_ADMIN } from "../../constants";

@@ -1,4 +1,4 @@
-import { app } from "@luxero/api-server/app";
+import { app } from "@oc/api-server/app";
 
 export async function callApi(request: Request): Promise<Response> {
   return app.fetch(request);

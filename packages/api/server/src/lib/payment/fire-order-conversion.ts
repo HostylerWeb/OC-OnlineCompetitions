@@ -1,7 +1,7 @@
-import { fireConversion, getAffiliateClickId, getAffiliateSource } from "@luxero/api-affiliate";
-import type { IOrder } from "@luxero/api-db/models";
-import { Profile } from "@luxero/api-db/models";
-import { createLogger } from "@luxero/api-logger";
+import { fireConversion, getAffiliateClickId, getAffiliateSource } from "@oc/api-affiliate";
+import type { IOrder } from "@oc/api-db/models";
+import { Profile } from "@oc/api-db/models";
+import { createLogger } from "@oc/api-logger";
 
 const log = createLogger("payment.order-conversion");
 

@@ -1,5 +1,5 @@
-import type { PublicEntry } from "@luxero/api-client";
-import type { EntryCompetition } from "@luxero/types";
+import type { PublicEntry } from "@oc/api-client";
+import type { EntryCompetition } from "@oc/types";
 import type { PageContextServer } from "vike/types";
 import { serverFetch } from "@/lib/server-fetch";
 

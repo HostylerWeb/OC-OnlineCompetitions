@@ -1,5 +1,5 @@
-import { PushSubscription } from "@luxero/api-db/models";
-import { getEnv } from "@luxero/env/server";
+import { PushSubscription } from "@oc/api-db/models";
+import { getEnv } from "@oc/env/server";
 import mongoose from "mongoose";
 import webpush from "web-push";
 import type { PushPayload, SendPushOptions, SendPushResult } from "./types";
@@ -9,7 +9,7 @@ const vapidPublicKey = getEnv("VAPID_PUBLIC_KEY");
 const vapidPrivateKey = getEnv("VAPID_PRIVATE_KEY");
 
 if (vapidPublicKey && vapidPrivateKey) {
-  webpush.setVapidDetails("mailto:notifications@luxero.com", vapidPublicKey, vapidPrivateKey);
+  webpush.setVapidDetails("mailto:notifications@onlinecompetitions.com", vapidPublicKey, vapidPrivateKey);
 }
 
 function buildPayload(p: PushPayload): string {

@@ -1,10 +1,10 @@
-import { Profile, Winner } from "@luxero/api-db/models";
-import dbConnect from "@luxero/api-infra/db";
-import { defaultCountMaxTimeMS } from "@luxero/api-infra/mongo-query-options";
-import { success } from "@luxero/api-infra/response";
-import { captureRouteError } from "@luxero/api-infra/sentry";
-import { redisCacheRoute } from "@luxero/api-server/middleware/cache";
-import { getGlobalScopedTicketStatusTotals } from "@luxero/api-tickets/scoped-ticket-stats";
+import { Profile, Winner } from "@oc/api-db/models";
+import dbConnect from "@oc/api-infra/db";
+import { defaultCountMaxTimeMS } from "@oc/api-infra/mongo-query-options";
+import { success } from "@oc/api-infra/response";
+import { captureRouteError } from "@oc/api-infra/sentry";
+import { redisCacheRoute } from "@oc/api-server/middleware/cache";
+import { getGlobalScopedTicketStatusTotals } from "@oc/api-tickets/scoped-ticket-stats";
 import { Hono } from "hono";
 
 const app = new Hono();
@@ -27,7 +27,7 @@ app.get(
         ]),
         Profile.countDocuments({
           isGuestCheckout: { $ne: true },
-          email: { $not: { $regex: /@guest\.luxero\.local$/i } },
+          email: { $not: { $regex: /@guest\.onlinecompetitions\.local$/i } },
         }).maxTimeMS(defaultCountMaxTimeMS()),
         getGlobalScopedTicketStatusTotals(),
       ]);

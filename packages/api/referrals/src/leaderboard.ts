@@ -1,4 +1,4 @@
-import { ReferralPurchase, ReferralSettings } from "@luxero/api-db/models";
+import { ReferralPurchase, ReferralSettings } from "@oc/api-db/models";
 import type { PipelineStage } from "mongoose";
 import mongoose from "mongoose";
 

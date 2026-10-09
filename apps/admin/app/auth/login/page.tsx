@@ -6,7 +6,7 @@ import {
   TurnstileWidget,
   useAuth,
   useReturnToSearchParam,
-} from "@luxero/api-admin";
+} from "@oc/api-admin";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";

@@ -7,8 +7,8 @@ import {
   useCartTotals,
   useCartWallet,
   useMyProfile,
-} from "@luxero/api-client";
-import { AlertTriangle, Lock, ShieldCheck } from "@luxero/icons";
+} from "@oc/api-client";
+import { AlertTriangle, Lock, ShieldCheck } from "@oc/icons";
 import { memo } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";

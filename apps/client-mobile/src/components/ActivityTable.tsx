@@ -1,5 +1,5 @@
 "use client";
-import { ArrowRight } from "@luxero/icons";
+import { ArrowRight } from "@oc/icons";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { EmptyState } from "./EmptyState";

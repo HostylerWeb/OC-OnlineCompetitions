@@ -11,7 +11,7 @@ export function WinNotificationEmail({
   settings,
   isGuest,
 }: EmailTemplateProps) {
-  const supportAddress = settings?.supportAddress ?? "support@luxero.win";
+  const supportAddress = settings?.supportAddress ?? "support@onlinecompetitions.co.uk";
   return (
     <BaseEmail preview={`Congratulations! You've won ${prizeTitle}!`} settings={settings}>
       <Text className="mb-[16px] text-center text-[24px] font-bold text-[#FFFFFF]">
@@ -82,7 +82,7 @@ export function WinNotificationEmail({
       <Text className={emailStyles.paragraph.className}>
         Good luck!
         <br />
-        The Luxero Team
+        The Online Competitions Team
       </Text>
     </BaseEmail>
   );

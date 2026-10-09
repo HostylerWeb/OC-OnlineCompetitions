@@ -1,4 +1,4 @@
-import type { Profile, PublicComplianceSettings } from "@luxero/types";
+import type { Profile, PublicComplianceSettings } from "@oc/types";
 import type { PageContextServer } from "vike/types";
 import { serverFetch } from "@/lib/server-fetch";
 

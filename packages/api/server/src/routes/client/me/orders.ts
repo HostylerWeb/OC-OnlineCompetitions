@@ -1,17 +1,17 @@
-import { InstantPrizeWin, Order, OrderItem, Ticket } from "@luxero/api-db/models";
-import dbConnect from "@luxero/api-infra/db";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { parsePagination } from "@luxero/api-infra/pagination";
-import { error, paginated, success } from "@luxero/api-infra/response";
-import { captureRouteError } from "@luxero/api-infra/sentry";
-import { createLogger } from "@luxero/api-logger";
-import { auth } from "@luxero/api-server/middleware/auth";
+import { InstantPrizeWin, Order, OrderItem, Ticket } from "@oc/api-db/models";
+import dbConnect from "@oc/api-infra/db";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { parsePagination } from "@oc/api-infra/pagination";
+import { error, paginated, success } from "@oc/api-infra/response";
+import { captureRouteError } from "@oc/api-infra/sentry";
+import { createLogger } from "@oc/api-logger";
+import { auth } from "@oc/api-server/middleware/auth";
 import {
   flattenCompetitionInstantPrize,
   normalizeGrantedEntryIds,
-} from "@luxero/api-tickets/instant-prize-win-mapper";
-import { type TicketLike, ticketsToEntryDtos } from "@luxero/api-tickets/ticket-mapper";
-import { resolveOrderReadScope } from "@luxero/api-server/lib/payment/guest-order-owners";
+} from "@oc/api-tickets/instant-prize-win-mapper";
+import { type TicketLike, ticketsToEntryDtos } from "@oc/api-tickets/ticket-mapper";
+import { resolveOrderReadScope } from "@oc/api-server/lib/payment/guest-order-owners";
 import { Hono } from "hono";
 import mongoose from "mongoose";
 

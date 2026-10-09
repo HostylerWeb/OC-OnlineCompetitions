@@ -1,6 +1,6 @@
 // AuthShell.tsx — composes QueryProvider + AuthProvider as a single client island.
 
-import { AuthProvider, QueryProvider } from "@luxero/api-client";
+import { AuthProvider, QueryProvider } from "@oc/api-client";
 import type { ReactNode } from "react";
 
 interface Props {

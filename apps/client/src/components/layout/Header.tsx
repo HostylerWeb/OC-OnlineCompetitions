@@ -6,7 +6,7 @@ import {
   useCartCount,
   useProfileAvatar,
   usePushSubscription,
-} from "@luxero/api-client";
+} from "@oc/api-client";
 import {
   Bell,
   BellOff,
@@ -20,19 +20,20 @@ import {
   ShoppingBag,
   ShoppingCart,
   SocialIcon,
+  SocialLinksIconButtons,
   Ticket,
   Trophy,
   User,
   Wallet,
   X,
-} from "@luxero/icons";
-import type { User as UserType } from "@luxero/types";
-import { cn, getDisplayName, getProfileInitials, SOCIAL_LINKS } from "@luxero/utils";
+} from "@oc/icons";
+import type { User as UserType } from "@oc/types";
+import { cn, getDisplayName, getProfileInitials, SOCIAL_LINKS } from "@oc/utils";
 import { useQueryClient } from "@tanstack/react-query";
 import { type CSSProperties, useCallback, useEffect, useRef, useState } from "react";
 import { usePageContext } from "vike-react/usePageContext";
 import { Link } from "@/components/Link";
-import { LuxeroLogo } from "@/components/LuxeroLogo";
+import { BrandLogo } from "@/components/BrandLogo";
 import { PushNotificationPreferences } from "@/components/notifications/PushNotificationPreferences";
 import { Button } from "@/components/ui/button";
 import {
@@ -401,14 +402,14 @@ export function Header() {
       )}
     >
       <div className="bg-card/95 backdrop-blur-2xl border-b border-border">
-        <div className="luxero-container-wide">
+        <div className="oc-container-wide">
           <div className="w-full flex h-14 items-center gap-2 md:gap-3 min-w-0">
             <Link
               href="/"
               className="shrink-0 hover:brightness-110 transition-all"
               data-umami-event="nav:logo-click"
             >
-              <LuxeroLogo className="h-6 w-auto text-gold" />
+              <BrandLogo className="text-gold" />
             </Link>
 
             <div className="hidden md:flex min-w-0 flex-1 overflow-x-auto scrollbar-hide">
@@ -441,18 +442,10 @@ export function Header() {
                 <span className="text-xs text-muted-foreground whitespace-nowrap">
                   {t("header.followUs")}
                 </span>
-                {SOCIAL_LINKS.map((link) => (
-                  <a
-                    key={link.icon}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={link.label}
-                    className="group w-7 h-7 shrink-0 flex items-center justify-center rounded-full border border-gold/20 bg-card/80 text-gold transition-colors hover:bg-gold hover:text-black hover:border-gold"
-                  >
-                    <SocialIcon name={link.icon} className="size-3.5" />
-                  </a>
-                ))}
+                <SocialLinksIconButtons
+                  buttonClassName="w-7 h-7 shrink-0 rounded-full bg-card/80"
+                  iconClassName="size-3.5"
+                />
               </div>
 
               <div className="w-px h-5 bg-border/50 shrink-0" />
@@ -511,8 +504,7 @@ export function Header() {
             >
               <a
                 href={
-                  SOCIAL_LINKS.find((l) => l.icon === "telegram")?.href ??
-                  "https://t.me/luxero_competitions"
+                  SOCIAL_LINKS.find((l) => l.icon === "telegram")?.href ?? "https://telegram.org/"
                 }
                 target="_blank"
                 rel="noopener noreferrer"

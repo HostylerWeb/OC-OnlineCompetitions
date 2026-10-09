@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@luxero/utils";
+import { cn } from "@oc/utils";
 import { useTranslation } from "@/lib/i18n";
 import { DASHBOARD_LIST_VIEW_MODES, type DashboardListViewMode } from "./dashboard-list-view-mode";
 

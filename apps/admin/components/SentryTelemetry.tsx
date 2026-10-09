@@ -1,6 +1,6 @@
 "use client";
 
-import { useAuth } from "@luxero/api-admin";
+import { useAuth } from "@oc/api-admin";
 import * as Sentry from "@sentry/react";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";

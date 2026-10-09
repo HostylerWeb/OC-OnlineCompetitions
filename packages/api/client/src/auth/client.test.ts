@@ -1,4 +1,4 @@
-import { normalizeAuthClientError, safelyRunAuthRequest } from "@luxero/auth-client";
+import { normalizeAuthClientError, safelyRunAuthRequest } from "@oc/auth-client";
 import { describe, expect, test } from "vitest";
 
 describe("normalizeAuthClientError", () => {

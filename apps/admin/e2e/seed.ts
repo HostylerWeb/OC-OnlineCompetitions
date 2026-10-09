@@ -1,10 +1,10 @@
-import { DEFAULT_COMPLIANCE_SETTINGS } from "@luxero/api-db/models/ComplianceSettings";
+import { DEFAULT_COMPLIANCE_SETTINGS } from "@oc/api-db/models/ComplianceSettings";
 import bcrypt from "bcryptjs";
 import mongoose, { type Mongoose, Types } from "mongoose";
 
-const ADMIN_EMAIL = "admin@luxero.win";
+const ADMIN_EMAIL = "admin@onlinecompetitions.co.uk";
 const ADMIN_PASSWORD = "Tct#LYG5bzdvgadySB#gGjBV";
-const MANAGER_EMAIL = "manager@luxero.win";
+const MANAGER_EMAIL = "manager@onlinecompetitions.co.uk";
 const MANAGER_PASSWORD = "Tct#LYG5bzdvgadySB#gGjBV";
 
 export interface SeedData {
@@ -58,7 +58,7 @@ async function clearCollections(db: ReturnType<Mongoose["connection"]["db"]>) {
 export async function seedDatabase(): Promise<SeedData> {
   const DATABASE_URL =
     process.env.DATABASE_URL ||
-    "mongodb://root:luxero_dev_password@localhost:27017/luxero?directConnection=true";
+    "mongodb://root:onlinecompetitions_dev_password@localhost:27017/onlinecompetitions?directConnection=true";
 
   await mongoose.connect(DATABASE_URL);
   const db = mongoose.connection.db!;

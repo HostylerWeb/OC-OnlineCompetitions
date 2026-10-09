@@ -1,7 +1,7 @@
 "use client";
 
-import { Ticket } from "@luxero/icons";
-import type { MeOrderDetailEntryDto, MeOrderItemDto } from "@luxero/types";
+import { Ticket } from "@oc/icons";
+import type { MeOrderDetailEntryDto, MeOrderItemDto } from "@oc/types";
 import { useMemo, useState } from "react";
 import {
   CheckoutSuccessTicketsModal,

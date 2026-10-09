@@ -1,9 +1,9 @@
 "use client";
 
-import { ShoppingCart } from "@luxero/icons";
-import { cn, getProfileInitials } from "@luxero/utils";
+import { ShoppingCart } from "@oc/icons";
+import { cn, getProfileInitials } from "@oc/utils";
 import { Link } from "@/components/Link";
-import { LuxeroLogo } from "@/components/LuxeroLogo";
+import { BrandLogo } from "@/components/BrandLogo";
 import { UserAvatar } from "@/components/user-avatar";
 import { useUserState } from "@/hooks";
 import { useTranslation } from "@/lib/i18n";
@@ -35,7 +35,7 @@ export function MobileTopBar() {
           className="shrink-0 hover:brightness-110 transition-all"
           data-umami-event="mobile-nav:logo-click"
         >
-          <LuxeroLogo className="h-5 w-auto text-gold" />
+          <BrandLogo className="text-gold" />
         </Link>
 
         <div className="flex items-center gap-3">

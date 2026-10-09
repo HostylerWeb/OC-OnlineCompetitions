@@ -1,8 +1,8 @@
 "use client";
 
-import { ArrowRight, Package } from "@luxero/icons";
-import type { MeOrderDto } from "@luxero/types";
-import { cn, OrderNumberCell } from "@luxero/utils";
+import { ArrowRight, Package } from "@oc/icons";
+import type { MeOrderDto } from "@oc/types";
+import { cn, OrderNumberCell } from "@oc/utils";
 import { PriceCell } from "@/components/PriceCell";
 import { StatusBadge } from "@/components/StatusBadge";
 import { Badge } from "@/components/ui/badge";

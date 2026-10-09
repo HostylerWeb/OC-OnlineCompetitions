@@ -1,7 +1,7 @@
 "use client";
 
-import { Sparkles, Star } from "@luxero/icons";
-import type { PublicBonusAwardEntry, PublicBonusAwardWinDTO } from "@luxero/types";
+import { Sparkles, Star } from "@oc/icons";
+import type { PublicBonusAwardEntry, PublicBonusAwardWinDTO } from "@oc/types";
 import { useMemo } from "react";
 import { TICKET_COL_GAP } from "@/components/shared/ticketCardShared";
 import { Badge } from "@/components/ui/badge";

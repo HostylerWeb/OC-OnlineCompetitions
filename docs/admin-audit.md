@@ -1,7 +1,7 @@
 # Admin application audit (`apps/admin`)
 
 **Date:** 2026-03-16 (pass 2 — competitions, winners, API deep dive)  
-**Scope:** Luxero admin dashboard — Next.js app at `apps/admin` plus its embedded Hono API (`app/api/[[...route]]`) and shared backend routes under `packages/api/server/src/routes/admin/**`, `packages/auth/admin/**`, and `packages/api/admin/**`.  
+**Scope:** Online Competitions admin dashboard — Next.js app at `apps/admin` plus its embedded Hono API (`app/api/[[...route]]`) and shared backend routes under `packages/api/server/src/routes/admin/**`, `packages/auth/admin/**`, and `packages/api/admin/**`.  
 **Out of scope (this pass):** `apps/client`, `apps/shop`, `apps/web-lander`.
 
 **Method:** Static review (~269 TS/TSX files under `apps/admin`), dependency and route mapping, `bun run typecheck` / `lint` in `apps/admin`, and local runtime smoke tests against `http://127.0.0.1:3222` (health, auth-gated admin routes, public common routes, internal jobs, auth-setup).
@@ -30,7 +30,7 @@ The admin stack is **feature-rich and generally well structured**: RBAC is enfor
 | Edge auth | `apps/admin/proxy.ts` | Session check via `/api/auth/get-session`; RBAC for admin-only nav paths |
 | API | `apps/admin/app/api/[[...route]]/route.ts` | Full Hono app: Better Auth, **client/common routes**, admin routes, internal jobs |
 | Admin API impl | `packages/api/server/src/routes/admin/*.ts` | Shared with client app patterns |
-| Auth | `packages/auth/admin/**` | Separate Better Auth instance (`LuxeroAdmin`) |
+| Auth | `packages/auth/admin/**` | Separate Better Auth instance (`Online CompetitionsAdmin`) |
 
 ---
 
@@ -66,7 +66,7 @@ The admin stack is **feature-rich and generally well structured**: RBAC is enfor
 
 **Issue:** Production builds can ship with TypeScript errors; local `tsc --noEmit` passing today does not guarantee future builds are type-safe.
 
-**Recommendation:** Set to `false` and fix errors; gate CI on `bun run typecheck` for `@luxero/admin`.
+**Recommendation:** Set to `false` and fix errors; gate CI on `bun run typecheck` for `@oc/admin`.
 
 ---
 
@@ -255,7 +255,7 @@ The admin stack is **feature-rich and generally well structured**: RBAC is enfor
 
 ### M11 — CORS on admin API
 
-**Where:** `route.ts` — localhost any port + `*.luxero.win`.
+**Where:** `route.ts` — localhost any port + `*.onlinecompetitions.co.uk`.
 
 **Issue:** Appropriate for dev; ensure production admin URL is not unnecessarily broad (wildcard subdomains).
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { Upload } from "@luxero/icons";
+import { Upload } from "@oc/icons";
 import { useRef, useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";

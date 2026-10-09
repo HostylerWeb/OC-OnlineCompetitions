@@ -1,4 +1,4 @@
-import type { AdminRole } from "@luxero/types";
+import type { AdminRole } from "@oc/types";
 import { adminNavigationGroups, type NavGroup, type NavItem } from "@/config/adminNavigation";
 
 export function isItemAllowed(item: { roles?: AdminRole[] }, role: string | undefined): boolean {

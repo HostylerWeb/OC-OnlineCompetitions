@@ -1,6 +1,6 @@
 "use client";
 
-import type { AboutSection } from "@luxero/content";
+import type { AboutSection } from "@oc/content";
 import {
   AlertTriangle,
   Building,
@@ -9,8 +9,8 @@ import {
   Heart,
   ShieldCheck,
   Sparkles,
-} from "@luxero/icons";
-import { cn } from "@luxero/utils";
+} from "@oc/icons";
+import { cn } from "@oc/utils";
 import { useState } from "react";
 
 const ICON_MAP = {

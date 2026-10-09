@@ -1,4 +1,4 @@
-import { ArrowRight, HelpCircle } from "@luxero/icons";
+import { ArrowRight, HelpCircle } from "@oc/icons";
 import { GoldGhostButton, GoldOutlineButton } from "@/components/buttons";
 import { Link } from "@/components/Link";
 import { useTranslation } from "@/lib/i18n";

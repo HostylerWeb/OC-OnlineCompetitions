@@ -1,5 +1,5 @@
-import { getServerSession } from "@luxero/auth-admin";
-import { formatOrderNumber } from "@luxero/utils";
+import { getServerSession } from "@oc/auth-admin";
+import { formatOrderNumber } from "@oc/utils";
 import { cookies } from "next/headers";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
@@ -53,7 +53,7 @@ export default async function OrderPage({
   }
 
   return (
-    <main className="luxero-container py-12">
+    <main className="oc-container py-12">
       <Link
         href="/orders"
         className="inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-gold"

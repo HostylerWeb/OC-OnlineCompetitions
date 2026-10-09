@@ -104,7 +104,7 @@ function VerifyForm() {
 
   if (success) {
     return (
-      <div className="luxero-container flex min-h-[60vh] items-center justify-center py-16">
+      <div className="oc-container flex min-h-[60vh] items-center justify-center py-16">
         <div className="w-full max-w-sm text-center">
           <CheckCircle className="mx-auto h-12 w-12 text-success" />
           <h1 className="mt-4 text-2xl font-bold tracking-tight">Email verified!</h1>
@@ -115,7 +115,7 @@ function VerifyForm() {
   }
 
   return (
-    <div className="luxero-container flex min-h-[60vh] items-center justify-center py-16">
+    <div className="oc-container flex min-h-[60vh] items-center justify-center py-16">
       <div className="w-full max-w-sm">
         <div className="text-center">
           <h1 className="text-2xl font-bold tracking-tight">Verify your email</h1>

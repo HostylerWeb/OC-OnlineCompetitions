@@ -1,6 +1,6 @@
 "use client";
 
-import { Smartphone, X } from "@luxero/icons";
+import { Smartphone, X } from "@oc/icons";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/lib/i18n";
@@ -110,7 +110,7 @@ function InstallPrompt({ appName, tagline }: InstallPromptProps = {}) {
 
   if (installed || dismissed) return null;
 
-  const heading = t("pwa.installHeading", { appName: appName ?? "Luxero" });
+  const heading = t("pwa.installHeading", { appName: appName ?? "Online Competitions" });
   const subtext = tagline ?? t("pwa.tagline");
 
   if (isIOS) {

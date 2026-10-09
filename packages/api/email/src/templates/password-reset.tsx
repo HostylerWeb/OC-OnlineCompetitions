@@ -1,4 +1,4 @@
-import type { IEmailSettings } from "@luxero/api-db/models/EmailSettings";
+import type { IEmailSettings } from "@oc/api-db/models/EmailSettings";
 import { Button, Hr, Link, Section, Text } from "@react-email/components";
 import { BaseEmail, emailStyles } from "./base";
 
@@ -17,7 +17,7 @@ export function PasswordResetEmail({
   settings,
   frontendUrl,
 }: EmailTemplateProps) {
-  const supportAddress = settings?.supportAddress ?? "support@luxero.win";
+  const supportAddress = settings?.supportAddress ?? "support@onlinecompetitions.co.uk";
   return (
     <BaseEmail
       preview={`Password reset requested — code: ${code}`}
@@ -40,7 +40,7 @@ export function PasswordResetEmail({
       <Text className={emailStyles.heading.className}>Reset Your Password</Text>
       <Text className={emailStyles.paragraph.className}>Hi {userName},</Text>
       <Text className={emailStyles.paragraph.className}>
-        We received a request to reset your Luxero account password. Use the code below to set a new
+        We received a request to reset your Online Competitions account password. Use the code below to set a new
         password.
       </Text>
       <Section className="my-[32px] text-center">
@@ -88,7 +88,7 @@ export function PasswordResetEmail({
       <Text className={emailStyles.paragraph.className}>
         <span className="font-semibold text-[#D4AF37]">Don&apos;t reuse passwords</span>
         <br />
-        Use a unique password for your Luxero account.
+        Use a unique password for your Online Competitions account.
       </Text>
       <Text className={emailStyles.muted.className}>
         Need help? Contact our support team at{" "}
@@ -99,7 +99,7 @@ export function PasswordResetEmail({
       <Text className={emailStyles.paragraph.className}>
         Stay secure,
         <br />
-        The Luxero Team
+        The Online Competitions Team
       </Text>
     </BaseEmail>
   );

@@ -1,4 +1,4 @@
-import { formatTicketNumber } from "@luxero/utils";
+import { formatTicketNumber } from "@oc/utils";
 import { cn } from "@/lib/utils";
 
 interface TicketNumberPillProps {

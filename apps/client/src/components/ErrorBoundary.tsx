@@ -5,7 +5,7 @@ import { AlertTriangle } from "lucide-react";
 import { Component, type ErrorInfo, type ReactNode } from "react";
 import { GoldButton, GoldOutlineButton } from "@/components/buttons";
 import { Link } from "@/components/Link";
-import { LuxeroLogo } from "./LuxeroLogo";
+import { BrandLogo } from "./BrandLogo";
 
 interface Props {
   children: ReactNode;
@@ -80,7 +80,7 @@ export function ErrorPage({
       <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-lg border-b border-gold/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <LuxeroLogo className="h-6 w-auto text-gold" />
+            <BrandLogo className="h-6 w-auto text-gold" />
           </div>
         </div>
       </header>

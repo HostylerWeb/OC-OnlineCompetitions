@@ -1,11 +1,21 @@
 import type { ContactInfoCard } from "../content-types";
+import {
+  CONTACT_PHONE_DISPLAY,
+  CONTACT_PHONE_HOURS,
+  CONTACT_PHONE_TEL,
+  LEGAL_COMPANY_NAME,
+  LEGAL_COMPANY_NUMBER,
+  LEGAL_CONTACT_EMAIL,
+  LEGAL_REGISTERED_OFFICE,
+} from "@oc/utils";
 
-export const CONTACT_EMAIL = "contact@luxero.win";
-export const COMPANY_NAME = "LUXERO COMPETITIONS LTD";
-export const COMPANY_NUMBER = "Nr. Înreg. SC888260 (Scoția)";
-export const COMPANY_ADDRESS = "107 Dalriada Crescent, Motherwell, ML1 3XT, Scotland";
-export const CONTACT_PHONE = "+44 744 328 9228";
-export const CONTACT_PHONE_HOURS = "Lun–Vin, 9:00–17:00 GMT";
+export const CONTACT_EMAIL = LEGAL_CONTACT_EMAIL;
+export const COMPANY_NAME = LEGAL_COMPANY_NAME;
+export const COMPANY_NUMBER = `Nr. Înreg. ${LEGAL_COMPANY_NUMBER} (Scoția)`;
+export const COMPANY_ADDRESS = LEGAL_REGISTERED_OFFICE;
+export const CONTACT_PHONE = CONTACT_PHONE_DISPLAY;
+
+export const CONTACT_PHONE_HOURS_RO = "Lun–Vin, 9:00–17:00 GMT";
 
 export const contactHero = {
   title: "Ia legătura",
@@ -25,8 +35,8 @@ export const CONTACT_INFO_CARDS: Omit<ContactInfoCard, "icon">[] = [
   {
     label: "Telefon",
     value: CONTACT_PHONE,
-    href: "tel:+447443289228",
-    subvalue: CONTACT_PHONE_HOURS,
+    href: `tel:${CONTACT_PHONE_TEL}`,
+    subvalue: CONTACT_PHONE_HOURS_RO,
   },
   {
     label: "Adresă",

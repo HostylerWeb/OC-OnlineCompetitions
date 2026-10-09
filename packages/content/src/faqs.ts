@@ -1,3 +1,4 @@
+import { LEGAL_CONTACT_EMAIL } from "@oc/utils";
 import type { FaqCategory, FaqItem } from "./content-types";
 
 export const FAQ_CATEGORIES: FaqCategory[] = [
@@ -51,7 +52,7 @@ export const FAQS_BY_CATEGORY: Record<string, FaqItem[]> = {
     {
       question: "Can I enter for free by post?",
       answer:
-        "Yes. Free postal entry is available for active competitions. Visit our Free Postal Entry page for the postal address and what to include (your full name, address, contact details, competition name, and your Luxero account email). Incomplete entries cannot be accepted.",
+        "Yes. Free postal entry is available for active competitions. Visit our Free Postal Entry page for the postal address and what to include (your full name, address, contact details, competition name, and your Online Competitions account email). Incomplete entries cannot be accepted.",
     },
     {
       question: "Can I buy tickets for someone else?",
@@ -160,4 +161,4 @@ export const FAQS_BY_CATEGORY: Record<string, FaqItem[]> = {
   ],
 };
 
-export const FAQ_SUPPORT_EMAIL = "contact@luxero.win";
+export const FAQ_SUPPORT_EMAIL = LEGAL_CONTACT_EMAIL;

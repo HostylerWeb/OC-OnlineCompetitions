@@ -1,6 +1,6 @@
-import { ArrowRight, ChevronLeft, ChevronRight, TrendingUp } from "@luxero/icons";
-import type { Competition } from "@luxero/types";
-import { cn } from "@luxero/utils";
+import { ArrowRight, ChevronLeft, ChevronRight, TrendingUp } from "@oc/icons";
+import type { Competition } from "@oc/types";
+import { cn } from "@oc/utils";
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { GoldOutlineButton } from "@/components/buttons";
@@ -119,7 +119,7 @@ function BottomContent({ children, className }: { children: React.ReactNode; cla
   return (
     <div
       className={cn(
-        "relative z-20 mx-auto flex h-full w-full flex-col luxero-container-wide",
+        "relative z-20 mx-auto flex h-full w-full flex-col oc-container-wide",
         SLIDE_PADDING,
         className
       )}

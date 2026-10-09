@@ -1,6 +1,6 @@
 "use client";
 
-import { AlertCircle, Trash2, Upload } from "@luxero/icons";
+import { AlertCircle, Trash2, Upload } from "@oc/icons";
 import { useCallback, useRef, useState } from "react";
 import { useTranslation } from "@/lib/i18n";
 import { cn } from "@/lib/utils";

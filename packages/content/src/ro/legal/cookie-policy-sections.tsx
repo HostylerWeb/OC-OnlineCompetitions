@@ -1,4 +1,5 @@
 import type { LegalSection } from "../../content-types";
+import { CompanyEmailLink, LEGAL_COMPANY_REGISTRY_RO, CONTACT_PHONE_DISPLAY, LEGAL_COMPANY_NAME, LEGAL_COMPANY_NUMBER, LEGAL_REGISTERED_OFFICE, LEGAL_REGISTERED_OFFICE_POSTAL, BRAND_NAME, LEGAL_WEBSITE } from "../../legal/company-legal";
 
 export const cookiePolicySections = [
   {
@@ -150,12 +151,10 @@ export const cookiePolicySections = [
         <ul className="list-disc list-inside space-y-2">
           <li>
             Email:{" "}
-            <a href="mailto:contact@luxero.win" className="text-gold hover:underline">
-              contact@luxero.win
-            </a>
+            <CompanyEmailLink />
           </li>
-          <li>Companie: LUXERO COMPETITIONS LTD (Nr. Înreg. SC888260, înregistrată în Scoția)</li>
-          <li>Sediu social: 107 Dalriada Crescent, Motherwell, Scotland ML1 3XT, United Kingdom</li>
+          <li>Companie: {LEGAL_COMPANY_REGISTRY_RO}</li>
+          <li>Sediu social: {LEGAL_REGISTERED_OFFICE_POSTAL}</li>
         </ul>
       </div>
     ),

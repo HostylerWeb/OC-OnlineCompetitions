@@ -1,10 +1,10 @@
-# @luxero/utils
+# @oc/utils
 
 Shared pure utility functions used by both the API and frontends.
 
 ## Source of truth
 
-`luxero-api/packages/utils/src` — sync into this repo via `scripts/sync-shared-packages.sh`.
+`onlinecompetitions-api/packages/utils/src` — sync into this repo via `scripts/sync-shared-packages.sh`.
 
 ## Key exports
 

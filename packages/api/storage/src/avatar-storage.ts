@@ -1,4 +1,4 @@
-import { getMongoDb } from "@luxero/auth-admin/auth-mongo";
+import { getMongoDb } from "@oc/auth-admin/auth-mongo";
 import { deleteAsset, extractKeyFromUrl, getAssetBaseUrl } from "./s3";
 
 export async function deleteAvatarIfOwned(url: string | undefined | null): Promise<void> {

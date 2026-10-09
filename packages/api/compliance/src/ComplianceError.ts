@@ -1,1 +1,1 @@
-export { ComplianceError } from "@luxero/api-errors";
+export { ComplianceError } from "@oc/api-errors";

@@ -1,2 +1,2 @@
-export type { AuthSessionData, AuthUser } from "@luxero/auth-admin/auth-client";
-export { getClientAuth } from "@luxero/auth-admin/auth-client";
+export type { AuthSessionData, AuthUser } from "@oc/auth-admin/auth-client";
+export { getClientAuth } from "@oc/auth-admin/auth-client";

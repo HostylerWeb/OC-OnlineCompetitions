@@ -21,7 +21,7 @@ Paste the output into Coolify's env var field.
 
 ## Service Account
 
-- **Email**: `luxero-spreadsheets@project-db8b8d80-7925-41ae-818.iam.gserviceaccount.com`
+- **Email**: `onlinecompetitions-spreadsheets@project-db8b8d80-7925-41ae-818.iam.gserviceaccount.com`
 - **Project**: `project-db8b8d80-7925-41ae-818`
 
 ## Google Cloud APIs to Enable
@@ -42,7 +42,7 @@ No domain-wide delegation required.
 | Remove email | `DELETE /api/admin/sheet-settings/:email` | Removes email → fire-and-forget sync |
 | Sync all | `POST /api/admin/sheet-settings/sync` | Reconciles editors on every existing sheet against current whitelist |
 
-- **Sheet name**: `Luxero Draw - {Competition Title}`
+- **Sheet name**: `Online Competitions Draw - {Competition Title}`
 - **Sheet tab**: `Entries`
 - **Columns**: `Entry Number` | `Full Name`
 - **Public access**: Anyone with the link can view (read-only)

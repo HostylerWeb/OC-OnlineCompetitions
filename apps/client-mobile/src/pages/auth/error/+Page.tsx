@@ -1,4 +1,4 @@
-import { AlertTriangle } from "@luxero/icons";
+import { AlertTriangle } from "@oc/icons";
 import { PageActionButtons } from "@/components/layout/PageActionButtons";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useAuthError } from "@/hooks/useAuthError";

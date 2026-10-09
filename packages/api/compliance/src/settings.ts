@@ -2,9 +2,9 @@ import {
   ComplianceSettings,
   DEFAULT_COMPLIANCE_SETTINGS,
   type IComplianceSettings,
-} from "@luxero/api-db/models/ComplianceSettings";
-import { CH, invalidateByChannelSafe } from "@luxero/api-infra/cache";
-import type { PublicComplianceSettings } from "@luxero/types";
+} from "@oc/api-db/models/ComplianceSettings";
+import { CH, invalidateByChannelSafe } from "@oc/api-infra/cache";
+import type { PublicComplianceSettings } from "@oc/types";
 
 /**
  * Idempotently ensure the singleton ComplianceSettings document exists.

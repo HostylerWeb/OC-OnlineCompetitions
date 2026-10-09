@@ -1,4 +1,4 @@
-import type { ErrorCode } from "@luxero/api-validation";
+import type { ErrorCode } from "@oc/api-validation";
 
 export class ComplianceError extends Error {
   constructor(

@@ -4,7 +4,7 @@ import { type ReactNode, useEffect, useState } from "react";
 
 type Theme = "light" | "dark";
 
-const STORAGE_KEY = "luxero-theme";
+const STORAGE_KEY = "oc-theme";
 const DEFAULT_THEME: Theme = "dark";
 
 const listeners = new Set<(t: Theme) => void>();
@@ -91,11 +91,11 @@ export function ThemeProviderIsland({
     };
 
     window.addEventListener("storage", onStorage);
-    window.addEventListener("luxero:theme:set", onCustomSet as EventListener);
+    window.addEventListener("onlinecompetitions:theme:set", onCustomSet as EventListener);
     window.addEventListener("keydown", onKey);
     return () => {
       window.removeEventListener("storage", onStorage);
-      window.removeEventListener("luxero:theme:set", onCustomSet as EventListener);
+      window.removeEventListener("onlinecompetitions:theme:set", onCustomSet as EventListener);
       window.removeEventListener("keydown", onKey);
     };
   }, [defaultTheme, storageKey]);
@@ -103,9 +103,9 @@ export function ThemeProviderIsland({
   return <>{children}</>;
 }
 
-export function setLuxeroTheme(theme: Theme) {
+export function setOnlineCompetitionsTheme(theme: Theme) {
   if (typeof window === "undefined") return;
-  window.dispatchEvent(new CustomEvent("luxero:theme:set", { detail: { theme } }));
+  window.dispatchEvent(new CustomEvent("onlinecompetitions:theme:set", { detail: { theme } }));
 }
 
 export function getCurrentTheme(): Theme {

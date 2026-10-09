@@ -1,6 +1,6 @@
 "use client";
 
-import type { Competition } from "@luxero/types";
+import type { Competition } from "@oc/types";
 import { Link } from "@/components/Link";
 import { useTranslation } from "@/lib/i18n";
 

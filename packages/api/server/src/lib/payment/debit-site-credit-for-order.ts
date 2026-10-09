@@ -1,5 +1,5 @@
-import { Balance, BalanceTransaction } from "@luxero/api-db/models";
-import { isDuplicateKeyError } from "@luxero/api-infra/mongo-errors";
+import { Balance, BalanceTransaction } from "@oc/api-db/models";
+import { isDuplicateKeyError } from "@oc/api-infra/mongo-errors";
 import type { ClientSession } from "mongoose";
 import { Types } from "mongoose";
 

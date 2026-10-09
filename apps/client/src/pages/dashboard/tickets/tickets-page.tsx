@@ -1,7 +1,7 @@
 "use client";
 
-import { useInfiniteMyEntries, useMyEntriesStats } from "@luxero/api-client";
-import { Ticket } from "@luxero/icons";
+import { useInfiniteMyEntries, useMyEntriesStats } from "@oc/api-client";
+import { Ticket } from "@oc/icons";
 import { useMemo } from "react";
 import { useData } from "vike-react/useData";
 import { DashboardPageHeader } from "@/components/dashboard";

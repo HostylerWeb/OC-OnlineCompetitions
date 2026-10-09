@@ -1,7 +1,7 @@
 "use client";
 
-import { Ticket, X } from "@luxero/icons";
-import type { MeOrderItemDto } from "@luxero/types";
+import { Ticket, X } from "@oc/icons";
+import type { MeOrderItemDto } from "@oc/types";
 import { TicketNumberPill } from "@/components/shared/TicketNumberPill";
 import { Button } from "@/components/ui/button";
 import {

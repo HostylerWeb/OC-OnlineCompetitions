@@ -26,9 +26,9 @@ describe("isCacheEnabled", () => {
 });
 
 describe("getRedisNamespace", () => {
-  test("defaults to 'luxero'", () => {
+  test("defaults to 'onlinecompetitions'", () => {
     delete process.env.REDIS_NAMESPACE;
-    expect(getRedisNamespace()).toBe("luxero");
+    expect(getRedisNamespace()).toBe("onlinecompetitions");
   });
 
   test("uses env value", () => {

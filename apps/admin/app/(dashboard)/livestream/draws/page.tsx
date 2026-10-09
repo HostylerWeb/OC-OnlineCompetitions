@@ -1,9 +1,9 @@
 "use client";
 
-import { api, useAdminCompetitions } from "@luxero/api-admin";
-import { Clock, RefreshCw, SkipForward, Trophy } from "@luxero/icons";
-import type { AdminCompetition } from "@luxero/types";
-import { formatDateTime, getDisplayName } from "@luxero/utils";
+import { api, useAdminCompetitions } from "@oc/api-admin";
+import { Clock, RefreshCw, SkipForward, Trophy } from "@oc/icons";
+import type { AdminCompetition } from "@oc/types";
+import { formatDateTime, getDisplayName } from "@oc/utils";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import type { ColumnDef, SortingState, VisibilityState } from "@tanstack/react-table";
 import { AssetImage } from "@/components/AssetImage";

@@ -1,5 +1,5 @@
-import type { Category, Competition, HomepageLayoutSettings, Winner } from "@luxero/types";
-import type { EndingSoonSettings } from "@luxero/utils";
+import type { Category, Competition, HomepageLayoutSettings, Winner } from "@oc/types";
+import type { EndingSoonSettings } from "@oc/utils";
 import type { PageContextServer } from "vike/types";
 import { HOMEPAGE_WINNERS_LIMIT, takeRecentWinners } from "@/lib/home-winners";
 import { serverFetch } from "@/lib/server-fetch";

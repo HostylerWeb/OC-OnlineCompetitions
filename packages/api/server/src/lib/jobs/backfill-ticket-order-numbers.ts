@@ -1,7 +1,7 @@
 import { randomInt } from "node:crypto";
 import { fileURLToPath } from "node:url";
-import { Order, Ticket } from "@luxero/api-db/models";
-import dbConnect from "@luxero/api-infra/db";
+import { Order, Ticket } from "@oc/api-db/models";
+import dbConnect from "@oc/api-infra/db";
 
 const BATCH_SIZE = 500;
 

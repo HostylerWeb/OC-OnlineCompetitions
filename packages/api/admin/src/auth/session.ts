@@ -1,4 +1,4 @@
-import type { SessionUser, User } from "@luxero/types";
+import type { SessionUser, User } from "@oc/types";
 
 export function mapSessionUser(user: SessionUser): User {
   const nameParts = user.name?.split(" ") ?? [];

@@ -1,6 +1,6 @@
-import { Car, ChevronRight, Smartphone, Trophy, Watch, Zap } from "@luxero/icons";
-import type { NavHomepageSection } from "@luxero/utils";
-import { cn } from "@luxero/utils";
+import { Car, ChevronRight, Smartphone, Trophy, Watch, Zap } from "@oc/icons";
+import type { NavHomepageSection } from "@oc/utils";
+import { cn } from "@oc/utils";
 
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@/components/Link";
@@ -115,7 +115,7 @@ export function CategoryNav({
 
   return (
     <nav className="sticky top-[91px] z-30 w-full border-b transition-all duration-300 animate-fade-in bg-card/95 backdrop-blur-2xl border-border">
-      <div className="luxero-container-wide">
+      <div className="oc-container-wide">
         <div className="flex items-center h-10">
           <div ref={scrollRef} className="flex overflow-x-auto touch-manipulation scrollbar-none">
             <div className="flex items-center gap-0.5 w-max">

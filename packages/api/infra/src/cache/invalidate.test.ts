@@ -83,9 +83,9 @@ afterEach(() => {
 
 describe("invalidateByChannel", () => {
   test("deletes all keys matching the channel pattern", async () => {
-    fake._set("cache:luxero:public:pub:settings:homepage_layout_settings", "a");
-    fake._set("cache:luxero:public:pub:settings:homepage_layout_settings:public", "b");
-    fake._set("cache:luxero:public:pub:settings:other_setting", "c");
+    fake._set("cache:onlinecompetitions:public:pub:settings:homepage_layout_settings", "a");
+    fake._set("cache:onlinecompetitions:public:pub:settings:homepage_layout_settings:public", "b");
+    fake._set("cache:onlinecompetitions:public:pub:settings:other_setting", "c");
 
     const n = await invalidateByChannel(CH.homepageLayoutSettings);
     expect(n).toBe(2);
@@ -93,14 +93,14 @@ describe("invalidateByChannel", () => {
   });
 
   test("returns 0 when no keys match", async () => {
-    fake._set("cache:luxero:public:pub:settings:other", "x");
+    fake._set("cache:onlinecompetitions:public:pub:settings:other", "x");
     const n = await invalidateByChannel(CH.homepageLayoutSettings);
     expect(n).toBe(0);
   });
 
   test("is a no-op when cache is disabled", async () => {
     process.env.REDIS_ENABLED = "false";
-    fake._set("cache:luxero:public:pub:settings:homepage_layout_settings", "a");
+    fake._set("cache:onlinecompetitions:public:pub:settings:homepage_layout_settings", "a");
     const n = await invalidateByChannel(CH.homepageLayoutSettings);
     expect(n).toBe(0);
     expect(fake._size()).toBe(1);
@@ -108,7 +108,7 @@ describe("invalidateByChannel", () => {
 
   test("is a no-op when client is null (Redis down)", async () => {
     setRedisClient(null);
-    fake._set("cache:luxero:public:pub:settings:homepage_layout_settings", "a");
+    fake._set("cache:onlinecompetitions:public:pub:settings:homepage_layout_settings", "a");
     const n = await invalidateByChannel(CH.homepageLayoutSettings);
     expect(n).toBe(0);
   });
@@ -116,9 +116,9 @@ describe("invalidateByChannel", () => {
 
 describe("invalidateUser", () => {
   test("deletes all per-user keys for the given userId", async () => {
-    fake._set("cache:luxero:user:abc:cart", "1");
-    fake._set("cache:luxero:user:abc:profile", "2");
-    fake._set("cache:luxero:user:xyz:cart", "3");
+    fake._set("cache:onlinecompetitions:user:abc:cart", "1");
+    fake._set("cache:onlinecompetitions:user:abc:profile", "2");
+    fake._set("cache:onlinecompetitions:user:xyz:cart", "3");
 
     const n = await invalidateUser("abc");
     expect(n).toBe(2);
@@ -126,8 +126,8 @@ describe("invalidateUser", () => {
   });
 
   test("escapes special glob characters in userId", async () => {
-    fake._set("cache:luxero:user:user.test:cart", "1");
-    fake._set("cache:luxero:user:userXtest:cart", "2");
+    fake._set("cache:onlinecompetitions:user:user.test:cart", "1");
+    fake._set("cache:onlinecompetitions:user:userXtest:cart", "2");
     const n = await invalidateUser("user.test");
     // Only the literal "user.test" should match.
     expect(n).toBe(1);

@@ -1,6 +1,6 @@
 "use client";
 
-import { X } from "@luxero/icons";
+import { X } from "@oc/icons";
 import { Button } from "@/components/ui/button";
 import { useSidebar } from "@/components/ui/sidebar";
 import { useTranslation } from "@/lib/i18n";

@@ -1,8 +1,8 @@
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
 import { beforeEach, describe, expect, test, vi } from "vitest";
 import mediaConverterSettingsApp from "../media-converter-settings";
 
-vi.mock("@luxero/api-infra/db", () => ({
+vi.mock("@oc/api-infra/db", () => ({
   default: vi.fn(async () => {}),
 }));
 
@@ -39,7 +39,7 @@ const settingsStore = vi.hoisted(() => ({
   },
 }));
 
-vi.mock("@luxero/api-db/models/MediaConverterSettings", () => ({
+vi.mock("@oc/api-db/models/MediaConverterSettings", () => ({
   DEFAULT_MEDIA_CONVERTER_SETTINGS: settingsStore.doc,
   MediaConverterSettings: {
     findById: vi.fn(() => ({
@@ -59,14 +59,14 @@ vi.mock("@luxero/api-db/models/MediaConverterSettings", () => ({
   },
 }));
 
-vi.mock("@luxero/api-server/middleware/auth", () => ({
+vi.mock("@oc/api-server/middleware/auth", () => ({
   requireAdmin: async (c: { set: (k: string, v: unknown) => void }, next: () => Promise<void>) => {
     c.set("userId", "admin-id");
     await next();
   },
 }));
 
-vi.mock("@luxero/api-server/lib/media-converter/settings", () => ({
+vi.mock("@oc/api-server/lib/media-converter/settings", () => ({
   invalidateMediaConverterSettingsCache: vi.fn(),
 }));
 

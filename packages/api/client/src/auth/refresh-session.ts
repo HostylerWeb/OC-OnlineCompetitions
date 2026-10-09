@@ -6,7 +6,7 @@ export async function refreshAuthSession(): Promise<void> {
   const queryClient = getGlobalQueryClient();
   await queryClient.invalidateQueries({ queryKey: ["session"] });
   try {
-    const { authClient } = await import("@luxero/auth-client");
+    const { authClient } = await import("@oc/auth-client");
     const result = await authClient.getSession();
     updateSessionSnapshot(result?.data ?? null);
   } catch {

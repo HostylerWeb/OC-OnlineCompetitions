@@ -1,11 +1,11 @@
-import { ShopOrder } from "@luxero/api-db/models";
-import dbConnect from "@luxero/api-infra/db";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { parsePagination } from "@luxero/api-infra/pagination";
-import { error, paginated, success } from "@luxero/api-infra/response";
-import { captureRouteError } from "@luxero/api-infra/sentry";
-import { createLogger } from "@luxero/api-logger";
-import { requireSession } from "@luxero/api-server/middleware/auth";
+import { ShopOrder } from "@oc/api-db/models";
+import dbConnect from "@oc/api-infra/db";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { parsePagination } from "@oc/api-infra/pagination";
+import { error, paginated, success } from "@oc/api-infra/response";
+import { captureRouteError } from "@oc/api-infra/sentry";
+import { createLogger } from "@oc/api-logger";
+import { requireSession } from "@oc/api-server/middleware/auth";
 import { Hono } from "hono";
 import mongoose from "mongoose";
 

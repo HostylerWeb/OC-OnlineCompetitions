@@ -1,4 +1,5 @@
 import type { LegalSection } from "../../content-types";
+import { CompanyEmailLink, LEGAL_COMPANY_REGISTRY_RO, CONTACT_PHONE_DISPLAY, LEGAL_COMPANY_NAME, LEGAL_COMPANY_NUMBER, LEGAL_REGISTERED_OFFICE, LEGAL_REGISTERED_OFFICE_POSTAL, BRAND_NAME, LEGAL_WEBSITE } from "../../legal/company-legal";
 
 export const privacySections = [
   {
@@ -7,7 +8,7 @@ export const privacySections = [
     content: (
       <div className="space-y-3 text-muted-foreground">
         <p>
-          LUXERO COMPETITIONS LTD (&quot;noi&quot;, &quot;al nostru&quot; sau &quot;nouă&quot;) se
+          {LEGAL_COMPANY_NAME} (&quot;noi&quot;, &quot;al nostru&quot; sau &quot;nouă&quot;) se
           angajează să protejeze și să respecte confidențialitatea ta. Această Politică de
           Confidențialitate explică cum colectăm, folosim, dezvăluim și protejăm informațiile tale
           când folosești site-ul și serviciile noastre.
@@ -215,9 +216,7 @@ export const privacySections = [
         <p className="mt-3">
           Poți renunța la publicitatea bazată pe interese vizitând secțiunile relevante de renunțare
           din Politica noastră de Cookie-uri sau contactându-ne la{" "}
-          <a href="mailto:contact@luxero.win" className="text-gold hover:underline">
-            contact@luxero.win
-          </a>
+          <CompanyEmailLink />
           .
         </p>
       </div>
@@ -271,9 +270,7 @@ export const privacySections = [
         </ul>
         <p className="mt-3">
           Pentru a exercita oricare dintre aceste drepturi, contactează-ne la{" "}
-          <a href="mailto:contact@luxero.win" className="text-gold hover:underline">
-            contact@luxero.win
-          </a>
+          <CompanyEmailLink />
           . Vom răspunde în termen de o lună.
         </p>
       </div>
@@ -410,15 +407,12 @@ export const privacySections = [
         <ul className="list-disc list-inside space-y-2">
           <li>
             Email:{" "}
-            <a href="mailto:contact@luxero.win" className="text-gold hover:underline">
-              contact@luxero.win
-            </a>
+            <CompanyEmailLink />
           </li>
           <li>
-            Poștă: Luxero Competitions, 107 Dalriada Crescent, Motherwell, Scotland ML1 3XT, United
-            Kingdom
+            Poștă: {BRAND_NAME}, {LEGAL_REGISTERED_OFFICE_POSTAL}
           </li>
-          <li>Companie: LUXERO COMPETITIONS LTD (Nr. Înreg. SC888260, înregistrată în Scoția)</li>
+          <li>Companie: {LEGAL_COMPANY_REGISTRY_RO}</li>
         </ul>
       </div>
     ),

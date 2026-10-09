@@ -1,4 +1,4 @@
-import { QueryProvider } from "@luxero/api-client";
+import { QueryProvider } from "@oc/api-client";
 import { Suspense } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { Toaster } from "sonner";
@@ -14,7 +14,7 @@ function AppInner() {
 
   return (
     <ErrorBoundary>
-      <ThemeProvider defaultTheme="dark" storageKey="luxero-theme">
+      <ThemeProvider defaultTheme="dark" storageKey="oc-theme">
         <LocaleProvider locale={resolveInitialLocale()}>
           <QueryProvider>
             <ScrollLockFix />

@@ -8,15 +8,15 @@ import {
   useAdminInstantPrizeCapacity,
   useAdminInstantPrizeTemplateMutations,
   useAdminInstantPrizeTemplates,
-} from "@luxero/api-admin";
-import { Loader2 } from "@luxero/icons";
+} from "@oc/api-admin";
+import { Loader2 } from "@oc/icons";
 import type {
   AdminCompetition,
   AdminInstantPrize,
   CompetitionInstantPrize,
   UpdateCompetitionInstantPrizePayload,
-} from "@luxero/types";
-import { getAvailableTickets } from "@luxero/utils";
+} from "@oc/types";
+import { getAvailableTickets } from "@oc/utils";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";

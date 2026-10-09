@@ -6,7 +6,7 @@ import type {
   CartItemInput,
   CartWalletTicket,
   ICart,
-} from "@luxero/types";
+} from "@oc/types";
 import {
   type QueryClient,
   type UseMutationResult,

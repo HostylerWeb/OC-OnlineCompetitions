@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
   <rect width="1024" height="1024" rx="200" fill="#0f0f12"/>
   <rect x="20" y="20" width="984" height="984" rx="184" fill="#111116"/>
-  <text x="512" y="570" text-anchor="middle" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="700" font-size="150" fill="#d4af37" letter-spacing="0.2">Luxero</text>
+  <text x="512" y="570" text-anchor="middle" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="700" font-size="150" fill="#d4af37" letter-spacing="0.2">Online Competitions</text>
 </svg>

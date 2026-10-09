@@ -5,7 +5,7 @@
 
 **Related app audits:** [admin-audit.md](./admin-audit.md), [client-audit.md](./client-audit.md)
 
-**Method:** Static review of ~45 Mongoose schemas and server route query usage; live inspection of local Docker Mongo (`mongodb://localhost:27017/luxero?directConnection=true`, replica set `rs0`, **no authentication** in default dev stack). `mongosh` was not installed; index/collection stats were collected via Bun + Mongoose.
+**Method:** Static review of ~45 Mongoose schemas and server route query usage; live inspection of local Docker Mongo (`mongodb://localhost:27017/onlinecompetitions?directConnection=true`, replica set `rs0`, **no authentication** in default dev stack). `mongosh` was not installed; index/collection stats were collected via Bun + Mongoose.
 
 ---
 
@@ -27,9 +27,9 @@ The data model is **mature for a competition platform**: strong ticket uniquenes
 
 | Store | Collections | Purpose |
 |-------|-------------|---------|
-| **Mongoose / `@luxero/api-db`** | `profiles`, `orders`, `tickets`, `competitions`, … (~47 in local DB) | Product data, RBAC mirrors, payments, referrals |
+| **Mongoose / `@oc/api-db`** | `profiles`, `orders`, `tickets`, `competitions`, … (~47 in local DB) | Product data, RBAC mirrors, payments, referrals |
 | **Better Auth adapter** | `user`, `session`, `account` (+ optional `verification`) | Credentials, sessions, OAuth links |
-| **Linking** | `Profile._id` === Better Auth user id (string/ObjectId) | Created in `createLuxeroProfile` (`packages/auth/admin/src/auth-hooks.ts`) |
+| **Linking** | `Profile._id` === Better Auth user id (string/ObjectId) | Created in `createOnline CompetitionsProfile` (`packages/auth/admin/src/auth-hooks.ts`) |
 
 **Authorization at runtime** uses the **session user’s `role`** from Better Auth (`packages/api/server/src/middleware/auth.ts`), not `Profile.isAdmin` alone.
 
@@ -76,7 +76,7 @@ Production may differ; treat index drift and counts as **signals to verify in st
 
 ### C2 — Default dev Mongo has no authentication
 
-**Where:** `docs/local-development.md` — `mongodb://localhost:27017/luxero?directConnection=true`; `scripts/mongo-init.js` only runs `rs.initiate` (no users).
+**Where:** `docs/local-development.md` — `mongodb://localhost:27017/onlinecompetitions?directConnection=true`; `scripts/mongo-init.js` only runs `rs.initiate` (no users).
 
 **Issue:** Any process on the host can read/write **PII, payment metadata, and admin roles**. Common on developer laptops and misconfigured staging.
 
@@ -169,7 +169,7 @@ Production may differ; treat index drift and counts as **signals to verify in st
 
 ### H9 — Guest profile hard-delete bypasses soft-delete audit trail
 
-**Where:** `Profile.deleteOne({ _id: guestProfile._id })` in `createLuxeroProfile` (`auth-hooks.ts`).
+**Where:** `Profile.deleteOne({ _id: guestProfile._id })` in `createOnline CompetitionsProfile` (`auth-hooks.ts`).
 
 **Issue:** Guest merge **permanently removes** a profile document instead of soft-delete — harder forensic recovery if merge logic bugs.
 

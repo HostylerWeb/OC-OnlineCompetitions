@@ -12,7 +12,7 @@ COPY . .
 
 RUN bun install --no-verify --ignore-scripts
 
-RUN bunx turbo prune --docker --out-dir=out @luxero/client
+RUN bunx turbo prune --docker --out-dir=out @oc/client
 
 # =============================================================================
 # Stage 2: Builder

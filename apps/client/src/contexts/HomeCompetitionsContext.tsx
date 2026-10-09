@@ -1,4 +1,4 @@
-import type { Competition } from "@luxero/types";
+import type { Competition } from "@oc/types";
 import { createContext, type ReactNode, useContext } from "react";
 
 interface HomeCompetitionsContextValue {

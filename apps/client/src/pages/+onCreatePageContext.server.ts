@@ -1,13 +1,13 @@
-import { getServerSession } from "@luxero/auth-admin";
-import { getEnv } from "@luxero/env/server";
+import { getServerSession } from "@oc/auth-admin";
+import { getEnv } from "@oc/env/server";
 import type {
   ApiResponse,
   ICart,
   Profile,
   PublicComplianceSettings,
   SessionUser,
-} from "@luxero/types";
-import { getDisplayName, getProfileInitials, getSessionCookiePrefix } from "@luxero/utils";
+} from "@oc/types";
+import { getDisplayName, getProfileInitials, getSessionCookiePrefix } from "@oc/utils";
 import type { PageContextServer } from "vike/types";
 import { loadLocaleData, setLocaleData } from "@/lib/i18n";
 import { detectLocale } from "@/lib/i18n/locale-detection";
@@ -155,7 +155,7 @@ export async function onCreatePageContext(pageContext: PageContextServer) {
   const sidebarMatch = cookie.match(/sidebar_state=([^;]+)/);
   const sidebarDefaultOpen = sidebarMatch ? sidebarMatch[1] === "true" : true;
 
-  const nonce = ((globalThis as Record<string, unknown>).__luxero_nonce as string | null) ?? null;
+  const nonce = ((globalThis as Record<string, unknown>).__onlinecompetitions_nonce as string | null) ?? null;
 
   if (!pageContext.locale) {
     pageContext.locale = detectLocale(cookie, pageContext.headers?.["accept-language"]);

@@ -1,7 +1,7 @@
 "use client";
 
-import { useAdminConversionSettingsMutations } from "@luxero/api-admin";
-import { Link2, Loader2, Plus, Settings2, Trash2 } from "@luxero/icons";
+import { useAdminConversionSettingsMutations } from "@oc/api-admin";
+import { Link2, Loader2, Plus, Settings2, Trash2 } from "@oc/icons";
 import { useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";

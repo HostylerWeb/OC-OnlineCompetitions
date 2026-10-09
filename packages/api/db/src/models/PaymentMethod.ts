@@ -1,12 +1,12 @@
-import { withMongoTransactionOptional } from "@luxero/api-infra/mongo-capabilities";
-import type { PaymentMethodCredentials } from "@luxero/types";
+import { withMongoTransactionOptional } from "@oc/api-infra/mongo-capabilities";
+import type { PaymentMethodCredentials } from "@oc/types";
 import mongoose, { Schema } from "mongoose";
 
 export type PaymentProvider = "local" | "stripe" | "paytriot" | "site_credit";
 
 /**
  * Per-provider credentials. Mongoose storage is `Mixed` (any shape), but the
- * TS interface narrows to the per-provider variant from `@luxero/types`. Each
+ * TS interface narrows to the per-provider variant from `@oc/types`. Each
  * `ensure*` / admin route is responsible for writing only the fields its
  * provider uses.
  */

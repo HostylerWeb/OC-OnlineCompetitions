@@ -1,5 +1,5 @@
-import { Competition, Profile } from "@luxero/api-db/models";
-import { countEffectiveOwnedForCap } from "@luxero/api-tickets/ticket-service";
+import { Competition, Profile } from "@oc/api-db/models";
+import { countEffectiveOwnedForCap } from "@oc/api-tickets/ticket-service";
 
 export interface ValidateReferralTicketSpendParams {
   userId: string;
@@ -35,7 +35,7 @@ export async function validateReferralTicketSpend(
   if (competition.status !== "active") {
     return { ok: false, code: "COMPETITION_INACTIVE", message: "Competition is not active" };
   }
-  const { isOpenForTicketSales } = await import("@luxero/api-tickets/competition-sales");
+  const { isOpenForTicketSales } = await import("@oc/api-tickets/competition-sales");
   if (!isOpenForTicketSales(competition, now)) {
     return { ok: false, code: "COMPETITION_ENDED", message: "Competition has ended" };
   }
@@ -63,7 +63,7 @@ export async function validateReferralTicketSpend(
   }
 
   try {
-    const { checkTicketAvailability } = await import("@luxero/api-tickets/cart");
+    const { checkTicketAvailability } = await import("@oc/api-tickets/cart");
     await checkTicketAvailability(competitionId, quantity, userId);
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : String(err);

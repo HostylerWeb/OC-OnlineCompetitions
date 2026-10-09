@@ -1,10 +1,10 @@
-import { createExternalAxios } from "@luxero/api-axios";
-import { dbConnect } from "@luxero/api-db";
-import { ComplianceAuditLog, type IProfile, Profile } from "@luxero/api-db/models";
-import type { IComplianceSettings } from "@luxero/api-db/models/ComplianceSettings";
-import { invalidateUser } from "@luxero/api-infra/cache";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import type { SelfExclusionDuration } from "@luxero/types";
+import { createExternalAxios } from "@oc/api-axios";
+import { dbConnect } from "@oc/api-db";
+import { ComplianceAuditLog, type IProfile, Profile } from "@oc/api-db/models";
+import type { IComplianceSettings } from "@oc/api-db/models/ComplianceSettings";
+import { invalidateUser } from "@oc/api-infra/cache";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import type { SelfExclusionDuration } from "@oc/types";
 import { ComplianceError } from "./ComplianceError";
 import { getComplianceSettings, isComplianceEnforcementActive } from "./settings";
 import {
@@ -223,7 +223,7 @@ export async function reconcileSelfExclusionOnRead(userId: string): Promise<IPro
 
 async function rejectPendingOverrideRequests(userId: string): Promise<void> {
   try {
-    const { SelfExclusionOverrideRequest } = await import("@luxero/api-db/models");
+    const { SelfExclusionOverrideRequest } = await import("@oc/api-db/models");
     await SelfExclusionOverrideRequest.updateMany(
       { userId, status: "pending" },
       {
@@ -616,7 +616,7 @@ export async function buildSaferPlayState(userId: string) {
   const exclusion = resolveEffectiveSelfExclusion(profile);
 
   // Check for pending override request
-  const { SelfExclusionOverrideRequest } = await import("@luxero/api-db/models");
+  const { SelfExclusionOverrideRequest } = await import("@oc/api-db/models");
   const pendingOverride = await SelfExclusionOverrideRequest.findOne({
     userId: profile._id,
     status: "pending",
@@ -677,7 +677,7 @@ export async function buildAdminUserComplianceState(userId: string) {
     completedOrderCount >= 1 &&
     profile.monthlySpendLimit == null;
 
-  const { SelfExclusionOverrideRequest } = await import("@luxero/api-db/models");
+  const { SelfExclusionOverrideRequest } = await import("@oc/api-db/models");
   const pendingOverride = await SelfExclusionOverrideRequest.findOne({
     userId: profile._id,
     status: "pending",
@@ -748,7 +748,7 @@ export async function createSelfExclusionOverrideRequest(
     );
   }
 
-  const { SelfExclusionOverrideRequest } = await import("@luxero/api-db/models");
+  const { SelfExclusionOverrideRequest } = await import("@oc/api-db/models");
 
   const existing = await SelfExclusionOverrideRequest.findOne({
     userId: profile._id,

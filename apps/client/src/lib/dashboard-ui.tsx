@@ -1,6 +1,6 @@
 // Barrel for dashboard-ui components.
-// Simplified stubs — no react-window or @luxero/icons dependencies.
-// Replace with full implementations from luxero-web/packages/ui when needed.
+// Simplified stubs — no react-window or @oc/icons dependencies.
+// Replace with full implementations from onlinecompetitions-web/packages/ui when needed.
 
 import type { ReactNode } from "react";
 
@@ -13,7 +13,7 @@ export function VirtualGrid({ className, children }: { className?: string; child
   return <div className={className}>{children}</div>;
 }
 
-import { cn } from "@luxero/utils";
+import { cn } from "@oc/utils";
 import { Card } from "@/components/ui/card";
 import { formatCurrency, useTranslation } from "@/lib/i18n";
 

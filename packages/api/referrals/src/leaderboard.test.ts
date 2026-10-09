@@ -12,7 +12,7 @@ const state = vi.hoisted(() => ({
   profiles: [] as Array<Record<string, unknown>>,
 }));
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   ReferralSettings: {
     findById: vi.fn(() => ({
       lean: async () => state.settings,

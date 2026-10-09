@@ -1,4 +1,4 @@
-import type { PaymentProviderId } from "@luxero/types";
+import type { PaymentProviderId } from "@oc/types";
 import type { ComponentType } from "react";
 import { LocalCheckout } from "@/components/checkout/local/LocalCheckout";
 import { PaytriotCheckout } from "@/components/checkout/paytriot/PaytriotCheckout";

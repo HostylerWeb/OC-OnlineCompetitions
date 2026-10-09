@@ -1,21 +1,21 @@
-import { Profile } from "@luxero/api-db/models";
-import dbConnect from "@luxero/api-infra/db";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { error, success } from "@luxero/api-infra/response";
-import { captureRouteError } from "@luxero/api-infra/sentry";
-import { getEnv } from "@luxero/env/server";
-import { requireSession } from "@luxero/api-server/middleware/auth";
+import { Profile } from "@oc/api-db/models";
+import dbConnect from "@oc/api-infra/db";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { error, success } from "@oc/api-infra/response";
+import { captureRouteError } from "@oc/api-infra/sentry";
+import { getEnv } from "@oc/env/server";
+import { requireSession } from "@oc/api-server/middleware/auth";
 import {
   isAvatarUploadValidationError,
   processAvatarUploadBytes,
   validateAvatarFileMeta,
-} from "@luxero/api-server/lib/avatar/process-upload";
+} from "@oc/api-server/lib/avatar/process-upload";
 import {
   deleteAvatarIfOwned,
   getAuthUserImage,
   hasGoogleAccount,
-} from "@luxero/api-storage/avatar-storage";
-import { buildAssetUrl, uploadFile } from "@luxero/api-storage/s3";
+} from "@oc/api-storage/avatar-storage";
+import { buildAssetUrl, uploadFile } from "@oc/api-storage/s3";
 import { Hono } from "hono";
 
 const app = new Hono();

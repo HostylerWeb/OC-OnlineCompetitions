@@ -122,48 +122,48 @@
     font-family: "Syne", system-ui, sans-serif;
   }
 
-  .luxero-container {
+  .oc-container {
     width: 100%;
     margin-inline: auto;
     padding-inline: clamp(1rem, 2.5vw, 4rem);
   }
 
-  .luxero-container-wide {
+  .oc-container-wide {
     width: 100%;
     margin-inline: auto;
     padding-inline: clamp(1rem, 2.5vw, 4rem);
     max-width: min(100% - 2rem, 80rem);
   }
 
-  .luxero-container-feature {
+  .oc-container-feature {
     width: 100%;
     margin-inline: auto;
     padding-inline: clamp(1rem, 2.5vw, 4rem);
     max-width: min(100% - 2rem, 72rem);
   }
 
-  .luxero-container-medium {
+  .oc-container-medium {
     width: 100%;
     margin-inline: auto;
     padding-inline: clamp(1rem, 2.5vw, 4rem);
     max-width: min(100% - 2rem, 64rem);
   }
 
-  .luxero-container-content {
+  .oc-container-content {
     width: 100%;
     margin-inline: auto;
     padding-inline: clamp(1rem, 2.5vw, 4rem);
     max-width: min(100% - 2rem, 56rem);
   }
 
-  .luxero-container-narrow {
+  .oc-container-narrow {
     width: 100%;
     margin-inline: auto;
     padding-inline: clamp(1rem, 2.5vw, 4rem);
     max-width: min(100% - 2rem, 48rem);
   }
 
-  .luxero-container-auth {
+  .oc-container-auth {
     width: 100%;
     margin-inline: auto;
     padding-inline: 1rem;
@@ -172,61 +172,61 @@
 
   /* Mobile: tighter gutters, full-width containers (below md / 768px — matches header breakpoint) */
   @media (max-width: 767px) {
-    .luxero-container,
-    .luxero-container-wide,
-    .luxero-container-feature,
-    .luxero-container-medium,
-    .luxero-container-content,
-    .luxero-container-narrow {
+    .oc-container,
+    .oc-container-wide,
+    .oc-container-feature,
+    .oc-container-medium,
+    .oc-container-content,
+    .oc-container-narrow {
       padding-inline: 0.625rem;
       max-width: 100%;
     }
 
-    .luxero-grid-competitions {
+    .onlinecompetitions-grid-competitions {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 0.5rem;
     }
   }
 
   /* Layout only — pair with Tailwind `grid` (or `md:grid`) so `hidden` breakpoints work */
-  .luxero-grid-competitions {
+  .onlinecompetitions-grid-competitions {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: clamp(0.5rem, 2vw, 0.75rem);
   }
 
   @media (min-width: 640px) {
-    .luxero-grid-competitions {
+    .onlinecompetitions-grid-competitions {
       grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
       gap: clamp(1rem, 1.5vw, 2rem);
     }
   }
 
   @media (min-width: 1024px) {
-    .luxero-grid-competitions {
+    .onlinecompetitions-grid-competitions {
       grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
     }
   }
 
   @media (min-width: 1280px) {
-    .luxero-grid-competitions {
+    .onlinecompetitions-grid-competitions {
       grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
     }
   }
 
   @media (min-width: 1536px) {
-    .luxero-grid-competitions {
+    .onlinecompetitions-grid-competitions {
       grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
     }
   }
 
   @media (min-width: 1920px) {
-    .luxero-grid-competitions {
+    .onlinecompetitions-grid-competitions {
       grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr));
     }
   }
 
   @media (min-width: 3000px) {
-    .luxero-grid-competitions {
+    .onlinecompetitions-grid-competitions {
       grid-template-columns: repeat(auto-fill, minmax(26rem, 1fr));
     }
   }
@@ -268,87 +268,87 @@
   }
 
   @media (min-width: 1280px) {
-    .luxero-container-wide {
+    .oc-container-wide {
       max-width: min(100% - 3rem, 90rem);
     }
 
-    .luxero-container-feature {
+    .oc-container-feature {
       max-width: min(100% - 3rem, 80rem);
     }
 
-    .luxero-container-medium {
+    .oc-container-medium {
       max-width: min(100% - 3rem, 72rem);
     }
 
-    .luxero-container-content {
+    .oc-container-content {
       max-width: min(100% - 3rem, 60rem);
     }
   }
 
   @media (min-width: 1536px) {
-    .luxero-container-wide {
+    .oc-container-wide {
       max-width: min(100% - 4rem, 100rem);
     }
 
-    .luxero-container-feature {
+    .oc-container-feature {
       max-width: min(100% - 4rem, 88rem);
     }
 
-    .luxero-container-medium {
+    .oc-container-medium {
       max-width: min(100% - 4rem, 80rem);
     }
 
-    .luxero-container-content {
+    .oc-container-content {
       max-width: min(100% - 4rem, 64rem);
     }
   }
 
   @media (min-width: 1920px) {
-    .luxero-container-wide {
+    .oc-container-wide {
       max-width: min(100% - 6rem, 112rem);
     }
 
-    .luxero-container-feature {
+    .oc-container-feature {
       max-width: min(100% - 6rem, 96rem);
     }
 
-    .luxero-container-medium {
+    .oc-container-medium {
       max-width: min(100% - 6rem, 88rem);
     }
 
-    .luxero-container-content {
+    .oc-container-content {
       max-width: min(100% - 6rem, 68rem);
     }
   }
 
   @media (min-width: 2560px) {
-    .luxero-container-wide {
+    .oc-container-wide {
       max-width: min(100% - 8rem, 128rem);
     }
 
-    .luxero-container-feature {
+    .oc-container-feature {
       max-width: min(100% - 8rem, 108rem);
     }
 
-    .luxero-container-medium {
+    .oc-container-medium {
       max-width: min(100% - 8rem, 96rem);
     }
 
-    .luxero-container-content {
+    .oc-container-content {
       max-width: min(100% - 8rem, 72rem);
     }
   }
 
   @media (min-width: 3000px) {
-    .luxero-container-wide {
+    .oc-container-wide {
       max-width: min(100% - 10rem, 144rem);
     }
 
-    .luxero-container-feature {
+    .oc-container-feature {
       max-width: min(100% - 10rem, 120rem);
     }
 
-    .luxero-container-medium {
+    .oc-container-medium {
       max-width: min(100% - 10rem, 104rem);
     }
   }
@@ -403,7 +403,7 @@
     overflow: hidden;
   }
 
-  body:has([data-state="open"][data-slot="luxero-dialog-fullscreen"]) {
+  body:has([data-state="open"][data-slot="brand-dialog-fullscreen"]) {
     overflow: hidden;
   }
 

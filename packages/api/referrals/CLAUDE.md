@@ -1,10 +1,10 @@
-# @luxero/api-referrals
+# @oc/api-referrals
 
 Referral program logic: tier math, award processing, ticket validation, and email notifications.
 
 ## Source of truth
 
-`luxero-api/packages/referrals/src` — synced to this repo.
+`onlinecompetitions-api/packages/referrals/src` — synced to this repo.
 
 ## Key modules
 
@@ -14,11 +14,11 @@ Referral program logic: tier math, award processing, ticket validation, and emai
 | `referral-award.ts` | Award tickets for qualifying referrals |
 | `referral-tier-math.ts` | Tier calculation & rate computation |
 | `referral-ticket-validation.ts` | Validate ticket award conditions |
-| `referral-emails.ts` | Referral-related email dispatch via `@luxero/api-email` |
+| `referral-emails.ts` | Referral-related email dispatch via `@oc/api-email` |
 | `referral-defaults.ts` | Default referral settings |
 
 ## Integration
 
-- Referral codes tracked via cookies (`@luxero/utils` referral helpers)
-- Awards processed during order fulfillment (`@luxero/api-payment-core`)
-- Emails sent through `@luxero/api-email`
+- Referral codes tracked via cookies (`@oc/utils` referral helpers)
+- Awards processed during order fulfillment (`@oc/api-payment-core`)
+- Emails sent through `@oc/api-email`

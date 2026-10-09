@@ -1,5 +1,5 @@
 "use client";
-import type { Profile, SessionUser } from "@luxero/types";
+import type { Profile, SessionUser } from "@oc/types";
 import * as Sentry from "@sentry/react";
 import { useQueryClient } from "@tanstack/react-query";
 import { type ReactNode, useCallback, useEffect, useRef } from "react";

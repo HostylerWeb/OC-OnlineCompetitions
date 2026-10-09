@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
+import { CompanyContactEmail, CompanyNameAndAddress } from "@/components/company-details";
 
 export const metadata: Metadata = {
-  title: "Refund Policy | LUXERO",
-  description: "LUXERO return and refund policy for UK-based premium streetwear.",
+  title: "Refund Policy | OC",
+  description: "OC return and refund policy for UK-based premium streetwear.",
 };
 
 export default function RefundsPage() {
   return (
-    <main className="luxero-container py-12">
+    <main className="oc-container py-12">
       <h1 className="text-3xl font-bold tracking-tight">Refund Policy</h1>
       <p className="mt-2 text-sm text-muted-foreground">Last updated: June 2026</p>
 
@@ -38,9 +39,7 @@ export default function RefundsPage() {
           </h2>
           <p className="mt-2 text-muted-foreground leading-relaxed">
             Email us at&nbsp;
-            <a href="mailto:contact@luxero.win" className="text-gold hover:underline">
-              contact@luxero.win
-            </a>{" "}
+            <CompanyContactEmail />{" "}
             with your order number and the item(s) you wish to return. Our team will respond within
             24 hours with instructions and your return authorisation.
           </p>
@@ -52,7 +51,7 @@ export default function RefundsPage() {
             Customers are responsible for return shipping costs. A prepaid UK return label can be
             provided for&nbsp;
             <span className="text-foreground font-medium">£3.99</span>, which will be deducted from
-            your refund. We recommend using a tracked service for non-UK returns, as LUXERO is not
+            your refund. We recommend using a tracked service for non-UK returns, as OC is not
             responsible for lost return parcels.
           </p>
         </section>
@@ -85,10 +84,8 @@ export default function RefundsPage() {
             <span className="text-foreground font-medium">
               full refund including return shipping costs
             </span>
-            . Please include photos of the issue when contacting&nbsp;
-            <a href="mailto:contact@luxero.win" className="text-gold hover:underline">
-              contact@luxero.win
-            </a>{" "}
+            . Please include photos of the issue             when contacting&nbsp;
+            <CompanyContactEmail />{" "}
             so we can resolve your case promptly.
           </p>
         </section>
@@ -120,18 +117,10 @@ export default function RefundsPage() {
           <div className="mt-2 space-y-1 text-muted-foreground leading-relaxed">
             <p>
               Email:&nbsp;
-              <a href="mailto:contact@luxero.win" className="text-gold hover:underline">
-                contact@luxero.win
-              </a>
+              <CompanyContactEmail />
             </p>
             <p>
-              LUXERO COMPETITIONS LTD
-              <br />
-              107 Dalriada Crescent
-              <br />
-              Motherwell, ML1 3XT
-              <br />
-              Scotland, United Kingdom
+              <CompanyNameAndAddress />
             </p>
           </div>
         </section>

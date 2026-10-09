@@ -1,8 +1,8 @@
 "use client";
 
-import type { LucideIcon } from "@luxero/icons";
-import { Globe, Lock, MapPin, Shield, User } from "@luxero/icons";
-import { cn } from "@luxero/utils";
+import type { LucideIcon } from "@oc/icons";
+import { Globe, Lock, MapPin, Shield, User } from "@oc/icons";
+import { cn } from "@oc/utils";
 import { TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useTranslation } from "@/lib/i18n";
 

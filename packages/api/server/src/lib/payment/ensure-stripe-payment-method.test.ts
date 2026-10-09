@@ -19,14 +19,14 @@ const __mocks = vi.hoisted(() => ({
   }),
 }));
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   PaymentMethod: {
     findOne: __mocks.__paymentMethodFindOne,
     findOneAndUpdate: __mocks.__paymentMethodFindOneAndUpdate,
   },
 }));
 
-vi.mock("@luxero/api-infra/cache", () => ({
+vi.mock("@oc/api-infra/cache", () => ({
   CH: {
     paymentConfig: "payment-config",
     paymentProviders: "payment-providers",
@@ -34,7 +34,7 @@ vi.mock("@luxero/api-infra/cache", () => ({
   invalidateByChannelSafe: __mocks.__invalidateByChannelSafe,
 }));
 
-vi.mock("@luxero/env/server", () => ({
+vi.mock("@oc/env/server", () => ({
   getEnv: __mocks.__getEnv,
 }));
 

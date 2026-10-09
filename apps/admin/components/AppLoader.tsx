@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { LuxeroLogo } from "./LuxeroLogo";
+import { BrandLogo } from "./BrandLogo";
 import { Spinner, spinnerSizes } from "./ui/spinner";
 
 interface AppLoaderProps {
@@ -54,11 +54,11 @@ function AppLoader({
           className="absolute inset-0 rounded-full border-2 border-gold/12 border-t-gold/75 app-loader-ring"
           aria-hidden="true"
         />
-        <LuxeroLogo
+        <BrandLogo
           className={cn(
             "block w-auto shrink-0 text-gold",
             animate && "app-loader-mark",
-            isFullscreen ? "h-6" : "h-5"
+            isFullscreen ? "h-12" : "h-10"
           )}
           aria-hidden
         />

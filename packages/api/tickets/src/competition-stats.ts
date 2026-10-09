@@ -1,7 +1,7 @@
 import {
   getCompetitionTicketStats,
   getCompetitionTicketStatsBatch,
-} from "@luxero/api-tickets/ticket-service";
+} from "@oc/api-tickets/ticket-service";
 
 export async function enrichCompetitionWithTicketStats<
   T extends {

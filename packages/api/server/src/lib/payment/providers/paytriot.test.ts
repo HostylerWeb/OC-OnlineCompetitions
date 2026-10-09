@@ -74,7 +74,7 @@ const __envMocks = vi.hoisted(() => ({
       PAYTRIOT_MERCHANT_ID: "123456",
       PAYTRIOT_MERCHANT_SECRET: "test_secret",
       PAYTRIOT_ENVIRONMENT: "sandbox",
-      PAYTRIOT_STATEMENT_NARRATIVE_1: "Luxero*Test",
+      PAYTRIOT_STATEMENT_NARRATIVE_1: "Online Competitions*Test",
       PAYTRIOT_STATEMENT_NARRATIVE_2: "02000000000",
       PAYTRIOT_CURRENCY: "GBP",
     };
@@ -123,16 +123,16 @@ vi.mock("../build-fulfillment-deps", () => ({
   reserveCheckoutPromoCode: __mocks.__reserveCheckoutPromoCode,
 }));
 
-vi.mock("@luxero/api-tickets/create-session", () => ({
+vi.mock("@oc/api-tickets/create-session", () => ({
   computeCheckoutTotal: __mocks.__computeCheckoutTotal,
   createPendingCheckoutOrder: __mocks.__createPendingCheckoutOrder,
 }));
 
-vi.mock("@luxero/api-tickets/promo-codes", () => ({
+vi.mock("@oc/api-tickets/promo-codes", () => ({
   releasePromoCodeUsage: __mocks.__releasePromoCodeUsage,
 }));
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   Competition: {
     find: vi.fn(() => ({
       select: vi.fn(() => ({
@@ -173,7 +173,7 @@ vi.mock("@luxero/api-db/models", () => ({
   },
 }));
 
-vi.mock("@luxero/api-payment-paytriot", () => ({
+vi.mock("@oc/api-payment-paytriot", () => ({
   Gateway: __paytriotMocks.Gateway,
   sign: __paytriotMocks.sign,
   verifyResponse: __paytriotMocks.verifyResponse,
@@ -186,7 +186,7 @@ vi.mock("@luxero/api-payment-paytriot", () => ({
   PAYTRIOT_NUMERIC_CURRENCIES: __paytriotMocks.PAYTRIOT_NUMERIC_CURRENCIES,
 }));
 
-vi.mock("@luxero/env/server", () => ({
+vi.mock("@oc/env/server", () => ({
   getEnv: __envMocks.getEnv,
   getBool: (key: string, defaultVal?: boolean) => {
     if (key === "PAYTRIOT_LENIENT_RESPONSE_SIGNATURE") return false;
@@ -194,7 +194,7 @@ vi.mock("@luxero/env/server", () => ({
   },
 }));
 
-vi.mock("@luxero/api-logger", () => ({
+vi.mock("@oc/api-logger", () => ({
   createLogger: () => ({
     debug: () => {},
     info: () => {},
@@ -242,7 +242,7 @@ describe("paytriotAdapter", () => {
         PAYTRIOT_MERCHANT_ID: "123456",
         PAYTRIOT_MERCHANT_SECRET: "test_secret",
         PAYTRIOT_ENVIRONMENT: "sandbox",
-        PAYTRIOT_STATEMENT_NARRATIVE_1: "Luxero*Test",
+        PAYTRIOT_STATEMENT_NARRATIVE_1: "Online Competitions*Test",
         PAYTRIOT_STATEMENT_NARRATIVE_2: "02000000000",
         PAYTRIOT_CURRENCY: "GBP",
       };

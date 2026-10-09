@@ -1,10 +1,10 @@
-# @luxero/api-storage
+# @oc/api-storage
 
 S3-compatible object storage client (MinIO for local dev, S3 for production).
 
 ## Source of truth
 
-`luxero-api/packages/storage/src` — synced to this repo.
+`onlinecompetitions-api/packages/storage/src` — synced to this repo.
 
 ## Key modules
 

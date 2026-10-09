@@ -1,5 +1,5 @@
 {
-  "name": "@luxero/auth-client",
+  "name": "@oc/auth-client",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -13,9 +13,9 @@
     "lint": "biome check src/"
   },
   "dependencies": {
-    "@luxero/env": "workspace:*",
+    "@oc/env": "workspace:*",
     "better-auth": "^1.6.11",
-    "@luxero/utils": "workspace:*"
+    "@oc/utils": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

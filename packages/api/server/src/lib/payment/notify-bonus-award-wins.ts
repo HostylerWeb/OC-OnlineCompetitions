@@ -1,11 +1,11 @@
-import { BonusAwardWin, type IBonusAwardWin, Profile } from "@luxero/api-db/models";
-import { sendEmail } from "@luxero/api-email/client";
-import { getEmailConfig } from "@luxero/api-email/config";
-import BonusDrawWinEmail from "@luxero/api-email/templates/bonus-draw-win";
-import { getCurrentContext } from "@luxero/api-infra/env";
-import { createLogger } from "@luxero/api-logger";
-import { sendPushNotification } from "@luxero/api-server/lib/push";
-import { getDisplayName } from "@luxero/utils";
+import { BonusAwardWin, type IBonusAwardWin, Profile } from "@oc/api-db/models";
+import { sendEmail } from "@oc/api-email/client";
+import { getEmailConfig } from "@oc/api-email/config";
+import BonusDrawWinEmail from "@oc/api-email/templates/bonus-draw-win";
+import { getCurrentContext } from "@oc/api-infra/env";
+import { createLogger } from "@oc/api-logger";
+import { sendPushNotification } from "@oc/api-server/lib/push";
+import { getDisplayName } from "@oc/utils";
 import { render } from "@react-email/render";
 import { Types } from "mongoose";
 
@@ -49,10 +49,10 @@ export async function notifyBonusAwardWins(options: NotifyBonusAwardWinsOptions)
         winIdx,
         profile._id,
         profile.email,
-        profile.email.endsWith("@guest.luxero.local")
+        profile.email.endsWith("@guest.onlinecompetitions.local")
       );
 
-      const isGuestEmail = profile.email.endsWith("@guest.luxero.local");
+      const isGuestEmail = profile.email.endsWith("@guest.onlinecompetitions.local");
 
       if (!isGuestEmail) {
         console.log(

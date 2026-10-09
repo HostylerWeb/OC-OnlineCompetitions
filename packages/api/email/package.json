@@ -1,5 +1,5 @@
 {
-  "name": "@luxero/api-email",
+  "name": "@oc/api-email",
   "private": true,
   "type": "module",
   "exports": {
@@ -14,9 +14,9 @@
     "format": "biome format --write src/"
   },
   "dependencies": {
-    "@luxero/api-db": "workspace:*",
-    "@luxero/env": "workspace:*",
-    "@luxero/utils": "workspace:*",
+    "@oc/api-db": "workspace:*",
+    "@oc/env": "workspace:*",
+    "@oc/utils": "workspace:*",
     "@react-email/components": "^1.0.12",
     "@react-email/render": "^2.0.8",
     "nodemailer": "^8.0.7",

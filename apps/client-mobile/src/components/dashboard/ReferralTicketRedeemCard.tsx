@@ -1,6 +1,6 @@
 "use client";
 
-import type { ContextualError } from "@luxero/api-client";
+import type { ContextualError } from "@oc/api-client";
 import {
   ApiResponseError,
   type CompetitionAvailability,
@@ -9,10 +9,10 @@ import {
   useCompetitionsAvailability,
   useMyTicketCountsByCompetition,
   useRedeemReferralTickets,
-} from "@luxero/api-client";
-import { Clock, Minus, Plus, Search, Ticket, Trophy } from "@luxero/icons";
-import type { Competition } from "@luxero/types";
-import { CountdownLabel, cn, getAvailableTickets } from "@luxero/utils";
+} from "@oc/api-client";
+import { Clock, Minus, Plus, Search, Ticket, Trophy } from "@oc/icons";
+import type { Competition } from "@oc/types";
+import { CountdownLabel, cn, getAvailableTickets } from "@oc/utils";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { GoldOutlineButton } from "@/components/buttons";
 import { ContextualErrorMessage } from "@/components/ContextualErrorMessage";

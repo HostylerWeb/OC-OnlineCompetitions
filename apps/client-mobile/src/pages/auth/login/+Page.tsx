@@ -5,7 +5,7 @@ import {
   resolveAuthenticatedDestination,
   SignInForm,
   useReturnToSearchParam,
-} from "@luxero/api-client";
+} from "@oc/api-client";
 import { useTranslation } from "@/lib/i18n";
 
 const getEnv = (key: string) => import.meta.env[`VITE_${key}`] || "";

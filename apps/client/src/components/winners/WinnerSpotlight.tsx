@@ -1,8 +1,8 @@
 "use client";
 
-import { Calendar, List, MapPin, Ticket, Trophy } from "@luxero/icons";
-import type { Winner } from "@luxero/types";
-import { cn, formatDate } from "@luxero/utils";
+import { Calendar, List, MapPin, Ticket, Trophy } from "@oc/icons";
+import type { Winner } from "@oc/types";
+import { cn, formatDate } from "@oc/utils";
 import { Button } from "@/components/ui/button";
 import {
   getCompetitionTitle,

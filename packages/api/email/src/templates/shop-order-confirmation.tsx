@@ -1,4 +1,4 @@
-import { formatOrderNumber } from "@luxero/utils";
+import { formatOrderNumber } from "@oc/utils";
 import { Button, Hr, Row, Section, Text } from "@react-email/components";
 import { BaseEmail, emailStyles } from "./base";
 
@@ -46,7 +46,7 @@ export function ShopOrderConfirmationEmail({
 }: ShopOrderConfirmationProps) {
   return (
     <BaseEmail
-      preview={`Your Luxero order confirmation (${formatOrderNumber(orderNumber)})`}
+      preview={`Your Online Competitions order confirmation (${formatOrderNumber(orderNumber)})`}
       frontendUrl={frontendUrl}
     >
       <Text className={emailStyles.heading.className}>Order Confirmed</Text>

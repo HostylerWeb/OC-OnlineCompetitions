@@ -1,4 +1,4 @@
-import { ArrowRight } from "@luxero/icons";
+import { ArrowRight } from "@oc/icons";
 import { GoldOutlineButton } from "@/components/buttons";
 import { Link } from "@/components/Link";
 import { useTranslation } from "@/lib/i18n";

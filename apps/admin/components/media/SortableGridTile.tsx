@@ -12,7 +12,7 @@ import {
   Star,
   Trash2,
   X,
-} from "@luxero/icons";
+} from "@oc/icons";
 import { AssetImage } from "@/components/AssetImage";
 import type { CompetitionImage } from "@/components/competition/types";
 import {

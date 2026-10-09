@@ -1,6 +1,6 @@
-import type { DiscountType } from "@luxero/api-db/models";
-import { Order, Profile, PromoCode, PromoRedemption, ReferralSettings } from "@luxero/api-db/models";
-import { createLogger } from "@luxero/api-logger";
+import type { DiscountType } from "@oc/api-db/models";
+import { Order, Profile, PromoCode, PromoRedemption, ReferralSettings } from "@oc/api-db/models";
+import { createLogger } from "@oc/api-logger";
 import mongoose from "mongoose";
 
 const log = createLogger("promo-codes");

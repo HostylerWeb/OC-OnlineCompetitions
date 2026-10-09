@@ -1,7 +1,7 @@
 "use client";
 
-import { useComplianceFeatures } from "@luxero/api-client";
-import { AlertCircle, Check } from "@luxero/icons";
+import { useComplianceFeatures } from "@oc/api-client";
+import { AlertCircle, Check } from "@oc/icons";
 import { GoldOutlineButton } from "@/components/buttons";
 import { Link } from "@/components/Link";
 import { type TranslationKey, useTranslation } from "@/lib/i18n";
@@ -28,7 +28,7 @@ export default function FreePostalEntryPage() {
   const addressLines = formatPostalAddress(postalAddress);
 
   return (
-    <div className="luxero-container-narrow pb-8">
+    <div className="oc-container-narrow pb-8">
       <div className="py-5 lg:py-12">
         <div className="text-center mb-12">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4 text-balance">

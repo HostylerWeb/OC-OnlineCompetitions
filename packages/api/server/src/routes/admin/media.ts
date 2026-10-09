@@ -1,7 +1,7 @@
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { error, success } from "@luxero/api-infra/response";
-import { findMediaUsages, type MediaUsage, parseUrlList } from "@luxero/api-server/lib/media-usage";
-import { requireManager } from "@luxero/api-server/middleware/auth";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { error, success } from "@oc/api-infra/response";
+import { findMediaUsages, type MediaUsage, parseUrlList } from "@oc/api-server/lib/media-usage";
+import { requireManager } from "@oc/api-server/middleware/auth";
 import {
   buildAssetUrl,
   deleteAsset,
@@ -12,8 +12,8 @@ import {
   headObject,
   listAssets,
   uploadFile,
-} from "@luxero/api-storage/s3";
-import { listFlatAssetsPage } from "@luxero/api-storage/list-flat-assets";
+} from "@oc/api-storage/s3";
+import { listFlatAssetsPage } from "@oc/api-storage/list-flat-assets";
 import { Hono } from "hono";
 import imageSize from "image-size";
 import sharp from "sharp";
@@ -127,7 +127,7 @@ app.post("/upload", async (c) => {
   let bytes = new Uint8Array(arrayBuffer);
   let contentType = file.type || "application/octet-stream";
 
-  const { transformUploadBytes } = await import("@luxero/api-server/lib/media-converter/transform");
+  const { transformUploadBytes } = await import("@oc/api-server/lib/media-converter/transform");
   const transformed = await transformUploadBytes({ key, bytes, contentType });
   key = transformed.key;
   bytes = transformed.bytes;

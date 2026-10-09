@@ -1,6 +1,6 @@
 "use client";
 
-import type { LucideIcon } from "@luxero/icons";
+import type { LucideIcon } from "@oc/icons";
 import {
   DASHBOARD_LIST_GAP,
   DASHBOARD_LIST_HEIGHTS,

@@ -1,5 +1,5 @@
-import { EndingSoonSettings } from "@luxero/api-db/models";
-import type { IEndingSoonSettings } from "@luxero/api-db/models/EndingSoonSettings";
+import { EndingSoonSettings } from "@oc/api-db/models";
+import type { IEndingSoonSettings } from "@oc/api-db/models/EndingSoonSettings";
 
 export const DEFAULT_ENDING_SOON_SETTINGS: IEndingSoonSettings = {
   _id: "ending_soon_settings",

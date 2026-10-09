@@ -5,7 +5,7 @@ import {
   useCompetitionStream,
   useCompetitions,
   useCompetitionsFilterStore,
-} from "@luxero/api-client";
+} from "@oc/api-client";
 import { useEffect, useMemo, useState } from "react";
 import { CompetitionCard } from "@/components/home/CompetitionCard";
 import { CompetitionsSearch } from "@/components/home/CompetitionsSearch";
@@ -65,7 +65,7 @@ export default function Page() {
   return (
     <>
       <section className="py-6 lg:py-12 border-b border-gold/10">
-        <div className="luxero-container-wide">
+        <div className="oc-container-wide">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-2 lg:mb-4 text-balance">
             <span className="text-gold">{t("competitions.listing.heading")}</span>
           </h1>
@@ -76,7 +76,7 @@ export default function Page() {
       </section>
 
       <section className="sticky top-0 z-30 bg-background/95 backdrop-blur-2xl border-b border-gold/10">
-        <div className="luxero-container-wide py-4 lg:py-6">
+        <div className="oc-container-wide py-4 lg:py-6">
           <CompetitionsSearch
             categories={categories as unknown as Array<{ slug: string; label: string }>}
           />
@@ -84,7 +84,7 @@ export default function Page() {
       </section>
 
       <section className="py-5 lg:py-8 min-h-[50vh]">
-        <div className="luxero-container-wide">
+        <div className="oc-container-wide">
           {isError ? (
             <div className="text-center py-16">
               <p className="text-muted-foreground text-lg mb-2">
@@ -103,7 +103,7 @@ export default function Page() {
               </button>
             </div>
           ) : filteredCompetitions.length > 0 ? (
-            <div className="grid luxero-grid-competitions animate-fade-in-stagger">
+            <div className="grid onlinecompetitions-grid-competitions animate-fade-in-stagger">
               {filteredCompetitions.map((competition, index) => (
                 <CompetitionCard
                   key={competition.id || competition._id}

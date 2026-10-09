@@ -1,5 +1,5 @@
-import type { ContentFeature } from "@luxero/content";
-import { Shield } from "@luxero/icons";
+import type { ContentFeature } from "@oc/content";
+import { Shield } from "@oc/icons";
 import { useTranslation } from "@/lib/i18n";
 import { getHowItWorksIcon } from "./icon-map";
 
@@ -70,13 +70,13 @@ export function HowItWorksFeatures({ features }: HowItWorksFeaturesProps) {
       <div className="relative">
         <div className="text-center mb-12 sm:mb-14">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold mb-2">
-            {t("staticPages.howItWorks.whyLuxero")}
+            {t("staticPages.howItWorks.whyOnlineCompetitions")}
           </p>
           <h2
             id="how-it-works-features-heading"
             className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground text-balance"
           >
-            {t("staticPages.howItWorks.whyChooseLuxero")} <span className="text-gold">Luxero</span>
+            {t("staticPages.howItWorks.whyChooseOnlineCompetitions")} <span className="text-gold">Online Competitions</span>
           </h2>
         </div>
 

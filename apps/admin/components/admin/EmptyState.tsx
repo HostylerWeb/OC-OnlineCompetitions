@@ -1,6 +1,6 @@
 "use client";
-import type { LucideIcon } from "@luxero/icons";
-import { Inbox } from "@luxero/icons";
+import type { LucideIcon } from "@oc/icons";
+import { Inbox } from "@oc/icons";
 import { cn } from "@/lib/utils";
 import { Button } from "../ui/button";
 import {

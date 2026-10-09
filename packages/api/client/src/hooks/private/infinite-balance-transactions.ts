@@ -1,4 +1,4 @@
-import type { ApiResponse, BalanceTransaction } from "@luxero/types";
+import type { ApiResponse, BalanceTransaction } from "@oc/types";
 import type { InfiniteData } from "@tanstack/react-query";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { api } from "../../client";

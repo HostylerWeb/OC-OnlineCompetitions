@@ -1,8 +1,8 @@
-import dbConnect from "@luxero/api-infra/db";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { error, success } from "@luxero/api-infra/response";
-import { getReferralMindmap, type ReferralMindmapOptions } from "@luxero/api-referrals/mindmap";
-import { requireManager } from "@luxero/api-server/middleware/auth";
+import dbConnect from "@oc/api-infra/db";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { error, success } from "@oc/api-infra/response";
+import { getReferralMindmap, type ReferralMindmapOptions } from "@oc/api-referrals/mindmap";
+import { requireManager } from "@oc/api-server/middleware/auth";
 import { Hono } from "hono";
 
 const app = new Hono();

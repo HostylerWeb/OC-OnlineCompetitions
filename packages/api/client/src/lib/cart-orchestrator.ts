@@ -1,4 +1,4 @@
-import type { CartWalletTicket } from "@luxero/types";
+import type { CartWalletTicket } from "@oc/types";
 import { create } from "zustand";
 
 export interface SnapBackEntry {

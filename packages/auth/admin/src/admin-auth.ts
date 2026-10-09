@@ -1,5 +1,5 @@
-import { getEnv } from "@luxero/env/server";
-import { getSessionCookiePrefix } from "@luxero/utils";
+import { getEnv } from "@oc/env/server";
+import { getSessionCookiePrefix } from "@oc/utils";
 import { betterAuth } from "better-auth/minimal";
 import { admin, captcha, emailOTP } from "better-auth/plugins";
 import { defaultRoles, userAc } from "better-auth/plugins/admin/access";
@@ -46,7 +46,7 @@ function getSocialProviders() {
 export async function getAdminAuth() {
   if (!authInstance) {
     const config: BuildAuthConfig = {
-      appName: "LuxeroAdmin",
+      appName: "Online Competitions Admin",
       baseURL: getAppUrl(),
       trustedOrigins: createTrustedOriginsResolver(getAppUrl()),
       emailAndPassword: {

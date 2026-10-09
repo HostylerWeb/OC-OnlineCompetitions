@@ -1,6 +1,6 @@
 "use client";
 
-import type { ReferralMindmapResponse } from "@luxero/api-referrals/mindmap";
+import type { ReferralMindmapResponse } from "@oc/api-referrals/mindmap";
 import dynamic from "next/dynamic";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";

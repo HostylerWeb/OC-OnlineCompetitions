@@ -1,7 +1,7 @@
 "use client";
 
-import { ChevronDown, HelpCircle } from "@luxero/icons";
-import { cn } from "@luxero/utils";
+import { ChevronDown, HelpCircle } from "@oc/icons";
+import { cn } from "@oc/utils";
 import { useState } from "react";
 import { useTranslation } from "@/lib/i18n";
 

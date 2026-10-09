@@ -1,6 +1,6 @@
-import { createServerAxios, type ServerAxiosOptions } from "@luxero/api-axios";
-import { getEnv } from "@luxero/env/server";
-import type { ApiResponse } from "@luxero/types";
+import { createServerAxios, type ServerAxiosOptions } from "@oc/api-axios";
+import { getEnv } from "@oc/env/server";
+import type { ApiResponse } from "@oc/types";
 
 const DEFAULT_TIMEOUT_MS = 30_000;
 const DEFAULT_PUBLIC_TIMEOUT_MS = 10_000;

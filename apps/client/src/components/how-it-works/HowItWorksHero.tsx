@@ -1,4 +1,4 @@
-import { HelpCircle } from "@luxero/icons";
+import { HelpCircle } from "@oc/icons";
 import { useTranslation } from "@/lib/i18n";
 
 export function HowItWorksHero() {

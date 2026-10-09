@@ -1,7 +1,7 @@
 "use client";
 
-import { useAdminComplianceSettings, useComplianceSettingsMutations } from "@luxero/api-admin";
-import { Settings, Shield } from "@luxero/icons";
+import { useAdminComplianceSettings, useComplianceSettingsMutations } from "@oc/api-admin";
+import { Settings, Shield } from "@oc/icons";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -24,6 +24,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
+import { LEGAL_POSTAL_ADDRESS } from "@oc/utils";
 import { handleFormError } from "@/lib/handle-form-error";
 import { createZodResolver } from "@/lib/zod-resolver";
 
@@ -66,7 +67,7 @@ const DEFAULTS: ComplianceFormValues = {
   selfExclusionEnabled: false,
   selfExclusionMinMonths: 6,
   marketingWebhookUrl: "",
-  postalEntryAddress: "107 Dalriada Crescent, Motherwell ML1 3XT",
+  postalEntryAddress: LEGAL_POSTAL_ADDRESS,
   postalEntryProminenceEnabled: false,
   compliancePageEnabled: false,
   guestCheckoutEnabled: true,

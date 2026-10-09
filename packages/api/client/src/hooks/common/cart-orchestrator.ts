@@ -1,4 +1,4 @@
-import type { ApiResponse, CartWalletTicket, ICart } from "@luxero/types";
+import type { ApiResponse, CartWalletTicket, ICart } from "@oc/types";
 import { useCallback, useEffect, useRef } from "react";
 import { type QueueItem, useCartOrchestratorStore } from "../../lib/cart-orchestrator";
 import { useApplyCartWallet, useRemoveCartItem, useUpdateCartItem } from "./cart-mutations";

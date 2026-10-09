@@ -1,10 +1,10 @@
-# @luxero/api-payment-local
+# @oc/api-payment-local
 
 In-process "bypass" payment provider for local development. Mirrors the shape of other SDKs (client, webhooks, env, currency, types) but has no third-party — all methods are no-ops or local DB operations.
 
 ## Source of truth
 
-`luxero-api/packages/payment/local/src` — synced to this repo.
+`onlinecompetitions-api/packages/payment/local/src` — synced to this repo.
 
 ## Public surface
 

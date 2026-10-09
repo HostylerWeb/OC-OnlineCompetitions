@@ -10,7 +10,7 @@ export interface AssetImageProps extends Omit<
   fill?: boolean;
 }
 
-/** Renders storage/CDN URLs directly (MinIO, assets.luxero.win) — no Next.js image optimizer. */
+/** Renders storage/CDN URLs directly (MinIO, assets.onlinecompetitions.co.uk) — no Next.js image optimizer. */
 export function AssetImage({
   src,
   alt,

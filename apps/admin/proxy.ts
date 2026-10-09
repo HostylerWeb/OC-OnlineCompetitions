@@ -1,4 +1,4 @@
-import { createAuthAxios } from "@luxero/api-axios";
+import { createAuthAxios } from "@oc/api-axios";
 import { NextRequest, NextResponse } from "next/server";
 import { isAdminOnlyPath } from "@/lib/nav-permissions";
 

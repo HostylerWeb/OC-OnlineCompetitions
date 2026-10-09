@@ -15,7 +15,7 @@
     "declaration": true,
     "composite": true,
     "paths": {
-      "@luxero/server/*": ["./src/*"]
+      "@oc/server/*": ["./src/*"]
     }
   },
   "include": ["src/**/*"],

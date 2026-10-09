@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Luxero Admin",
-    short_name: "Luxero Admin",
+    name: "Online Competitions Admin",
+    short_name: "Online Competitions Admin",
     description: "Admin dashboard for managing competitions, users, and prizes.",
     start_url: "/",
     scope: "/",
@@ -14,20 +14,8 @@ export default function manifest(): MetadataRoute.Manifest {
     categories: ["business", "productivity"],
     prefer_related_applications: false,
     icons: [
-      { src: "/icons/icon-192x192.svg", sizes: "192x192", type: "image/svg+xml", purpose: "any" },
-      { src: "/icons/icon-512x512.svg", sizes: "512x512", type: "image/svg+xml", purpose: "any" },
-      {
-        src: "/icons/icon-192x192.svg",
-        sizes: "192x192",
-        type: "image/svg+xml",
-        purpose: "maskable",
-      },
-      {
-        src: "/icons/icon-512x512.svg",
-        sizes: "512x512",
-        type: "image/svg+xml",
-        purpose: "maskable",
-      },
+      { src: "/favicon.png", sizes: "512x512", type: "image/png", purpose: "any" },
+      { src: "/favicon.png", sizes: "512x512", type: "image/png", purpose: "maskable" },
     ],
   };
 }

@@ -1,4 +1,4 @@
-import type { Entry } from "@luxero/types";
+import type { Entry } from "@oc/types";
 import { getCompetitionId } from "./ticketOutcomeStyles";
 
 type CompetitionInfo = Exclude<Entry["competitionId"], string>;

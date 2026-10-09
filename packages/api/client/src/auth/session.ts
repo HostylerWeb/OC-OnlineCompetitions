@@ -1,5 +1,5 @@
-import type { AuthClientSession } from "@luxero/auth-client";
-import type { User } from "@luxero/types";
+import type { AuthClientSession } from "@oc/auth-client";
+import type { User } from "@oc/types";
 
 type SessionUser = AuthClientSession["user"] & {
   firstName?: string | null;

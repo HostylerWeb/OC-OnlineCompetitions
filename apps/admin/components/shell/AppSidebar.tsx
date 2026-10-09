@@ -1,9 +1,9 @@
 "use client";
 import { useQueryClient } from "@tanstack/react-query";
-import { useAuth } from "@luxero/api-admin";
+import { useAuth } from "@oc/api-admin";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LuxeroLogo, LuxeroLogoSquare } from "@/components/LuxeroLogo";
+import { BrandLogo, BrandLogoSquare } from "@/components/BrandLogo";
 import {
   Sidebar,
   SidebarContent,
@@ -117,8 +117,8 @@ export function AppSidebar() {
               data-umami-event="nav:logo-home"
               className="flex h-12 w-full items-center gap-2 overflow-hidden rounded-lg px-2 text-sm transition-colors hover:bg-[color-mix(in_srgb,var(--sidebar-foreground)_6%,var(--sidebar))] group-data-[state=collapsed]:justify-center group-data-[state=collapsed]:p-2"
             >
-              <LuxeroLogoSquare className="size-7 shrink-0 text-sidebar-primary hidden group-data-[state=collapsed]:block" />
-              <LuxeroLogo className="w-[120px] h-auto shrink-0 text-sidebar-primary block group-data-[state=collapsed]:hidden" />
+              <BrandLogoSquare className="shrink-0 text-sidebar-primary hidden group-data-[state=collapsed]:block" />
+              <BrandLogo className="max-w-[220px] shrink-0 text-sidebar-primary block group-data-[state=collapsed]:hidden" />
             </Link>
           </SidebarMenuItem>
         </SidebarMenu>

@@ -18,8 +18,8 @@
  *   bun run packages/api/server/src/lib/jobs/recompute-referral-counts.ts --verbose
  */
 
-import { Profile, ReferralPurchase } from "@luxero/api-db/models";
-import dbConnect from "@luxero/api-infra/db";
+import { Profile, ReferralPurchase } from "@oc/api-db/models";
+import dbConnect from "@oc/api-infra/db";
 import mongoose from "mongoose";
 
 interface Args {

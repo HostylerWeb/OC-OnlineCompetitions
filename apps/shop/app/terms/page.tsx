@@ -1,18 +1,26 @@
 import type { Metadata } from "next";
+import {
+  CompanyContactEmail,
+  LEGAL_COMPANY_NAME,
+  LEGAL_COMPANY_NUMBER,
+  LEGAL_REGISTERED_OFFICE,
+  LEGAL_WEBSITE,
+  ShopLegalContactList,
+} from "@/components/company-details";
 
 export const metadata: Metadata = {
-  title: "Terms of Service — Luxero",
+  title: "Terms of Service — Online Competitions",
   description:
     "Terms of service governing the use of our website and purchase of products. UK e-commerce terms for premium streetwear.",
   openGraph: {
-    title: "Terms of Service — Luxero",
+    title: "Terms of Service — Online Competitions",
     description: "Terms of service governing the use of our website and purchase of products.",
   },
 };
 
 export default function TermsPage() {
   return (
-    <main className="luxero-container py-12">
+    <main className="oc-container py-12">
       <div className="mx-auto max-w-3xl">
         <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-gold">
           Legal
@@ -27,23 +35,17 @@ export default function TermsPage() {
             </h2>
             <p className="mt-3">
               These Terms of Service (&ldquo;Terms&rdquo;) govern your access to and use of the
-              website at luxero.win (the &ldquo;Site&rdquo;) and the purchase of products from
-              LUXERO COMPETITIONS LTD. By using the Site or placing an order, you agree to be bound
+              website at {LEGAL_WEBSITE} (the &ldquo;Site&rdquo;) and the purchase of products from{" "}
+              {LEGAL_COMPANY_NAME}. By using the Site or placing an order, you agree to be bound
               by these Terms.
             </p>
             <p className="mt-2">
-              LUXERO COMPETITIONS LTD is a company registered in Scotland (company number SC888260).
-              Registered office: 107 Dalriada Crescent, Motherwell, ML1 3XT, Scotland.
+              {LEGAL_COMPANY_NAME} is a company registered in Scotland (company number{" "}
+              {LEGAL_COMPANY_NUMBER}). Registered office: {LEGAL_REGISTERED_OFFICE}.
             </p>
             <p className="mt-2">
               If you have any questions about these Terms, please contact us at{" "}
-              <a
-                href="mailto:contact@luxero.win"
-                className="text-gold transition-colors hover:text-gold/80"
-              >
-                contact@luxero.win
-              </a>
-              .
+              <CompanyContactEmail className="text-gold transition-colors hover:text-gold/80" />.
             </p>
           </section>
 
@@ -157,12 +159,7 @@ export default function TermsPage() {
             </p>
             <p className="mt-2">
               To initiate a return, please contact us at{" "}
-              <a
-                href="mailto:contact@luxero.win"
-                className="text-gold transition-colors hover:text-gold/80"
-              >
-                contact@luxero.win
-              </a>{" "}
+              <CompanyContactEmail className="text-gold transition-colors hover:text-gold/80" />{" "}
               with your order number. We will provide a returns address and instructions. Return
               shipping costs are borne by the customer unless the item is faulty or incorrect.
             </p>
@@ -178,7 +175,7 @@ export default function TermsPage() {
               8. Limitation of Liability
             </h2>
             <p className="mt-3">
-              To the fullest extent permitted by Scottish law, LUXERO COMPETITIONS LTD shall not be
+              To the fullest extent permitted by Scottish law, {LEGAL_COMPANY_NAME} shall not be
               liable for any indirect, incidental, or consequential damages arising out of or in
               connection with the use of the Site or the purchase of products, including but not
               limited to loss of profits, data, or business opportunity.
@@ -196,10 +193,10 @@ export default function TermsPage() {
               9. Intellectual Property
             </h2>
             <p className="mt-3">
-              The name &ldquo;LUXERO&rdquo;, the LUXERO logo, and all related product names,
+              The name &ldquo;OC&rdquo;, the OC logo, and all related product names,
               designs, graphics, slogans, and trade dress are trademarks or registered trademarks of
-              LUXERO COMPETITIONS LTD. All content on the Site, including text, images, graphics,
-              videos, and software, is the property of LUXERO COMPETITIONS LTD or its licensors and
+              {LEGAL_COMPANY_NAME}. All content on the Site, including text, images, graphics,
+              videos, and software, is the property of {LEGAL_COMPANY_NAME} or its licensors and
               is protected by copyright and other intellectual property laws.
             </p>
             <p className="mt-2">
@@ -233,22 +230,7 @@ export default function TermsPage() {
               If you have any questions, concerns, or complaints regarding these Terms, please
               contact us:
             </p>
-            <ul className="mt-2 list-none space-y-1 pl-0">
-              <li>
-                Email:{" "}
-                <a
-                  href="mailto:contact@luxero.win"
-                  className="text-gold transition-colors hover:text-gold/80"
-                >
-                  contact@luxero.win
-                </a>
-              </li>
-              <li>Phone: +44 744 328 9228</li>
-              <li>
-                Post: LUXERO COMPETITIONS LTD, 107 Dalriada Crescent, Motherwell, ML1 3XT, Scotland,
-                United Kingdom
-              </li>
-            </ul>
+            <ShopLegalContactList />
           </section>
         </div>
 

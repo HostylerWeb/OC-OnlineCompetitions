@@ -2,25 +2,25 @@ import { beforeEach, describe, expect, test, vi } from "vitest";
 
 const mockError = vi.hoisted(() => vi.fn());
 
-vi.mock("@luxero/api-infra/response", () => ({
+vi.mock("@oc/api-infra/response", () => ({
   error: mockError,
 }));
 
-vi.mock("@luxero/api-compliance/compliance-user-service", () => ({
+vi.mock("@oc/api-compliance/compliance-user-service", () => ({
   reconcileSelfExclusionOnRead: vi.fn(async () => {}),
   resolveEffectiveSelfExclusion: vi.fn(() => ({ effective: false })),
 }));
 
-vi.mock("@luxero/api-compliance/settings", () => ({
+vi.mock("@oc/api-compliance/settings", () => ({
   getComplianceSettings: vi.fn(async () => ({})),
   isComplianceEnforcementActive: vi.fn(() => false),
 }));
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   Profile: {},
 }));
 
-vi.mock("@luxero/api-infra/error-codes", () => ({
+vi.mock("@oc/api-infra/error-codes", () => ({
   ErrorCodes: {
     UNAUTHORIZED: "UNAUTHORIZED",
     FORBIDDEN: "FORBIDDEN",

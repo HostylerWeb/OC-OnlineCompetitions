@@ -1,4 +1,4 @@
-import { api, queryKeys, STALE_TIME_ADMIN } from "@luxero/api-admin";
+import { api, queryKeys, STALE_TIME_ADMIN } from "@oc/api-admin";
 import type { QueryClient } from "@tanstack/react-query";
 
 export function prefetchAdminRoute(href: string, queryClient: QueryClient): void {

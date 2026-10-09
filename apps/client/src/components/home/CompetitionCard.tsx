@@ -1,5 +1,5 @@
-import { Clock, Trophy, Zap } from "@luxero/icons";
-import type { Category, Competition, EntryCompetition } from "@luxero/types";
+import { Clock, Trophy, Zap } from "@oc/icons";
+import type { Category, Competition, EntryCompetition } from "@oc/types";
 import {
   CountdownLabel,
   cn,
@@ -8,7 +8,7 @@ import {
   getCompetitionImageUrl,
   getProgress,
   getTicketsSold,
-} from "@luxero/utils";
+} from "@oc/utils";
 
 import { useEffect, useState } from "react";
 import { Link } from "@/components/Link";

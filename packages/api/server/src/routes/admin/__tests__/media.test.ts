@@ -19,11 +19,11 @@ const __mock = vi.hoisted(() => ({
   profileDocs: [] as unknown[],
 }));
 
-vi.mock("@luxero/api-infra/db", () => ({
+vi.mock("@oc/api-infra/db", () => ({
   default: vi.fn(async () => {}),
 }));
 
-vi.mock("@luxero/api-server/middleware/auth", () => ({
+vi.mock("@oc/api-server/middleware/auth", () => ({
   isPublicRoute: () => false,
   resolveSession: vi.fn(async () => ({})),
   sessionMiddleware: async (_c: unknown, next: () => Promise<void>) => {
@@ -54,7 +54,7 @@ vi.mock("@luxero/api-server/middleware/auth", () => ({
   },
 }));
 
-vi.mock("@luxero/api-storage/s3", () => ({
+vi.mock("@oc/api-storage/s3", () => ({
   buildAssetUrl: (key: string) => `http://assets.test/${key}`,
   getAssetBaseUrl: () => "http://assets.test",
   extractKeyFromUrl: (url: string) => {
@@ -91,7 +91,7 @@ vi.mock("@luxero/api-storage/s3", () => ({
   },
 }));
 
-vi.mock("@luxero/api-server/lib/media-converter/transform", () => ({
+vi.mock("@oc/api-server/lib/media-converter/transform", () => ({
   transformUploadBytes: async (input: {
     key: string;
     bytes: Uint8Array;
@@ -99,7 +99,7 @@ vi.mock("@luxero/api-server/lib/media-converter/transform", () => ({
   }) => ({ ...input, converted: false }),
 }));
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   Competition: {
     find: (_query: Record<string, unknown>, _projection: string) => ({
       lean: async () => __mock.competitionDocs,
@@ -132,7 +132,7 @@ describe("admin media routes — /usage", () => {
     vi.clearAllMocks();
     resetMediaUsageCacheForTests();
     __mock.adminId = new Types.ObjectId().toString();
-    __mock.adminEmail = "admin@luxero.test";
+    __mock.adminEmail = "admin@onlinecompetitions.test";
     __mock.uploadCalls = [];
     __mock.deleteCalls = [];
     __mock.headResults = new Map();
@@ -235,7 +235,7 @@ describe("admin media routes — /metadata", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     __mock.adminId = new Types.ObjectId().toString();
-    __mock.adminEmail = "admin@luxero.test";
+    __mock.adminEmail = "admin@onlinecompetitions.test";
     __mock.uploadCalls = [];
     __mock.deleteCalls = [];
     __mock.headResults = new Map();
@@ -296,7 +296,7 @@ describe("admin media routes — /delete-batch", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     __mock.adminId = new Types.ObjectId().toString();
-    __mock.adminEmail = "admin@luxero.test";
+    __mock.adminEmail = "admin@onlinecompetitions.test";
     __mock.uploadCalls = [];
     __mock.deleteCalls = [];
     __mock.competitionDocs = [];
@@ -398,7 +398,7 @@ describe("admin media routes — /upload metadata capture", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     __mock.adminId = new Types.ObjectId().toString();
-    __mock.adminEmail = "admin@luxero.test";
+    __mock.adminEmail = "admin@onlinecompetitions.test";
     __mock.uploadCalls = [];
     __mock.deleteCalls = [];
   });
@@ -430,7 +430,7 @@ describe("admin media routes — /upload metadata capture", () => {
     const call = __mock.uploadCalls[0]!;
     expect(call.contentType).toBe("image/png");
     expect(call.extraHeaders["x-amz-meta-uploader-id"]).toBe(__mock.adminId);
-    expect(call.extraHeaders["x-amz-meta-uploader-email"]).toBe("admin@luxero.test");
+    expect(call.extraHeaders["x-amz-meta-uploader-email"]).toBe("admin@onlinecompetitions.test");
     expect(call.extraHeaders["x-amz-meta-uploaded-at"]).toMatch(/^\d{4}-\d{2}-\d{2}T/);
     expect(call.extraHeaders["x-amz-meta-width"]).toBe("1");
     expect(call.extraHeaders["x-amz-meta-height"]).toBe("1");

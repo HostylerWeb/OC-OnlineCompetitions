@@ -5,8 +5,8 @@
 
 | App | Path | Stack | Port (dev) |
 |-----|------|-------|------------|
-| **Client (web)** | `apps/client` | Vike SSR + React 19; API via `@luxero/api-server/app` in `+server.ts` | **3555** |
-| **Client-mobile** | `apps/client-mobile` | Vite SPA + Capacitor 7; API via `@luxero/api-client` / `@luxero/auth-client` to `VITE_API_URL` | **3666** |
+| **Client (web)** | `apps/client` | Vike SSR + React 19; API via `@oc/api-server/app` in `+server.ts` | **3555** |
+| **Client-mobile** | `apps/client-mobile` | Vite SPA + Capacitor 7; API via `@oc/api-client` / `@oc/auth-client` to `VITE_API_URL` | **3666** |
 
 **Shared backend:** Both depend on the same Hono app in `packages/api/server/src/bootstrap.ts` (client hosts it; mobile calls it remotely). Findings on that API apply to **both** unless noted.
 
@@ -117,12 +117,12 @@ The **web client** is the canonical product surface: SSR, nonce/CSP wiring, affi
 **Where:** `apps/client-mobile/src/main.tsx`:
 
 ```ts
-const API_URL = import.meta.env.VITE_API_URL || "https://staging.luxero.win";
+const API_URL = import.meta.env.VITE_API_URL || "https://staging.onlinecompetitions.co.uk";
 ```
 
 **Issue:** Local/dev builds without `.env` hit **staging** (real data, real payments config), not localhost `:3555`.
 
-**Contrast:** `.env.example` documents `https://api.luxero.win`; `src/lib/api.ts` still defaults to `http://localhost:3000` but appears **unused** (dead duplicate client).
+**Contrast:** `.env.example` documents `https://api.onlinecompetitions.co.uk`; `src/lib/api.ts` still defaults to `http://localhost:3000` but appears **unused** (dead duplicate client).
 
 **Recommendation:** Default local dev to `http://127.0.0.1:3555`; fail fast if `VITE_API_URL` unset in production builds.
 
@@ -225,7 +225,7 @@ const API_URL = import.meta.env.VITE_API_URL || "https://staging.luxero.win";
 
 ### M6 — Affiliate/ref cookies set on HTML responses without `Secure` in local dev
 
-**Where:** `apps/client/+server.ts` — `luxero_ref`, `_aff_clickid`, `_aff_source` cookies `SameSite=Lax` only.
+**Where:** `apps/client/+server.ts` — `onlinecompetitions_ref`, `_aff_clickid`, `_aff_source` cookies `SameSite=Lax` only.
 
 **Issue:** Fine for localhost; ensure production HTML paths always use HTTPS so ref attribution is not leaked on insecure networks.
 
@@ -283,7 +283,7 @@ const API_URL = import.meta.env.VITE_API_URL || "https://staging.luxero.win";
 
 **Where:** `API_BASE = ... || "http://localhost:3000"` — wrong port (client API is **3555**); no imports found.
 
-**Issue:** Confusing for future devs; delete or align with `@luxero/api-client`.
+**Issue:** Confusing for future devs; delete or align with `@oc/api-client`.
 
 ---
 
@@ -357,7 +357,7 @@ const API_URL = import.meta.env.VITE_API_URL || "https://staging.luxero.win";
 
 ### M16 — Client SSR bundles heavy server packages
 
-**Where:** `apps/client/vite.config.ts` `ssr.noExternal` includes `@luxero/api-server`, `@luxero/auth-admin`, `@luxero/api-db`.
+**Where:** `apps/client/vite.config.ts` `ssr.noExternal` includes `@oc/api-server`, `@oc/auth-admin`, `@oc/api-db`.
 
 **Issue:** Larger server bundle, more server-side code paths in SSR process; ensure no admin-only code paths reachable from client auth instance.
 
@@ -371,7 +371,7 @@ const API_URL = import.meta.env.VITE_API_URL || "https://staging.luxero.win";
 
 ---
 
-### L2 — Client includes `@luxero/auth-admin` dependency
+### L2 — Client includes `@oc/auth-admin` dependency
 
 **Used for:** `getClientAuth` lives in `packages/auth/admin` (naming confusion). Not the admin dashboard app, but shared package with admin plugins available — review exports so client build cannot enable admin-only plugins via misconfig.
 
@@ -445,7 +445,7 @@ const API_URL = import.meta.env.VITE_API_URL || "https://staging.luxero.win";
 ## Client-mobile — strengths
 
 1. **Capacitor 7** with sensible iOS navigation limits.
-2. **Uses shared `@luxero/api-client` / `@luxero/auth-client`** — not a bespoke axios layer (except dead `lib/api.ts`).
+2. **Uses shared `@oc/api-client` / `@oc/auth-client`** — not a bespoke axios layer (except dead `lib/api.ts`).
 3. **Typecheck passes**.
 4. **Feature parity** on core flows: auth, competitions, cart, checkout, dashboard, legal pages.
 5. **Haptics** on route changes (`useRouteChangeHaptics`).
@@ -461,7 +461,7 @@ const API_URL = import.meta.env.VITE_API_URL || "https://staging.luxero.win";
 | Deep links | N/A | Hook **not wired** |
 | Shop | API only (no UI in either app) | Same |
 | Push (web) | `/api/push` | No native push code |
-| API host default | Same as `:3555` server | **staging.luxero.win** if env missing |
+| API host default | Same as `:3555` server | **staging.onlinecompetitions.co.uk** if env missing |
 | Debug Sentry page | (check web pages) | Orphan file |
 
 ---

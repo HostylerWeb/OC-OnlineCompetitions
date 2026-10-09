@@ -1,6 +1,6 @@
 "use client";
 
-import type { ContextualError } from "@luxero/api-client";
+import type { ContextualError } from "@oc/api-client";
 import {
   ApiResponseError,
   api,
@@ -25,12 +25,12 @@ import {
   usePaymentProviders,
   parseSiteCreditWalletEnabled,
   useSyncProfileAddressIfChanged,
-} from "@luxero/api-client";
-import { Lock } from "@luxero/icons";
-import type { ApiResponse, ProfileAddress, PublicComplianceSettings } from "@luxero/types";
-import { roundCurrency } from "@luxero/utils";
-import { DEFAULT_PROFILE_ADDRESS } from "@luxero/types";
-import { cn } from "@luxero/utils";
+} from "@oc/api-client";
+import { Lock } from "@oc/icons";
+import type { ApiResponse, ProfileAddress, PublicComplianceSettings } from "@oc/types";
+import { brandLogoUrl, roundCurrency } from "@oc/utils";
+import { DEFAULT_PROFILE_ADDRESS } from "@oc/types";
+import { cn } from "@oc/utils";
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { navigate } from "vike/client/router";
 import { useConfig } from "vike-react/useConfig";
@@ -209,7 +209,7 @@ function CheckoutPageContent() {
   const ssrData = useData<Data>();
   const config = useConfig();
   const baseUrl =
-    (typeof window !== "undefined" ? window.location.origin : "") || "https://luxero.win";
+    (typeof window !== "undefined" ? window.location.origin : "") || "https://onlinecompetitions.co.uk";
   const title = t("checkout.meta.title");
   const searchParams =
     typeof window !== "undefined"
@@ -219,7 +219,7 @@ function CheckoutPageContent() {
   const hasRef =
     searchParams.has("ref") || (pageContext.urlParsed as any)?.search?.ref !== undefined;
   const globalRefOg = (pageContext as any).referralOgImageUrl as string | null | undefined;
-  const ogSrc = hasRef && globalRefOg ? globalRefOg : `${baseUrl}/og-default.png`;
+  const ogSrc = hasRef && globalRefOg ? globalRefOg : brandLogoUrl(baseUrl);
   const ogUrl = ogSrc.startsWith("/") ? `${baseUrl}${ogSrc}` : ogSrc;
   config({
     title,
@@ -234,7 +234,7 @@ function CheckoutPageContent() {
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Luxero" />
+        <meta property="og:site_name" content="Online Competitions" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content={ogUrl} />
       </>
@@ -336,7 +336,7 @@ function CheckoutPageContent() {
     let cancelled = false;
     geoResolvedRef.current = true;
 
-    fetch("https://tiny-glitter-95dd.luxero-win.workers.dev/")
+    fetch("https://tiny-glitter-95dd.cdn.onlinecompetitions.co.uk/")
       .then((r) => r.json() as Promise<{ ip: string; country: string }>)
       .then((data) => {
         if (cancelled) return;
@@ -757,7 +757,7 @@ function CheckoutPageContent() {
   const checkoutLoadingLabel = t("common.loading");
 
   return (
-    <main className="flex-1 luxero-container-wide py-4 lg:py-8">
+    <main className="flex-1 oc-container-wide py-4 lg:py-8">
       <div className="mb-5 lg:mb-6 text-center">
         <h1 className="text-2xl lg:text-3xl font-bold tracking-tight mb-1.5 lg:mb-2">
           {t("checkout.heading")}

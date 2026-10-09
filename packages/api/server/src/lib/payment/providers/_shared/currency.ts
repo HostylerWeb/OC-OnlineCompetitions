@@ -1,6 +1,6 @@
-import { LOCAL_CURRENCY } from "@luxero/api-payment-local";
-import { PAYTRIOT_CURRENCY } from "@luxero/api-payment-paytriot";
-import { getEnv } from "@luxero/env/server";
+import { LOCAL_CURRENCY } from "@oc/api-payment-local";
+import { PAYTRIOT_CURRENCY } from "@oc/api-payment-paytriot";
+import { getEnv } from "@oc/env/server";
 import type { PaymentProviderId } from "../types";
 
 const DEFAULTS: Record<PaymentProviderId, string> = {

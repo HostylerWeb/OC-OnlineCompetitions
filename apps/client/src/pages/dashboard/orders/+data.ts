@@ -1,4 +1,4 @@
-import type { MeOrderDto } from "@luxero/types";
+import type { MeOrderDto } from "@oc/types";
 import type { PageContextServer } from "vike/types";
 import { serverFetch } from "@/lib/server-fetch";
 

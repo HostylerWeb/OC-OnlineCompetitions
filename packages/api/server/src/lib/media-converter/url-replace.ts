@@ -6,8 +6,8 @@ import {
   ShopProduct,
   ShopProductVariant,
   Winner,
-} from "@luxero/api-db/models";
-import { buildAssetUrl, extractKeyFromUrl } from "@luxero/api-storage/s3";
+} from "@oc/api-db/models";
+import { buildAssetUrl, extractKeyFromUrl } from "@oc/api-storage/s3";
 
 function keyFromStoredUrl(url: string): string | null {
   if (!url || typeof url !== "string") return null;
@@ -15,7 +15,7 @@ function keyFromStoredUrl(url: string): string | null {
     if (url.startsWith("http://") || url.startsWith("https://")) {
       const u = new URL(url);
       const path = u.pathname.replace(/^\/+/, "");
-      const bucketMarker = "luxero-assets/";
+      const bucketMarker = "onlinecompetitions-assets/";
       const markerIdx = path.indexOf(bucketMarker);
       if (markerIdx >= 0) {
         return path.slice(markerIdx + bucketMarker.length);

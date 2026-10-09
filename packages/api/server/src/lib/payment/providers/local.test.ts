@@ -14,7 +14,7 @@ __mocks.__orderFindOne.mockImplementation(() => ({
   lean: __mocks.__orderFindOneLean,
 }));
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   Order: {
     findOne: __mocks.__orderFindOne,
     findByIdAndUpdate: __mocks.__orderFindByIdAndUpdate,
@@ -40,11 +40,11 @@ vi.mock("@luxero/api-db/models", () => ({
   },
 }));
 
-vi.mock("@luxero/api-payment-local", () => ({
+vi.mock("@oc/api-payment-local", () => ({
   LOCAL_CURRENCY: "GBP",
 }));
 
-vi.mock("@luxero/api-payment-core", () => ({
+vi.mock("@oc/api-payment-core", () => ({
   getItemsFromOrder: vi.fn(() => []),
   processBalanceTopUp: vi.fn(async () => {}),
   processOrderFulfillment: vi.fn(async () => ({
@@ -54,7 +54,7 @@ vi.mock("@luxero/api-payment-core", () => ({
   })),
 }));
 
-vi.mock("@luxero/api-logger", () => ({
+vi.mock("@oc/api-logger", () => ({
   createLogger: () => ({
     debug: () => {},
     info: () => {},

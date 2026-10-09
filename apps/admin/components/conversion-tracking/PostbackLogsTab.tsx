@@ -5,7 +5,7 @@ import {
   type ConversionPostbackSummaryRow,
   useAdminConversionPostbacks,
   useAdminConversionPostbacksSummary,
-} from "@luxero/api-admin";
+} from "@oc/api-admin";
 import { type ColumnDef, type PaginationState } from "@tanstack/react-table";
 import { useMemo, useState } from "react";
 import { DataTable, DataTableColumnHeader } from "@/components/DataTable";

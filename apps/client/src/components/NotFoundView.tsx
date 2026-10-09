@@ -1,6 +1,6 @@
 "use client";
 
-import { Home, Search, Trophy } from "@luxero/icons";
+import { Home, Search, Trophy } from "@oc/icons";
 import { FeaturedCompetitionsSection } from "@/components/home/FeaturedCompetitionsSection";
 import { PageActionButtons } from "@/components/layout/PageActionButtons";
 import { useTranslation } from "@/lib/i18n";

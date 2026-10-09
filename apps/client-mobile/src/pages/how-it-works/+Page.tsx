@@ -1,12 +1,12 @@
 import {
   HOW_IT_WORKS_FEATURES as HOW_IT_WORKS_FEATURES_EN,
   HOW_IT_WORKS_STEPS as HOW_IT_WORKS_STEPS_EN,
-} from "@luxero/content/how-it-works";
-import { resolveContent } from "@luxero/content/locales";
+} from "@oc/content/how-it-works";
+import { resolveContent } from "@oc/content/locales";
 import {
   HOW_IT_WORKS_FEATURES as HOW_IT_WORKS_FEATURES_RO,
   HOW_IT_WORKS_STEPS as HOW_IT_WORKS_STEPS_RO,
-} from "@luxero/content/ro";
+} from "@oc/content/ro";
 import {
   HowItWorksFeatures,
   HowItWorksHero,
@@ -22,7 +22,7 @@ export default function HowItWorksPage() {
   const features = resolveContent(locale, HOW_IT_WORKS_FEATURES_EN, HOW_IT_WORKS_FEATURES_RO);
 
   return (
-    <div className="luxero-container-content pb-6 lg:pb-12 animate-fade-in">
+    <div className="oc-container-content pb-6 lg:pb-12 animate-fade-in">
       <div className="py-6 lg:py-16">
         <HowItWorksHero />
         <HowItWorksSteps steps={steps} />

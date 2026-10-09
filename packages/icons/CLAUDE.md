@@ -1,4 +1,4 @@
-# @luxero/icons
+# @oc/icons
 
 SVG brand icons, custom status icons, and lucide-react re-exports.
 
@@ -34,7 +34,7 @@ src/
 Most UI icons are re-exported from `lucide-react` via `index.ts`:
 
 ```tsx
-import { Search, Trophy, ChevronLeft } from "@luxero/icons";
+import { Search, Trophy, ChevronLeft } from "@oc/icons";
 ```
 
 ## Usage
@@ -46,4 +46,4 @@ import { Search, Trophy, ChevronLeft } from "@luxero/icons";
 <Search className="w-4 h-4 text-muted-foreground" />
 ```
 
-Prefer importing from `@luxero/icons` over direct `lucide-react` in apps for consistency.
+Prefer importing from `@oc/icons` over direct `lucide-react` in apps for consistency.

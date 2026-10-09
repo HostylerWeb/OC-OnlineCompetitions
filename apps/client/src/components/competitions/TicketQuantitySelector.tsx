@@ -1,6 +1,6 @@
 "use client";
 
-import { Minus, Plus, Ticket } from "@luxero/icons";
+import { Minus, Plus, Ticket } from "@oc/icons";
 import { useMemo, useState } from "react";
 import { GoldOutlineButton } from "@/components/buttons";
 import { Input } from "@/components/ui/input";

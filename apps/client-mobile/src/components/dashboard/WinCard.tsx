@@ -1,7 +1,7 @@
 "use client";
 
-import type { LucideIcon } from "@luxero/icons";
-import { cn, formatDate } from "@luxero/utils";
+import type { LucideIcon } from "@oc/icons";
+import { cn, formatDate } from "@oc/utils";
 import { StatusBadge } from "@/components/StatusBadge";
 import { Badge } from "@/components/ui/badge";
 import { formatCurrency, useTranslation } from "@/lib/i18n";

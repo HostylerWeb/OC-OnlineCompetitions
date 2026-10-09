@@ -5,10 +5,10 @@ import {
   useCartOrchestrator,
   useCartWallet,
   useIsApplyingCartMutation,
-} from "@luxero/api-client";
-import { Minus, Plus, Ticket } from "@luxero/icons";
-import type { CartWalletTicket } from "@luxero/types";
-import { cn } from "@luxero/utils";
+} from "@oc/api-client";
+import { Minus, Plus, Ticket } from "@oc/icons";
+import type { CartWalletTicket } from "@oc/types";
+import { cn } from "@oc/utils";
 import { useCallback, useMemo } from "react";
 import { GoldOutlineButton } from "@/components/buttons";
 import { Badge } from "@/components/ui/badge";

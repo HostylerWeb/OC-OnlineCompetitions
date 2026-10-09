@@ -1,4 +1,4 @@
-import type { IEmailSettings } from "@luxero/api-db/models/EmailSettings";
+import type { IEmailSettings } from "@oc/api-db/models/EmailSettings";
 import { Button, Hr, Link, Section, Text } from "@react-email/components";
 import { BaseEmail, emailStyles } from "./base";
 
@@ -15,18 +15,18 @@ export function MagicLinkSignInEmail({
   settings,
   frontendUrl,
 }: EmailTemplateProps) {
-  const supportAddress = settings?.supportAddress ?? "support@luxero.win";
+  const supportAddress = settings?.supportAddress ?? "support@onlinecompetitions.co.uk";
   return (
-    <BaseEmail preview="Sign in to Luxero" settings={settings} frontendUrl={frontendUrl}>
-      <Text className={emailStyles.heading.className}>Sign In to Luxero</Text>
+    <BaseEmail preview="Sign in to Online Competitions" settings={settings} frontendUrl={frontendUrl}>
+      <Text className={emailStyles.heading.className}>Sign In to Online Competitions</Text>
       <Text className={emailStyles.paragraph.className}>Hi {userName},</Text>
       <Text className={emailStyles.paragraph.className}>
-        Click the button below to sign in to your Luxero account. This link expires in 10 minutes
+        Click the button below to sign in to your Online Competitions account. This link expires in 10 minutes
         and can only be used once.
       </Text>
       <Section className="my-[24px] text-center">
         <Button href={signInUrl} className={emailStyles.button.className}>
-          Sign In to Luxero
+          Sign In to Online Competitions
         </Button>
       </Section>
       <Text className={emailStyles.muted.className}>
@@ -56,7 +56,7 @@ export function MagicLinkSignInEmail({
           {supportAddress}
         </Link>
       </Text>
-      <Text className={emailStyles.paragraph.className}>The Luxero Team</Text>
+      <Text className={emailStyles.paragraph.className}>The Online Competitions Team</Text>
     </BaseEmail>
   );
 }

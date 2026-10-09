@@ -1,7 +1,7 @@
 "use client";
 
-import { Trophy } from "@luxero/icons";
-import { formatDate, formatDateTime } from "@luxero/utils";
+import { Trophy } from "@oc/icons";
+import { formatDate, formatDateTime } from "@oc/utils";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import type { RecentWinner } from "./types";

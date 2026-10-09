@@ -1,5 +1,5 @@
 {
-  "name": "@luxero/api-payment-paytriot",
+  "name": "@oc/api-payment-paytriot",
   "version": "0.0.0",
   "private": true,
   "main": "./src/index.ts",

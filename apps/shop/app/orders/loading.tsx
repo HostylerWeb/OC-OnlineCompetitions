@@ -1,6 +1,6 @@
 export default function OrdersLoading() {
   return (
-    <main className="luxero-container py-12">
+    <main className="oc-container py-12">
       <div className="h-8 w-40 animate-pulse rounded-lg bg-zinc-800/50" />
 
       <div className="mt-8 space-y-4">

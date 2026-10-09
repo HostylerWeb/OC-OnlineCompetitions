@@ -1,16 +1,16 @@
-import { writeComplianceAuditLog } from "@luxero/api-compliance/compliance-user-service";
+import { writeComplianceAuditLog } from "@oc/api-compliance/compliance-user-service";
 import {
   ComplianceSettings,
   DEFAULT_COMPLIANCE_SETTINGS,
   type IComplianceSettings,
-} from "@luxero/api-db/models/ComplianceSettings";
-import { CH, invalidateByChannelSafe } from "@luxero/api-infra/cache";
-import dbConnect from "@luxero/api-infra/db";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { error, success } from "@luxero/api-infra/response";
-import { captureRouteError } from "@luxero/api-infra/sentry";
-import { getRequiredUserId, requireAdmin } from "@luxero/api-server/middleware/auth";
-import { adminComplianceSettingsUpdateSchema } from "@luxero/api-validation";
+} from "@oc/api-db/models/ComplianceSettings";
+import { CH, invalidateByChannelSafe } from "@oc/api-infra/cache";
+import dbConnect from "@oc/api-infra/db";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { error, success } from "@oc/api-infra/response";
+import { captureRouteError } from "@oc/api-infra/sentry";
+import { getRequiredUserId, requireAdmin } from "@oc/api-server/middleware/auth";
+import { adminComplianceSettingsUpdateSchema } from "@oc/api-validation";
 import { Hono } from "hono";
 
 const app = new Hono();

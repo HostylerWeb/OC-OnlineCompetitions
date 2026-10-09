@@ -1,6 +1,6 @@
 "use client";
 
-import { formatTimeLeft } from "@luxero/utils";
+import { formatTimeLeft } from "@oc/utils";
 import { useEffect, useState } from "react";
 
 const COUNTDOWN_TICK_MS = 1000;

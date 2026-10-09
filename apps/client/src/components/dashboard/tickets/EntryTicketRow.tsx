@@ -1,6 +1,6 @@
 "use client";
 
-import type { Entry } from "@luxero/types";
+import type { Entry } from "@oc/types";
 import { TicketNumberPill } from "@/components/shared/TicketNumberPill";
 
 export interface EntryTicketRowProps {

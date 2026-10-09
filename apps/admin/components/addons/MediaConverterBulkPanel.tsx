@@ -1,10 +1,10 @@
 "use client";
 
-import type { MediaConverterBulkConvertResultItem, MediaConverterBulkPreview } from "@luxero/types";
+import type { MediaConverterBulkConvertResultItem, MediaConverterBulkPreview } from "@oc/types";
 import {
   useAdminMediaConverterBulkMutations,
-} from "@luxero/api-admin";
-import { AlertTriangle, CheckCircle2, Loader2, Trash2, Wand2 } from "@luxero/icons";
+} from "@oc/api-admin";
+import { AlertTriangle, CheckCircle2, Loader2, Trash2, Wand2 } from "@oc/icons";
 import { useMemo, useState } from "react";
 import { toast } from "sonner";
 import {

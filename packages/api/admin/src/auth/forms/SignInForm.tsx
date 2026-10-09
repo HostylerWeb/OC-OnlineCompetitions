@@ -1,6 +1,6 @@
 "use client";
-import { Eye, EyeOff } from "@luxero/icons";
-import { cn } from "@luxero/utils";
+import { Eye, EyeOff } from "@oc/icons";
+import { cn } from "@oc/utils";
 import { useEffect, useRef, useState } from "react";
 import { buildVerifyRequiredPath, sanitizeReturnTo } from "../../referral/redirect";
 import {

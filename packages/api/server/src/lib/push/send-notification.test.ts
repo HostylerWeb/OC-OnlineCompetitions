@@ -9,7 +9,7 @@ vi.mock("web-push", () => ({
   sendNotification: vi.fn(),
 }));
 
-vi.mock("@luxero/env/server", () => ({
+vi.mock("@oc/env/server", () => ({
   getEnv: vi.fn((key: string) => {
     if (key === "VAPID_PUBLIC_KEY") return "test-public-key";
     if (key === "VAPID_PRIVATE_KEY") return "test-private-key";
@@ -21,7 +21,7 @@ const mockFind = vi.fn();
 const mockFindByIdAndUpdate = vi.fn();
 const mockFindByIdAndDelete = vi.fn();
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   PushSubscription: {
     find: (...args: unknown[]) => mockFind(...args),
     findByIdAndUpdate: (...args: unknown[]) => mockFindByIdAndUpdate(...args),

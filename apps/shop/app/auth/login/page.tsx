@@ -116,10 +116,10 @@ function AuthForm() {
   }
 
   return (
-    <div className="luxero-container flex min-h-[60vh] items-center justify-center py-16">
+    <div className="oc-container flex min-h-[60vh] items-center justify-center py-16">
       <div className="w-full max-w-sm">
         <div className="text-center">
-          <h1 className="text-2xl font-bold tracking-tight">Sign in to Luxero</h1>
+          <h1 className="text-2xl font-bold tracking-tight">Sign in to Online Competitions</h1>
           <p className="mt-2 text-sm text-muted-foreground">
             {step === "email"
               ? "Enter your email to receive a sign-in code."

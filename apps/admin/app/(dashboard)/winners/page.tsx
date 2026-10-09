@@ -5,7 +5,7 @@ import {
   useAdminWinnerMutations,
   useAdminWinners,
   useServerPagination,
-} from "@luxero/api-admin";
+} from "@oc/api-admin";
 import {
   ImageIcon,
   MoreHorizontal,
@@ -15,8 +15,8 @@ import {
   Trash2,
   Trophy,
   User,
-} from "@luxero/icons";
-import type { AdminCompetition, AdminUser } from "@luxero/types";
+} from "@oc/icons";
+import type { AdminCompetition, AdminUser } from "@oc/types";
 import * as Sentry from "@sentry/react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import type { ColumnDef, SortingState, Updater, VisibilityState } from "@tanstack/react-table";

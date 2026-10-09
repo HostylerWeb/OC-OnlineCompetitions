@@ -1,4 +1,4 @@
-import type { Winner } from "@luxero/types";
+import type { Winner } from "@oc/types";
 
 function getCompetitionImageUrl(winner: Winner): string | undefined {
   const comp =

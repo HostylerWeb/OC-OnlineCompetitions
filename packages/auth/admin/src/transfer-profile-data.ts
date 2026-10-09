@@ -1,4 +1,4 @@
-import { dbConnect } from "@luxero/api-db";
+import { dbConnect } from "@oc/api-db";
 import {
   Balance,
   BonusAwardWin,
@@ -14,8 +14,8 @@ import {
   ShopOrder,
   Ticket,
   Winner,
-} from "@luxero/api-db/models";
-import { invalidateUser } from "@luxero/api-infra/cache";
+} from "@oc/api-db/models";
+import { invalidateUser } from "@oc/api-infra/cache";
 import mongoose from "mongoose";
 
 export interface TransferResult {
@@ -141,7 +141,7 @@ export async function transferProfileData(
         );
         cartTransferred = moved.modifiedCount ?? 0;
       } else {
-        const { mergeCartItem } = await import("@luxero/api-tickets/cart");
+        const { mergeCartItem } = await import("@oc/api-tickets/cart");
         const mergedItems = sourceCart.items.reduce(
           (acc, item) => mergeCartItem(acc, item),
           targetCart.items

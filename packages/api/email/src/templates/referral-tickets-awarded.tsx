@@ -10,7 +10,7 @@ export function ReferralTicketsAwardedEmail({
   settings,
   frontendUrl,
 }: EmailTemplateProps) {
-  const supportAddress = settings?.supportAddress ?? "support@luxero.win";
+  const supportAddress = settings?.supportAddress ?? "support@onlinecompetitions.co.uk";
   const ticketLabel = ticketsAwarded === 1 ? "ticket" : "tickets";
 
   return (
@@ -66,7 +66,7 @@ export function ReferralTicketsAwardedEmail({
       <Text className={emailStyles.paragraph.className}>
         Thank you for spreading the word,
         <br />
-        The Luxero Team
+        The Online Competitions Team
       </Text>
     </BaseEmail>
   );

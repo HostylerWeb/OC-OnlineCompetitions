@@ -1,6 +1,6 @@
 "use client";
 
-import type { ApiResponse, Profile } from "@luxero/types";
+import type { ApiResponse, Profile } from "@oc/types";
 import { usePageContext } from "vike-react/usePageContext";
 
 export function useProfileInitialData(): ApiResponse<Profile> | undefined {

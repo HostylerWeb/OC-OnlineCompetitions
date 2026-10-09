@@ -1,5 +1,5 @@
 {
-  "name": "@luxero/api-payment-stripe",
+  "name": "@oc/api-payment-stripe",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -16,8 +16,8 @@
     "test:ci": "vitest run"
   },
   "dependencies": {
-    "@luxero/api-axios": "workspace:*",
-    "@luxero/env": "workspace:*",
+    "@oc/api-axios": "workspace:*",
+    "@oc/env": "workspace:*",
     "stripe": "^17.6.0"
   },
   "devDependencies": {

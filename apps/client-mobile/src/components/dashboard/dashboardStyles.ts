@@ -1,4 +1,4 @@
-import { cn } from "@luxero/utils";
+import { cn } from "@oc/utils";
 
 export const dashboardCardShellClass = "gap-0 border-border/70 py-0 shadow-sm";
 

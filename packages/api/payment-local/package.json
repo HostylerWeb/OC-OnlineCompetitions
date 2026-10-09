@@ -1,5 +1,5 @@
 {
-  "name": "@luxero/api-payment-local",
+  "name": "@oc/api-payment-local",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -16,7 +16,7 @@
     "test:ci": "vitest run"
   },
   "dependencies": {
-    "@luxero/env": "workspace:*"
+    "@oc/env": "workspace:*"
   },
   "devDependencies": {
     "@types/bun": "^1.2.19",

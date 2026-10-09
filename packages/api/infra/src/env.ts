@@ -1,4 +1,4 @@
-import { getEnv } from "@luxero/env/server";
+import { getEnv } from "@oc/env/server";
 
 let _cache: { frontendUrl: string; apiUrl: string; shopUrl: string } | null = null;
 let _cacheExpiry = 0;

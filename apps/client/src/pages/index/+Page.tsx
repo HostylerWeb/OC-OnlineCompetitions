@@ -1,9 +1,10 @@
-import { useCompetitionStream } from "@luxero/api-client";
+import { useCompetitionStream } from "@oc/api-client";
 import {
   filterEndingSoonCompetitions,
   resolveHomepageNavSections,
   resolveHomepageSections,
-} from "@luxero/utils";
+  BRAND_LOGO_PATH,
+} from "@oc/utils";
 import { useConfig } from "vike-react/useConfig";
 import { useData } from "vike-react/useData";
 import { usePageContext } from "vike-react/usePageContext";
@@ -20,20 +21,20 @@ export default function Page() {
   const pageContext = usePageContext();
   const config = useConfig();
   const baseUrl =
-    (typeof window !== "undefined" ? window.location.origin : "") || "https://luxero.win";
+    (typeof window !== "undefined" ? window.location.origin : "") || "https://onlinecompetitions.co.uk";
   const urlParsed = pageContext.urlParsed as
     | { search?: Record<string, string>; searchAll?: Record<string, string[]> }
     | undefined;
   const hasRef = urlParsed?.searchAll?.ref !== undefined || urlParsed?.search?.ref !== undefined;
   const globalRefOg = (pageContext as any).referralOgImageUrl as string | null | undefined;
-  const defaultOg = (pageContext as any).defaultOgImageUrl ?? "/og-default.png";
+  const defaultOg = (pageContext as any).defaultOgImageUrl ?? BRAND_LOGO_PATH;
   const ogCandidate = hasRef && globalRefOg ? globalRefOg : defaultOg;
   const ogImageUrl = ogCandidate.startsWith("/") ? `${baseUrl}${ogCandidate}` : ogCandidate;
   const defaultTitle =
-    (pageContext as any).defaultTitle ?? "Luxero — Win Amazing Prizes & Luxury Experiences";
+    (pageContext as any).defaultTitle ?? "Online Competitions — Win Amazing Prizes & Luxury Experiences";
   const defaultDesc =
     (pageContext as any).defaultDescription ??
-    "Enter competitions on Luxero to win incredible prizes, from premium electronics and designer fashion to unforgettable luxury experiences.";
+    "Enter competitions on Online Competitions to win incredible prizes, from premium electronics and designer fashion to unforgettable luxury experiences.";
   config({
     title: defaultTitle,
     Head: (
@@ -47,7 +48,7 @@ export default function Page() {
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Luxero" />
+        <meta property="og:site_name" content="Online Competitions" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content={ogImageUrl} />
       </>

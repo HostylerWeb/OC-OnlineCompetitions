@@ -1,5 +1,5 @@
-import { buildLoginUrl, buildVerifyRequiredPath, SignUpForm } from "@luxero/api-client";
-import { getEnv } from "@luxero/env/vike";
+import { buildLoginUrl, buildVerifyRequiredPath, SignUpForm } from "@oc/api-client";
+import { getEnv } from "@oc/env/vike";
 import { navigate } from "vike/client/router";
 import { useData } from "vike-react/useData";
 import { DatePicker } from "@/components/DatePicker";

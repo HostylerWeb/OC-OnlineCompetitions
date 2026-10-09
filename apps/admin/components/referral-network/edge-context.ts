@@ -1,4 +1,4 @@
-import type { ReferralMindmapEdge, ReferralMindmapNode } from "@luxero/api-referrals/mindmap";
+import type { ReferralMindmapEdge, ReferralMindmapNode } from "@oc/api-referrals/mindmap";
 
 export type EdgeKind = "referral_purchase" | "signup_only";
 

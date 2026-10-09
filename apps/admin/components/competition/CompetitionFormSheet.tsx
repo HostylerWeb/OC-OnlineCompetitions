@@ -1,7 +1,7 @@
 "use client";
 
-import { Trophy } from "@luxero/icons";
-import type { AdminCompetition } from "@luxero/types";
+import { Trophy } from "@oc/icons";
+import type { AdminCompetition } from "@oc/types";
 import { useQueryClient } from "@tanstack/react-query";
 import { XIcon } from "lucide-react";
 import type { FormEventHandler, ReactNode } from "react";

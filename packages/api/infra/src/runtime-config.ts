@@ -1,4 +1,4 @@
-import { getBool, getEnv } from "@luxero/env/server";
+import { getBool, getEnv } from "@oc/env/server";
 
 export function authUrlIsHttps(): boolean {
   return (getEnv("APP_URL") ?? "").startsWith("https://");

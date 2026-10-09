@@ -7,14 +7,14 @@ import {
   parseStripeConfig,
   useComplianceFeatures,
   useCreateCheckoutSession,
-} from "@luxero/api-client";
-import { CreditCard, ShieldCheck } from "@luxero/icons";
+} from "@oc/api-client";
+import { CreditCard, ShieldCheck } from "@oc/icons";
 import type {
   ApiResponse,
   PaymentConfigResponse,
   PaymentProviderInfo,
   StripePublicConfig,
-} from "@luxero/types";
+} from "@oc/types";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { CheckoutErrorBanner } from "@/components/checkout/CheckoutErrorBanner";
 import type { CheckoutProviderPanelProps } from "@/components/checkout/providers/types";

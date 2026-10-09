@@ -1,5 +1,5 @@
-import { getEnv } from "@luxero/env/next";
-import { getSessionCookiePrefix } from "@luxero/utils";
+import { getEnv } from "@oc/env/next";
+import { getSessionCookiePrefix } from "@oc/utils";
 import * as Sentry from "@sentry/react";
 import {
   adminClient,
@@ -9,7 +9,7 @@ import {
 } from "better-auth/client/plugins";
 import { createAuthClient } from "better-auth/react";
 
-// Monitor GlitchTip LUXERO-WEB-4/5 for 48h post-deploy; recurring TimeoutErrors may indicate API restarts.
+// Monitor GlitchTip OC-WEB-4/5 for 48h post-deploy; recurring TimeoutErrors may indicate API restarts.
 const AUTH_FETCH_TIMEOUT_MS = 10_000;
 
 export interface AuthClientRequestError {

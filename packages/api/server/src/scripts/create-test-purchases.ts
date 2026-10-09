@@ -1,5 +1,5 @@
-import dbConnect from "@luxero/api-infra/db";
-import { recordReferralPurchase } from "@luxero/api-referrals";
+import dbConnect from "@oc/api-infra/db";
+import { recordReferralPurchase } from "@oc/api-referrals";
 
 const REFEREES = [
   "6a5bc898ba74b3ef3dcbeb89",

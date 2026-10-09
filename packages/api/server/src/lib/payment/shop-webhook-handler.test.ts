@@ -11,7 +11,7 @@ const __mocks = vi.hoisted(() => ({
   __invalidateByChannelSafe: vi.fn(async () => {}),
 }));
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   ShopOrder: {
     findOne: (...args: unknown[]) => __mocks.__shopOrderFindOne(...args),
     findByIdAndUpdate: (...args: unknown[]) => __mocks.__shopOrderFindByIdAndUpdate(...args),
@@ -22,7 +22,7 @@ vi.mock("@luxero/api-db/models", () => ({
   },
 }));
 
-vi.mock("@luxero/api-infra/cache", () => ({
+vi.mock("@oc/api-infra/cache", () => ({
   CH: {
     shopProducts: "shopProducts",
     shopProduct: "shopProduct",
@@ -31,11 +31,11 @@ vi.mock("@luxero/api-infra/cache", () => ({
   invalidateByChannelSafe: (...args: unknown[]) => __mocks.__invalidateByChannelSafe(...args),
 }));
 
-vi.mock("@luxero/api-logger", () => ({
+vi.mock("@oc/api-logger", () => ({
   createLogger: () => ({ info: () => {}, warn: () => {}, error: () => {} }),
 }));
 
-vi.mock("@luxero/api-shop/email", () => ({
+vi.mock("@oc/api-shop/email", () => ({
   sendShopOrderConfirmationEmail: (...args: unknown[]) =>
     __mocks.__sendShopOrderConfirmationEmail(...args),
 }));

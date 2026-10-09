@@ -1,15 +1,15 @@
-name: luxero-turborepo-dev
+name: onlinecompetitions-dev
 
 services:
   mongodb:
     image: mongo:7
-    container_name: luxero_turborepo_mongo
+    container_name: oc_dev_mongo
     restart: unless-stopped
     command: ["--replSet", "rs0", "--bind_ip_all"]
     ports:
-      - "27017:27017"
+      - "27018:27017"
     volumes:
-      - luxero_turborepo_mongo_data:/data/db
+      - oc_dev_mongo_data:/data/db
     healthcheck:
       test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
       interval: 10s
@@ -19,7 +19,7 @@ services:
 
   mongo-init:
     image: mongo:7
-    container_name: luxero_turborepo_mongo_init
+    container_name: oc_dev_mongo_init
     depends_on:
       mongodb:
         condition: service_healthy
@@ -35,29 +35,29 @@ services:
 
   mailpit:
     image: axllent/mailpit:latest
-    container_name: luxero_turborepo_mailpit
+    container_name: oc_dev_mailpit
     restart: unless-stopped
     ports:
-      - "1025:1025"   # SMTP
-      - "1080:8025"   # Web UI
+      - "1026:1025"
+      - "1081:8025"
     environment:
       MP_MAX_MESSAGES: 500
       MP_DATABASE: /data/mailpit.db
     volumes:
-      - luxero_turborepo_mailpit_data:/data
+      - oc_dev_mailpit_data:/data
 
   minio:
     image: minio/minio:latest
-    container_name: luxero_turborepo_minio
+    container_name: oc_dev_minio
     restart: unless-stopped
     command: server /data/minio --console-address ":9001"
     environment:
-      MINIO_ROOT_USER: luxero_dev_access_key
-      MINIO_ROOT_PASSWORD: luxero_dev_secret_key
+      MINIO_ROOT_USER: oc_dev_access_key
+      MINIO_ROOT_PASSWORD: oc_dev_secret_key
     ports:
-      - "9011:9000"   # S3 API (manage files via admin /media, not MinIO console)
+      - "9021:9000"
     volumes:
-      - luxero_turborepo_minio_data:/data
+      - oc_dev_minio_data:/data
     healthcheck:
       test: ["CMD", "mc", "ready", "local"]
       interval: 10s
@@ -67,7 +67,7 @@ services:
 
   createbuckets:
     image: minio/mc:latest
-    container_name: luxero_turborepo_minio_init
+    container_name: oc_dev_minio_init
     depends_on:
       minio:
         condition: service_healthy
@@ -75,15 +75,15 @@ services:
     entrypoint: >
       /bin/sh -c "
       sleep 5;
-      mc alias set local http://minio:9000 luxero_dev_access_key luxero_dev_secret_key;
-      mc mb local/luxero-assets --ignore-existing;
-      mc anonymous set public local/luxero-assets;
+      mc alias set local http://minio:9000 oc_dev_access_key oc_dev_secret_key;
+      mc mb local/onlinecompetitions-assets --ignore-existing;
+      mc anonymous set public local/onlinecompetitions-assets;
       exit 0;
       "
 
   redis:
     image: redis:7-alpine
-    container_name: luxero_turborepo_redis
+    container_name: oc_dev_redis
     restart: unless-stopped
     profiles:
       - bundled-redis
@@ -97,9 +97,9 @@ services:
       --tcp-keepalive 60
       --timeout 300
     ports:
-      - "6379:6379"
+      - "6382:6379"
     volumes:
-      - luxero_turborepo_redis_data:/data
+      - oc_dev_redis_data:/data
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 10s
@@ -108,7 +108,7 @@ services:
       start_period: 5s
 
 volumes:
-  luxero_turborepo_mongo_data:
-  luxero_turborepo_mailpit_data:
-  luxero_turborepo_minio_data:
-  luxero_turborepo_redis_data:
+  oc_dev_mongo_data:
+  oc_dev_mailpit_data:
+  oc_dev_minio_data:
+  oc_dev_redis_data:

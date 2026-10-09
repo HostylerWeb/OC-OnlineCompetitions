@@ -1,7 +1,7 @@
 "use client";
 
-import { Ticket } from "@luxero/icons";
-import { cn } from "@luxero/utils";
+import { Ticket } from "@oc/icons";
+import { cn } from "@oc/utils";
 import { useEffect, useRef } from "react";
 import { TicketNumberPill } from "@/components/shared/TicketNumberPill";
 import { AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";

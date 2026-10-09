@@ -1,5 +1,5 @@
 {
-  "name": "@luxero/shop",
+  "name": "@oc/shop",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -12,13 +12,13 @@
     "format": "biome format --write ."
   },
   "dependencies": {
-    "@luxero/api-db": "workspace:*",
-    "@luxero/api-infra": "workspace:*",
-    "@luxero/api-server": "workspace:*",
-    "@luxero/auth-admin": "workspace:*",
-    "@luxero/env": "workspace:*",
-    "@luxero/types": "workspace:*",
-    "@luxero/utils": "workspace:*",
+    "@oc/api-db": "workspace:*",
+    "@oc/api-infra": "workspace:*",
+    "@oc/api-server": "workspace:*",
+    "@oc/auth-admin": "workspace:*",
+    "@oc/env": "workspace:*",
+    "@oc/types": "workspace:*",
+    "@oc/utils": "workspace:*",
     "better-auth": "^1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

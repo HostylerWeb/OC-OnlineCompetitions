@@ -1,6 +1,6 @@
 import { describe, expect, test, vi } from "vitest";
 import sharp from "sharp";
-import { DEFAULT_MEDIA_CONVERTER_SETTINGS } from "@luxero/types";
+import { DEFAULT_MEDIA_CONVERTER_SETTINGS } from "@oc/types";
 import { transformUploadBytes } from "./transform";
 
 vi.mock("./settings", () => ({

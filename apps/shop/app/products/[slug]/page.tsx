@@ -1,3 +1,4 @@
+import { BRAND_LOGO_PATH } from "@oc/utils";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ProductDetail } from "@/components/product-detail";
@@ -12,19 +13,19 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const shopUrl =
-    process.env.NEXT_PUBLIC_SHOP_URL || process.env.APP_URL || "https://shop.luxero.win";
+    process.env.NEXT_PUBLIC_SHOP_URL || process.env.APP_URL || "https://shop.onlinecompetitions.co.uk";
 
   try {
     const res = await fetchProductBySlug(slug);
     const product = res.data;
 
-    const imageUrl = product.images?.[0] || "/og-default.png";
+    const imageUrl = product.images?.[0] || BRAND_LOGO_PATH;
     const imageSecureUrl = imageUrl.startsWith("http")
       ? imageUrl
       : `${shopUrl}${imageUrl.startsWith("/") ? "" : "/"}${imageUrl}`;
 
     return {
-      title: `${product.name} — Luxero Shop`,
+      title: `${product.name} — Online Competitions Shop`,
       description: product.description?.substring(0, 160),
       openGraph: {
         title: product.name,
@@ -39,12 +40,12 @@ export async function generateMetadata({
             height: 630,
           },
         ],
-        siteName: "Luxero Shop",
+        siteName: "Online Competitions Shop",
         type: "website",
       },
     };
   } catch {
-    return { title: "Product Not Found — Luxero Shop" };
+    return { title: "Product Not Found — Online Competitions Shop" };
   }
 }
 

@@ -1,4 +1,9 @@
 import type { LegalSection } from "../content-types";
+import {
+  CompanyEmailLink,
+  LEGAL_COMPANY_REGISTRY_EN,
+  LEGAL_REGISTERED_OFFICE_POSTAL,
+} from "./company-legal";
 
 export const cookiePolicySections = [
   {
@@ -179,13 +184,11 @@ export const cookiePolicySections = [
         <ul className="list-disc list-inside space-y-2">
           <li>
             Email:{" "}
-            <a href="mailto:contact@luxero.win" className="text-gold hover:underline">
-              contact@luxero.win
-            </a>
+            <CompanyEmailLink />
           </li>
-          <li>Company: LUXERO COMPETITIONS LTD (Company No.SC888260, registered in Scotland)</li>
+          <li>Company: {LEGAL_COMPANY_REGISTRY_EN}</li>
           <li>
-            Registered office: 107 Dalriada Crescent, Motherwell, Scotland ML1 3XT, United Kingdom
+            Registered office: {LEGAL_REGISTERED_OFFICE_POSTAL}
           </li>
         </ul>
       </div>

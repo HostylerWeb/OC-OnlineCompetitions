@@ -55,7 +55,7 @@ export async function createDrawSheet(
 
   const createResponse = await sheets.spreadsheets.create({
     requestBody: {
-      properties: { title: `Luxero Draw - ${title}` },
+      properties: { title: `Online Competitions Draw - ${title}` },
       sheets: [{ properties: { title: "Entries" } }],
     },
   });

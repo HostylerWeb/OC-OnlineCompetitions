@@ -1,6 +1,6 @@
 "use client";
-import { Eye, EyeOff } from "@luxero/icons";
-import { cn } from "@luxero/utils";
+import { Eye, EyeOff } from "@oc/icons";
+import { cn } from "@oc/utils";
 import { useEffect, useState } from "react";
 import { useChangePassword } from "../../hooks";
 import { getAuthErrorMessage } from "../actions";

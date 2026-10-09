@@ -1,4 +1,5 @@
-import { getBool } from "@luxero/env/next";
+import { devAssetCspHosts } from "@oc/env/server";
+import { getBool } from "@oc/env/next";
 import type { NextConfig } from "next";
 
 const OLD_ADMIN_REDIRECTS: { source: string; destination: string }[] = [
@@ -35,12 +36,12 @@ const nextConfig: NextConfig = {
 
   images: {
     remotePatterns: [
-      { protocol: "https", hostname: "assets.luxero.win" },
-      { protocol: "https", hostname: "assets.staging.luxero.win" },
+      { protocol: "https", hostname: "assets.onlinecompetitions.co.uk" },
+      { protocol: "https", hostname: "assets.staging.onlinecompetitions.co.uk" },
       { protocol: "https", hostname: "lh3.googleusercontent.com" },
       { protocol: "https", hostname: "googleuserconsent.com" },
-      { protocol: "http", hostname: "localhost", port: "9011", pathname: "/luxero-assets/**" },
-      { protocol: "http", hostname: "127.0.0.1", port: "9011", pathname: "/luxero-assets/**" },
+      { protocol: "http", hostname: "localhost", port: "9011", pathname: "/onlinecompetitions-assets/**" },
+      { protocol: "http", hostname: "127.0.0.1", port: "9011", pathname: "/onlinecompetitions-assets/**" },
     ],
     dangerouslyAllowLocalIP: process.env.NODE_ENV !== "production",
     formats: ["image/avif", "image/webp"],
@@ -52,18 +53,18 @@ const nextConfig: NextConfig = {
   },
 
   transpilePackages: [
-    "@luxero/api-admin",
-    "@luxero/api-email",
-    "@luxero/auth-admin",
-    "@luxero/api-compliance",
-    "@luxero/api-db",
-    "@luxero/api-infra",
-    "@luxero/api-server",
-    "@luxero/api-referrals",
-    "@luxero/icons",
-    "@luxero/content",
-    "@luxero/types",
-    "@luxero/utils",
+    "@oc/api-admin",
+    "@oc/api-email",
+    "@oc/auth-admin",
+    "@oc/api-compliance",
+    "@oc/api-db",
+    "@oc/api-infra",
+    "@oc/api-server",
+    "@oc/api-referrals",
+    "@oc/icons",
+    "@oc/content",
+    "@oc/types",
+    "@oc/utils",
   ],
   serverExternalPackages: ["mongoose", "@ffmpeg-installer/ffmpeg", "sharp"],
 
@@ -72,7 +73,7 @@ const nextConfig: NextConfig = {
     optimizePackageImports: [
       "cmdk",
       "sonner",
-      "@luxero/icons",
+      "@oc/icons",
       "lucide-react",
       "date-fns",
       "@radix-ui/react-dialog",
@@ -95,17 +96,16 @@ const nextConfig: NextConfig = {
   },
 
   async headers() {
-    const devAssetHosts =
-      process.env.NODE_ENV !== "production" ? " http://localhost:9011 http://127.0.0.1:9011" : "";
+    const devAssetHosts = devAssetCspHosts(process.env.NODE_ENV !== "production");
     const csp =
       "base-uri 'self'; form-action 'self'; object-src 'none'; frame-ancestors 'none'; default-src 'self'; " +
-      `media-src 'self' https://assets.luxero.win https://assets.staging.luxero.win${devAssetHosts}; ` +
-      "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://*.facebook.net https://challenges.cloudflare.com https://umami.luxero.win https://js.stripe.com; " +
+      `media-src 'self' https://assets.onlinecompetitions.co.uk https://assets.staging.onlinecompetitions.co.uk${devAssetHosts}; ` +
+      "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://*.facebook.net https://challenges.cloudflare.com https://umami.onlinecompetitions.co.uk https://js.stripe.com; " +
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
       "frame-src https://*.facebook.net https://challenges.cloudflare.com https://js.stripe.com; " +
       "worker-src 'self' blob:; child-src 'self' blob:; " +
-      `connect-src 'self' https://assets.luxero.win https://assets.staging.luxero.win https://*.facebook.net https://challenges.cloudflare.com https://umami.luxero.win https://api.stripe.com${devAssetHosts}; ` +
-      `img-src 'self' data: https://assets.luxero.win https://assets.staging.luxero.win https://lh3.googleusercontent.com${devAssetHosts}; ` +
+      `connect-src 'self' https://assets.onlinecompetitions.co.uk https://assets.staging.onlinecompetitions.co.uk https://*.facebook.net https://challenges.cloudflare.com https://umami.onlinecompetitions.co.uk https://api.stripe.com${devAssetHosts}; ` +
+      `img-src 'self' data: https://assets.onlinecompetitions.co.uk https://assets.staging.onlinecompetitions.co.uk https://lh3.googleusercontent.com${devAssetHosts}; ` +
       "font-src 'self' https://fonts.gstatic.com";
 
     return [

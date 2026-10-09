@@ -8,10 +8,10 @@ import {
   useCheckout,
   useClearCart,
   useMyOrderDetail,
-} from "@luxero/api-client";
-import { Clock, PartyPopper, Ticket } from "@luxero/icons";
-import type { MeOrderDetailDto } from "@luxero/types";
-import { getGrantedTicketIds } from "@luxero/utils";
+} from "@oc/api-client";
+import { Clock, PartyPopper, Ticket } from "@oc/icons";
+import type { MeOrderDetailDto } from "@oc/types";
+import { getGrantedTicketIds } from "@oc/utils";
 import { useQueryClient } from "@tanstack/react-query";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { usePageContext } from "vike-react/usePageContext";
@@ -73,7 +73,7 @@ function SuccessLoadingFallback() {
   const { t } = useTranslation();
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      <main className="pt-14 flex-1 flex items-center justify-center luxero-container-auth pb-8">
+      <main className="pt-14 flex-1 flex items-center justify-center oc-container-auth pb-8">
         <div
           className="mx-auto mb-6 flex size-24 items-center justify-center rounded-full bg-gradient-to-br from-gold/20 to-gold/5"
           role="status"
@@ -450,7 +450,7 @@ function CheckoutSuccessPageContent() {
         totalTickets={modalTotalTickets}
       />
 
-      <main className="pt-14 flex-1 flex items-center justify-center luxero-container-auth pb-8">
+      <main className="pt-14 flex-1 flex items-center justify-center oc-container-auth pb-8">
         <div className="py-8 lg:py-16 text-center max-w-lg">
           {displayStatus === "invalid" ? (
             <>

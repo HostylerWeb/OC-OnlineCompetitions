@@ -13,7 +13,7 @@ const __mocks = vi.hoisted(() => ({
   notifierResult: Promise.resolve() as Promise<void>,
 }));
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   BonusAward: {
     find: vi.fn(() => ({
       session: vi.fn(() => ({

@@ -1,11 +1,11 @@
-import { runtimeConfig } from "@luxero/api-infra/runtime-config";
+import { runtimeConfig } from "@oc/api-infra/runtime-config";
 import {
-  createLuxeroProfile,
+  createOnlineCompetitionsProfile,
   type HookAuthUser,
   syncProfileFromAuthUser,
-} from "@luxero/auth-admin/auth-hooks";
-import { getMongoDb } from "@luxero/auth-admin/auth-mongo";
-import { getBool, getEnv, getNum } from "@luxero/env/server";
+} from "@oc/auth-admin/auth-hooks";
+import { getMongoDb } from "@oc/auth-admin/auth-mongo";
+import { getBool, getEnv, getNum } from "@oc/env/server";
 import type { BetterAuthOptions } from "better-auth";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
 
@@ -80,7 +80,7 @@ export function buildAuth(config: BuildAuthConfig): BetterAuthOptions {
       user: {
         create: {
           after: async (user: HookAuthUser) => {
-            await createLuxeroProfile(user);
+            await createOnlineCompetitionsProfile(user);
             if (user.emailVerified && config.onUserEmailVerified) {
               void config.onUserEmailVerified(user).catch((err) => {
                 console.error("[AUTH] onUserEmailVerified failed:", err);

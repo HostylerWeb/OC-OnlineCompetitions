@@ -1,9 +1,9 @@
-import { BonusAwardFire, Competition } from "@luxero/api-db/models";
-import { createLogger } from "@luxero/api-logger";
+import { BonusAwardFire, Competition } from "@oc/api-db/models";
+import { createLogger } from "@oc/api-logger";
 import {
   checkBonusAwardMilestones,
   pickPendingBonusAwardWinners,
-} from "@luxero/api-tickets/bonus-award-draw";
+} from "@oc/api-tickets/bonus-award-draw";
 import { notifyBonusAwardWins } from "../payment/notify-bonus-award-wins";
 
 const logger = createLogger("jobs:check-bonus-awards");

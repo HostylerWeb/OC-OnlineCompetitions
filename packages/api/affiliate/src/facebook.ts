@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { getCurrentContext } from "@luxero/api-infra/env";
+import { getCurrentContext } from "@oc/api-infra/env";
 import type { AffiliateEventType, FacebookPixelConfig } from "./types";
 
 const FB_EVENT_MAP: Record<AffiliateEventType, string> = {
@@ -32,7 +32,7 @@ export function sendFacebookPixelEvent(
   if (data.email) {
     userData.em = sha256(data.email);
   }
-  userData.client_user_agent = "luxero-server/1.0";
+  userData.client_user_agent = "onlinecompetitions-server/1.0";
   userData.client_ip_address = "0.0.0.0";
 
   const customData: Record<string, string | number> = {};

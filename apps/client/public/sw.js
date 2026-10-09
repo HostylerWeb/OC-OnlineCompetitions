@@ -17,7 +17,7 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("push", (event) => {
   const data = event.data?.json() ?? {};
 
-  const title = data.title ?? "Luxero";
+  const title = data.title ?? "Online Competitions";
   const options = {
     body: data.body ?? "",
     icon: data.icon ?? "/icons/icon-192x192.svg",

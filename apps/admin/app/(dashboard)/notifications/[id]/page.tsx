@@ -1,7 +1,7 @@
 "use client";
 
-import { useAdminNotification, useAdminNotificationMutations } from "@luxero/api-admin";
-import { ArrowLeft, Send } from "@luxero/icons";
+import { useAdminNotification, useAdminNotificationMutations } from "@oc/api-admin";
+import { ArrowLeft, Send } from "@oc/icons";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useCallback } from "react";

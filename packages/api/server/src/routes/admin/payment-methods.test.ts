@@ -46,9 +46,9 @@ const __mock = vi.hoisted(() => {
   };
 });
 
-vi.mock("@luxero/api-infra/db", () => ({ default: vi.fn(async () => {}) }));
+vi.mock("@oc/api-infra/db", () => ({ default: vi.fn(async () => {}) }));
 
-vi.mock("@luxero/api-server/middleware/auth", () => ({
+vi.mock("@oc/api-server/middleware/auth", () => ({
   isPublicRoute: () => false,
   resolveSession: vi.fn(async () => ({})),
   sessionMiddleware: async (_c: unknown, next: () => Promise<void>) => {
@@ -72,7 +72,7 @@ vi.mock("@luxero/api-server/middleware/auth", () => ({
   },
 }));
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   PaymentMethod: {
     find: (...args: unknown[]) => __mock.paymentMethodFind(...args),
     findOne: (...args: unknown[]) => __mock.paymentMethodFindOne(...args),
@@ -83,28 +83,28 @@ vi.mock("@luxero/api-db/models", () => ({
   setDefaultPaymentMethod: (...args: unknown[]) => __mock.setDefaultPaymentMethod(...args),
 }));
 
-vi.mock("@luxero/api-server/lib/payment/ensure-local-payment-method", () => ({
+vi.mock("@oc/api-server/lib/payment/ensure-local-payment-method", () => ({
   ensureLocalPaymentMethod: (...args: unknown[]) => __mock.ensureLocalPaymentMethod(...args),
 }));
 
-vi.mock("@luxero/api-server/lib/payment/ensure-paytriot-payment-method", () => ({
+vi.mock("@oc/api-server/lib/payment/ensure-paytriot-payment-method", () => ({
   ensurePaytriotPaymentMethod: (...args: unknown[]) => __mock.ensurePaytriotPaymentMethod(...args),
 }));
 
-vi.mock("@luxero/api-server/lib/payment/ensure-stripe-payment-method", () => ({
+vi.mock("@oc/api-server/lib/payment/ensure-stripe-payment-method", () => ({
   ensureStripePaymentMethod: (...args: unknown[]) => __mock.ensureStripePaymentMethod(...args),
 }));
 
-vi.mock("@luxero/api-server/lib/payment/payment-method-credentials", () => ({
+vi.mock("@oc/api-server/lib/payment/payment-method-credentials", () => ({
   hasProviderEnvCredentials: (...args: unknown[]) => __mock.hasProviderEnvCredentials(...args),
 }));
 
-vi.mock("@luxero/api-server/lib/payment/capabilities", () => ({
+vi.mock("@oc/api-server/lib/payment/capabilities", () => ({
   mapInternalCapabilitiesToPublic: (...args: unknown[]) =>
     __mock.mapInternalCapabilitiesToPublic(...args),
 }));
 
-vi.mock("@luxero/api-server/lib/payment/providers", () => ({
+vi.mock("@oc/api-server/lib/payment/providers", () => ({
   paymentProcessors: [
     {
       id: "local",

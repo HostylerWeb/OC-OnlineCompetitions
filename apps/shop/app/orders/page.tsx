@@ -1,5 +1,5 @@
-import { getServerSession } from "@luxero/auth-admin";
-import { formatOrderNumber } from "@luxero/utils";
+import { getServerSession } from "@oc/auth-admin";
+import { formatOrderNumber } from "@oc/utils";
 import { TriangleAlert } from "lucide-react";
 import { cookies } from "next/headers";
 import Link from "next/link";
@@ -10,7 +10,7 @@ import { fetchOrders } from "@/lib/api";
 import { cn } from "@/lib/utils";
 
 export const metadata = {
-  title: "My Orders — Luxero Shop",
+  title: "My Orders — Online Competitions Shop",
 };
 
 const statusVariant: Record<
@@ -58,7 +58,7 @@ export default async function OrdersPage({
   }
 
   return (
-    <main className="luxero-container py-12">
+    <main className="oc-container py-12">
       <h1 className="text-2xl font-bold tracking-tight">My Orders</h1>
 
       {error ? (

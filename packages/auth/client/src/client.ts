@@ -1,5 +1,5 @@
-import { getEnv } from "@luxero/env/vike";
-import { getSessionCookiePrefix } from "@luxero/utils";
+import { getEnv } from "@oc/env/vike";
+import { getSessionCookiePrefix } from "@oc/utils";
 import {
   adminClient,
   anonymousClient,

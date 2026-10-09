@@ -1,10 +1,10 @@
 "use client";
 
-import { useWinners, useWinnersStats } from "@luxero/api-client";
+import { useWinners, useWinnersStats } from "@oc/api-client";
 
-import { ArrowRight, Trophy } from "@luxero/icons";
-import type { Winner } from "@luxero/types";
-import { cn } from "@luxero/utils";
+import { ArrowRight, Trophy } from "@oc/icons";
+import type { Winner } from "@oc/types";
+import { cn } from "@oc/utils";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useData } from "vike-react/useData";
 import { GoldOutlineButton } from "@/components/buttons";
@@ -189,7 +189,7 @@ export default function Page() {
   const showStats = showWinnerCount || showPrizeValue;
 
   return (
-    <div className="luxero-container-wide pb-12 animate-fade-in">
+    <div className="oc-container-wide pb-12 animate-fade-in">
       <section className="relative mb-10 overflow-hidden rounded-[1.75rem] border border-gold/10 bg-gradient-to-br from-gold/[0.07] via-card to-background sm:mb-12">
         <div className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-gold/10 blur-3xl" />
         <div className="relative grid gap-8 p-6 sm:p-8 lg:grid-cols-[1fr_auto] lg:items-end lg:gap-10 lg:p-10">

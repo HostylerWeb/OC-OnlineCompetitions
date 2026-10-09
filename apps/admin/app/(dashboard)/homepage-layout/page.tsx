@@ -17,14 +17,14 @@ import {
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { useAdminHomepageLayoutSettings, useHomepageLayoutMutations } from "@luxero/api-admin";
-import { GripVertical, LayoutTemplate } from "@luxero/icons";
+import { useAdminHomepageLayoutSettings, useHomepageLayoutMutations } from "@oc/api-admin";
+import { GripVertical, LayoutTemplate } from "@oc/icons";
 import {
   DEFAULT_HOMEPAGE_SECTIONS,
   type HomepageSectionConfig,
   type HomepageSectionId,
-} from "@luxero/types";
-import { HOMEPAGE_SECTION_LABELS } from "@luxero/utils";
+} from "@oc/types";
+import { HOMEPAGE_SECTION_LABELS } from "@oc/utils";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";

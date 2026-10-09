@@ -1,5 +1,5 @@
 "use client";
-import type { ApiResponse, PublicComplianceSettings, SaferPlayState } from "@luxero/types";
+import type { ApiResponse, PublicComplianceSettings, SaferPlayState } from "@oc/types";
 import { useMemo } from "react";
 import { usePublicComplianceSettings } from "./compliance";
 

@@ -1,6 +1,6 @@
 "use client";
-import type { ApiResponse, Competition, EndingSoonSettings } from "@luxero/types";
-import { filterEndingSoonCompetitions } from "@luxero/utils";
+import type { ApiResponse, Competition, EndingSoonSettings } from "@oc/types";
+import { filterEndingSoonCompetitions } from "@oc/utils";
 import { useMemo } from "react";
 import { useCompetitions } from "./competitions";
 import { useEndingSoonSettings } from "./ending-soon-settings";

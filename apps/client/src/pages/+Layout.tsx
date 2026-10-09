@@ -1,5 +1,5 @@
-import { AuthProvider, playSiteSound } from "@luxero/api-client";
-import type { PublicComplianceSettings, SessionUser } from "@luxero/types";
+import { AuthProvider, playSiteSound } from "@oc/api-client";
+import type { PublicComplianceSettings, SessionUser } from "@oc/types";
 import { useEffect } from "react";
 import { toast, Toaster } from "sonner";
 import { usePageContext } from "vike-react/usePageContext";
@@ -43,7 +43,7 @@ export default function Layout({
   return (
     <ErrorBoundary>
       <LocaleProvider locale={pageContext.locale ?? "en"}>
-        <ThemeProvider defaultTheme="dark" storageKey="luxero-theme">
+        <ThemeProvider defaultTheme="dark" storageKey="oc-theme">
           <AuthProvider initialUser={user} guestCheckoutEnabled={guestCheckoutEnabled}>
             <ProfileQueryHydrator />
             <ReferralRefGateIsland />

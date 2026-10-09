@@ -1,5 +1,5 @@
-import { ConversionSettings } from "@luxero/api-db/models";
-import { tryGetRedis } from "@luxero/api-infra/cache";
+import { ConversionSettings } from "@oc/api-db/models";
+import { tryGetRedis } from "@oc/api-infra/cache";
 import type {
   AffiliateConversionData,
   AffiliateEventType,

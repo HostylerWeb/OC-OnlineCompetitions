@@ -1,4 +1,4 @@
-import type { AdminUserProfilePatch, Profile } from "@luxero/types";
+import type { AdminUserProfilePatch, Profile } from "@oc/types";
 
 export const PROFILE_FIELD_LABELS: Record<string, string> = {
   email: "Email",

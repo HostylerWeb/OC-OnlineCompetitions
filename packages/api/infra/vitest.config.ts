@@ -8,7 +8,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
-      "@luxero/api-infra": path.resolve(__dirname, "./src"),
+      "@oc/api-infra": path.resolve(__dirname, "./src"),
     },
   },
   test: {

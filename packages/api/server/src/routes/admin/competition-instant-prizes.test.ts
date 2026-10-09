@@ -20,9 +20,9 @@ const __mock = vi.hoisted(() => ({
   instantPrizeWinCreate: vi.fn(),
 }));
 
-vi.mock("@luxero/api-infra/db", () => ({ default: vi.fn(async () => {}) }));
+vi.mock("@oc/api-infra/db", () => ({ default: vi.fn(async () => {}) }));
 
-vi.mock("@luxero/api-server/middleware/auth", () => ({
+vi.mock("@oc/api-server/middleware/auth", () => ({
   isPublicRoute: () => false,
   resolveSession: vi.fn(async () => ({})),
   sessionMiddleware: async (_c: unknown, next: () => Promise<void>) => {
@@ -49,14 +49,14 @@ vi.mock("@luxero/api-server/middleware/auth", () => ({
   },
 }));
 
-vi.mock("@luxero/api-tickets/validate-instant-prize-assignment", () => ({
+vi.mock("@oc/api-tickets/validate-instant-prize-assignment", () => ({
   getInstantPrizeCapacity: (...args: unknown[]) => __mock.getInstantPrizeCapacity(...args),
   validateInstantPrizeAssignment: (...args: unknown[]) =>
     __mock.validateInstantPrizeAssignment(...args),
   isCipInvariantError: () => false,
 }));
 
-vi.mock("@luxero/api-tickets/instant-prize-allocation", () => ({
+vi.mock("@oc/api-tickets/instant-prize-allocation", () => ({
   AllocationError: class AllocationError extends Error {},
   computeArchiveState: () => ({ isArchived: false }),
   computeSlotRemoval: () => ({ removedNumbers: [], removedSlotIndices: [] }),
@@ -71,11 +71,11 @@ vi.mock("@luxero/api-tickets/instant-prize-allocation", () => ({
   }),
 }));
 
-vi.mock("@luxero/api-tickets/instant-prize-utils", () => ({
+vi.mock("@oc/api-tickets/instant-prize-utils", () => ({
   generateWinningEntryNumbers: vi.fn(async () => [101, 102]),
 }));
 
-vi.mock("@luxero/api-tickets/ticket-service", () => ({
+vi.mock("@oc/api-tickets/ticket-service", () => ({
   buildExcludeSetForInstantPrizes: vi.fn(async () => new Set()),
   holdTickets: (...args: unknown[]) => __mock.holdTickets(...args),
   pickAvailableNumbers: vi.fn(async () => [501, 502]),
@@ -83,11 +83,11 @@ vi.mock("@luxero/api-tickets/ticket-service", () => ({
   releaseHeldByCip: (...args: unknown[]) => __mock.releaseHeldByCip(...args),
 }));
 
-vi.mock("@luxero/api-infra/mongo-capabilities", () => ({
+vi.mock("@oc/api-infra/mongo-capabilities", () => ({
   withMongoTransactionOptional: vi.fn(async (fn: (session: null) => Promise<unknown>) => fn(null)),
 }));
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   Competition: {
     collection: { name: "competitions" },
     findById: (...args: unknown[]) => __mock.competitionFindById(...args),

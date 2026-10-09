@@ -1,5 +1,5 @@
-import type { Category, Competition } from "@luxero/types";
-import type { ResolvedHomepageSection } from "@luxero/utils";
+import type { Category, Competition } from "@oc/types";
+import type { ResolvedHomepageSection } from "@oc/utils";
 import { useTranslation } from "@/lib/i18n";
 import { CategorySection } from "../CategorySection";
 

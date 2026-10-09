@@ -5,8 +5,8 @@ import {
   resolveAuthenticatedDestination,
   SignInForm,
   useReturnToSearchParam,
-} from "@luxero/api-client";
-import { getEnv } from "@luxero/env/vike";
+} from "@oc/api-client";
+import { getEnv } from "@oc/env/vike";
 import { useTranslation } from "@/lib/i18n";
 export default function LoginPage() {
   const { t } = useTranslation();

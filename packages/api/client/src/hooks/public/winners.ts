@@ -1,4 +1,4 @@
-import type { ApiResponse, Winner } from "@luxero/types";
+import type { ApiResponse, Winner } from "@oc/types";
 import { useQuery } from "@tanstack/react-query";
 import { api } from "../../client";
 import { STALE_TIME_STATIC } from "../../constants";

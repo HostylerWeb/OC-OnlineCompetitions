@@ -1,8 +1,8 @@
 "use client";
 
-import { useBalance, useInfiniteMyBalanceTransactions } from "@luxero/api-client";
-import { Wallet } from "@luxero/icons";
-import type { BalanceTransaction } from "@luxero/types";
+import { useBalance, useInfiniteMyBalanceTransactions } from "@oc/api-client";
+import { Wallet } from "@oc/icons";
+import type { BalanceTransaction } from "@oc/types";
 import { useMemo } from "react";
 import { useData } from "vike-react/useData";
 import {

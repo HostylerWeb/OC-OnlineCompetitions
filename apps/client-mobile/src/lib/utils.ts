@@ -1,2 +1,2 @@
-export * from "@luxero/utils";
+export * from "@oc/utils";
 export { cn } from "@/lib/cn";

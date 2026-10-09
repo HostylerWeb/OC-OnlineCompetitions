@@ -1,6 +1,6 @@
 "use client";
 
-import { getEnv } from "@luxero/env/vike";
+import { getEnv } from "@oc/env/vike";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 export type PushSubscriptionState =

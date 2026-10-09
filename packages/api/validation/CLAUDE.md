@@ -1,10 +1,10 @@
-# @luxero/api-validation
+# @oc/api-validation
 
 Zod-based request validation for the Hono API.
 
 ## Source of truth
 
-`luxero-api/packages/validation/src` — synced to this repo.
+`onlinecompetitions-api/packages/validation/src` — synced to this repo.
 
 ## Key exports
 

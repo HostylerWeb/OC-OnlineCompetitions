@@ -1,6 +1,6 @@
 "use client";
 
-import type { ShopProductOption, ShopProductVariant } from "@luxero/api-admin";
+import type { ShopProductOption, ShopProductVariant } from "@oc/api-admin";
 import {
   ApiResponseError,
   useAdminShopCategories,
@@ -9,7 +9,7 @@ import {
   useAdminShopProductVariantMutations,
   useAdminShopProductVariants,
   useServerPagination,
-} from "@luxero/api-admin";
+} from "@oc/api-admin";
 import {
   AlertTriangle,
   Check,
@@ -25,7 +25,7 @@ import {
   Sparkles,
   Trash2,
   X,
-} from "@luxero/icons";
+} from "@oc/icons";
 import type { ColumnDef, SortingState } from "@tanstack/react-table";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useForm } from "react-hook-form";

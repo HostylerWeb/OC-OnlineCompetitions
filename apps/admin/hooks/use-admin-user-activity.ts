@@ -1,6 +1,6 @@
 "use client";
 
-import type { TimelineEvent } from "@luxero/api-referrals/timeline";
+import type { TimelineEvent } from "@oc/api-referrals/timeline";
 import { type UseQueryResult, useQuery } from "@tanstack/react-query";
 
 export function useAdminUserActivity(

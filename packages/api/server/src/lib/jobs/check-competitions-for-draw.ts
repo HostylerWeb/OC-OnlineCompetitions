@@ -1,7 +1,7 @@
-import { Competition } from "@luxero/api-db/models";
-import { CH, invalidateByChannelSafe } from "@luxero/api-infra/cache";
-import dbConnect from "@luxero/api-infra/db";
-import { captureRouteError } from "@luxero/api-infra/sentry";
+import { Competition } from "@oc/api-db/models";
+import { CH, invalidateByChannelSafe } from "@oc/api-infra/cache";
+import dbConnect from "@oc/api-infra/db";
+import { captureRouteError } from "@oc/api-infra/sentry";
 
 export type CheckCompetitionsForDrawSummary = {
   checkedAt: string;

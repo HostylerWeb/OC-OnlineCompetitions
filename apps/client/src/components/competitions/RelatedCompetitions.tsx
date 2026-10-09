@@ -1,7 +1,7 @@
 "use client";
 
-import { Trophy } from "@luxero/icons";
-import type { Competition } from "@luxero/types";
+import { Trophy } from "@oc/icons";
+import type { Competition } from "@oc/types";
 import { CompetitionProgressBar } from "@/components/ui/competition-progress-bar";
 import { formatCurrency, useTranslation } from "@/lib/i18n";
 
@@ -13,7 +13,7 @@ export default function RelatedCompetitions({ competitions }: { competitions: Co
       <h2 className="text-xl lg:text-2xl font-bold text-foreground mb-4 lg:mb-6 text-center">
         {t("competitions.related.heading")}
       </h2>
-      <div className="grid luxero-grid-competitions">
+      <div className="grid onlinecompetitions-grid-competitions">
         {competitions.map((comp) => {
           return (
             <a key={comp._id} href={`/competitions/${comp.slug}`} className="group block">

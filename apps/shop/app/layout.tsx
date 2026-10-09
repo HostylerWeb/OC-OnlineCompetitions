@@ -1,5 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { HOSTYLER_CONSOLE_NOTICE_INLINE } from "@luxero/utils";
+import {
+  BRAND_FAVICON_PATH,
+  BRAND_LOGO_PATH,
+  brandLogoUrl,
+  HOSTYLER_CONSOLE_NOTICE_INLINE,
+} from "@oc/utils";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import { AuthProvider } from "@/components/auth-provider";
 import { BuildVersionWatcher } from "@/components/build-version-watcher";
@@ -21,30 +26,30 @@ export const viewport: Viewport = {
 };
 
 const shopUrl =
-  process.env.NEXT_PUBLIC_SHOP_URL || process.env.APP_URL || "https://shop.luxero.win";
+  process.env.NEXT_PUBLIC_SHOP_URL || process.env.APP_URL || "https://shop.onlinecompetitions.co.uk";
 
 export const metadata: Metadata = {
   title: {
-    default: "Shop — Luxero",
-    template: "%s — Luxero Shop",
+    default: "Shop — Online Competitions",
+    template: "%s — Online Competitions Shop",
   },
-  description: "Luxero official merchandise store — premium apparel and accessories.",
+  description: "Online Competitions official merchandise store — premium apparel and accessories.",
   icons: [
-    { rel: "icon", url: "/icons/icon-192x192.svg" },
-    { rel: "apple-touch-icon", url: "/icons/icon-180x180.svg" },
+    { rel: "icon", url: BRAND_FAVICON_PATH, type: "image/png" },
+    { rel: "apple-touch-icon", url: BRAND_LOGO_PATH, type: "image/png" },
   ],
   manifest: "/manifest.json",
   openGraph: {
-    title: "Shop — Luxero",
-    description: "Luxero official merchandise store — premium apparel and accessories.",
-    siteName: "Luxero Shop",
+    title: "Shop — Online Competitions",
+    description: "Online Competitions official merchandise store — premium apparel and accessories.",
+    siteName: "Online Competitions Shop",
     type: "website",
     locale: "en_GB",
     url: shopUrl,
     images: [
       {
-        url: "/og-default.png",
-        secureUrl: `${shopUrl}/og-default.png`,
+        url: BRAND_LOGO_PATH,
+        secureUrl: brandLogoUrl(shopUrl),
         type: "image/png",
         width: 1200,
         height: 630,
@@ -73,20 +78,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              name: "Luxero",
+              name: "Online Competitions",
               url: shopUrl,
-              logo: `${shopUrl}/og-default.png`,
+              logo: brandLogoUrl(shopUrl),
             }),
           }}
         />
-        <link rel="preconnect" href="https://assets.luxero.win" />
-        <link rel="preconnect" href="https://assets.staging.luxero.win" />
-        <link rel="dns-prefetch" href="https://assets.luxero.win" />
-        <link rel="dns-prefetch" href="https://assets.staging.luxero.win" />
+        <link rel="preconnect" href="https://assets.onlinecompetitions.co.uk" />
+        <link rel="preconnect" href="https://assets.staging.onlinecompetitions.co.uk" />
+        <link rel="dns-prefetch" href="https://assets.onlinecompetitions.co.uk" />
+        <link rel="dns-prefetch" href="https://assets.staging.onlinecompetitions.co.uk" />
         {process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && (
           <script
             defer
-            src="https://umami.luxero.win/script.js"
+            src="https://umami.onlinecompetitions.co.uk/script.js"
             data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
           />
         )}

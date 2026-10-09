@@ -1,9 +1,9 @@
 "use client";
 
-import { api, useAdminOrderMutations, useAdminOrders } from "@luxero/api-admin";
-import { MoreHorizontal, RefreshCw, Trash2, User } from "@luxero/icons";
-import type { AdminUser } from "@luxero/types";
-import { OrderNumberCell } from "@luxero/utils";
+import { api, useAdminOrderMutations, useAdminOrders } from "@oc/api-admin";
+import { MoreHorizontal, RefreshCw, Trash2, User } from "@oc/icons";
+import type { AdminUser } from "@oc/types";
+import { OrderNumberCell } from "@oc/utils";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import type { ColumnDef, SortingState, VisibilityState } from "@tanstack/react-table";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";

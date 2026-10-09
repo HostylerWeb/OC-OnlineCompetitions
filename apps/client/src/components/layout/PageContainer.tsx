@@ -1,13 +1,13 @@
-import { cn } from "@luxero/utils";
+import { cn } from "@oc/utils";
 import type { ElementType, ReactNode } from "react";
 
 const containerVariants = {
-  wide: "luxero-container-wide",
-  feature: "luxero-container-feature",
-  medium: "luxero-container-medium",
-  content: "luxero-container-content",
-  narrow: "luxero-container-narrow",
-  auth: "luxero-container-auth",
+  wide: "oc-container-wide",
+  feature: "oc-container-feature",
+  medium: "oc-container-medium",
+  content: "oc-container-content",
+  narrow: "oc-container-narrow",
+  auth: "oc-container-auth",
 } as const;
 
 export type PageContainerVariant = keyof typeof containerVariants;

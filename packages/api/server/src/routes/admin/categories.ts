@@ -1,18 +1,18 @@
-import { Category, Competition } from "@luxero/api-db/models";
-import { CH, invalidateByChannelSafe } from "@luxero/api-infra/cache";
-import dbConnect from "@luxero/api-infra/db";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { escapeRegex } from "@luxero/api-infra/fuzzy-search";
-import { applyGroupBy, type GroupByFieldConfig } from "@luxero/api-infra/group-by";
-import { isDuplicateKeyError } from "@luxero/api-infra/mongo-errors";
-import { parsePagination, parseSort } from "@luxero/api-infra/pagination";
-import { error, paginated, success } from "@luxero/api-infra/response";
-import { captureRouteError } from "@luxero/api-infra/sentry";
-import { requireManager } from "@luxero/api-server/middleware/auth";
+import { Category, Competition } from "@oc/api-db/models";
+import { CH, invalidateByChannelSafe } from "@oc/api-infra/cache";
+import dbConnect from "@oc/api-infra/db";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { escapeRegex } from "@oc/api-infra/fuzzy-search";
+import { applyGroupBy, type GroupByFieldConfig } from "@oc/api-infra/group-by";
+import { isDuplicateKeyError } from "@oc/api-infra/mongo-errors";
+import { parsePagination, parseSort } from "@oc/api-infra/pagination";
+import { error, paginated, success } from "@oc/api-infra/response";
+import { captureRouteError } from "@oc/api-infra/sentry";
+import { requireManager } from "@oc/api-server/middleware/auth";
 import {
   backpropagateCategorySlugChange,
   clearCategoryFromCompetitions,
-} from "@luxero/api-tickets/categories";
+} from "@oc/api-tickets/categories";
 import {
   type CategoryCreateInput,
   type CategoryReorderInput,
@@ -21,7 +21,7 @@ import {
   categoryReorderSchema,
   categoryUpdateSchema,
   validateBody,
-} from "@luxero/api-validation";
+} from "@oc/api-validation";
 import { Hono } from "hono";
 import { PipelineStage } from "mongoose";
 

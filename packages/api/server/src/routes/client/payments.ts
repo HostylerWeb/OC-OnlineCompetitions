@@ -1,67 +1,67 @@
 import { createHash } from "node:crypto";
-import { getAffiliateContext } from "@luxero/api-affiliate";
+import { getAffiliateContext } from "@oc/api-affiliate";
 import {
   assertComplianceForCheckout,
   getCheckoutComplianceHints,
-} from "@luxero/api-compliance/compliance-checks";
-import { getComplianceSettings } from "@luxero/api-compliance/settings";
-import { Competition, Order, PaymentMethod, Profile, ShopOrder } from "@luxero/api-db/models";
-import { CheckoutError, ComplianceError } from "@luxero/api-errors";
-import { CH, invalidateByChannelSafe } from "@luxero/api-infra/cache";
-import dbConnect from "@luxero/api-infra/db";
-import { getCurrentContext } from "@luxero/api-infra/env";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { error, success } from "@luxero/api-infra/response";
-import { captureRouteError } from "@luxero/api-infra/sentry";
-import { createLogger } from "@luxero/api-logger";
-import { roundCurrency } from "@luxero/utils";
-import type { PaytriotResponse } from "@luxero/api-payment-paytriot";
+} from "@oc/api-compliance/compliance-checks";
+import { getComplianceSettings } from "@oc/api-compliance/settings";
+import { Competition, Order, PaymentMethod, Profile, ShopOrder } from "@oc/api-db/models";
+import { CheckoutError, ComplianceError } from "@oc/api-errors";
+import { CH, invalidateByChannelSafe } from "@oc/api-infra/cache";
+import dbConnect from "@oc/api-infra/db";
+import { getCurrentContext } from "@oc/api-infra/env";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { error, success } from "@oc/api-infra/response";
+import { captureRouteError } from "@oc/api-infra/sentry";
+import { createLogger } from "@oc/api-logger";
+import { roundCurrency } from "@oc/utils";
+import type { PaytriotResponse } from "@oc/api-payment-paytriot";
 import {
   createStripeClient,
   StripeError,
   type StripeWebhookEvent,
-} from "@luxero/api-payment-stripe";
-import { incrementCounter } from "@luxero/api-server/lib/observability/metrics";
-import { mapInternalCapabilitiesToPublic } from "@luxero/api-server/lib/payment/capabilities";
-import { ensureLocalPaymentMethod } from "@luxero/api-server/lib/payment/ensure-local-payment-method";
+} from "@oc/api-payment-stripe";
+import { incrementCounter } from "@oc/api-server/lib/observability/metrics";
+import { mapInternalCapabilitiesToPublic } from "@oc/api-server/lib/payment/capabilities";
+import { ensureLocalPaymentMethod } from "@oc/api-server/lib/payment/ensure-local-payment-method";
 import {
   filterEnabledPaymentMethods,
   isCardPaymentProvider,
   isLocalPaymentAllowed,
   isPaymentProviderPubliclyEnabled,
-} from "@luxero/api-server/lib/payment/local-payment-policy";
+} from "@oc/api-server/lib/payment/local-payment-policy";
 import {
   ensurePaytriotPaymentMethod,
   getPaytriotCredentials,
-} from "@luxero/api-server/lib/payment/ensure-paytriot-payment-method";
+} from "@oc/api-server/lib/payment/ensure-paytriot-payment-method";
 import {
   ensureSiteCreditPaymentMethod,
   isSiteCreditWalletEnabled,
   SITE_CREDIT_PROVIDER,
-} from "@luxero/api-server/lib/payment/ensure-site-credit-payment-method";
-import { resolveSiteCreditForCheckout } from "@luxero/api-server/lib/payment/site-credit-checkout";
-import { ensureStripePaymentMethod } from "@luxero/api-server/lib/payment/ensure-stripe-payment-method";
-import { getAdapter, paymentProcessors } from "@luxero/api-server/lib/payment/providers";
-import { dispatchWebhook } from "@luxero/api-server/lib/payment/providers/_shared/webhook-helpers";
-import { getResolvedWebhookSecret } from "@luxero/api-server/lib/payment/providers/stripe";
+} from "@oc/api-server/lib/payment/ensure-site-credit-payment-method";
+import { resolveSiteCreditForCheckout } from "@oc/api-server/lib/payment/site-credit-checkout";
+import { ensureStripePaymentMethod } from "@oc/api-server/lib/payment/ensure-stripe-payment-method";
+import { getAdapter, paymentProcessors } from "@oc/api-server/lib/payment/providers";
+import { dispatchWebhook } from "@oc/api-server/lib/payment/providers/_shared/webhook-helpers";
+import { getResolvedWebhookSecret } from "@oc/api-server/lib/payment/providers/stripe";
 import type {
   PaymentProviderAdapter,
   PaymentProviderId,
   WebhookResult,
-} from "@luxero/api-server/lib/payment/providers/types";
+} from "@oc/api-server/lib/payment/providers/types";
 import {
   handleShopStripeWebhook,
   reduceInventoryFromOrder,
-} from "@luxero/api-server/lib/payment/shop-webhook-handler";
-import { requireGuestCheckout } from "@luxero/api-server/middleware/auth";
-import { sendShopOrderConfirmationEmail } from "@luxero/api-shop/email";
-import { type LoadedCheckoutCart, loadCartForCheckout } from "@luxero/api-tickets/load-cart";
-import { resolveCheckoutDiscount } from "@luxero/api-tickets/resolve-discount";
-import { validateBody } from "@luxero/api-validation";
+} from "@oc/api-server/lib/payment/shop-webhook-handler";
+import { requireGuestCheckout } from "@oc/api-server/middleware/auth";
+import { sendShopOrderConfirmationEmail } from "@oc/api-shop/email";
+import { type LoadedCheckoutCart, loadCartForCheckout } from "@oc/api-tickets/load-cart";
+import { resolveCheckoutDiscount } from "@oc/api-tickets/resolve-discount";
+import { validateBody } from "@oc/api-validation";
 import {
   type CreatePaymentSessionInput,
   createPaymentSessionSchema,
-} from "@luxero/api-validation/schemas/orders";
+} from "@oc/api-validation/schemas/orders";
 import { Hono } from "hono";
 import { Types } from "mongoose";
 
@@ -194,7 +194,7 @@ app.post(
         // Guests may only checkout with promo codes that are explicitly
         // marked guest-eligible on the PromoCode doc.
         if (loadedCart.promoCode) {
-          const { PromoCode } = await import("@luxero/api-db/models");
+          const { PromoCode } = await import("@oc/api-db/models");
           const promoDoc = await PromoCode.findOne({
             code: loadedCart.promoCode.toUpperCase(),
           }).lean();
@@ -209,7 +209,7 @@ app.post(
         }
 
         try {
-          const { createGuestCheckoutProfile } = await import("@luxero/auth-admin/auth-hooks");
+          const { createGuestCheckoutProfile } = await import("@oc/auth-admin/auth-hooks");
           const result = await createGuestCheckoutProfile(userId, {
             guestEmail: contact.email,
             firstName: contact?.firstName,
@@ -272,7 +272,7 @@ app.post(
       }
 
       // Validate competition status before proceeding
-      const { isOpenForTicketSales } = await import("@luxero/api-tickets/competition-sales");
+      const { isOpenForTicketSales } = await import("@oc/api-tickets/competition-sales");
       const salesMetaRows = await Competition.find({
         _id: { $in: items.map((i) => i.competitionId) },
       })
@@ -309,7 +309,7 @@ app.post(
       for (const item of items) {
         if (item.quantity <= 0) continue;
         const { getCompetitionTicketStats, countEffectiveOwnedForCap } = await import(
-          "@luxero/api-tickets/ticket-service"
+          "@oc/api-tickets/ticket-service"
         );
         const stats = await getCompetitionTicketStats(item.competitionId, {
           status: item.status,
@@ -782,7 +782,7 @@ app.post("/webhook/:provider", async (c) => {
     await dbConnect();
     const { provider } = c.req.param();
     body = await c.req.text();
-    const { ProcessedWebhook } = await import("@luxero/api-db/models");
+    const { ProcessedWebhook } = await import("@oc/api-db/models");
     const eventId = createHash("sha256").update(body).digest("hex");
 
     /**
@@ -898,7 +898,7 @@ async function verifyStripeWebhookEvent(
  * caller can fall through to the orders flow.
  */
 async function handleShopPaytriotWebhook(body: string): Promise<WebhookResult | null> {
-  const { httpParseQuery, verifyResponse } = await import("@luxero/api-payment-paytriot");
+  const { httpParseQuery, verifyResponse } = await import("@oc/api-payment-paytriot");
   let response: PaytriotResponse;
   try {
     response = httpParseQuery(body) as unknown as PaytriotResponse;
@@ -961,10 +961,10 @@ app.all("/paytriot/return", async (c) => {
       body = url.searchParams.toString();
     }
 
-    const { httpParseQuery } = await import("@luxero/api-payment-paytriot");
+    const { httpParseQuery } = await import("@oc/api-payment-paytriot");
     parsed = httpParseQuery(body) as unknown as PaytriotResponse;
 
-    const { ProcessedWebhook } = await import("@luxero/api-db/models");
+    const { ProcessedWebhook } = await import("@oc/api-db/models");
     const eventId = createHash("sha256").update(body).digest("hex");
     const existing = await ProcessedWebhook.findOne({ provider, eventId }).lean();
     if (existing) {
@@ -1024,7 +1024,7 @@ app.all("/paytriot/return", async (c) => {
     }
 
     const { dispatchWebhook } = await import(
-      "@luxero/api-server/lib/payment/providers/_shared/webhook-helpers"
+      "@oc/api-server/lib/payment/providers/_shared/webhook-helpers"
     );
     const result = await dispatchWebhook(provider, body, {});
     log.info("[paytriot/return] dispatchWebhook result", {
@@ -1058,7 +1058,7 @@ app.all("/paytriot/return", async (c) => {
 
       // Phase 3+: also read PaymentAttempt for authoritative per-transaction data.
       try {
-        const { PaymentAttempt } = await import("@luxero/api-db/models");
+        const { PaymentAttempt } = await import("@oc/api-db/models");
         latestAttempt = (await (PaymentAttempt as any)
           .findOne({ orderId })
           .sort({ attemptNumber: -1 })
@@ -1195,7 +1195,7 @@ app.all("/paytriot/return", async (c) => {
       exceptionPaymentParam = "failed";
       if (parsed) {
         try {
-          const apiPaymentPaytriot = await import("@luxero/api-payment-paytriot");
+          const apiPaymentPaytriot = await import("@oc/api-payment-paytriot");
           const { getPaytriotErrorInfo, sanitizeUserMessage } = apiPaymentPaytriot;
           const errorInfo = getPaytriotErrorInfo({
             responseCode: Number(parsed.responseCode),

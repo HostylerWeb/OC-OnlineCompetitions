@@ -1,8 +1,8 @@
 "use client";
 
-import { Ticket } from "@luxero/icons";
-import type { MyEntriesStats } from "@luxero/types";
-import { cn } from "@luxero/utils";
+import { Ticket } from "@oc/icons";
+import type { MyEntriesStats } from "@oc/types";
+import { cn } from "@oc/utils";
 import { DashboardStatCard } from "@/components/DashboardStatCard";
 import { useTranslation } from "@/lib/i18n";
 import { dashboardListShellClass } from "../dashboard-list-styles";

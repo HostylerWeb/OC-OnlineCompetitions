@@ -20,25 +20,25 @@ const __webhookMocks = vi.hoisted(() => {
   };
 });
 
-vi.mock("@luxero/api-infra/db", () => ({ default: vi.fn(async () => {}) }));
-vi.mock("@luxero/api-payment-stripe", () => ({
+vi.mock("@oc/api-infra/db", () => ({ default: vi.fn(async () => {}) }));
+vi.mock("@oc/api-payment-stripe", () => ({
   createStripeClient: () => ({ verifyWebhookSignature: __webhookMocks.verifyWebhookSignature }),
   StripeError: __webhookMocks.StripeError,
 }));
-vi.mock("@luxero/api-server/lib/payment/providers", () => ({
+vi.mock("@oc/api-server/lib/payment/providers", () => ({
   getAdapter: () => ({ handleWebhook: vi.fn() }),
   paymentProcessors: [],
 }));
-vi.mock("@luxero/api-server/lib/payment/providers/stripe", () => ({
+vi.mock("@oc/api-server/lib/payment/providers/stripe", () => ({
   getResolvedWebhookSecret: async () => "whsec_test",
 }));
-vi.mock("@luxero/api-server/lib/payment/shop-webhook-handler", () => ({
+vi.mock("@oc/api-server/lib/payment/shop-webhook-handler", () => ({
   handleShopStripeWebhook: (...args: unknown[]) => __webhookMocks.handleShopStripeWebhook(...args),
 }));
-vi.mock("@luxero/api-server/lib/payment/providers/_shared/webhook-helpers", () => ({
+vi.mock("@oc/api-server/lib/payment/providers/_shared/webhook-helpers", () => ({
   dispatchWebhook: (...args: unknown[]) => __webhookMocks.dispatchWebhook(...args),
 }));
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   Order: {
     findOne: vi.fn(async () => null),
     findOneAndUpdate: vi.fn(async () => null),

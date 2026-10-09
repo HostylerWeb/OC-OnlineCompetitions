@@ -86,16 +86,16 @@ const __order = vi.hoisted(() => ({
   })),
 }));
 
-vi.mock("@luxero/api-db", () => ({
+vi.mock("@oc/api-db", () => ({
   dbConnect: vi.fn(async () => {}),
 }));
 
-vi.mock("@luxero/api-infra/db", () => ({
+vi.mock("@oc/api-infra/db", () => ({
   default: vi.fn(async () => {}),
 }));
 
-vi.mock("@luxero/api-tickets/cart", async () => {
-  const actual = await vi.importActual("@luxero/api-tickets/cart");
+vi.mock("@oc/api-tickets/cart", async () => {
+  const actual = await vi.importActual("@oc/api-tickets/cart");
   return {
     ...actual,
     mergeCartItem: (items: unknown[], item: unknown) => [...(items as unknown[]), item],
@@ -104,7 +104,7 @@ vi.mock("@luxero/api-tickets/cart", async () => {
   };
 });
 
-vi.mock("@luxero/api-db/models", () => ({
+vi.mock("@oc/api-db/models", () => ({
   Profile: {
     findById: (id: string) => __profile.findById(id),
     findByIdAndUpdate: (id: string, update: Record<string, unknown>) =>
@@ -177,7 +177,7 @@ vi.mock("@luxero/api-db/models", () => ({
   },
 }));
 
-vi.mock("@luxero/api-db/models/Order", () => ({
+vi.mock("@oc/api-db/models/Order", () => ({
   default: {
     updateMany: vi.fn(async () => ({ modifiedCount: 1 })),
     findById: vi.fn(() => null),
@@ -209,7 +209,7 @@ describe("mergeAnonymousAccount", () => {
           return (
             __merge.profileFindByIdResult ?? {
               _id: anonId,
-              email: `guest-${anonId}@guest.luxero.local`,
+              email: `guest-${anonId}@guest.onlinecompetitions.local`,
               referredBy: referrerId,
               referredByCode: "ABC123",
             }
@@ -256,7 +256,7 @@ describe("mergeAnonymousAccount", () => {
   });
 
   async function loadMergeAnonymousAccount() {
-    const mod = await import("@luxero/auth-admin/auth-hooks");
+    const mod = await import("@oc/auth-admin/auth-hooks");
     return mod.mergeAnonymousAccount;
   }
 
@@ -264,7 +264,7 @@ describe("mergeAnonymousAccount", () => {
     const mergeAnonymousAccount = await loadMergeAnonymousAccount();
 
     await mergeAnonymousAccount({
-      anonymousUser: { id: anonId, email: `guest-${anonId}@guest.luxero.local` },
+      anonymousUser: { id: anonId, email: `guest-${anonId}@guest.onlinecompetitions.local` },
       newUser: { id: newId, email: "user@example.com" },
     });
 
@@ -301,7 +301,7 @@ describe("mergeAnonymousAccount", () => {
     const mergeAnonymousAccount = await loadMergeAnonymousAccount();
 
     await mergeAnonymousAccount({
-      anonymousUser: { id: anonId, email: `guest-${anonId}@guest.luxero.local` },
+      anonymousUser: { id: anonId, email: `guest-${anonId}@guest.onlinecompetitions.local` },
       newUser: { id: newId, email: "user@example.com" },
     });
 
@@ -347,7 +347,7 @@ describe("applyReferralToProfile", () => {
   });
 
   async function loadApplyReferralToProfile() {
-    const mod = await import("@luxero/auth-admin/auth-hooks");
+    const mod = await import("@oc/auth-admin/auth-hooks");
     return mod.applyReferralToProfile;
   }
 
@@ -373,7 +373,7 @@ describe("applyReferralToProfile", () => {
   test("blocks overwrite when referredBySignup is set (signup referrer is canonical)", async () => {
     __apply.profileDoc = {
       _id: userId,
-      email: `guest-${userId}@guest.luxero.local`,
+      email: `guest-${userId}@guest.onlinecompetitions.local`,
       referredBy: referrerAId,
       referredByCode: "CODEA",
       referredBySignup: referrerAId,
@@ -398,7 +398,7 @@ describe("applyReferralToProfile", () => {
   test("overwrites an existing referral code when no signup referrer is set", async () => {
     __apply.profileDoc = {
       _id: userId,
-      email: `guest-${userId}@guest.luxero.local`,
+      email: `guest-${userId}@guest.onlinecompetitions.local`,
       referredBy: referrerAId,
       referredByCode: "CODEA",
       save: async function save(this: Record<string, unknown>) {
@@ -453,7 +453,7 @@ describe("createGuestCheckoutProfile", () => {
   });
 
   test("creates profile with guest email and isGuestCheckout flag", async () => {
-    const { createGuestCheckoutProfile } = await import("@luxero/auth-admin/auth-hooks");
+    const { createGuestCheckoutProfile } = await import("@oc/auth-admin/auth-hooks");
     await createGuestCheckoutProfile(userId, { guestEmail });
 
     expect(__apply.profileCreateCalls).toHaveLength(1);
@@ -474,7 +474,7 @@ describe("createGuestCheckoutProfile", () => {
       return {};
     };
 
-    const { createGuestCheckoutProfile } = await import("@luxero/auth-admin/auth-hooks");
+    const { createGuestCheckoutProfile } = await import("@oc/auth-admin/auth-hooks");
     await createGuestCheckoutProfile(userId, { guestEmail });
 
     expect(__merge.profileUpdateCalls).toHaveLength(1);
@@ -497,7 +497,7 @@ describe("createGuestCheckoutProfile", () => {
       },
     });
 
-    const { createGuestCheckoutProfile } = await import("@luxero/auth-admin/auth-hooks");
+    const { createGuestCheckoutProfile } = await import("@oc/auth-admin/auth-hooks");
     const result = await createGuestCheckoutProfile(userId, {
       guestEmail: "alexandru.chiriacc@gmail.com",
     });
@@ -513,7 +513,7 @@ describe("mergeAnonymousAccount — guest profile with real email", () => {
   const newId = new Types.ObjectId().toString();
 
   async function loadMergeAnon() {
-    return (await import("@luxero/auth-admin/auth-hooks")).mergeAnonymousAccount;
+    return (await import("@oc/auth-admin/auth-hooks")).mergeAnonymousAccount;
   }
 
   const anonProfile = {
@@ -600,8 +600,8 @@ describe("mergeAnonymousAccount — guest profile with real email", () => {
 
 describe("isGuestProfileEmail", () => {
   test("detects guest profile emails", async () => {
-    const { isGuestProfileEmail } = await import("@luxero/auth-admin/auth-hooks");
-    expect(isGuestProfileEmail("guest-abc@guest.luxero.local")).toBe(true);
+    const { isGuestProfileEmail } = await import("@oc/auth-admin/auth-hooks");
+    expect(isGuestProfileEmail("guest-abc@guest.onlinecompetitions.local")).toBe(true);
     expect(isGuestProfileEmail("user@example.com")).toBe(false);
   });
 });
@@ -685,7 +685,7 @@ describe("mergeGuestProfileIntoVerifiedUser", () => {
       exec: vi.fn(() => Promise.resolve([{ total: 55 }])),
     });
 
-    const { mergeGuestProfileIntoVerifiedUser } = await import("@luxero/auth-admin/auth-hooks");
+    const { mergeGuestProfileIntoVerifiedUser } = await import("@oc/auth-admin/auth-hooks");
     const result = await mergeGuestProfileIntoVerifiedUser(guestEmail, verifiedId);
 
     expect(result.merged).toBe(true);
@@ -711,17 +711,17 @@ describe("mergeGuestProfileIntoVerifiedUser", () => {
   test("returns {merged: false} when no guest profile matches", async () => {
     __profile.findOne = () => ({ lean: async () => null });
 
-    const { mergeGuestProfileIntoVerifiedUser } = await import("@luxero/auth-admin/auth-hooks");
+    const { mergeGuestProfileIntoVerifiedUser } = await import("@oc/auth-admin/auth-hooks");
     const result = await mergeGuestProfileIntoVerifiedUser("other@example.com", verifiedId);
 
     expect(result.merged).toBe(false);
     expect(__order.updateMany).not.toHaveBeenCalled();
   });
 
-  test("skips @guest.luxero.local synthetic emails", async () => {
-    const { mergeGuestProfileIntoVerifiedUser } = await import("@luxero/auth-admin/auth-hooks");
+  test("skips @guest.onlinecompetitions.local synthetic emails", async () => {
+    const { mergeGuestProfileIntoVerifiedUser } = await import("@oc/auth-admin/auth-hooks");
     const result = await mergeGuestProfileIntoVerifiedUser(
-      "guest-abc@guest.luxero.local",
+      "guest-abc@guest.onlinecompetitions.local",
       verifiedId
     );
 
@@ -755,7 +755,7 @@ describe("mergeGuestProfileIntoVerifiedUser", () => {
       },
     });
 
-    const { mergeGuestProfileIntoVerifiedUser } = await import("@luxero/auth-admin/auth-hooks");
+    const { mergeGuestProfileIntoVerifiedUser } = await import("@oc/auth-admin/auth-hooks");
     const result = await mergeGuestProfileIntoVerifiedUser(
       "alexandru.chiriacc@gmail.com",
       verifiedId

@@ -6,14 +6,14 @@ import {
   ComplianceAuditLog,
   InstantPrizeWin,
   Order,
-} from "@luxero/api-db/models";
-import { CH, invalidateByChannelSafe } from "@luxero/api-infra/cache";
-import dbConnect from "@luxero/api-infra/db";
+} from "@oc/api-db/models";
+import { CH, invalidateByChannelSafe } from "@oc/api-infra/cache";
+import dbConnect from "@oc/api-infra/db";
 import {
   aggregateScopedTicketStatusGroups,
   groupScopedRowsByCompetition,
-} from "@luxero/api-tickets/scoped-ticket-stats";
-import { getNum } from "@luxero/env/server";
+} from "@oc/api-tickets/scoped-ticket-stats";
+import { getNum } from "@oc/env/server";
 
 const DEFAULT_CLAIMED_COUNT_SAMPLE_LIMIT = 20;
 const DEFAULT_STUCK_ORDER_SAMPLE_LIMIT = 20;

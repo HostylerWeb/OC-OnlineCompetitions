@@ -1,5 +1,5 @@
-import { setApiBaseUrl } from "@luxero/api-client";
-import { setAuthBaseUrl } from "@luxero/auth-client";
+import { setApiBaseUrl } from "@oc/api-client";
+import { setAuthBaseUrl } from "@oc/auth-client";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { App } from "./App";

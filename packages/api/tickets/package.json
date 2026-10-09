@@ -1,5 +1,5 @@
 {
-  "name": "@luxero/api-tickets",
+  "name": "@oc/api-tickets",
   "private": true,
   "type": "module",
   "exports": {
@@ -15,12 +15,12 @@
     "test:ci": "vitest run"
   },
   "dependencies": {
-    "@luxero/api-db": "workspace:*",
-    "@luxero/api-infra": "workspace:*",
-    "@luxero/api-errors": "workspace:*",
-    "@luxero/api-payment-core": "workspace:*",
-    "@luxero/types": "workspace:*",
-    "@luxero/api-logger": "workspace:*",
+    "@oc/api-db": "workspace:*",
+    "@oc/api-infra": "workspace:*",
+    "@oc/api-errors": "workspace:*",
+    "@oc/api-payment-core": "workspace:*",
+    "@oc/types": "workspace:*",
+    "@oc/api-logger": "workspace:*",
     "mongoose": "^9.6.0"
   },
   "devDependencies": {

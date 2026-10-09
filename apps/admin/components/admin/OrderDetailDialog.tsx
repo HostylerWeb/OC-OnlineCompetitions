@@ -1,8 +1,8 @@
 "use client";
 
-import { useAdminOrder, useAdminOrderMutations } from "@luxero/api-admin";
-import { User } from "@luxero/icons";
-import { formatDate, formatOrderNumber } from "@luxero/utils";
+import { useAdminOrder, useAdminOrderMutations } from "@oc/api-admin";
+import { User } from "@oc/icons";
+import { formatDate, formatOrderNumber } from "@oc/utils";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";

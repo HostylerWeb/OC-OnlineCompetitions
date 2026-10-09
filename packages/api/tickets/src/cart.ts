@@ -5,20 +5,20 @@ import {
   type ICartItem,
   Order,
   Profile,
-} from "@luxero/api-db/models";
-import { createLogger } from "@luxero/api-logger";
-import { enrichCartItems } from "@luxero/api-tickets/cart-enrichment";
+} from "@oc/api-db/models";
+import { createLogger } from "@oc/api-logger";
+import { enrichCartItems } from "@oc/api-tickets/cart-enrichment";
 import {
   checkAvailability as checkTicketServiceAvailability,
   countEffectiveOwnedByUserBatch,
   getCompetitionTicketStatsBatch,
-} from "@luxero/api-tickets/ticket-service";
-import { isOpenForTicketSales } from "@luxero/api-tickets/competition-sales";
+} from "@oc/api-tickets/ticket-service";
+import { isOpenForTicketSales } from "@oc/api-tickets/competition-sales";
 import {
   mergeWalletIntoCheckoutItems,
   type WalletTicketAllocation,
-} from "@luxero/api-tickets/wallet";
-import type { CartAdjustment, CartWalletTicket } from "@luxero/types";
+} from "@oc/api-tickets/wallet";
+import type { CartAdjustment, CartWalletTicket } from "@oc/types";
 import mongoose from "mongoose";
 
 export interface CartCompetitionCacheEntry {
@@ -93,11 +93,11 @@ export async function recalculateCartDiscount(
   }));
 
   let deferredPromo: Awaited<
-    ReturnType<(typeof import("@luxero/api-tickets/promo-codes"))["validatePromoCode"]>
+    ReturnType<(typeof import("@oc/api-tickets/promo-codes"))["validatePromoCode"]>
   > | null = null;
 
   if (cart.promoCodeId && cart.promoCode) {
-    const { validatePromoCode } = await import("@luxero/api-tickets/promo-codes");
+    const { validatePromoCode } = await import("@oc/api-tickets/promo-codes");
     const promo = await validatePromoCode(cart.promoCode, discountBase, cartItems, userId);
     if (promo.valid) {
       if (isFirstOrder && cart.referralCode) {
@@ -116,7 +116,7 @@ export async function recalculateCartDiscount(
   }
 
   if (cart.referralCode && !cart.discountType) {
-    const { validateReferralCode } = await import("@luxero/api-tickets/promo-codes");
+    const { validateReferralCode } = await import("@oc/api-tickets/promo-codes");
     const referral = await validateReferralCode(cart.referralCode, discountBase, userId);
     if (referral.valid) {
       cart.referralDiscountAmount = referral.discountAmount ?? 0;
@@ -295,14 +295,14 @@ export async function ensureReferralDiscountOnCart(
     }).maxTimeMS(5000));
   if (completedOrders > 0) return false;
 
-  const { ReferralSettings } = await import("@luxero/api-db/models");
+  const { ReferralSettings } = await import("@oc/api-db/models");
   const settings = await ReferralSettings.findById("referral_settings").lean();
   if (settings?.refereeReward?.enabled === false) return false;
 
   const subtotal = await computeSubtotalForCartItems(cart.items, options?.competitionCache);
   const referredByCode = profile.referredByCode.toUpperCase();
 
-  const { validateReferralCode } = await import("@luxero/api-tickets/promo-codes");
+  const { validateReferralCode } = await import("@oc/api-tickets/promo-codes");
 
   if (cart.referralCode?.toUpperCase() === referredByCode) {
     const result = await validateReferralCode(referredByCode, subtotal, userId, true);

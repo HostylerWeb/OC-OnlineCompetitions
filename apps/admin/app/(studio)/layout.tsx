@@ -1,4 +1,4 @@
-import { getAdminAuth } from "@luxero/auth-admin";
+import { getAdminAuth } from "@oc/auth-admin";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { PrefetchBurst } from "@/components/layout/PrefetchBurst";

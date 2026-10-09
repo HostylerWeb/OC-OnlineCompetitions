@@ -1,9 +1,9 @@
 import { randomInt } from "node:crypto";
-import { Order } from "@luxero/api-db/models";
-import { SOFT_DELETE_FLAG } from "@luxero/api-db/plugins/soft-delete";
-import { isDuplicateKeyError } from "@luxero/api-infra/mongo-errors";
-import { createLogger } from "@luxero/api-logger";
-import type { CheckoutLineItem } from "@luxero/api-tickets/load-cart";
+import { Order } from "@oc/api-db/models";
+import { SOFT_DELETE_FLAG } from "@oc/api-db/plugins/soft-delete";
+import { isDuplicateKeyError } from "@oc/api-infra/mongo-errors";
+import { createLogger } from "@oc/api-logger";
+import type { CheckoutLineItem } from "@oc/api-tickets/load-cart";
 import { Types } from "mongoose";
 
 export interface CreatePendingOrderParams {

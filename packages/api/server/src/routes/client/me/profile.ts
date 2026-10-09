@@ -1,4 +1,4 @@
-import { buildDateOfBirthProfileUpdate } from "@luxero/api-compliance/age-verification";
+import { buildDateOfBirthProfileUpdate } from "@oc/api-compliance/age-verification";
 import {
   BonusAwardWin,
   InstantPrizeWin,
@@ -6,16 +6,16 @@ import {
   Profile,
   Ticket,
   Winner,
-} from "@luxero/api-db/models";
-import type { IProfile } from "@luxero/api-db/models/Profile";
-import dbConnect from "@luxero/api-infra/db";
-import { ErrorCodes } from "@luxero/api-infra/error-codes";
-import { defaultCountMaxTimeMS } from "@luxero/api-infra/mongo-query-options";
-import { parsePagination } from "@luxero/api-infra/pagination";
-import { error, paginated, success } from "@luxero/api-infra/response";
-import { captureRouteError } from "@luxero/api-infra/sentry";
-import { requireSession } from "@luxero/api-server/middleware/auth";
-import { createLuxeroProfile, reassignGuestOrdersByEmail } from "@luxero/auth-admin/auth-hooks";
+} from "@oc/api-db/models";
+import type { IProfile } from "@oc/api-db/models/Profile";
+import dbConnect from "@oc/api-infra/db";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { defaultCountMaxTimeMS } from "@oc/api-infra/mongo-query-options";
+import { parsePagination } from "@oc/api-infra/pagination";
+import { error, paginated, success } from "@oc/api-infra/response";
+import { captureRouteError } from "@oc/api-infra/sentry";
+import { requireSession } from "@oc/api-server/middleware/auth";
+import { createOnlineCompetitionsProfile, reassignGuestOrdersByEmail } from "@oc/auth-admin/auth-hooks";
 import { Hono } from "hono";
 import mongoose from "mongoose";
 
@@ -31,7 +31,7 @@ app.get("/", async (c) => {
 
     let profile = await Profile.findById(userId).lean();
     if (!profile && !user.isAnonymous) {
-      await createLuxeroProfile(user);
+      await createOnlineCompetitionsProfile(user);
       profile = await Profile.findById(userId).lean();
     }
 
@@ -136,7 +136,7 @@ app.put("/", async (c) => {
       try {
         const name = [updateData.firstName, updateData.lastName].filter(Boolean).join(" ").trim();
         if (name && mongoose.connection.db) {
-          const { updateAuthUserFields } = await import("@luxero/api-server/lib/auth-user-sync");
+          const { updateAuthUserFields } = await import("@oc/api-server/lib/auth-user-sync");
           await updateAuthUserFields(mongoose.connection.db, userId, {
             firstName: updateData.firstName,
             lastName: updateData.lastName,

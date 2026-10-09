@@ -1,5 +1,5 @@
 {
-  "name": "@luxero/api-payment-core",
+  "name": "@oc/api-payment-core",
   "version": "0.0.0",
   "private": true,
   "exports": {
@@ -7,8 +7,8 @@
     "./*": "./src/*.ts"
   },
   "dependencies": {
-    "@luxero/utils": "workspace:*",
-    "@luxero/api-logger": "workspace:*",
+    "@oc/utils": "workspace:*",
+    "@oc/api-logger": "workspace:*",
     "mongoose": "^9.6.0"
   },
   "scripts": {

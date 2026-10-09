@@ -6,11 +6,11 @@ import {
   useAdminInstantPrizeTemplateMutations,
   useAdminInstantPrizeTemplates,
   useServerPagination,
-} from "@luxero/api-admin";
-import { Award, Filter, Lock, MoreHorizontal, Plus, RefreshCw, Trash2, X } from "@luxero/icons";
-import type { AdminInstantPrize } from "@luxero/types";
-import { ADMIN_INSTANT_PRIZE_TABLE } from "@luxero/types";
-import { getAvailableTickets } from "@luxero/utils";
+} from "@oc/api-admin";
+import { Award, Filter, Lock, MoreHorizontal, Plus, RefreshCw, Trash2, X } from "@oc/icons";
+import type { AdminInstantPrize } from "@oc/types";
+import { ADMIN_INSTANT_PRIZE_TABLE } from "@oc/types";
+import { getAvailableTickets } from "@oc/utils";
 import type { ColumnDef, SortingState, Updater, VisibilityState } from "@tanstack/react-table";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -647,7 +647,7 @@ export default function InstantPrizesAdminPage() {
                     </SelectContent>
                   </Select>
                   <FormDescription>
-                    Choose credit, cash, or product when editing the name and value below. Luxero does
+                    Choose credit, cash, or product when editing the name and value below. Online Competitions does
                     not auto-pay credit or cash — staff fulfil wins under Instant Prize Wins.
                   </FormDescription>
                   <FormMessage />

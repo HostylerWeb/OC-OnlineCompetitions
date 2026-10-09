@@ -1,6 +1,6 @@
-import { releaseReservedSpend } from "@luxero/api-compliance/spend-tracking";
-import { Order } from "@luxero/api-db/models";
-import { releasePromoCodeUsage } from "@luxero/api-tickets/promo-codes";
+import { releaseReservedSpend } from "@oc/api-compliance/spend-tracking";
+import { Order } from "@oc/api-db/models";
+import { releasePromoCodeUsage } from "@oc/api-tickets/promo-codes";
 import { Types } from "mongoose";
 import type { PaymentSessionStatus } from "../types";
 

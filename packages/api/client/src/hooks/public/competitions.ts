@@ -5,7 +5,7 @@ import type {
   PublicBonusAwardEntry,
   PublicBonusAwardWinDTO,
   RawCompetitionResponse,
-} from "@luxero/types";
+} from "@oc/types";
 import {
   keepPreviousData,
   type QueryClient,

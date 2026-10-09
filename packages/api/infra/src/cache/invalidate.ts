@@ -8,7 +8,7 @@
  *
  * Implementation: SCAN + UNLINK in batches of 500.
  * SCAN is O(N) in the worst case but is the only safe way to delete a
- * pattern without blocking the server. For Luxero's expected scale
+ * pattern without blocking the server. For Online Competitions's expected scale
  * (< 100k keys) this is well within the budget.
  *
  * All operations fail open. If Redis is down, the call is a no-op.

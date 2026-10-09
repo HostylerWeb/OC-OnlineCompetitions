@@ -1,6 +1,6 @@
-import { dbConnect } from "@luxero/api-db";
-import { Profile } from "@luxero/api-db/models";
-import { invalidateUser } from "@luxero/api-infra/cache";
+import { dbConnect } from "@oc/api-db";
+import { Profile } from "@oc/api-db/models";
+import { invalidateUser } from "@oc/api-infra/cache";
 
 export async function maybeSyncAvatarFromAuthUser(
   userId: string,

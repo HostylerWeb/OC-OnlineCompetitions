@@ -1,7 +1,7 @@
 "use client";
 
-import { useBonusAwardAssignmentDrawerStore, useInstantPrizeDrawerStore } from "@luxero/api-admin";
-import type { AdminCategory } from "@luxero/types";
+import { useBonusAwardAssignmentDrawerStore, useInstantPrizeDrawerStore } from "@oc/api-admin";
+import type { AdminCategory } from "@oc/types";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";

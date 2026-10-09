@@ -1,4 +1,4 @@
-import { Competition, InstantPrize, Profile, Winner } from "@luxero/api-db/models";
+import { Competition, InstantPrize, Profile, Winner } from "@oc/api-db/models";
 
 export type UsageKind = "competition" | "instantPrize" | "winner" | "profile";
 

@@ -31,7 +31,7 @@ describe("resolveAuthRedirectError", () => {
     const result = resolveAuthRedirectError("signup_disabled");
     expect(result.kind).toBe("signup_disabled");
     expect(result.title).toBe("Account not found");
-    expect(result.message).toContain("isn't registered with Luxero");
+    expect(result.message).toContain("isn't registered with Online Competitions");
   });
 
   test("normalizes email mismatch variants", () => {

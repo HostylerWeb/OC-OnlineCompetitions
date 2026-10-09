@@ -1,4 +1,4 @@
-import { getEnv } from "@luxero/env/next";
+import { getEnv } from "@oc/env/next";
 
 const dsn = (getEnv("SENTRY_DSN") || "").trim();
 

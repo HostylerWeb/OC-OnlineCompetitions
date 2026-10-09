@@ -1,7 +1,7 @@
 "use client";
 
-import type { CompetitionInstantPrizePublicDTO } from "@luxero/api-client";
-import { cn } from "@luxero/utils";
+import type { CompetitionInstantPrizePublicDTO } from "@oc/api-client";
+import { cn } from "@oc/utils";
 import { Accordion } from "@/components/ui/accordion";
 import { PrizeAccordionItem } from "./index";
 
