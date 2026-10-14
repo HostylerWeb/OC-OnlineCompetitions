@@ -148,6 +148,10 @@ export default function CheckoutPage() {
       }
     }
 
+    if (form.country.trim() && form.country.trim().toUpperCase() !== "GB") {
+      newErrors.country = "Only United Kingdom addresses are accepted";
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   }
@@ -397,15 +401,6 @@ export default function CheckoutPage() {
                     onChange={(e) => updateField("country", e.target.value)}
                   >
                     <option value="GB">United Kingdom</option>
-                    <option value="US">United States</option>
-                    <option value="DE">Germany</option>
-                    <option value="FR">France</option>
-                    <option value="IT">Italy</option>
-                    <option value="ES">Spain</option>
-                    <option value="NL">Netherlands</option>
-                    <option value="CA">Canada</option>
-                    <option value="AU">Australia</option>
-                    <option value="other">Other</option>
                   </select>
                 </div>
               </CardContent>

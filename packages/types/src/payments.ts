@@ -20,7 +20,8 @@ export interface BalanceTransaction {
     | "purchase"
     | "purchase_refund"
     | "admin_credit"
-    | "admin_debit";
+    | "admin_debit"
+    | "prize_credit";
   amount: number;
   balanceBefore: number;
   balanceAfter: number;

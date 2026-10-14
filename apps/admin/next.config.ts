@@ -1,4 +1,4 @@
-import { devAssetCspHosts } from "@oc/env/server";
+import { configuredAssetCspOrigins, devAssetCspHosts } from "@oc/env/server";
 import { getBool } from "@oc/env/next";
 import type { NextConfig } from "next";
 
@@ -97,15 +97,16 @@ const nextConfig: NextConfig = {
 
   async headers() {
     const devAssetHosts = devAssetCspHosts(process.env.NODE_ENV !== "production");
+    const configuredAssetHosts = configuredAssetCspOrigins();
     const csp =
       "base-uri 'self'; form-action 'self'; object-src 'none'; frame-ancestors 'none'; default-src 'self'; " +
-      `media-src 'self' https://assets.onlinecompetitions.co.uk https://assets.staging.onlinecompetitions.co.uk${devAssetHosts}; ` +
+      `media-src 'self' https://assets.onlinecompetitions.co.uk https://assets.staging.onlinecompetitions.co.uk${configuredAssetHosts}${devAssetHosts}; ` +
       "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://*.facebook.net https://challenges.cloudflare.com https://umami.onlinecompetitions.co.uk https://js.stripe.com; " +
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
       "frame-src https://*.facebook.net https://challenges.cloudflare.com https://js.stripe.com; " +
       "worker-src 'self' blob:; child-src 'self' blob:; " +
-      `connect-src 'self' https://assets.onlinecompetitions.co.uk https://assets.staging.onlinecompetitions.co.uk https://*.facebook.net https://challenges.cloudflare.com https://umami.onlinecompetitions.co.uk https://api.stripe.com${devAssetHosts}; ` +
-      `img-src 'self' data: https://assets.onlinecompetitions.co.uk https://assets.staging.onlinecompetitions.co.uk https://lh3.googleusercontent.com${devAssetHosts}; ` +
+      `connect-src 'self' https://assets.onlinecompetitions.co.uk https://assets.staging.onlinecompetitions.co.uk https://*.facebook.net https://challenges.cloudflare.com https://umami.onlinecompetitions.co.uk https://api.stripe.com${configuredAssetHosts}${devAssetHosts}; ` +
+      `img-src 'self' data: https://assets.onlinecompetitions.co.uk https://assets.staging.onlinecompetitions.co.uk https://lh3.googleusercontent.com${configuredAssetHosts}${devAssetHosts}; ` +
       "font-src 'self' https://fonts.gstatic.com";
 
     return [

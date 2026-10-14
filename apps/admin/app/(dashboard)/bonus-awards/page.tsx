@@ -8,12 +8,17 @@ import {
   useServerPagination,
 } from "@oc/api-admin";
 import { Filter, Lock, MoreHorizontal, Plus, RefreshCw, Trash2, X } from "@oc/icons";
-import type { AdminBonusAward } from "@oc/types";
+import type { AdminBonusAward, MilestonePrizeSetup } from "@oc/types";
+import {
+  milestonePrizeFieldsToSetup,
+  milestonePrizeSetupLabel,
+  milestonePrizeSetupToFields,
+} from "@oc/types";
 import { ADMIN_BONUS_AWARD_TABLE } from "@oc/types";
 import { getAvailableTickets } from "@oc/utils";
 import type { ColumnDef, SortingState, Updater, VisibilityState } from "@tanstack/react-table";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -62,6 +67,12 @@ import { useTableSort } from "@/hooks/use-table-sort";
 import { handleFormError } from "@/lib/handle-form-error";
 import { createZodResolver } from "@/lib/zod-resolver";
 
+const PRIZE_NAME_PLACEHOLDER: Record<"cash" | "site_credit" | "physical", string> = {
+  cash: "e.g. £200 cash",
+  site_credit: "e.g. £50 site credit",
+  physical: "e.g. AirPods Pro",
+};
+
 const bonusAwardSchema = z
   .object({
     title: z.string().min(1, "Title is required"),
@@ -69,11 +80,11 @@ const bonusAwardSchema = z
     value: z.coerce.number().nonnegative("Must be 0 or greater"),
     images: z.array(z.string()),
     isActive: z.boolean(),
-    type: z.enum(["prize", "competition_ticket"]),
+    setup: z.enum(["cash", "site_credit", "physical", "competition_ticket"]),
     linkedCompetitionId: z.string().optional().or(z.literal("")),
     ticketCount: z.coerce.number().int().min(1, "Must be at least 1"),
   })
-  .refine((v) => (v.type === "competition_ticket" ? !!v.linkedCompetitionId : true), {
+  .refine((v) => (v.setup === "competition_ticket" ? !!v.linkedCompetitionId : true), {
     path: ["linkedCompetitionId"],
     message: "Linked competition is required for ticket prizes",
   });
@@ -86,7 +97,7 @@ const DEFAULT_FORM: BonusAwardFormValues = {
   value: 0,
   images: [],
   isActive: true,
-  type: "prize",
+  setup: "cash",
   linkedCompetitionId: "",
   ticketCount: 1,
 };
@@ -127,6 +138,8 @@ export interface BonusAwardFormSheetProps {
   onOpenChange: (open: boolean) => void;
   editing?: AdminBonusAward | null;
   preselectedPrize?: { _id: string; title: string; value?: number; images: string[] } | null;
+  /** Called after a new template is created (not on update). */
+  onCreated?: (award: AdminBonusAward) => void;
 }
 
 export function BonusAwardFormSheet({
@@ -134,6 +147,7 @@ export function BonusAwardFormSheet({
   onOpenChange,
   editing,
   preselectedPrize,
+  onCreated,
 }: BonusAwardFormSheetProps) {
   const { createTemplate, updateTemplate } = useAdminBonusAwardTemplateMutations();
   const { data: competitionsResponse } = useAdminCompetitions();
@@ -145,10 +159,10 @@ export function BonusAwardFormSheet({
     defaultValues: DEFAULT_FORM,
   });
 
-  const watchType = form.watch("type");
+  const watchSetup = form.watch("setup");
   const watchLinkedId = form.watch("linkedCompetitionId");
   const watchTicketCount = form.watch("ticketCount");
-  const isTicketType = watchType === "competition_ticket";
+  const isTicketType = watchSetup === "competition_ticket";
   const selectedComp = competitions.find((c) => c._id === watchLinkedId);
   const isValueLocked = isTicketType && !!selectedComp;
 
@@ -160,7 +174,7 @@ export function BonusAwardFormSheet({
         value: editing.value ?? 0,
         images: editing.images ?? [],
         isActive: editing.isActive,
-        type: editing.type ?? "prize",
+        setup: milestonePrizeFieldsToSetup(editing.type ?? "prize", editing.prizeCategory),
         linkedCompetitionId: editing.linkedCompetitionId ?? "",
         ticketCount: editing.ticketCount ?? 1,
       });
@@ -170,7 +184,7 @@ export function BonusAwardFormSheet({
         title: preselectedPrize.title,
         value: preselectedPrize.value ?? 0,
         images: preselectedPrize.images ?? [],
-        type: "prize",
+        setup: "physical",
       });
     } else if (open) {
       form.reset(DEFAULT_FORM);
@@ -196,33 +210,38 @@ export function BonusAwardFormSheet({
   }, [isTicketType, selectedComp, watchTicketCount, form]);
 
   const [typeSwitchConfirm, setTypeSwitchConfirm] = useState(false);
+  const pendingSetupRef = useRef<MilestonePrizeSetup | null>(null);
 
-  const handleBonusAwardTypeChange = (nextType: "prize" | "competition_ticket") => {
-    const currentType = form.getValues("type");
-    if (nextType === currentType) return;
+  const handleSetupChange = (nextSetup: MilestonePrizeSetup) => {
+    const currentSetup = form.getValues("setup");
+    if (nextSetup === currentSetup) return;
     if (
-      currentType === "competition_ticket" &&
+      currentSetup === "competition_ticket" &&
       form.getValues("linkedCompetitionId") &&
-      nextType === "prize"
+      nextSetup !== "competition_ticket"
     ) {
       setTypeSwitchConfirm(true);
+      pendingSetupRef.current = nextSetup;
       return;
     }
-    form.setValue("type", nextType);
-    if (nextType === "prize") {
+    form.setValue("setup", nextSetup);
+    if (nextSetup !== "competition_ticket") {
       form.setValue("linkedCompetitionId", "");
       form.setValue("ticketCount", 1);
     }
   };
 
   const confirmTypeSwitch = () => {
-    form.setValue("type", "prize");
+    const next = pendingSetupRef.current ?? "cash";
+    form.setValue("setup", next);
     form.setValue("linkedCompetitionId", "");
     form.setValue("ticketCount", 1);
+    pendingSetupRef.current = null;
     setTypeSwitchConfirm(false);
   };
 
   const onSubmit = form.handleSubmit(async (values) => {
+    const { type, prizeCategory } = milestonePrizeSetupToFields(values.setup);
     try {
       if (editing) {
         await updateTemplate.mutateAsync({
@@ -233,25 +252,30 @@ export function BonusAwardFormSheet({
             value: values.value,
             images: values.images,
             isActive: values.isActive,
-            type: values.type,
+            type,
+            prizeCategory: type === "prize" ? prizeCategory : null,
             linkedCompetitionId: values.linkedCompetitionId || undefined,
-            ticketCount: values.type === "competition_ticket" ? values.ticketCount : undefined,
+            ticketCount: type === "competition_ticket" ? values.ticketCount : undefined,
           },
         });
-        toast.success("Bonus award template updated");
+        toast.success("Milestone template updated");
       } else {
-        await createTemplate.mutateAsync({
+        const res = await createTemplate.mutateAsync({
           title: values.title.trim(),
           description: values.description?.trim() || undefined,
           value: values.value,
           images: values.images,
           isActive: values.isActive,
-          type: values.type,
+          type,
+          prizeCategory: type === "prize" ? prizeCategory : undefined,
           linkedCompetitionId: values.linkedCompetitionId || undefined,
-          ticketCount: values.type === "competition_ticket" ? values.ticketCount : undefined,
+          ticketCount: type === "competition_ticket" ? values.ticketCount : undefined,
           sourceInstantPrizeId: preselectedPrize?._id,
         });
-        toast.success("Bonus award template created");
+        toast.success("Milestone template created");
+        if (res.data) {
+          onCreated?.(res.data);
+        }
       }
       onOpenChange(false);
     } catch (err: unknown) {
@@ -281,11 +305,11 @@ export function BonusAwardFormSheet({
       <FormSheet
         open={open}
         onOpenChange={onOpenChange}
-        title={editing ? "Edit bonus award template" : "New bonus award template"}
+        title={editing ? "Edit milestone template" : "New milestone template"}
         description={
           editing
-            ? "Edit the bonus award template details"
-            : "Create a new bonus award prize template"
+            ? "Edit this reusable milestone prize template"
+            : "Create a prize template you can attach to competitions under Milestones"
         }
         onSubmit={onSubmit}
         isSubmitting={isSubmitting}
@@ -295,15 +319,13 @@ export function BonusAwardFormSheet({
           <div className="flex flex-col gap-4">
             <FormField
               control={form.control}
-              name="type"
+              name="setup"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Prize type</FormLabel>
                   <Select
                     value={field.value}
-                    onValueChange={(v) =>
-                      handleBonusAwardTypeChange(v as "prize" | "competition_ticket")
-                    }
+                    onValueChange={(v) => handleSetupChange(v as MilestonePrizeSetup)}
                   >
                     <FormControl>
                       <SelectTrigger>
@@ -311,10 +333,16 @@ export function BonusAwardFormSheet({
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="prize">Physical prize</SelectItem>
-                      <SelectItem value="competition_ticket">Competition ticket</SelectItem>
+                      <SelectItem value="cash">Cash</SelectItem>
+                      <SelectItem value="site_credit">Site credit</SelectItem>
+                      <SelectItem value="physical">Physical prize</SelectItem>
+                      <SelectItem value="competition_ticket">Tickets</SelectItem>
                     </SelectContent>
                   </Select>
+                  <FormDescription>
+                    Same categories as instant win templates. Site credit is added to the winner&apos;s
+                    wallet automatically. Cash and physical prizes are fulfilled under Milestone Wins.
+                  </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -391,7 +419,14 @@ export function BonusAwardFormSheet({
                     <FormItem>
                       <FormLabel>Title</FormLabel>
                       <FormControl>
-                        <Input {...field} placeholder="e.g. Instant £5 Cash Bonus" />
+                        <Input
+                          {...field}
+                          placeholder={
+                            isTicketType
+                              ? "Auto-filled from linked competition"
+                              : PRIZE_NAME_PLACEHOLDER[watchSetup as "cash" | "site_credit" | "physical"]
+                          }
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -521,7 +556,7 @@ export function BonusAwardFormSheet({
         open={typeSwitchConfirm}
         onOpenChange={setTypeSwitchConfirm}
         title="Switch prize type"
-        description="Switching to Physical Prize will clear the linked competition. Continue?"
+        description="Switching away from Tickets will clear the linked competition. Continue?"
         confirmLabel="Switch type"
         destructive
         onConfirm={confirmTypeSwitch}
@@ -647,16 +682,18 @@ export default function BonusAwardsAdminPage() {
       {
         accessorKey: "type",
         header: ({ column }) => <DataTableColumnHeader column={column} title="Type" />,
-        cell: ({ row }) =>
-          row.original.type === "competition_ticket" ? (
-            <StatusBadge variant="info" showIcon={false}>
-              Ticket ×{row.original.ticketCount ?? 1}
-            </StatusBadge>
-          ) : (
-            <StatusBadge variant="draft" showIcon={false}>
-              Physical
-            </StatusBadge>
-          ),
+        cell: ({ row }) => (
+          <StatusBadge
+            variant={row.original.type === "competition_ticket" ? "info" : "draft"}
+            showIcon={false}
+          >
+            {row.original.type === "competition_ticket"
+              ? `Tickets ×${row.original.ticketCount ?? 1}`
+              : milestonePrizeSetupLabel(
+                  milestonePrizeFieldsToSetup(row.original.type, row.original.prizeCategory)
+                )}
+          </StatusBadge>
+        ),
       },
       {
         accessorKey: "value",
@@ -789,8 +826,8 @@ export default function BonusAwardsAdminPage() {
 
   return (
     <PageShell
-      title="Bonus Awards"
-      description="Manage bonus award prize templates."
+      title="Milestone Templates"
+      description="Reusable milestone prizes. Attach them on each competition’s Milestones tab."
       actions={
         <Button
           onClick={() => {
@@ -800,7 +837,7 @@ export default function BonusAwardsAdminPage() {
           data-umami-event="bonus-award:create-open"
         >
           <Plus className="size-4" />
-          New bonus award
+          New template
         </Button>
       }
     >
@@ -824,8 +861,8 @@ export default function BonusAwardsAdminPage() {
         isLoading={isLoading}
         searchValue={tableState.searchInput}
         onSearchChange={tableState.onSearchChange}
-        searchPlaceholder="Search bonus award templates…"
-        emptyTitle="No bonus awards"
+        searchPlaceholder="Search milestone templates…"
+        emptyTitle="No milestone templates"
         emptyDescription="Create your first template to get started."
         enableGrouping={!!groupBy && groupBy !== "none"}
         grouping={grouping}
@@ -876,7 +913,7 @@ export default function BonusAwardsAdminPage() {
       <ConfirmDialog
         open={deleteTarget !== null}
         onOpenChange={(open) => !open && setDeleteTarget(null)}
-        title="Delete bonus award template"
+        title="Delete milestone template"
         description={
           <>
             Delete <strong>{deleteTarget?.title}</strong>? This action cannot be undone.

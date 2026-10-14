@@ -451,7 +451,7 @@ export default function InstantPrizesAdminPage() {
                   href={`/bonus-awards?search=${encodeURIComponent(row.original.title)}`}
                   className="hover:text-primary"
                 >
-                  {baCount} bonus award{baCount !== 1 ? "s" : ""}
+                  {baCount} milestone template{baCount !== 1 ? "s" : ""}
                 </Link>
               ) : null}
               {caCount > 0 ? (
@@ -513,7 +513,7 @@ export default function InstantPrizesAdminPage() {
                     data-umami-event="instant-prize:use-as-bonus"
                   >
                     <Award className="mr-2 size-4" />
-                    Use as bonus award
+                    Use as milestone template
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem
@@ -647,8 +647,9 @@ export default function InstantPrizesAdminPage() {
                     </SelectContent>
                   </Select>
                   <FormDescription>
-                    Choose credit, cash, or product when editing the name and value below. Online Competitions does
-                    not auto-pay credit or cash — staff fulfil wins under Instant Prize Wins.
+                    Choose credit, cash, or product when editing the name and value below. Site credit is
+                    credited to the winner&apos;s wallet automatically; cash and physical prizes are fulfilled
+                    under Instant Prize Wins.
                   </FormDescription>
                   <FormMessage />
                 </FormItem>

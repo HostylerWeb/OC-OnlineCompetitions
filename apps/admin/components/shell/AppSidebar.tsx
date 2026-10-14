@@ -117,8 +117,13 @@ export function AppSidebar() {
               data-umami-event="nav:logo-home"
               className="flex h-12 w-full items-center gap-2 overflow-hidden rounded-lg px-2 text-sm transition-colors hover:bg-[color-mix(in_srgb,var(--sidebar-foreground)_6%,var(--sidebar))] group-data-[state=collapsed]:justify-center group-data-[state=collapsed]:p-2"
             >
-              <BrandLogoSquare className="shrink-0 text-sidebar-primary hidden group-data-[state=collapsed]:block" />
-              <BrandLogo className="max-w-[220px] shrink-0 text-sidebar-primary block group-data-[state=collapsed]:hidden" />
+              <BrandLogoSquare
+                className="h-9 w-9 shrink-0 object-contain object-center hidden group-data-[state=collapsed]:block"
+                aria-hidden
+              />
+              <BrandLogo
+                className="h-10 w-auto max-w-[220px] shrink-0 object-contain object-left block group-data-[state=collapsed]:hidden"
+              />
             </Link>
           </SidebarMenuItem>
         </SidebarMenu>

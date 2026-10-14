@@ -6,6 +6,7 @@ import { runCheckCompetitionsForDraw } from "@oc/api-server/lib/jobs/check-compe
 import { runCleanupAbandonedOrders } from "@oc/api-server/lib/jobs/cleanup-abandoned-orders";
 import { processScheduledNotifications } from "@oc/api-server/lib/jobs/process-scheduled-notifications";
 import { runRetryOrderConfirmationEmails } from "@oc/api-server/lib/jobs/retry-order-confirmation-emails";
+import { runPersonalisationPlanner } from "@oc/api-server/lib/jobs/run-personalisation-planner";
 import { runTicketingAnomalyChecks } from "@oc/api-server/lib/jobs/ticketing-anomaly-checks";
 import { runInternalJobWithLock } from "@oc/api-server/lib/utils/internal-job-runner";
 import {
@@ -134,6 +135,14 @@ app.post("/retry-order-confirmation-emails", async (c) => {
     c,
     jobName: "retry-order-confirmation-emails",
     run: runRetryOrderConfirmationEmails,
+  });
+});
+
+app.post("/run-personalisation-planner", async (c) => {
+  return executeInternalJob({
+    c,
+    jobName: "run-personalisation-planner",
+    run: runPersonalisationPlanner,
   });
 });
 

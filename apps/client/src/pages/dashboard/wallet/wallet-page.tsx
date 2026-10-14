@@ -39,6 +39,7 @@ const CREDIT_TYPES: BalanceTransaction["type"][] = [
   "top_up",
   "purchase_refund",
   "admin_credit",
+  "prize_credit",
   "withdraw_reversed",
 ];
 

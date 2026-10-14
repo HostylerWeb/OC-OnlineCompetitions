@@ -1,6 +1,8 @@
 export * from "./lib/error-codes";
 export { type ErrorCode, ErrorCodes } from "./lib/error-codes";
 export * from "./middleware";
+export * from "./schemas/address";
+export * from "./schemas/ai-personalisation-settings";
 export * from "./schemas/auth";
 export * from "./schemas/bonus-awards";
 export * from "./schemas/categories";
@@ -16,6 +18,7 @@ export * from "./schemas/media-converter-settings";
 export * from "./schemas/notifications";
 export * from "./schemas/orders";
 export * from "./schemas/payment-methods";
+export * from "./schemas/personalisation";
 export * from "./schemas/promo-codes";
 export * from "./schemas/referral-settings";
 export * from "./schemas/seo-settings";

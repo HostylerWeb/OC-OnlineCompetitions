@@ -14,7 +14,7 @@ export const pageMeta: Record<string, PageMetaEntry> = {
 
   "/competitions": { title: "Competitions", group: "Catalogue" },
   "/instant-prizes": { title: "Instant Prizes", group: "Catalogue" },
-  "/bonus-awards": { title: "Bonus Awards", group: "Catalogue" },
+  "/bonus-awards": { title: "Milestone Templates", group: "Catalogue" },
   "/categories": { title: "Categories", group: "Catalogue" },
 
   "/shop/products": { title: "Products", group: "Shop" },
@@ -30,8 +30,8 @@ export const pageMeta: Record<string, PageMetaEntry> = {
 
   "/winners": { title: "Winners", group: "Fulfilment" },
   "/instant-prize-wins": { title: "Instant Prize Wins", group: "Fulfilment" },
-  "/bonus-awards/wins": { title: "Bonus Award Wins", parent: "/bonus-awards", group: "Fulfilment" },
-  "/bonus-awards/fires": { title: "Bonus Award Fires", parent: "/bonus-awards", group: "Fulfilment" },
+  "/bonus-awards/wins": { title: "Milestone Wins", parent: "/bonus-awards", group: "Fulfilment" },
+  "/bonus-awards/fires": { title: "Milestone Fires", parent: "/bonus-awards", group: "Fulfilment" },
 
   "/media": { title: "Media Library", group: "Library" },
 
@@ -53,6 +53,11 @@ export const pageMeta: Record<string, PageMetaEntry> = {
   "/addons": { title: "Addons", group: "Configuration" },
   "/addons/media-converter": {
     title: "Media converter",
+    parent: "/addons",
+    group: "Configuration",
+  },
+  "/addons/ai-personalisation": {
+    title: "OpenRouter AI",
     parent: "/addons",
     group: "Configuration",
   },

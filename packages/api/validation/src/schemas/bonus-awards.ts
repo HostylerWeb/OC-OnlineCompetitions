@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { idSchema } from "./common";
+import { instantPrizeCategorySchema } from "./instant-prizes";
 
 // ─── Template schemas ─────────────────────────────────────────────────────────
 
@@ -10,6 +11,7 @@ export const createBonusAwardSchema = z.object({
   images: z.array(z.string().url()).max(20).default([]),
   isActive: z.boolean().default(true),
   type: z.enum(["prize", "competition_ticket"]).default("prize"),
+  prizeCategory: instantPrizeCategorySchema.optional(),
   linkedCompetitionId: idSchema.optional(),
   ticketCount: z.number().int().min(1).max(10000).optional(),
   sourceInstantPrizeId: idSchema.optional(),
@@ -23,6 +25,7 @@ export const updateBonusAwardSchema = z
     images: z.array(z.string().url()).max(20).optional(),
     isActive: z.boolean().optional(),
     type: z.enum(["prize", "competition_ticket"]).optional(),
+    prizeCategory: instantPrizeCategorySchema.optional().nullable(),
     linkedCompetitionId: idSchema.optional().nullable(),
     ticketCount: z.number().int().min(1).max(10000).optional().nullable(),
   })

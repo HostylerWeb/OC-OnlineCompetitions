@@ -16,3 +16,7 @@ export {
   processScheduledNotifications,
 } from "./process-scheduled-notifications";
 export { runTicketingAnomalyChecks } from "./ticketing-anomaly-checks";
+export {
+  runPersonalisationPlanner,
+  type RunPersonalisationPlannerSummary,
+} from "./run-personalisation-planner";

@@ -312,7 +312,7 @@ function HeaderMobileNavContent({
               {t("header.auth.signIn")}
             </NavSheetActionButton>
             <NavSheetActionButton
-              href="/auth/sign-up"
+              href="/auth/login?mode=sign-up"
               variant="default"
               className="flex-1"
               data-umami-event="mobile-nav:sign-up"

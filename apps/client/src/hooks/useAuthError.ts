@@ -157,8 +157,8 @@ export function useAuthError() {
   const signUpHref = localeHref(
     (() => {
       if (ref) return buildSignUpUrl(ref, returnTo);
-      if (!returnTo) return "/auth/sign-up";
-      return `/auth/sign-up?returnTo=${encodeURIComponent(returnTo)}`;
+      if (!returnTo) return "/auth/login?mode=sign-up";
+      return `/auth/login?mode=sign-up&returnTo=${encodeURIComponent(returnTo)}`;
     })(),
     locale
   );
@@ -183,7 +183,7 @@ export function useAuthError() {
     if (resolved.kind !== "signup_disabled") return;
     const redirectUrl = signUpHref
       ? `${signUpHref}${signUpHref.includes("?") ? "&" : "?"}google_signup=1`
-      : "/auth/sign-up?google_signup=1";
+      : "/auth/login?mode=sign-up&google_signup=1";
     const timeout = setTimeout(() => {
       window.location.href = redirectUrl;
     }, 0);

@@ -1,5 +1,5 @@
 import type { ComponentType } from "react";
-import { Film } from "@oc/icons";
+import { Film, Sparkles } from "@oc/icons";
 
 export type AddonCatalogStatus = "available" | "coming_soon";
 
@@ -11,6 +11,8 @@ export interface AddonCatalogEntry {
   icon: ComponentType<{ className?: string }>;
   status: AddonCatalogStatus;
   tags: string[];
+  /** UI-only addon; settings are not persisted yet */
+  preview?: boolean;
 }
 
 export const ADDON_CATALOG: AddonCatalogEntry[] = [
@@ -23,6 +25,17 @@ export const ADDON_CATALOG: AddonCatalogEntry[] = [
     icon: Film,
     status: "available",
     tags: ["Images", "Video", "CDN"],
+  },
+  {
+    id: "ai-personalisation",
+    title: "OpenRouter AI",
+    description:
+      "OpenRouter API key, customer personalisation (daily planner + on-site prompts), and image generation settings.",
+    href: "/addons/ai-personalisation",
+    icon: Sparkles,
+    status: "available",
+    preview: true,
+    tags: ["OpenRouter", "Upsell", "Customer experience"],
   },
 ];
 

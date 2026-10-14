@@ -1,7 +1,7 @@
 import type { ProfileAddress } from "@oc/types";
 import { cn } from "@oc/utils";
 import { Combobox } from "@/components/ui/combobox";
-import { COUNTRIES, type CountryOption } from "@/components/ui/countries";
+import { type CountryOption, UNITED_KINGDOM_ONLY } from "@/components/ui/countries";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useTranslation } from "@/lib/i18n";
@@ -21,7 +21,7 @@ export function AddressFormFields({
   idPrefix = "",
   required = false,
   className,
-  countryOptions = COUNTRIES,
+  countryOptions = UNITED_KINGDOM_ONLY,
 }: AddressFormFieldsProps) {
   const { t } = useTranslation();
   const id = (name: string) => (idPrefix ? `${idPrefix}-${name}` : name);

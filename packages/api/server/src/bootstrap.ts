@@ -55,6 +55,7 @@ import contact from "@oc/api-server/routes/client/contact";
 import discounts from "@oc/api-server/routes/client/discounts";
 import meAvatar from "@oc/api-server/routes/client/me/avatar";
 import meBonusAwardWins from "@oc/api-server/routes/client/me/bonus-award-wins";
+import mePersonalisation from "@oc/api-server/routes/client/me/personalisation";
 import meEntries from "@oc/api-server/routes/client/me/entries";
 import meInstantPrizeWins from "@oc/api-server/routes/client/me/instant-prize-wins";
 import meOrders from "@oc/api-server/routes/client/me/orders";
@@ -652,6 +653,7 @@ app.route("/api/me/referrals", meReferrals);
 app.route("/api/me/tickets", meTickets);
 app.route("/api/me/instant-prize-wins", meInstantPrizeWins);
 app.route("/api/me/bonus-award-wins", meBonusAwardWins);
+app.route("/api/me/personalisation", mePersonalisation);
 
 // Shop routes
 app.route("/api/shop/products", shopProducts);

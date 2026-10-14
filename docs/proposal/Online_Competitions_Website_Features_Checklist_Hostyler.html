@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <title>Online Competitions | Website Features Checklist | Hostyler Group</title>
+  <style>
+    @page { margin: 14mm 12mm; size: A4; }
+    * { box-sizing: border-box; }
+    body {
+      font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+      font-size: 9.5pt;
+      line-height: 1.45;
+      color: #374151;
+      margin: 0;
+      padding: 0;
+    }
+    .cover {
+      min-height: 257mm;
+      display: flex;
+      flex-direction: column;
+      page-break-after: always;
+      padding-top: 6mm;
+    }
+    .cover-main { flex: 1 0 auto; }
+    .cover-logo { height: 68px; width: auto; display: block; margin-bottom: 18px; }
+    .cover h1 {
+      font-size: 22pt;
+      font-weight: 700;
+      color: #0a0a0a;
+      line-height: 1.2;
+      margin: 0 0 10px;
+      max-width: 95%;
+    }
+    .cover .subtitle {
+      font-size: 11.5pt;
+      color: #6b7280;
+      margin: 0 0 24px;
+      max-width: 92%;
+    }
+    h2 {
+      font-size: 12pt;
+      font-weight: 700;
+      color: #0a0a0a;
+      margin: 18px 0 8px;
+      padding-bottom: 5px;
+      border-bottom: 2px solid #0a0a0a;
+      page-break-after: avoid;
+    }
+    h3 {
+      font-size: 10pt;
+      font-weight: 600;
+      color: #111827;
+      margin: 12px 0 5px;
+      page-break-after: avoid;
+    }
+    p { margin: 0 0 7px; }
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 7.5pt;
+      color: #9ca3af;
+      margin-bottom: 10px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .page-header img { height: 34px; width: auto; }
+    .highlight-box {
+      background: #f9fafb;
+      border-left: 3px solid #0a0a0a;
+      padding: 10px 12px;
+      margin: 10px 0 14px;
+      font-size: 9pt;
+    }
+    ul.checklist {
+      list-style: none;
+      margin: 0 0 10px;
+      padding: 0;
+    }
+    ul.checklist > li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 5px;
+      page-break-inside: avoid;
+    }
+    ul.checklist > li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.32em;
+      width: 11px;
+      height: 11px;
+      border: 1.5px solid #4b5563;
+      border-radius: 2px;
+      background: #fff;
+    }
+    ul.checklist.sub {
+      margin: 4px 0 6px 20px;
+    }
+    ul.checklist.sub > li::before {
+      width: 9px;
+      height: 9px;
+      top: 0.38em;
+    }
+    ul.checklist.done > li::before {
+      background: #111827;
+      border-color: #111827;
+    }
+    ul.checklist.done > li::after {
+      content: "";
+      position: absolute;
+      left: 3px;
+      top: 0.42em;
+      width: 4px;
+      height: 7px;
+      border: solid #fff;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+    ul.checklist.sub.done > li::after {
+      left: 2px;
+      top: 0.46em;
+      width: 3px;
+      height: 6px;
+      border-width: 0 1.5px 1.5px 0;
+    }
+    .footer-note {
+      margin-top: 20px;
+      padding-top: 10px;
+      border-top: 1px solid #e5e7eb;
+      font-size: 8.5pt;
+      color: #6b7280;
+    }
+    @media print {
+      .cover { min-height: 257mm; }
+      h2 { break-after: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cover">
+    <div class="cover-main">
+      <img class="cover-logo" src="assets/logo.webp" alt="Hostyler Group" />
+      <p style="font-size:8.5pt;text-transform:uppercase;letter-spacing:0.12em;color:#9ca3af;font-weight:600;margin:0 0 12px;">Feature checklist</p>
+      <h1>Online Competitions<br />Website &amp; admin capabilities</h1>
+      <p class="subtitle">A client-ready checklist of what the platform delivers today: customer website, checkout, compliance, optional shop, and staff back office.</p>
+    </div>
+  </div>
+
+  <div class="page-header">
+    <img src="assets/logo.webp" alt="Hostyler" />
+    <span>Online Competitions | Hostyler Group</span>
+  </div>
+
+  <div class="highlight-box">
+    <strong>Scope summary.</strong> Each checked item is a delivered capability on the Online Competitions platform (customer site, checkout, compliance, optional shop, and admin back office).
+  </div>
+
+  <h2>Main customer website</h2>
+
+  <h3>Browse &amp; enter competitions</h3>
+  <ul class="checklist done">
+    <li>Home page with hero slider, categories, “ending soon” highlights, recent winners, and calls to action (sections can be turned on/off in admin).</li>
+    <li>Full competition catalogue with filters by category.</li>
+    <li>Competition detail pages: photos, description, ticket price, prize value, draw date, tickets sold.</li>
+    <li>Choose how many tickets to buy; optional per-person limit per competition.</li>
+    <li>Admin chooses per competition whether a skill question is required; customer must answer correctly when enabled.</li>
+    <li>Some prizes can be marked as cash alternatives instead of a physical item.</li>
+    <li>Live progress bar showing how full the competition is.</li>
+    <li>Public entry list (ticket numbers) on the competition and on a dedicated entries page.</li>
+  </ul>
+
+  <h3>Main prize draw</h3>
+  <ul class="checklist done">
+    <li>Scheduled draw date and time (not brought forward because tickets sell quickly).</li>
+    <li>Winners chosen using a verified random number generator.</li>
+    <li>Draws can be run during a live video stream.</li>
+    <li>Winners emailed, shown on the Winners page; prizes fulfilled after verification (typical dispatch within about 2 days).</li>
+    <li>Prize delivery within the UK.</li>
+  </ul>
+
+  <h3>Instant wins (selected competitions)</h3>
+  <ul class="checklist done">
+    <li>Extra prizes on top of the main draw, revealed when tickets are purchased.</li>
+    <li>Competition page shows each instant prize, availability, and claimed winning ticket numbers (ticket-style display).</li>
+    <li>Instant prize types:
+      <ul class="checklist sub done">
+        <li>Physical prizes (e.g. luxury goods, gadgets).</li>
+        <li>Cash prizes.</li>
+        <li>Site credit to the customer wallet.</li>
+        <li>Free tickets to another competition (can be multiple per win).</li>
+      </ul>
+    </li>
+    <li>Celebration screen after purchase and email confirmation for instant wins.</li>
+  </ul>
+
+  <h3>Milestones &amp; bonus prizes</h3>
+  <ul class="checklist done">
+    <li>Bonus prizes unlock at set milestones (e.g. 25%, 50%, 75% of tickets sold).</li>
+    <li>Milestones shown on the competition page (unlocked vs still to come).</li>
+    <li>When a milestone is reached, eligible ticket holders can win the bonus prize (separate from main draw and instant wins).</li>
+    <li>Bonus prizes: physical items or free tickets to another competition.</li>
+    <li>Bonus wins recorded on the account and fulfilled by the team after confirmation.</li>
+  </ul>
+
+  <h3>Shopping basket &amp; checkout</h3>
+  <ul class="checklist done">
+    <li>Cart with tickets from one or more competitions.</li>
+    <li>Promo codes for discounts or bonus tickets (one code per order; expiry dates).</li>
+    <li>Apply referral reward tickets at checkout.</li>
+    <li>Pay with site credit from the wallet (full or partial).</li>
+    <li>UK addresses only at checkout (United Kingdom).</li>
+    <li>Integrated payment gateways (admin enables which are live):
+      <ul class="checklist sub done">
+        <li>Stripe: cards (Visa, Mastercard, American Express), Apple Pay, Google Pay where supported.</li>
+        <li>Paytriot: hosted payment page or on-site popup checkout (3D Secure where required).</li>
+      </ul>
+    </li>
+    <li>Card details handled by the payment provider; the site does not store card numbers.</li>
+    <li>Automatic ticket issue on successful payment; confirmation email and dashboard visibility.</li>
+  </ul>
+
+  <h3>AI personalisation (customer-facing)</h3>
+  <ul class="checklist done">
+    <li>OpenRouter-backed personalisation (model chosen in admin).</li>
+    <li>Server can trigger on-brand prompts from browsing, basket, orders, and wins (e.g. tailored upsell popup).</li>
+    <li>Rules and copy controlled in admin; customers see approved prompts only.</li>
+  </ul>
+
+  <h3>Customer accounts</h3>
+  <ul class="checklist done">
+    <li>Email and password with verification.</li>
+    <li>One-time code or magic link sign-in.</li>
+    <li>Google sign-in; guest browsing merges when the customer registers.</li>
+    <li>Dashboard: overview, tickets, orders, wins, wallet, referrals, profile, responsible play.</li>
+    <li>Short referral links (e.g. /r/yourcode).</li>
+  </ul>
+
+  <h3>Refer a friend</h3>
+  <ul class="checklist done">
+    <li>Personal referral link and code from the dashboard.</li>
+    <li>Rewards when friends join and make a qualifying purchase (typically free tickets).</li>
+    <li>Tiered rewards for more active referrals.</li>
+    <li>Referral leaderboard.</li>
+    <li>Referral ticket wallet applied at checkout (per admin referral settings).</li>
+  </ul>
+
+  <h3>Wallet &amp; site credit</h3>
+  <ul class="checklist done">
+    <li>Wallet balance (top-ups, refunds, admin adjustments, some instant-win prizes).</li>
+    <li>Transaction history in the dashboard.</li>
+    <li>Site credit reduces or covers ticket purchases at checkout.</li>
+  </ul>
+
+  <h3>Free postal entry</h3>
+  <ul class="checklist done">
+    <li>No-purchase postal route for active competitions (address on Free Postal Entry page).</li>
+    <li>Postal entries treated equally in the draw alongside paid entries.</li>
+  </ul>
+
+  <h3>Responsible play &amp; compliance</h3>
+  <ul class="checklist done">
+    <li>18+ only; age checked at registration and checkout.</li>
+    <li>Optional personal monthly spend limit (lower limits immediate; higher after 24-hour cooling-off).</li>
+    <li>Self-exclusion: 6 months, 1 year, 5 years, or permanent.</li>
+    <li>Links to support organisations (e.g. GamCare).</li>
+  </ul>
+
+  <h3>Content &amp; trust</h3>
+  <ul class="checklist done">
+    <li>How it works, About, FAQ (competitions, instant wins, milestones, referrals, payments, delivery).</li>
+    <li>Terms, privacy, cookies, responsible play, contact.</li>
+    <li>Winners showcase on home and full winners listing.</li>
+    <li>Contact form for enquiries.</li>
+  </ul>
+
+  <h3>Mobile</h3>
+  <ul class="checklist done">
+    <li>Dedicated mobile app experience (shared account, competitions, checkout, dashboard).</li>
+  </ul>
+
+  <h2>Online shop (optional separate storefront)</h2>
+  <p style="font-size:9pt;color:#6b7280;margin-bottom:8px;">Already built; can be activated when required.</p>
+  <ul class="checklist done">
+    <li>Product catalogue with categories and product detail pages.</li>
+    <li>Variants (e.g. size/colour) where configured.</li>
+    <li>Cart, checkout, order history, and customer account.</li>
+    <li>Shipping, refunds, terms, privacy, contact pages.</li>
+  </ul>
+
+  <h2>Admin / back office</h2>
+
+  <h3>Overview</h3>
+  <ul class="checklist done">
+    <li>Dashboard with sales snapshots and quick links.</li>
+    <li>Staff accounts; sensitive settings restricted to full administrators.</li>
+  </ul>
+
+  <h3>Competitions &amp; catalogue</h3>
+  <ul class="checklist done">
+    <li>Full competition lifecycle: draft, live, paused, ended, pending draw, drawn, cancelled.</li>
+    <li>Pricing, prize value, ticket pool, optional per-user cap, end and draw dates.</li>
+    <li>Featured and hero slider placement; categories and display order.</li>
+    <li>Rich content: descriptions, images, hero, social preview image, optional video.</li>
+    <li>Skill question per competition (optional).</li>
+    <li>Cash prize marking; instant wins and milestone bonuses per competition.</li>
+  </ul>
+
+  <h3>Instant prizes (admin)</h3>
+  <ul class="checklist done">
+    <li>Template library (title, description, value, images).</li>
+    <li>Types: physical, cash, site credit, free tickets to another competition.</li>
+    <li>Link to competitions, quantities, winning ticket numbers, ordering, archive.</li>
+    <li>Instant win fulfilment queue (claimed / unclaimed).</li>
+  </ul>
+
+  <h3>Milestones &amp; bonus awards (admin)</h3>
+  <ul class="checklist done">
+    <li>Bonus prize templates and per-competition milestone percentages.</li>
+    <li>Automatic bonus draw when milestones hit; staff fulfilment tracking.</li>
+  </ul>
+
+  <h3>Orders &amp; promotions</h3>
+  <ul class="checklist done">
+    <li>Competition orders: items, payment status, ticket numbers.</li>
+    <li>Promo codes (percentage, fixed, bonus tickets, limits, expiry).</li>
+    <li>Shop products, variants, categories, and orders when shop is enabled.</li>
+  </ul>
+
+  <h3>Customers &amp; referrals</h3>
+  <ul class="checklist done">
+    <li>Customer search, profiles, orders, tickets, wins, referral activity.</li>
+    <li>Referral programme configuration (qualifying rules, tiers, wallet distribution).</li>
+    <li>Referral statistics and network map.</li>
+  </ul>
+
+  <h3>Fulfilment</h3>
+  <ul class="checklist done">
+    <li>Main draw winners: ticket, contact, fulfilment status.</li>
+    <li>Instant and bonus win queues with bulk actions and restore.</li>
+    <li>Manual postal entry processing.</li>
+  </ul>
+
+  <h3>Media &amp; content</h3>
+  <ul class="checklist done">
+    <li>Media library for uploads and reuse.</li>
+    <li>Homepage layout editor (section order and on/off).</li>
+    <li>SEO and social preview defaults.</li>
+  </ul>
+
+  <h3>Live draws</h3>
+  <ul class="checklist done">
+    <li>Livestream draws list and full-screen Draw Studio.</li>
+    <li>Optional Google Sheets logging for draw results.</li>
+  </ul>
+
+  <h3>Payments (admin)</h3>
+  <ul class="checklist done">
+    <li>Stripe: sandbox/live, enable/disable, default method.</li>
+    <li>Paytriot: sandbox/live, hosted vs popup checkout.</li>
+    <li>Credential testing; site credit payments; Stripe webhook registration.</li>
+  </ul>
+
+  <h3>Compliance &amp; safer play</h3>
+  <ul class="checklist done">
+    <li>Compliance settings: age rules, instant-win credit card rules, postal entry address and prominence.</li>
+    <li>Safer-play activity on customer accounts for support.</li>
+  </ul>
+
+  <h3>Communications</h3>
+  <ul class="checklist done">
+    <li>Email delivery settings (orders, wins, verification, magic links).</li>
+    <li>Push notification campaigns and device subscriptions.</li>
+  </ul>
+
+  <h3>Marketing &amp; technical extras</h3>
+  <ul class="checklist done">
+    <li>Conversion and affiliate tracking (pixels, partner campaigns).</li>
+    <li>Addons (e.g. media converter for image/video optimisation).</li>
+  </ul>
+
+  <h3>AI integration (admin – OpenRouter)</h3>
+  <ul class="checklist done">
+    <li>Save OpenRouter API key and enable/disable AI personalisation.</li>
+    <li>Scan free or paid models live from OpenRouter; pick model and tone.</li>
+    <li>Configure allowed customer actions (upsell popup, competition highlight, ticket bundles, spend limits).</li>
+    <li>Brand instructions and guardrails; server-side decisions before the storefront shows a prompt.</li>
+  </ul>
+
+  <h3>Security</h3>
+  <ul class="checklist done">
+    <li>Admin access separate from customer logins; payment keys and secrets stay in the back office.</li>
+  </ul>
+
+  <p class="footer-note">
+    <strong>Hostyler Group</strong> · This checklist reflects the Online Competitions platform scope as documented for the client. For technical runbooks and audits, see the project docs folder in the repository.
+  </p>
+
+</body>
+</html>

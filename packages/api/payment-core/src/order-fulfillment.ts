@@ -124,10 +124,18 @@ export interface OrderFulfillmentDeps {
       winIndex: number;
       instantPrize: { title: string; images?: string[]; value?: number };
       prizeType: "prize" | "competition_ticket";
+      prizeCategory?: "cash" | "site_credit" | "physical";
       linkedCompetitionId?: Types.ObjectId;
       ticketCount?: number;
     }>
   >;
+  creditSiteCreditForPrizeWin?: (params: {
+    userId: Types.ObjectId;
+    amount: number;
+    idempotencyKey: string;
+    note: string;
+    session?: ClientSession;
+  }) => Promise<void>;
   sendInstantWinEmail: (params: {
     userId: string;
     wins: Array<{
@@ -359,6 +367,21 @@ export async function grantInstantPrizeWinsForAssignedNumbers(
           `[${logPrefix}] updateCompetitionInstantPrizeClaimedCount failed for CIP ${win.competitionInstantPrizeId} — claimedCount may be stale:`,
           countErr
         );
+      }
+
+      const siteCreditAmount =
+        win.prizeType === "prize" && win.prizeCategory === "site_credit"
+          ? (win.instantPrize.value ?? 0)
+          : 0;
+      if (siteCreditAmount > 0 && deps.creditSiteCreditForPrizeWin) {
+        await deps.creditSiteCreditForPrizeWin({
+          userId: userIdObj,
+          amount: siteCreditAmount,
+          idempotencyKey: `instant-prize-win:${winResult._id.toString()}`,
+          note: `Instant win: ${win.instantPrize.title}`,
+          session,
+        });
+        await deps.markInstantPrizeWinClaimed(winResult._id, session);
       }
 
       if (win.prizeType === "competition_ticket" && win.linkedCompetitionId) {

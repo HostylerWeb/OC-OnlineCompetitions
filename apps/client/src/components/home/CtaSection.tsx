@@ -34,7 +34,7 @@ export function CtaSection() {
             </GoldOutlineButton>
 
             <GoldOutlineButton asChild size="lg" className="w-full sm:w-auto">
-              <Link href="/auth/sign-up" data-umami-event="home:cta-sign-up-click">
+              <Link href="/auth/login?mode=sign-up" data-umami-event="home:cta-sign-up-click">
                 {t("home.cta.createAccount")}
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Link>

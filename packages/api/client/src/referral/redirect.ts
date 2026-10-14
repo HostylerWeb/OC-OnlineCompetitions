@@ -56,11 +56,21 @@ export function buildLoginUrl(options?: {
   return qs ? `/auth/login?${qs}` : "/auth/login";
 }
 
-export function buildSignUpUrl(ref: string, returnTo?: string | null): string {
-  const params = new URLSearchParams({ ref: normalizeReferralCode(ref) });
+export function buildRegisterUrl(returnTo?: string | null): string {
+  const params = new URLSearchParams({ mode: "sign-up" });
   const safeReturnTo = sanitizeReturnTo(returnTo);
   if (safeReturnTo) params.set("returnTo", safeReturnTo);
-  return `/auth/sign-up?${params.toString()}`;
+  return `/auth/login?${params.toString()}`;
+}
+
+export function buildSignUpUrl(ref: string, returnTo?: string | null): string {
+  const params = new URLSearchParams({
+    ref: normalizeReferralCode(ref),
+    mode: "sign-up",
+  });
+  const safeReturnTo = sanitizeReturnTo(returnTo);
+  if (safeReturnTo) params.set("returnTo", safeReturnTo);
+  return `/auth/login?${params.toString()}`;
 }
 
 export function buildVerifyRequiredParams(options: {

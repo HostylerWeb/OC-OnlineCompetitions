@@ -6,6 +6,7 @@ import { error, paginated, success } from "@oc/api-infra/response";
 import { captureRouteError } from "@oc/api-infra/sentry";
 import { createLogger } from "@oc/api-logger";
 import { onCompetitionUpdate } from "@oc/api-server/lib/utils/competition-events";
+import { scheduleTouchUserActivity } from "@oc/api-server/lib/personalisation/record-activity";
 import { resolveSession } from "@oc/api-server/middleware/auth";
 import { redisCacheRoute } from "@oc/api-server/middleware/cache";
 import {
@@ -416,6 +417,17 @@ app.get(
 
       if (!competition) {
         return error(c, ErrorCodes.NOT_FOUND, "Competition not found", 404);
+      }
+
+      try {
+        await resolveSession(c);
+        const userId = c.get("userId");
+        if (userId) {
+          const cat = (competition as { category?: string }).category;
+          scheduleTouchUserActivity(userId, cat);
+        }
+      } catch {
+        // Optional session for activity tracking.
       }
 
       const typedCompetition = competition as ICompetition & { _id: mongoose.Types.ObjectId };

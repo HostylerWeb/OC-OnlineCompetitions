@@ -70,9 +70,9 @@ export const adminNavigationGroups: NavGroup[] = [
       },
       {
         href: "/bonus-awards",
-        label: "Bonus Awards",
+        label: "Milestone Templates",
         icon: Award,
-        keywords: ["milestones", "bonus draw", "auto", "bonus award"],
+        keywords: ["milestones", "bonus draw", "auto", "bonus award", "milestone template", "prize template"],
       },
       {
         href: "/categories",
@@ -186,7 +186,7 @@ export const adminNavigationGroups: NavGroup[] = [
       },
       {
         href: "/bonus-awards/wins",
-        label: "Bonus Award Wins",
+        label: "Milestone Wins",
         icon: Award,
         keywords: [
           "bonus",
@@ -290,7 +290,20 @@ export const adminNavigationGroups: NavGroup[] = [
         label: "Addons",
         icon: Puzzle,
         roles: ["admin"],
-        keywords: ["plugins", "extensions", "webp", "webm", "converter", "media", "optimization", "media-converter"],
+        keywords: [
+          "plugins",
+          "extensions",
+          "webp",
+          "webm",
+          "converter",
+          "media",
+          "optimization",
+          "media-converter",
+          "openrouter",
+          "ai",
+          "personalisation",
+          "upsell",
+        ],
       },
     ],
   },

@@ -62,7 +62,7 @@ export default function VerifyPage() {
               <p className="text-muted-foreground">
                 {t("auth.verify.missingEmail")}{" "}
                 <Link
-                  href="/auth/sign-up"
+                  href="/auth/login?mode=sign-up"
                   className="text-gold hover:underline"
                   data-umami-event="auth:sign-up-again"
                 >

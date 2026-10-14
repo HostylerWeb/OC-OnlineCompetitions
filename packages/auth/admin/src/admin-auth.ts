@@ -1,7 +1,8 @@
 import { getEnv } from "@oc/env/server";
 import { getSessionCookiePrefix } from "@oc/utils";
 import { betterAuth } from "better-auth/minimal";
-import { admin, captcha, emailOTP } from "better-auth/plugins";
+import { admin, emailOTP } from "better-auth/plugins";
+import { turnstileCaptchaPlugins } from "./turnstile-captcha-plugin";
 import { defaultRoles, userAc } from "better-auth/plugins/admin/access";
 import { type BuildAuthConfig, buildAuth } from "./build-auth";
 import { createTrustedOriginsResolver } from "./trusted-origins";
@@ -78,10 +79,7 @@ export async function getAdminAuth() {
             void sendOtpEmail({ email, otp, type }).catch(() => {});
           },
         }),
-        captcha({
-          provider: "cloudflare-turnstile",
-          secretKey: getEnv("TURNSTILE_SECRET_KEY"),
-        }),
+        ...turnstileCaptchaPlugins(),
       ],
       advanced: {
         cookiePrefix: getSessionCookiePrefix(getAppUrl(), "admin"),

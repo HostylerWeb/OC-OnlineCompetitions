@@ -9,6 +9,7 @@ export interface FlattenedCompetitionInstantPrize {
   images: string[];
   value?: number;
   type?: "prize" | "competition_ticket";
+  prizeCategory?: "cash" | "site_credit" | "physical";
   linkedCompetitionId?: string;
   linkedCompetitionSlug?: string;
   ticketCount?: number;
@@ -101,5 +102,11 @@ export function flattenCompetitionInstantPrize(
         : undefined,
     ticketCount:
       typeof instantPrize.ticketCount === "number" ? instantPrize.ticketCount : undefined,
+    prizeCategory:
+      instantPrize.prizeCategory === "cash" ||
+      instantPrize.prizeCategory === "site_credit" ||
+      instantPrize.prizeCategory === "physical"
+        ? instantPrize.prizeCategory
+        : undefined,
   };
 }

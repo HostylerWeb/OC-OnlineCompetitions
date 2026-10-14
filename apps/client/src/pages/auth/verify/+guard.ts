@@ -12,6 +12,6 @@ export const guard = (pageContext: PageContextServer) => {
   skipIfVerified(pageContext);
   const email = urlParsed.search?.email;
   if (!email) {
-    throw redirect(localeHref("/auth/sign-up", pageContext));
+    throw redirect(localeHref("/auth/login?mode=sign-up", pageContext));
   }
 };

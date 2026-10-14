@@ -26,9 +26,16 @@ export default function AddonsAdminPage() {
                   <div className="flex size-10 items-center justify-center rounded-lg bg-muted">
                     <Icon className="size-5 text-muted-foreground" />
                   </div>
-                  <Badge variant={isAvailable ? "default" : "secondary"}>
-                    {isAvailable ? "Available" : "Coming soon"}
-                  </Badge>
+                  <div className="flex flex-wrap justify-end gap-1">
+                    {addon.preview ? (
+                      <Badge variant="outline" className="text-xs font-normal">
+                        Preview
+                      </Badge>
+                    ) : null}
+                    <Badge variant={isAvailable ? "default" : "secondary"}>
+                      {isAvailable ? "Available" : "Coming soon"}
+                    </Badge>
+                  </div>
                 </div>
                 <CardTitle className="text-base">{addon.title}</CardTitle>
                 <CardDescription>{addon.description}</CardDescription>

@@ -124,7 +124,7 @@ app.get("/profile-fill", requireGuestCheckout, async (c) => {
       addressLine2: profile.addressLine2 ?? "",
       city: profile.city ?? "",
       postcode: profile.postcode ?? "",
-      country: profile.country ?? "GB",
+      country: "GB",
       isVerified: !profile.isGuestCheckout,
     });
   } catch (err) {

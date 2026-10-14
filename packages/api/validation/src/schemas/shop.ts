@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { ukCountryCodeSchema } from "./address";
 
 // ── Product Options ─────────────────────────────────────
 
@@ -177,7 +178,7 @@ export const shopShippingAddressSchema = z.object({
   addressLine2: z.string().optional(),
   city: z.string().min(1),
   postcode: z.string().min(1),
-  country: z.string().min(1),
+  country: ukCountryCodeSchema,
 });
 
 export const shopCreateCheckoutSessionSchema = z.object({

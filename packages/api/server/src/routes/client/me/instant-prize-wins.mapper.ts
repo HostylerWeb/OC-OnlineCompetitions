@@ -22,6 +22,9 @@ export function mapInstantPrizeWin(
   );
 
   const isCompetitionTicket = prize.type === "competition_ticket";
+  const isAutoFulfilledSiteCredit =
+    prize.type !== "competition_ticket" && prize.prizeCategory === "site_credit";
+  const isAutoFulfilled = isCompetitionTicket || isAutoFulfilledSiteCredit;
   const linkedCompetitionInfo = prize.linkedCompetitionId
     ? linkedCompetitionInfoMap.get(prize.linkedCompetitionId)
     : undefined;
@@ -33,8 +36,8 @@ export function mapInstantPrizeWin(
   return {
     _id: normalizeId(win._id as string | mongoose.Types.ObjectId | { _id?: unknown }) ?? "",
     ticketNumber: typeof win.ticketNumber === "number" ? win.ticketNumber : 0,
-    claimed: Boolean(win.claimed) || isCompetitionTicket,
-    claimedAt: win.claimedAt || (isCompetitionTicket ? win.wonAt : undefined),
+    claimed: Boolean(win.claimed) || isAutoFulfilled,
+    claimedAt: win.claimedAt || (isAutoFulfilled ? win.wonAt : undefined),
     wonAt: win.wonAt,
     prize: {
       title: prize.title,
@@ -112,14 +115,24 @@ export async function fetchAndMapWins(
         ticketNumber: 1,
         claimed: {
           $cond: {
-            if: { $eq: [{ $ifNull: ["$prize.type", ""] }, "competition_ticket"] },
+            if: {
+              $or: [
+                { $eq: [{ $ifNull: ["$prize.type", ""] }, "competition_ticket"] },
+                { $eq: [{ $ifNull: ["$prize.prizeCategory", ""] }, "site_credit"] },
+              ],
+            },
             then: true,
             else: "$claimed",
           },
         },
         claimedAt: {
           $cond: {
-            if: { $eq: [{ $ifNull: ["$prize.type", ""] }, "competition_ticket"] },
+            if: {
+              $or: [
+                { $eq: [{ $ifNull: ["$prize.type", ""] }, "competition_ticket"] },
+                { $eq: [{ $ifNull: ["$prize.prizeCategory", ""] }, "site_credit"] },
+              ],
+            },
             then: "$wonAt",
             else: "$claimedAt",
           },

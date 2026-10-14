@@ -155,6 +155,7 @@ export interface InstantWinResult {
   instantPrize: IInstantPrize;
   competitionInstantPrizeId: Types.ObjectId;
   prizeType: "prize" | "competition_ticket";
+  prizeCategory?: IInstantPrize["prizeCategory"];
   linkedCompetitionId?: Types.ObjectId;
   ticketCount?: number;
 }
@@ -210,6 +211,7 @@ export async function checkInstantWins(
         instantPrize,
         competitionInstantPrizeId: cip._id,
         prizeType,
+        prizeCategory: instantPrize.prizeCategory,
         linkedCompetitionId:
           prizeType === "competition_ticket" ? instantPrize.linkedCompetitionId : undefined,
         ticketCount:

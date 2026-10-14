@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { slugifyName } from "@/lib/slug";
+import { CompetitionAiAssist, CompetitionAiAssistSetupHint } from "./CompetitionAiAssist";
 import type { CompetitionFormState, CompetitionStatus } from "./types";
 import { STATUS_OPTIONS } from "./types";
 
@@ -131,7 +132,10 @@ function CompetitionDetailsTab({
       </Field>
 
       <Field>
-        <FieldLabel htmlFor="description">Full Description</FieldLabel>
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <FieldLabel htmlFor="description">Full Description</FieldLabel>
+          <CompetitionAiAssist form={form} onFormUpdate={onFormUpdate} mode="description" />
+        </div>
         <Textarea
           id="description"
           name="description"
@@ -140,6 +144,9 @@ function CompetitionDetailsTab({
           rows={5}
           placeholder="Detailed competition description..."
         />
+        <FieldDescription>
+          <CompetitionAiAssistSetupHint />
+        </FieldDescription>
       </Field>
     </FieldGroup>
   );

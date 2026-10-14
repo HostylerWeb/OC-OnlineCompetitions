@@ -93,7 +93,7 @@ export default function BonusAwardFiresPage() {
         3000
       );
     },
-    onError: () => toast.error("Failed to trigger bonus award check"),
+    onError: () => toast.error("Failed to trigger milestone check"),
   });
 
   const fires = firesRes?.data?.data ?? [];
@@ -102,7 +102,7 @@ export default function BonusAwardFiresPage() {
     <div className="space-y-6 p-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold">Bonus Award Fires</h1>
+          <h1 className="text-2xl font-bold">Milestone Fires</h1>
           <p className="text-muted-foreground">
             All fires across competitions. Auto-refreshes every 10s.
           </p>
@@ -137,7 +137,7 @@ export default function BonusAwardFiresPage() {
           <AlertTitle>No fires</AlertTitle>
           <AlertDescription>
             {filter === "all"
-              ? "No bonus award fires found for any status."
+              ? "No milestone fires found for any status."
               : `No fires with status "${filter}".`}
           </AlertDescription>
         </Alert>
@@ -230,7 +230,7 @@ function FireRetriggerButton({ fire }: { fire: FireItem }) {
       <ConfirmDialog
         open={open}
         onOpenChange={setOpen}
-        title="Retrigger bonus award fire?"
+        title="Retrigger milestone fire?"
         description={
           <div className="space-y-2">
             <p>

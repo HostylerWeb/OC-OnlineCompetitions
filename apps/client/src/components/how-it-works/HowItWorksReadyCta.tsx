@@ -40,7 +40,7 @@ export function HowItWorksReadyCta() {
             </Link>
           </GoldOutlineButton>
           <GoldOutlineButton asChild size="lg" className="w-full sm:w-auto">
-            <Link href="/auth/sign-up" data-umami-event="how-it-works:cta-click">
+            <Link href="/auth/login?mode=sign-up" data-umami-event="how-it-works:cta-click">
               {t("staticPages.howItWorks.createAccount")}
             </Link>
           </GoldOutlineButton>

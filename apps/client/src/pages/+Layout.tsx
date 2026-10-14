@@ -9,6 +9,7 @@ import { PublicLayout } from "@/components/layout/PublicLayout";
 import { PwaInstallPrompt } from "@/components/layout/PwaInstallPrompt";
 import { ProfileQueryHydrator } from "@/components/providers/ProfileQueryHydrator";
 import { RoutePrefetcher } from "@/components/layout/RoutePrefetcher";
+import { AiPersonalisationPromptIsland } from "@/components/personalisation/AiPersonalisationPromptIsland";
 import { ReferralRefGateIsland } from "@/components/providers/ReferralRefGateIsland";
 import { ScrollLockFix } from "@/components/ScrollLockFix";
 import { ThemeProvider } from "@/components/ThemeProvider";
@@ -47,6 +48,7 @@ export default function Layout({
           <AuthProvider initialUser={user} guestCheckoutEnabled={guestCheckoutEnabled}>
             <ProfileQueryHydrator />
             <ReferralRefGateIsland />
+            <AiPersonalisationPromptIsland />
             <ScrollLockFix />
             <HeaderMobileNavProvider>
               <PublicLayout>{children}</PublicLayout>

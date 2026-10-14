@@ -1,12 +1,13 @@
-import { buildAssetUrl, listStorageDelimiterPage, type S3Asset } from "./s3";
+import { buildAssetUrl, listFlatObjectKeysPage, type S3Asset } from "./s3";
 
 const FRAME_PREFIX = "frames/";
 const FLAT_ROOTS = ["uploads/", "prizes/", "landing-videos/", "avatars/", "og-images/"] as const;
 
 export interface FlatAssetsCursor {
   rootIndex: number;
-  queue: string[];
-  listCursor?: string;
+  continuationToken?: string;
+  /** Last object key returned; skip through this on the next page (same S3 list batch). */
+  lastKey?: string;
 }
 
 function encodeFlatCursor(cursor: FlatAssetsCursor): string {
@@ -17,7 +18,7 @@ function decodeFlatCursor(raw: string | undefined): FlatAssetsCursor | null {
   if (!raw) return null;
   try {
     const parsed = JSON.parse(Buffer.from(raw, "base64url").toString("utf8")) as FlatAssetsCursor;
-    if (typeof parsed.rootIndex !== "number" || !Array.isArray(parsed.queue)) return null;
+    if (typeof parsed.rootIndex !== "number") return null;
     return parsed;
   } catch {
     return null;
@@ -42,59 +43,85 @@ function matchesSearch(key: string, search?: string): boolean {
   return key.toLowerCase().includes(search.toLowerCase());
 }
 
+function isListableFile(key: string, size: number): boolean {
+  return size > 0 && !key.endsWith("/") && !isFrameKey(key);
+}
+
 export async function listFlatAssetsPage(
   limit: number,
   cursorToken?: string,
   search?: string
 ): Promise<{ assets: S3Asset[]; nextCursor: string | undefined }> {
-  let state: FlatAssetsCursor = decodeFlatCursor(cursorToken) ?? {
+  const state: FlatAssetsCursor = decodeFlatCursor(cursorToken) ?? {
     rootIndex: 0,
-    queue: [FLAT_ROOTS[0]],
   };
 
   const collected: S3Asset[] = [];
 
   while (collected.length < limit && state.rootIndex < FLAT_ROOTS.length) {
-    if (state.queue.length === 0) {
-      state.rootIndex += 1;
-      if (state.rootIndex >= FLAT_ROOTS.length) break;
-      state.queue = [FLAT_ROOTS[state.rootIndex]!];
-      state.listCursor = undefined;
-      continue;
-    }
+    const prefix = FLAT_ROOTS[state.rootIndex]!;
+    const page = await listFlatObjectKeysPage(prefix, 1000, state.continuationToken);
+    const objects = page.objects.filter((obj) => isListableFile(obj.key, obj.size));
 
-    const prefix = state.queue[state.queue.length - 1]!;
-    const page = await listStorageDelimiterPage(prefix, Math.max(limit * 4, 100), state.listCursor);
+    let advancedPastLastKey = !state.lastKey;
 
-    for (const file of page.files) {
-      if (isFrameKey(file.key)) continue;
-      if (!matchesSearch(file.key, search)) continue;
-      collected.push(assetFromKey(file.key, file.size, file.lastModified));
+    for (const obj of objects) {
+      const key = obj.key;
+      if (!advancedPastLastKey) {
+        if (key === state.lastKey) {
+          advancedPastLastKey = true;
+        }
+        continue;
+      }
+      if (!matchesSearch(key, search)) continue;
+
+      collected.push(assetFromKey(key, obj.size, obj.lastModified));
+      state.lastKey = key;
+
       if (collected.length >= limit) break;
     }
 
     if (collected.length >= limit) {
-      state.listCursor = page.nextCursor;
-      break;
-    }
+      const hasMoreInBatch =
+        advancedPastLastKey &&
+        objects.some((obj) => {
+          const key = obj.key;
+          if (!matchesSearch(key, search)) return false;
+          return state.lastKey ? key > state.lastKey : true;
+        });
 
-    if (page.nextCursor) {
-      state.listCursor = page.nextCursor;
+      if (hasMoreInBatch) {
+        break;
+      }
+
+      if (page.nextCursor) {
+        state.continuationToken = page.nextCursor;
+        state.lastKey = undefined;
+        break;
+      }
+
+      state.rootIndex += 1;
+      state.continuationToken = undefined;
+      state.lastKey = undefined;
       continue;
     }
 
-    for (const folder of page.folders) {
-      if (!isFrameKey(folder) && !state.queue.includes(folder)) {
-        state.queue.push(folder);
-      }
+    if (page.nextCursor) {
+      state.continuationToken = page.nextCursor;
+      state.lastKey = undefined;
+      continue;
     }
 
-    state.queue.pop();
-    state.listCursor = undefined;
+    state.rootIndex += 1;
+    state.continuationToken = undefined;
+    state.lastKey = undefined;
   }
 
+  const exhausted =
+    state.rootIndex >= FLAT_ROOTS.length && !state.continuationToken && collected.length < limit;
+
   const nextCursor =
-    state.rootIndex >= FLAT_ROOTS.length && state.queue.length === 0 && !state.listCursor
+    exhausted || (collected.length === 0 && state.rootIndex >= FLAT_ROOTS.length)
       ? undefined
       : encodeFlatCursor(state);
 

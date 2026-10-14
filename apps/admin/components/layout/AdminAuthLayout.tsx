@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { BrandLogoSquare } from "@/components/BrandLogo";
+import { BrandLogo } from "@/components/BrandLogo";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import {
   Card,
@@ -43,9 +43,7 @@ export interface AdminAuthBrandProps {
 export function AdminAuthBrand({ subtitle }: AdminAuthBrandProps) {
   return (
     <div className="flex flex-col items-center gap-3 text-center">
-      <div className="flex size-12 items-center justify-center rounded-full border border-primary/20 bg-primary/10 shadow-sm">
-        <BrandLogoSquare className="size-6 text-primary" aria-hidden />
-      </div>
+      <BrandLogo className="h-12 w-auto max-w-[min(100%,260px)] object-contain" />
       {subtitle ? (
         <p className="text-sm leading-relaxed text-muted-foreground">{subtitle}</p>
       ) : null}

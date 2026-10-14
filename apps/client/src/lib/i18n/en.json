@@ -199,6 +199,10 @@
     "tryAgain": "Try again"
   },
   "auth": {
+    "account": {
+      "heading": "Welcome",
+      "subtitle": "Sign in or create your Online Competitions account"
+    },
     "login": {
       "heading": "Welcome back",
       "subtitle": "Sign in to your Online Competitions account"
@@ -245,6 +249,7 @@
       "magicLink": "Magic link",
       "or": "or",
       "signInMethod": "Sign-in method",
+      "accountMode": "Sign in or register",
       "emailMeLink": "Email me a sign-in link",
       "sending": "Sending…",
       "magicLinkSent": "Magic link sent!",
@@ -1265,7 +1270,8 @@
         "purchase": "Purchase",
         "purchase_refund": "Purchase refund",
         "admin_credit": "Credit",
-        "admin_debit": "Debit"
+        "admin_debit": "Debit",
+        "prize_credit": "Prize win"
       },
       "statusLabels": {
         "pending": "Pending",

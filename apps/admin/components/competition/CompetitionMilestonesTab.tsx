@@ -6,7 +6,9 @@ import {
   useAdminBonusAwardAssignments,
   useAdminBonusAwardCapacity,
 } from "@oc/api-admin";
-import { ChevronDown, ChevronRight, Gift, Star, Trophy } from "@oc/icons";
+import { BonusAwardFormSheet } from "@/app/(dashboard)/bonus-awards/page";
+import { ChevronDown, ChevronRight, Gift, Plus, Star, Trophy } from "@oc/icons";
+import Link from "next/link";
 import type {
   AdminBonusAward,
   AdminBonusAwardAssignment,
@@ -21,6 +23,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { FieldDescription, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
 
@@ -167,11 +170,18 @@ export function CompetitionMilestonesTab({ competitionId, onAddBonus, onEditBonu
           <div className="flex items-center justify-between">
             <div>
               <CardTitle>Milestones</CardTitle>
-              <CardDescription>
-                {totalActive} of 99 milestones configured &middot; {activeFired} fired &middot;{" "}
-                <a href="/bonus-awards" className="underline underline-offset-2 hover:text-gold">
-                  View all
-                </a>
+              <CardDescription className="max-w-2xl space-y-1">
+                <span className="block">
+                  When ticket sales hit a % of max tickets, the site auto-draws winners for a{" "}
+                  <strong className="font-medium text-foreground">milestone template</strong> (from
+                  Milestone Templates).
+                </span>
+                <span className="block text-xs">
+                  {totalActive} of 99 on this competition &middot; {activeFired} fired &middot;{" "}
+                  <Link href="/bonus-awards" className="underline underline-offset-2 hover:text-gold">
+                    Milestone Templates
+                  </Link>
+                </span>
               </CardDescription>
             </div>
             <Button type="button" onClick={onAddBonus} size="sm">
@@ -180,6 +190,23 @@ export function CompetitionMilestonesTab({ competitionId, onAddBonus, onEditBonu
           </div>
         </CardHeader>
       </Card>
+
+      <Alert>
+        <AlertTitle>How milestones work</AlertTitle>
+        <AlertDescription className="text-pretty">
+          <ol className="mt-2 list-decimal space-y-1 pl-4 text-sm">
+            <li>
+              Create reusable prizes under{" "}
+              <Link href="/bonus-awards" className="font-medium text-primary underline-offset-4 hover:underline">
+                Milestone Templates
+              </Link>{" "}
+              (title, value, image).
+            </li>
+            <li>Save this competition, open the Milestones tab, and click Add Milestone.</li>
+            <li>Pick a library prize, then set the trigger % (e.g. 50% of tickets sold) and how many winners.</li>
+          </ol>
+        </AlertDescription>
+      </Alert>
 
       {isLoading ? (
         Array.from({ length: 3 }).map((_, i) => (
@@ -218,7 +245,7 @@ export function CompetitionMilestonesTab({ competitionId, onAddBonus, onEditBonu
         description={
           deleteConfirm?.wonCount && deleteConfirm.wonCount > 0
             ? "This milestone has already produced winners. It will be archived and hidden from the public view."
-            : "Remove this bonus award milestone?"
+            : "Remove this milestone?"
         }
         onConfirm={async () => {
           if (!deleteConfirm) return;
@@ -238,6 +265,7 @@ export function AddMilestoneDrawer({
   open,
   onOpenChange,
   editingAssignmentId,
+  preselectedBonusAwardId,
   maxTickets,
   ticketsSold = 0,
 }: {
@@ -245,6 +273,7 @@ export function AddMilestoneDrawer({
   open: boolean;
   onOpenChange: (open: boolean) => void;
   editingAssignmentId?: string | null;
+  preselectedBonusAwardId?: string | null;
   maxTickets: number;
   ticketsSold?: number;
 }) {
@@ -265,6 +294,7 @@ export function AddMilestoneDrawer({
   const [quantity, setQuantity] = useState<number>(1);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
+  const [createPrizeOpen, setCreatePrizeOpen] = useState(false);
 
   useEffect(() => {
     if (!open) {
@@ -274,8 +304,17 @@ export function AddMilestoneDrawer({
       setQuantity(1);
       setError("");
       setSubmitting(false);
+      return;
     }
-  }, [open, initialPct]);
+    if (editingAssignmentId) {
+      setStep(2);
+      return;
+    }
+    if (preselectedBonusAwardId) {
+      setSelectedPrizeId(preselectedBonusAwardId);
+      setStep(2);
+    }
+  }, [open, initialPct, editingAssignmentId, preselectedBonusAwardId]);
 
   const usedPcts = capacity?.usedPcts ?? [];
   const isUpdate = !!editingAssignmentId;
@@ -339,26 +378,45 @@ export function AddMilestoneDrawer({
           <DialogTitle>{isUpdate ? "Edit" : "Add"} Milestone</DialogTitle>
         </DialogHeader>
         {step === 1 ? (
-          <div>
-            <h4 className="mb-3 text-sm font-medium">Select Prize</h4>
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Each option below is a{" "}
+              <strong className="font-medium text-foreground">Milestone template</strong> (shared
+              library). Names like &ldquo;Instant 250 Cash&rdquo; were created under{" "}
+              <Link href="/bonus-awards" className="text-primary underline-offset-4 hover:underline">
+                Milestone Templates
+              </Link>{" "}
+              in the sidebar — not on this competition.
+            </p>
+            <Button type="button" size="sm" onClick={() => setCreatePrizeOpen(true)}>
+              <Plus className="size-4" />
+              Create new prize for this list
+            </Button>
             <ScrollArea className="h-64">
               <div className="space-y-2">
-                {templates.map((t) => (
-                  <button
-                    key={t._id}
-                    type="button"
-                    onClick={() => {
-                      setSelectedPrizeId(t._id);
-                      setStep(2);
-                    }}
-                    className="w-full rounded-lg border p-3 text-left text-sm hover:bg-accent"
-                  >
-                    <div className="font-medium">{t.title}</div>
-                    {t.value ? (
-                      <div className="text-muted-foreground">&pound;{t.value.toLocaleString()}</div>
-                    ) : null}
-                  </button>
-                ))}
+                {templates.length === 0 ? (
+                  <p className="rounded-lg border border-dashed p-4 text-center text-sm text-muted-foreground">
+                    No prizes in the library yet. Use &ldquo;Create new prize for this list&rdquo;
+                    above.
+                  </p>
+                ) : (
+                  templates.map((t) => (
+                    <button
+                      key={t._id}
+                      type="button"
+                      onClick={() => {
+                        setSelectedPrizeId(t._id);
+                        setStep(2);
+                      }}
+                      className="w-full rounded-lg border p-3 text-left text-sm hover:bg-accent"
+                    >
+                      <div className="font-medium">{t.title}</div>
+                      {t.value ? (
+                        <div className="text-muted-foreground">&pound;{t.value.toLocaleString()}</div>
+                      ) : null}
+                    </button>
+                  ))
+                )}
               </div>
             </ScrollArea>
           </div>
@@ -402,6 +460,15 @@ export function AddMilestoneDrawer({
           </div>
         )}
       </DialogContent>
+
+      <BonusAwardFormSheet
+        open={createPrizeOpen}
+        onOpenChange={setCreatePrizeOpen}
+        onCreated={(award) => {
+          setSelectedPrizeId(award._id);
+          setStep(2);
+        }}
+      />
     </Dialog>
   );
 }

@@ -78,7 +78,7 @@ function WinnersEmptyState() {
           </Link>
         </GoldOutlineButton>
         <GoldOutlineButton asChild size="lg">
-          <Link href="/auth/sign-up" data-umami-event="winners:create-account">
+          <Link href="/auth/login?mode=sign-up" data-umami-event="winners:create-account">
             {t("staticPages.winners.createFreeAccount")}
           </Link>
         </GoldOutlineButton>
@@ -337,7 +337,7 @@ export default function Page() {
                 </Link>
               </GoldOutlineButton>
               <GoldOutlineButton asChild size="lg">
-                <Link href="/auth/sign-up">{t("staticPages.winners.signUpFree")}</Link>
+                <Link href="/auth/login?mode=sign-up">{t("staticPages.winners.signUpFree")}</Link>
               </GoldOutlineButton>
             </div>
           </div>

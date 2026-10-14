@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { ukCountryCodeOptionalSchema } from "./address";
 
 const selfExclusionDurationSchema = z.enum(["6months", "1year", "5years", "permanent"]);
 
@@ -46,7 +47,7 @@ export const adminUserProfilePatchSchema = z.object({
   addressLine2: z.string().trim().max(200).optional(),
   city: z.string().trim().max(100).optional(),
   postcode: z.string().trim().max(20).optional(),
-  country: z.string().trim().max(2).optional(),
+  country: ukCountryCodeOptionalSchema,
   marketingConsent: z.boolean().optional(),
   dateOfBirth: z.string().datetime().optional(),
 });

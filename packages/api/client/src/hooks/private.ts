@@ -35,3 +35,8 @@ export {
 } from "./private/profile";
 export { useSaferPlay, useSaferPlayMutations } from "./private/safer-play";
 export { useMyReferralTickets, useRedeemReferralTickets } from "./private/tickets";
+export {
+  getPersonalisationSessionKey,
+  usePersonalisationAck,
+  usePersonalisationAction,
+} from "./private/personalisation";

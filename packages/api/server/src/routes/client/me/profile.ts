@@ -15,6 +15,7 @@ import { parsePagination } from "@oc/api-infra/pagination";
 import { error, paginated, success } from "@oc/api-infra/response";
 import { captureRouteError } from "@oc/api-infra/sentry";
 import { requireSession } from "@oc/api-server/middleware/auth";
+import { ukCountryCodeSchema } from "@oc/api-validation";
 import { createOnlineCompetitionsProfile, reassignGuestOrdersByEmail } from "@oc/auth-admin/auth-hooks";
 import { Hono } from "hono";
 import mongoose from "mongoose";
@@ -105,6 +106,19 @@ app.put("/", async (c) => {
       if (body[field] !== undefined) {
         updateData[field] = body[field];
       }
+    }
+
+    if (updateData.country !== undefined) {
+      const countryResult = ukCountryCodeSchema.safeParse(updateData.country);
+      if (!countryResult.success) {
+        return error(
+          c,
+          ErrorCodes.VALIDATION_ERROR,
+          "Only United Kingdom addresses are accepted",
+          400
+        );
+      }
+      updateData.country = countryResult.data;
     }
 
     if (updateData.dateOfBirth) {

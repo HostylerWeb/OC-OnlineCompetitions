@@ -66,6 +66,7 @@ function formatBonusAward(award: Record<string, unknown>): AdminBonusAward {
     images: (award.images as string[]) ?? [],
     isActive: (award.isActive as boolean) ?? true,
     type: (award.type as "prize" | "competition_ticket") ?? "prize",
+    prizeCategory: award.prizeCategory as AdminBonusAward["prizeCategory"],
     linkedCompetitionId: award.linkedCompetitionId
       ? (award.linkedCompetitionId as Types.ObjectId).toString()
       : undefined,
@@ -180,6 +181,7 @@ app.get("/", async (c) => {
           images: 1,
           isActive: 1,
           type: 1,
+          prizeCategory: 1,
           linkedCompetitionId: 1,
           linkedCompetition: {
             title: { $ifNull: ["$linkedComp.title", ""] },
@@ -273,6 +275,11 @@ app.post(
         type: body.type,
         ticketCount: body.ticketCount,
       };
+      if (body.type === "competition_ticket") {
+        data.prizeCategory = undefined;
+      } else {
+        data.prizeCategory = body.prizeCategory ?? "physical";
+      }
       if (body.linkedCompetitionId) {
         const lid = body.linkedCompetitionId;
         if (!Types.ObjectId.isValid(lid)) {
@@ -1437,6 +1444,7 @@ app.get("/:id", async (c) => {
           images: 1,
           isActive: 1,
           type: 1,
+          prizeCategory: 1,
           linkedCompetitionId: 1,
           linkedCompetition: {
             title: { $ifNull: ["$linkedComp.title", ""] },
@@ -1486,6 +1494,10 @@ app.put(
       if (body.images !== undefined) updateData.images = body.images;
       if (body.isActive !== undefined) updateData.isActive = body.isActive;
       if (body.type !== undefined) updateData.type = body.type;
+      if (body.prizeCategory !== undefined) updateData.prizeCategory = body.prizeCategory;
+      if (body.type === "competition_ticket") {
+        updateData.prizeCategory = null;
+      }
       if (body.ticketCount !== undefined) updateData.ticketCount = body.ticketCount;
       if (body.linkedCompetitionId !== undefined) {
         const lid = body.linkedCompetitionId;

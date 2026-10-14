@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { ukCountryCodeOptionalSchema } from "./address";
 
 export const addCartItemSchema = z.object({
   competitionId: z.string().min(1, "competitionId is required"),
@@ -43,7 +44,7 @@ export const createPaymentSessionSchema = z.object({
       addressLine2: z.string().optional(),
       city: z.string().min(1),
       postcode: z.string().min(1),
-      country: z.string().optional(),
+      country: ukCountryCodeOptionalSchema,
     })
     .optional(),
   cartId: z.string().optional(),

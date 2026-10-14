@@ -224,6 +224,28 @@ describe("shop checkout stripe — POST / (create Checkout Session)", () => {
     });
   });
 
+  test("rejects non-UK shipping country", async () => {
+    const res = await checkoutApp.request("http://localhost/", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(
+        checkoutPostBody({
+          shippingAddress: {
+            firstName: "Ada",
+            lastName: "Lovelace",
+            addressLine1: "1 Analytical Engine Way",
+            city: "London",
+            postcode: "SW1A 1AA",
+            country: "US",
+          },
+        })
+      ),
+    });
+
+    expect(res.status).toBe(400);
+    expect(__mock.createCheckoutSession).not.toHaveBeenCalled();
+  });
+
   test("builds Stripe redirect URLs from the configured SHOP_URL (Origin header never used)", async () => {
     const res = await checkoutApp.request("http://localhost/", {
       method: "POST",

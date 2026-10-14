@@ -43,6 +43,7 @@ app.get(
           value?: number;
           images: string[];
           type: "prize" | "competition_ticket";
+          prizeCategory?: "cash" | "site_credit" | "physical";
           ticketCount?: number;
         };
         return {
@@ -61,6 +62,7 @@ app.get(
             value: ba.value,
             images: ba.images ?? [],
             type: ba.type ?? "prize",
+            prizeCategory: ba.prizeCategory,
             ticketCount: ba.ticketCount,
           },
         };

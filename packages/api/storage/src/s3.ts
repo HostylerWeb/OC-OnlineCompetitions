@@ -38,15 +38,28 @@ function buildEndpoint(): string {
   return "";
 }
 
-const _s3Config = {
-  accessKeyId: getEnv("S3_ACCESS_KEY_ID") || getEnv("AWS_ACCESS_KEY_ID") || "",
-  secretAccessKey: getEnv("S3_SECRET_ACCESS_KEY") || getEnv("AWS_SECRET_ACCESS_KEY") || "",
-  endpoint: buildEndpoint(),
-  region: getEnv("AWS_REGION") || "auto",
-} as const;
+function resolveS3Credentials(): { accessKeyId: string; secretAccessKey: string } {
+  const accessKeyId =
+    getEnv("S3_ACCESS_KEY_ID") ||
+    process.env.S3_ACCESS_KEY ||
+    getEnv("AWS_ACCESS_KEY_ID") ||
+    "";
+  const secretAccessKey =
+    getEnv("S3_SECRET_ACCESS_KEY") ||
+    process.env.S3_SECRET_KEY ||
+    getEnv("AWS_SECRET_ACCESS_KEY") ||
+    "";
+  return { accessKeyId, secretAccessKey };
+}
 
 function getS3mini(): S3mini {
-  return new S3mini(_s3Config);
+  const { accessKeyId, secretAccessKey } = resolveS3Credentials();
+  return new S3mini({
+    accessKeyId,
+    secretAccessKey,
+    endpoint: buildEndpoint(),
+    region: getEnv("AWS_REGION") || "auto",
+  });
 }
 
 export function getAssetBaseUrl(): string {
@@ -245,8 +258,7 @@ async function signedRequestHead(
 }
 
 export async function headObject(key: string): Promise<ObjectMetadata | null> {
-  const accessKeyId = getEnv("S3_ACCESS_KEY_ID") || getEnv("AWS_ACCESS_KEY_ID") || "";
-  const secretAccessKey = getEnv("S3_SECRET_ACCESS_KEY") || getEnv("AWS_SECRET_ACCESS_KEY") || "";
+  const { accessKeyId, secretAccessKey } = resolveS3Credentials();
   const region = getEnv("AWS_REGION") || "auto";
   const endpoint = buildEndpoint();
   if (!endpoint) {
@@ -299,6 +311,27 @@ export async function headObject(key: string): Promise<ObjectMetadata | null> {
 export async function getPresignedDownloadUrl(key: string): Promise<string> {
   const s3 = getS3mini();
   return s3.getPresignedUrl("GET", key, 300);
+}
+
+/** List object keys under a prefix (recursive, no delimiter). */
+export async function listFlatObjectKeysPage(
+  prefix: string,
+  limit: number,
+  cursor?: string
+): Promise<{
+  objects: { key: string; size: number; lastModified: Date }[];
+  nextCursor: string | undefined;
+}> {
+  const s3 = getS3mini();
+  const result = await s3.listObjectsPaged("/", prefix, limit, cursor);
+  const objects = (result?.objects ?? [])
+    .filter((obj) => obj.Key && (obj.Size ?? 0) > 0 && !obj.Key.endsWith("/"))
+    .map((obj) => ({
+      key: obj.Key!,
+      size: obj.Size || 0,
+      lastModified: obj.LastModified ? new Date(obj.LastModified) : new Date(0),
+    }));
+  return { objects, nextCursor: result?.nextContinuationToken };
 }
 
 export async function listStorageDelimiterPage(
@@ -396,6 +429,4 @@ export async function deleteObjects(keys: string[]): Promise<void> {
   }
 }
 
-export function resetS3ClientForTests(): void {
-  void _s3Config;
-}
+export function resetS3ClientForTests(): void {}

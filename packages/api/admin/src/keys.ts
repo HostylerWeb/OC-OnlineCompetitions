@@ -132,6 +132,7 @@ export const queryKeys = {
     emailSettings: () => ["admin", "email-settings"] as const,
     seoSettings: () => ["admin", "seo-settings"] as const,
     conversionSettings: () => ["admin", "conversion-settings"] as const,
+    aiPersonalisationSettings: () => ["admin", "ai-personalisation-settings"] as const,
     mediaConverterSettings: () => ["admin", "media-converter-settings"] as const,
     mediaConverterBulkPreview: () => ["admin", "media-converter-settings", "bulk-preview"] as const,
     conversionPostbacks: (filters: Record<string, string | undefined>) =>

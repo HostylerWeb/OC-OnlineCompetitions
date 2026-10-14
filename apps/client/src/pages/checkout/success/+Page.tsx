@@ -556,7 +556,7 @@ function CheckoutSuccessPageContent() {
                     <div className="flex flex-col sm:flex-row gap-3">
                       <GoldOutlineButton asChild>
                         <Link
-                          href="/auth/sign-up?returnTo=/dashboard"
+                          href="/auth/login?mode=sign-up&returnTo=/dashboard"
                           data-umami-event="checkout:post-purchase-create-account"
                         >
                           {t("checkout.success.createAccount")}

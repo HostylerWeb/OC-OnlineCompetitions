@@ -4,6 +4,7 @@ import { ImageGallery } from "@/components/media/ImageGallery";
 import { ImageShowcasePanel } from "@/components/media/ImageShowcasePanel";
 import { FieldDescription, FieldGroup, FieldLegend } from "@/components/ui/field";
 import { Separator } from "@/components/ui/separator";
+import { CompetitionAiAssist } from "./CompetitionAiAssist";
 import type { CompetitionFormState } from "./types";
 
 interface CompetitionImagesTabProps {
@@ -55,10 +56,22 @@ function CompetitionImagesTab({
   return (
     <FieldGroup className="gap-8">
       <section className="flex flex-col gap-4">
-        <div className="flex flex-col gap-1">
-          <FieldLegend variant="label">Image pool</FieldLegend>
-          <FieldDescription>Upload and manage all images for this competition.</FieldDescription>
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+          <div className="flex flex-col gap-1">
+            <FieldLegend variant="label">Image pool</FieldLegend>
+            <FieldDescription>Upload and manage all images for this competition.</FieldDescription>
+          </div>
+          <CompetitionAiAssist
+            form={form}
+            onFormUpdate={onFormUpdate}
+            mode="image"
+            onSessionUploadedUrl={onSessionUploadedUrl}
+          />
         </div>
+        <FieldDescription>
+          Generate with AI requires title and full description on the Details tab. Creates a 1:1
+          primary image using your saved OpenRouter prompt and reference.
+        </FieldDescription>
 
         <ImageGallery
           images={form.images}

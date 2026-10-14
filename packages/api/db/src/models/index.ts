@@ -1,3 +1,16 @@
+export type { IAiPersonalisationSettings } from "./AiPersonalisationSettings";
+export {
+  AiPersonalisationSettings,
+  DEFAULT_AI_PERSONALISATION_SETTINGS,
+} from "./AiPersonalisationSettings";
+export type { IPersonalisationPlannerRun } from "./PersonalisationPlannerRun";
+export { PersonalisationPlannerRun } from "./PersonalisationPlannerRun";
+export type { IUserActivityDay } from "./UserActivityDay";
+export { UserActivityDay } from "./UserActivityDay";
+export type { IUserPersonalisationFeatures } from "./UserPersonalisationFeatures";
+export { UserPersonalisationFeatures } from "./UserPersonalisationFeatures";
+export type { IUserPersonalisationPlan } from "./UserPersonalisationPlan";
+export { UserPersonalisationPlan } from "./UserPersonalisationPlan";
 export type { IBalance } from "./Balance";
 export { Balance } from "./Balance";
 export type {

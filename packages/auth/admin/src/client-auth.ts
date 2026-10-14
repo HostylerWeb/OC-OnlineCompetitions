@@ -7,7 +7,8 @@ import { getEnv } from "@oc/env/server";
 import { getSessionCookiePrefix } from "@oc/utils";
 import { APIError } from "better-auth/api";
 import { betterAuth } from "better-auth/minimal";
-import { admin, anonymous, captcha, emailOTP, magicLink } from "better-auth/plugins";
+import { admin, anonymous, emailOTP, magicLink } from "better-auth/plugins";
+import { turnstileCaptchaPlugins } from "./turnstile-captcha-plugin";
 import { type BuildAuthConfig, buildAuth } from "./build-auth";
 import { createTrustedOriginsResolver } from "./trusted-origins";
 
@@ -85,10 +86,7 @@ export async function getClientAuth() {
           },
         }),
         admin({ defaultRole: "user", adminRoles: ["admin"] }),
-        captcha({
-          provider: "cloudflare-turnstile",
-          secretKey: getEnv("TURNSTILE_SECRET_KEY"),
-        }),
+        ...turnstileCaptchaPlugins(),
       ],
       hooks: {
         before: createUnverifiedSignUpUpsertHook(),

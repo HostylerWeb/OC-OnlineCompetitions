@@ -69,6 +69,16 @@ export {
   useHomepageLayoutMutations,
 } from "./admin/homepage-layout-settings";
 export {
+  useAdminAiPersonalisationSettings,
+  useAdminAiPersonalisationSettingsMutations,
+  useAdminOpenRouterModelsScan,
+  useAdminOpenRouterImageModelsScan,
+  useAdminCompetitionAiGenerateImage,
+  useAdminCompetitionAiEnhanceDescription,
+  useAdminPersonalisationPlannerLatestRun,
+  useAdminRunPersonalisationPlanner,
+} from "./admin/ai-personalisation-settings";
+export {
   useAdminMediaConverterBulkMutations,
   useAdminMediaConverterBulkPreview,
   useAdminMediaConverterSettings,

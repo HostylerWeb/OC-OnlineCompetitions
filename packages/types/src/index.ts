@@ -1,4 +1,5 @@
 export * from "./admin";
+export * from "./ai-personalisation";
 export * from "./admin-roles";
 export * from "./admin-table";
 export * from "./auth";

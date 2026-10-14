@@ -1123,6 +1123,7 @@ export default function CompetitionsAdminPage() {
           if (!open) bonusDrawer.close();
         }}
         editingAssignmentId={bonusDrawer.editingAssignmentId}
+        preselectedBonusAwardId={bonusDrawer.preselectedBonusAwardId}
         maxTickets={bonusDrawer.maxTickets}
         ticketsSold={bonusDrawer.ticketsSold ?? rawCompetition?.ticketsSold ?? 0}
       />

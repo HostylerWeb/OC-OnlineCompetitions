@@ -46,6 +46,7 @@ interface SignUpFormProps {
   } | null;
   referralDiscountPercent?: number | null;
   googleSignUpError?: boolean;
+  showLoginLink?: boolean;
   localize?: (key: string, params?: Record<string, string | number>) => string;
 }
 
@@ -85,6 +86,7 @@ export function SignUpForm({
   referralDiscountPercent: referralDiscountPercentProp,
   referrerName: referrerNameProp,
   googleSignUpError = false,
+  showLoginLink = true,
   localize,
 }: SignUpFormProps) {
   const resolvedSearchParams =
@@ -419,12 +421,14 @@ export function SignUpForm({
           )}
         </button>
 
-        <p className="text-center text-sm text-muted-foreground">
-          {localize?.("auth.form.alreadyHaveAccount") ?? "Already have an account?"}{" "}
-          <LinkC href={loginPath} className="text-gold hover:underline">
-            {localize?.("auth.form.signInLink") ?? "Sign in"}
-          </LinkC>
-        </p>
+        {showLoginLink ? (
+          <p className="text-center text-sm text-muted-foreground">
+            {localize?.("auth.form.alreadyHaveAccount") ?? "Already have an account?"}{" "}
+            <LinkC href={loginPath} className="text-gold hover:underline">
+              {localize?.("auth.form.signInLink") ?? "Sign in"}
+            </LinkC>
+          </p>
+        ) : null}
       </form>
     </div>
   );

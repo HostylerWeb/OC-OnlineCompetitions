@@ -8,6 +8,8 @@ import {
   Ticket,
 } from "@oc/api-db/models";
 import { CH, invalidateByChannelSafe } from "@oc/api-infra/cache";
+import { invalidateUser } from "@oc/api-infra/cache/invalidate";
+import { creditSiteCreditForPrizeWin } from "./credit-site-credit-for-prize-win";
 import { type ClientSession, Types } from "mongoose";
 
 function sessionOpts(session?: ClientSession) {
@@ -418,16 +420,48 @@ export async function pickPendingBonusAwardWinners(
       sessionOpts(session)
     );
 
+    const autoCreditSiteCredit =
+      award.type !== "competition_ticket" && award.prizeCategory === "site_credit" && prizeValue > 0;
+
+    if (autoCreditSiteCredit) {
+      const creditedUserIds = new Set<string>();
+      for (const win of wins) {
+        await creditSiteCreditForPrizeWin({
+          userId: win.userId,
+          amount: prizeValue,
+          idempotencyKey: `bonus-award-win:${win._id.toString()}`,
+          note: `Milestone win: ${prizeTitle}`,
+          session,
+        });
+        creditedUserIds.add(win.userId.toString());
+      }
+      for (const uid of creditedUserIds) {
+        void invalidateUser(uid).catch(() => {});
+      }
+    }
+
     const winIds = wins.map((w) => w._id);
+    const autoClaimIds: Types.ObjectId[] = [];
+    if (autoCreditSiteCredit) {
+      autoClaimIds.push(...winIds);
+    }
     if (isGuest) {
+      autoClaimIds.push(...winIds);
+    }
+    const uniqueAutoClaimIds = [...new Set(autoClaimIds.map((id) => id.toString()))].map(
+      (id) => new Types.ObjectId(id)
+    );
+    if (uniqueAutoClaimIds.length > 0) {
       await BonusAwardWin.updateMany(
-        { _id: { $in: winIds } },
+        { _id: { $in: uniqueAutoClaimIds } },
         { $set: { claimed: true, claimedAt: new Date() } },
         sessionOpts(session)
       );
       console.log(
-        "[bonus-award] pickPendingBonusAwardWinners: fireId=%s autoClaimed for isGuest=%s",
+        "[bonus-award] pickPendingBonusAwardWinners: fireId=%s autoClaimed count=%d (siteCredit=%s isGuest=%s)",
         fireId,
+        uniqueAutoClaimIds.length,
+        autoCreditSiteCredit,
         isGuest
       );
     }

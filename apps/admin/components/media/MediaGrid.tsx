@@ -87,6 +87,19 @@ function getExtension(key: string): string {
   return last.slice(dot + 1).toUpperCase();
 }
 
+/** Filename + folder context (e.g. competition slug under prizes/). */
+function mediaKeyLabels(key: string): { filename: string; context: string | null } {
+  const segments = key.split("/").filter(Boolean);
+  const filename = segments.pop() ?? key;
+  if (segments[0] === "prizes" && segments.length >= 2) {
+    return { filename, context: segments.slice(1).join("/") };
+  }
+  if (segments.length > 0) {
+    return { filename, context: segments.join("/") };
+  }
+  return { filename, context: null };
+}
+
 function isImageFile(key: string): boolean {
   return /\.(png|jpg|jpeg|webp|gif|svg|avif)$/i.test(key);
 }
@@ -374,7 +387,11 @@ export function MediaGrid({
         const data = res.data;
         const filtered = (data.assets ?? []).filter((a) => !isFrameKey(a.key));
         if (cursorToken) {
-          setAssets((prev) => [...prev, ...filtered]);
+          setAssets((prev) => {
+            const seen = new Set(prev.map((a) => a.key));
+            const next = filtered.filter((a) => !seen.has(a.key));
+            return [...prev, ...next];
+          });
         } else {
           setAssets(filtered);
         }
@@ -481,13 +498,32 @@ export function MediaGrid({
         setDeleteOpen(false);
         return;
       }
-      await api.post<DeleteBatchResponse>("/api/admin/media/delete-batch", {
+      const res = await api.post<DeleteBatchResponse>("/api/admin/media/delete-batch", {
         keys,
         force: deleteForce,
       });
-      toast.success(`Deleted ${keys.length} file${keys.length === 1 ? "" : "s"}`);
-      setSelected(new Set());
-      setAssets((prev) => prev.filter((a) => !keys.includes(a.key)));
+      const results = res.data.results ?? [];
+      const ok = results.filter((r) => r.success).map((r) => r.key);
+      const failed = results.filter((r) => !r.success);
+      if (ok.length > 0) {
+        setAssets((prev) => prev.filter((a) => !ok.includes(a.key)));
+        toast.success(`Deleted ${ok.length} file${ok.length === 1 ? "" : "s"}`);
+      }
+      if (failed.length > 0) {
+        const inUse = failed.filter((r) => r.error === "in_use").length;
+        const denied = failed.filter((r) => r.error?.includes("AccessDenied")).length;
+        let description = failed[0]?.error ?? "Unknown error";
+        if (inUse > 0) {
+          description = `${inUse} file(s) still referenced. Enable “Force delete” or remove usages first.`;
+        } else if (denied > 0) {
+          description = "Storage denied delete (check S3 credentials on the server).";
+        }
+        toast.error(
+          failed.length === keys.length ? "Nothing was deleted" : "Some files were not deleted",
+          { description }
+        );
+      }
+      if (ok.length > 0) setSelected(new Set());
       setDeleteOpen(false);
     } catch (err) {
       const msg = err instanceof Error ? err.message : "Delete failed";
@@ -1041,7 +1077,8 @@ function GridTile({
   previewable,
   onPreview,
 }: TileProps) {
-  const filename = asset.key.split("/").pop() ?? asset.key;
+  const { filename, context } = mediaKeyLabels(asset.key);
+  const rowLabel = context ? `${filename}, ${context}` : filename;
   const isImage = isImageFile(asset.key);
   const ext = getExtension(asset.key);
   const [imgError, setImgError] = useState(false);
@@ -1057,6 +1094,7 @@ function GridTile({
     <div
       role="button"
       tabIndex={0}
+      aria-label={rowLabel}
       aria-pressed={isSelected || isPreselected || undefined}
       onClick={() => {
         if (manageMode) {
@@ -1110,7 +1148,8 @@ function GridTile({
         {isImage && !imgError ? (
           <AssetImage
             src={asset.url}
-            alt={filename}
+            alt=""
+            aria-hidden
             fill
             className="object-cover"
             onError={() => setImgError(true)}
@@ -1129,7 +1168,7 @@ function GridTile({
 
         <button
           type="button"
-          aria-label={`Copy ${filename} URL`}
+          aria-label={`Copy ${rowLabel} URL`}
           onClick={(e) => {
             e.stopPropagation();
             onCopy(asset.url);
@@ -1153,9 +1192,12 @@ function GridTile({
         </div>
       </div>
 
-      <div className="flex flex-col gap-1 px-2.5 py-2">
+      <div className="flex flex-col gap-0.5 px-2.5 py-2">
         <p className="truncate text-xs font-medium">{filename}</p>
-        <div className="flex items-center justify-between gap-2 text-[10px] text-muted-foreground">
+        {context ? (
+          <p className="truncate text-[10px] text-muted-foreground">{context}</p>
+        ) : null}
+        <div className="flex items-center justify-between gap-2 pt-0.5 text-[10px] text-muted-foreground">
           <span className="truncate">{formatSize(asset.size)}</span>
           {meta?.width && meta.height ? (
             <span className="shrink-0">
@@ -1238,7 +1280,8 @@ function ListRow({
   previewable,
   onPreview,
 }: TileProps) {
-  const filename = asset.key.split("/").pop() ?? asset.key;
+  const { filename, context } = mediaKeyLabels(asset.key);
+  const rowLabel = context ? `${filename}, ${context}` : filename;
   const isImage = isImageFile(asset.key);
   const ext = getExtension(asset.key);
   const [imgError, setImgError] = useState(false);
@@ -1254,6 +1297,7 @@ function ListRow({
     <div
       role="button"
       tabIndex={0}
+      aria-label={rowLabel}
       aria-pressed={isSelected || isPreselected || undefined}
       onClick={() => {
         if (manageMode) {
@@ -1307,7 +1351,8 @@ function ListRow({
         {isImage && !imgError ? (
           <AssetImage
             src={asset.url}
-            alt={filename}
+            alt=""
+            aria-hidden
             fill
             className="object-cover"
             onError={() => setImgError(true)}
@@ -1325,6 +1370,9 @@ function ListRow({
       </div>
       <div className="min-w-0 flex-1">
         <p className="truncate text-sm font-medium">{filename}</p>
+        {context ? (
+          <p className="truncate text-[11px] text-muted-foreground">{context}</p>
+        ) : null}
         <p className="flex items-center gap-2 truncate text-[10px] text-muted-foreground">
           {ext && (
             <Badge variant="outline" className="h-4 px-1 text-[9px] uppercase">
@@ -1338,7 +1386,7 @@ function ListRow({
       <UsageBadge url={asset.url} usages={usages} onHover={() => onPrefetchUsage(asset.url)} />
       <button
         type="button"
-        aria-label={`Copy ${filename} URL`}
+        aria-label={`Copy ${rowLabel} URL`}
         onClick={(e) => {
           e.stopPropagation();
           onCopy(asset.url);

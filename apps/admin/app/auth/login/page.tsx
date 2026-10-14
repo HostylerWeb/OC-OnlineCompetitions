@@ -82,15 +82,7 @@ function AdminLoginForm() {
   });
 
   return (
-    <AuthCard
-      showBrand
-      brandSubtitle="Sign in to the admin dashboard"
-      title={
-        <>
-          <span className="text-primary">Admin</span> Login
-        </>
-      }
-    >
+    <AuthCard showBrand showBrandOnLg={false} brandSubtitle="Sign in to the admin dashboard" title="Sign in">
       <Form {...form}>
         <form onSubmit={onSubmit} className="flex flex-col gap-4">
           <FormField

@@ -10,12 +10,14 @@ export {
   setVerifyOtpEnsuredFlag,
 } from "./auth/ensureFreshVerificationOtp";
 export {
+  AuthAccountForm,
   ChangePasswordForm,
   ForgotPasswordForm,
   ResetPasswordForm,
   SignInForm,
   SignUpForm,
   VerifyEmailForm,
+  type AuthAccountView,
 } from "./auth/forms/index";
 export { normalizeAuthEmail } from "./auth/normalize-email";
 export {
@@ -155,6 +157,7 @@ export {
   applyAuthenticatedDestination,
   buildAuthCallbackUrl,
   buildLoginUrl,
+  buildRegisterUrl,
   buildSignUpUrl,
   buildVerifyRequiredPath,
   getAuthRedirectPath,

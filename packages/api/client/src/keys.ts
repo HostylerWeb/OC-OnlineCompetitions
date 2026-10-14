@@ -63,6 +63,7 @@ export const queryKeys = {
     bonusAwardWinsInfinite: (limit = 20) => ["my", "bonus-award-wins", "infinite", limit] as const,
     pendingOrder: () => ["my", "pending-order"] as const,
     saferPlay: () => ["my", "safer-play"] as const,
+    personalisation: (surface: string) => ["my", "personalisation", surface] as const,
   },
   admin: {
     dashboard: () => ["admin", "dashboard"] as const,

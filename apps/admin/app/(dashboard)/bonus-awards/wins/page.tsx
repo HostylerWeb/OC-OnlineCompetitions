@@ -401,8 +401,8 @@ export default function BonusAwardWinsAdminPage() {
         <div className="flex items-center gap-3">
           <Award className="size-6 text-primary" />
           <div>
-            <h1 className="text-2xl font-bold">Bonus Award Wins{total ? ` (${total})` : ""}</h1>
-            <p className="text-sm text-muted-foreground">Review and manage bonus award claims.</p>
+            <h1 className="text-2xl font-bold">Milestone Wins{total ? ` (${total})` : ""}</h1>
+            <p className="text-sm text-muted-foreground">Review and manage milestone prize claims.</p>
           </div>
         </div>
         <div className="flex items-center gap-2">
@@ -551,7 +551,7 @@ export default function BonusAwardWinsAdminPage() {
             variant: "destructive",
           },
         ]}
-        emptyTitle="No bonus award wins"
+        emptyTitle="No milestone wins"
         emptyDescription="Bonus award wins appear when milestones are reached."
       />
 
@@ -563,7 +563,7 @@ export default function BonusAwardWinsAdminPage() {
         title="Mark as claimed"
         description={
           claimTarget
-            ? `Mark bonus award "${claimTarget.prizeTitle || claimTarget.competitionTitle}" as claimed?`
+            ? `Mark milestone prize "${claimTarget.prizeTitle || claimTarget.competitionTitle}" as claimed?`
             : ""
         }
         isLoading={toggleClaimedMutation.isPending}

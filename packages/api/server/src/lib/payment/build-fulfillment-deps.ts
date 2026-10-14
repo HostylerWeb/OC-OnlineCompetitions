@@ -13,6 +13,7 @@ import type { OrderFulfillmentDeps } from "@oc/api-payment-core";
 import { recordReferralPurchase } from "@oc/api-referrals";
 import { sendPushNotification } from "@oc/api-server/lib/push";
 import { processBonusAwardFires } from "@oc/api-tickets/bonus-award-draw";
+import { creditSiteCreditForPrizeWin } from "@oc/api-tickets/credit-site-credit-for-prize-win";
 import { checkInstantWins } from "@oc/api-tickets/instant-prize-utils";
 import { reservePromoCodeUsage } from "@oc/api-tickets/promo-codes";
 import {
@@ -20,6 +21,7 @@ import {
   releaseByOrderId,
   transferHeldToOwner,
 } from "@oc/api-tickets/ticket-service";
+import { invalidateUser } from "@oc/api-infra/cache/invalidate";
 import { Types } from "mongoose";
 import { sendInstantWinEmail, sendOrderConfirmationEmail } from "../orders";
 import { notifyBonusAwardWins } from "./notify-bonus-award-wins";
@@ -72,6 +74,10 @@ export function buildFulfillmentDeps(
     markInstantPrizeWinClaimed: async (winId, session) => {
       const update: Record<string, unknown> = { claimed: true, claimedAt: new Date() };
       await InstantPrizeWin.findByIdAndUpdate(winId, { $set: update }, session ? { session } : {});
+    },
+    creditSiteCreditForPrizeWin: async (params) => {
+      await creditSiteCreditForPrizeWin(params);
+      void invalidateUser(params.userId.toString()).catch(() => {});
     },
     updateCompetitionInstantPrizeClaimedCount: async (id, session) => {
       await CompetitionInstantPrize.findOneAndUpdate(

@@ -1,3 +1,12 @@
+import type { MilestonePrizeCategory } from "./milestone-prize-setup";
+
+export type { MilestonePrizeCategory, MilestonePrizeSetup } from "./milestone-prize-setup";
+export {
+  milestonePrizeFieldsToSetup,
+  milestonePrizeSetupLabel,
+  milestonePrizeSetupToFields,
+} from "./milestone-prize-setup";
+
 // ─── Admin types ──────────────────────────────────────────────────────────────
 
 export interface AdminBonusAward {
@@ -9,6 +18,7 @@ export interface AdminBonusAward {
   images: string[];
   isActive: boolean;
   type: "prize" | "competition_ticket";
+  prizeCategory?: MilestonePrizeCategory;
   linkedCompetitionId?: string;
   linkedCompetition?: { title: string; imageUrl?: string; status?: string };
   ticketCount?: number;
@@ -88,6 +98,7 @@ export interface PublicBonusAwardEntry {
     value?: number;
     images: string[];
     type: "prize" | "competition_ticket";
+    prizeCategory?: MilestonePrizeCategory;
     ticketCount?: number;
   };
 }
@@ -123,6 +134,7 @@ export interface CreateBonusAwardPayload {
   images?: string[];
   isActive?: boolean;
   type?: "prize" | "competition_ticket";
+  prizeCategory?: MilestonePrizeCategory;
   linkedCompetitionId?: string;
   ticketCount?: number;
   sourceInstantPrizeId?: string;
@@ -135,6 +147,7 @@ export interface UpdateBonusAwardPayload {
   images?: string[];
   isActive?: boolean;
   type?: "prize" | "competition_ticket";
+  prizeCategory?: MilestonePrizeCategory | null;
   linkedCompetitionId?: string;
   ticketCount?: number;
 }
