@@ -29,7 +29,7 @@ export function SkillQuestionSelector({
         </p>
 
         <div
-          className="flex flex-wrap justify-center gap-2"
+          className="grid grid-cols-2 gap-2 lg:grid-cols-4"
           role="radiogroup"
           aria-label={question}
         >
