@@ -19,8 +19,6 @@ import {
 } from "@oc/api-client";
 import {
   ChevronDown,
-  ChevronLeft,
-  ChevronRight,
   Gift,
   Mail,
   Share2,
@@ -29,7 +27,6 @@ import {
   Star,
   Ticket,
   Trophy,
-  ZoomIn,
 } from "@oc/icons";
 import type { PublicBonusAwardEntry, PublicBonusAwardWinDTO } from "@oc/types";
 import {
@@ -50,6 +47,7 @@ import { usePageContext } from "vike-react/usePageContext";
 import { GoldButton, GoldOutlineButton } from "@/components/buttons";
 import { BonusAwardsSection } from "@/components/competitions/bonus-awards";
 import CompetitionFaq from "@/components/competitions/CompetitionFaq";
+import { CompetitionImageGallery } from "@/components/competitions/CompetitionImageGallery";
 import CompetitionInfo from "@/components/competitions/CompetitionInfo";
 import { CountdownTimer } from "@/components/competitions/CountdownTimer";
 import { InstantWinsSection } from "@/components/competitions/instant-wins";
@@ -59,7 +57,6 @@ import { SkillQuestionSelector } from "@/components/competitions/SkillQuestionSe
 import { Link } from "@/components/Link";
 import { BrandDialog } from "@/components/brand-dialog";
 import { ShareDialog } from "@/components/share-dialog";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CompetitionProgressBar } from "@/components/ui/competition-progress-bar";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -444,7 +441,7 @@ export default function Page() {
       return (
         <div className="oc-container-wide py-5 lg:py-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <Skeleton className="aspect-[4/5] rounded-[2rem]" shimmer />
+            <Skeleton className="aspect-square rounded-[2rem]" shimmer />
             <div className="space-y-6">
               <div>
                 <Skeleton className="h-6 w-40 mb-3" shimmer />
@@ -495,7 +492,13 @@ export default function Page() {
     ])
   );
   const images = allImages.filter((url) => !failedImages.has(url));
-  const mainImageUrl = images[currentImageIndex] ?? null;
+
+  const galleryStatusBadge =
+    statusConfig[competition.status] ??
+    statusConfig.active ?? {
+      label: t("competitions.detail.active"),
+      className: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
+    };
 
   return (
     <>
@@ -504,111 +507,19 @@ export default function Page() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
           <div className="space-y-4 lg:space-y-6">
-            <div className="relative aspect-[4/3] lg:aspect-[3/2] bg-gradient-to-br from-gold/20 to-gold/5 rounded-xl lg:rounded-2xl border border-gold/20 overflow-hidden group">
-              {mainImageUrl && !failedImages.has(mainImageUrl) ? (
-                <img
-                  src={mainImageUrl}
-                  alt={competition.title}
-                  className="absolute inset-0 w-full h-full object-cover cursor-zoom-in"
-                  onClick={() => setLightboxOpen(true)}
-                  onError={() => setFailedImages((prev) => new Set(prev).add(mainImageUrl))}
-                  data-umami-event="competition:image-click"
-                  data-umami-event-id={slug}
-                />
-              ) : (
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <Trophy className="w-24 h-24 text-gold/40" />
-                </div>
-              )}
-
-              {images.length > 0 && (
-                <div
-                  className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20 cursor-zoom-in"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setLightboxOpen(true);
-                  }}
-                >
-                  <ZoomIn className="w-10 h-10 text-white/80" />
-                </div>
-              )}
-
-              {images.length > 1 && (
-                <>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background"
-                    onClick={() =>
-                      setCurrentImageIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1))
-                    }
-                    data-umami-event="competition:image-prev"
-                  >
-                    <ChevronLeft className="w-5 h-5" />
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background"
-                    onClick={() =>
-                      setCurrentImageIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1))
-                    }
-                    data-umami-event="competition:image-next"
-                  >
-                    <ChevronRight className="w-5 h-5" />
-                  </Button>
-                </>
-              )}
-
-              {images.length > 1 && (
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 text-white text-xs px-3 py-1 rounded-full">
-                  {currentImageIndex + 1} / {images.length}
-                </div>
-              )}
-
-              {ticketsRemaining === 0 ? (
-                <Badge className="absolute top-4 left-4 bg-red-500/20 text-red-400 border-red-500/30">
-                  {t("competitions.detail.soldOut")}
-                </Badge>
-              ) : (
-                <Badge
-                  className={`absolute top-4 left-4 ${statusConfig[competition.status]?.className ?? statusConfig.active?.className}`}
-                >
-                  {statusConfig[competition.status]?.label ??
-                    statusConfig.active?.label ??
-                    t("competitions.detail.active")}
-                </Badge>
-              )}
-            </div>
-
-            {images.length > 1 && (
-              <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide snap-x snap-mandatory lg:flex-wrap lg:overflow-x-visible lg:gap-3 lg:pb-2 lg:snap-none">
-                {images.map((img, idx) => (
-                  <button
-                    type="button"
-                    key={idx}
-                    onClick={() => {
-                      setCurrentImageIndex(idx);
-                      setLightboxOpen(true);
-                    }}
-                    data-umami-event="competition:thumbnail-click"
-                    data-umami-event-index={idx}
-                    className={`h-16 w-16 lg:h-32 lg:w-32 rounded-lg lg:rounded-xl border-2 flex-shrink-0 snap-start transition-all overflow-hidden relative ${
-                      idx === currentImageIndex
-                        ? "border-gold ring-2 ring-gold/30"
-                        : "border-border hover:border-gold/50 opacity-80 hover:opacity-100"
-                    }`}
-                  >
-                    <img
-                      src={img}
-                      alt=""
-                      className="absolute inset-0 w-full h-full object-cover"
-                      onError={() => setFailedImages((prev) => new Set(prev).add(img))}
-                    />
-                  </button>
-                ))}
-              </div>
-            )}
+            <CompetitionImageGallery
+              images={images}
+              currentIndex={currentImageIndex}
+              onIndexChange={setCurrentImageIndex}
+              title={competition.title}
+              slug={slug}
+              failedImages={failedImages}
+              onImageError={(url) => setFailedImages((prev) => new Set(prev).add(url))}
+              onOpenLightbox={() => setLightboxOpen(true)}
+              statusBadge={galleryStatusBadge}
+              soldOutLabel={t("competitions.detail.soldOut")}
+              isSoldOut={ticketsRemaining === 0}
+            />
           </div>
 
           <div className="space-y-4 lg:space-y-6">

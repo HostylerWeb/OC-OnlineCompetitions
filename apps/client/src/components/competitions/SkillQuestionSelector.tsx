@@ -2,6 +2,13 @@
 
 import { cn } from "@/lib/utils";
 
+function skillAnswerGridClass(optionCount: number): string {
+  if (optionCount <= 1) return "grid-cols-1";
+  if (optionCount === 2) return "grid-cols-2 lg:grid-cols-2";
+  if (optionCount === 3) return "grid-cols-2 lg:grid-cols-3";
+  return "grid-cols-2 lg:grid-cols-4";
+}
+
 export type SkillQuestionSelectorProps = {
   question: string;
   options: string[];
@@ -29,7 +36,7 @@ export function SkillQuestionSelector({
         </p>
 
         <div
-          className="grid grid-cols-2 gap-2 lg:grid-cols-4"
+          className={cn("grid w-full gap-2", skillAnswerGridClass(options.length))}
           role="radiogroup"
           aria-label={question}
         >
