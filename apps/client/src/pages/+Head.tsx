@@ -37,12 +37,6 @@ export function Head() {
       <html lang={locale} />
       <meta name="description" content={description} />
       <meta name="theme-color" content="#C9A84C" />
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600&display=swap"
-        rel="stylesheet"
-      />
       <link rel="icon" type="image/png" href={BRAND_FAVICON_PATH} />
       {avatarPreloadHref ? (
         <link rel="preload" as="image" href={avatarPreloadHref} fetchPriority="high" />

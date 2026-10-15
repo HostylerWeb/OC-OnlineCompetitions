@@ -32,7 +32,7 @@ export function StripeProvider({ clientId, clientSecret, children }: StripeProvi
             colorBackground: "transparent",
             colorPrimary: "#d4af37",
             borderRadius: "8px",
-            fontFamily: "Inter, ui-sans-serif, system-ui, -apple-system, sans-serif",
+            fontFamily: '"Syne", ui-sans-serif, system-ui, sans-serif',
             fontSizeBase: "14px",
           },
         },
