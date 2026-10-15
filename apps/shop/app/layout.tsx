@@ -17,8 +17,8 @@ const BUILD_VERSION = process.env.NEXT_PUBLIC_APP_VERSION || "";
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
   variable: "--font-plus-jakarta",
+  display: "swap",
 });
 
 export const viewport: Viewport = {

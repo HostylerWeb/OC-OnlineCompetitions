@@ -50,8 +50,24 @@ docker compose --env-file /root/onlinecompetitions-secrets.env \
 - UFW: 22, 80, 443
 - 2GB swap, fail2ban, Docker CE
 
+## Application deploy (`/var/www/onlinecompetitions/app`)
+
+```bash
+cd /var/www/onlinecompetitions/app
+git pull origin main
+bun install
+export NODE_OPTIONS="--max-old-space-size=2048"
+bun run build --concurrency=1 --filter=@oc/client --filter=@oc/admin
+systemctl restart oc-client oc-admin
+curl -s -o /dev/null -w "client:%{http_code}\n" http://127.0.0.1:3555/health
+curl -s -o /dev/null -w "admin:%{http_code}\n" http://127.0.0.1:3222/api/health
+```
+
+Admin `prebuild` clears `apps/admin/.next` so Turbopack never reuses a stale cache (avoids `next/font/google` + `@vercel/turbopack-next/internal/font/google/font` errors after interrupted builds).
+
+If admin still fails, run `rm -rf apps/admin/.next` manually and rebuild `@oc/admin`.
+
 ## Not done on this pass
 
 - DNS cutover, TLS site blocks (placeholders only)
-- Application deploy (clone/build/run)
 - Mongo/MinIO data migration from Hetzner
