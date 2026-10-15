@@ -4,6 +4,7 @@ import { ImageGallery } from "@/components/media/ImageGallery";
 import { ImageShowcasePanel } from "@/components/media/ImageShowcasePanel";
 import { FieldDescription, FieldGroup, FieldLegend } from "@/components/ui/field";
 import { Separator } from "@/components/ui/separator";
+import { useEffect, useRef, useState } from "react";
 import { CompetitionAiAssist } from "./CompetitionAiAssist";
 import type { CompetitionFormState } from "./types";
 
@@ -21,6 +22,14 @@ function CompetitionImagesTab({
   onSessionUploadedUrl,
 }: CompetitionImagesTabProps) {
   const slug = form.slug || form.title.toLowerCase().replace(/\s+/g, "-");
+  const galleryAnchorRef = useRef<HTMLDivElement>(null);
+  const [highlightImageUrl, setHighlightImageUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!highlightImageUrl) return;
+    const timer = window.setTimeout(() => setHighlightImageUrl(null), 5000);
+    return () => window.clearTimeout(timer);
+  }, [highlightImageUrl]);
 
   function handleAssignRole(url: string, role: "primary" | "hero" | "og" | "ref") {
     onFormUpdate((prev) => {
@@ -66,15 +75,21 @@ function CompetitionImagesTab({
             onFormUpdate={onFormUpdate}
             mode="image"
             onSessionUploadedUrl={onSessionUploadedUrl}
+            onImageAddedToPool={(url) => {
+              setHighlightImageUrl(url);
+              galleryAnchorRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+            }}
           />
         </div>
         <FieldDescription>
-          Generate with AI requires title and full description on the Details tab. Creates a 1:1
-          primary image using your saved OpenRouter prompt and reference.
+          Generate with AI opens a preview modal (prompt, progress, result) and adds the image here
+          as Primary. Requires title and full description on the Details tab.
         </FieldDescription>
 
+        <div ref={galleryAnchorRef}>
         <ImageGallery
           images={form.images}
+          highlightUrl={highlightImageUrl}
           onChange={(imgsOrFn) => {
             onFormUpdate((prev) => ({
               ...prev,
@@ -87,6 +102,7 @@ function CompetitionImagesTab({
           onUploadsInFlightChange={onUploadsInFlightChange}
           onSessionUploadedUrl={onSessionUploadedUrl}
         />
+        </div>
       </section>
 
       <Separator />

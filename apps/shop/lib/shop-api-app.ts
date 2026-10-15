@@ -1,0 +1,178 @@
+import dbConnect from "@oc/api-infra/db";
+import { ErrorCodes } from "@oc/api-infra/error-codes";
+import { runtimeConfig } from "@oc/api-infra/runtime-config";
+import { captureRouteError } from "@oc/api-infra/sentry";
+import { sessionMiddleware } from "@oc/api-server/middleware/auth";
+import { csrfProtection } from "@oc/api-server/middleware/csrf";
+import {
+  emailRateLimit,
+  paymentRateLimit,
+  rateLimitBodyReader,
+} from "@oc/api-server/middleware/rate-limit";
+import shopPayments from "@oc/api-server/routes/client/payments";
+import shopCart from "@oc/api-server/routes/client/shop/cart";
+import shopCategories from "@oc/api-server/routes/client/shop/categories";
+import shopCheckout from "@oc/api-server/routes/client/shop/checkout";
+import shopOrders from "@oc/api-server/routes/client/shop/orders";
+import shopProducts from "@oc/api-server/routes/client/shop/products";
+import { getClientAuth } from "@oc/auth-admin";
+import { Hono } from "hono";
+import { cors } from "hono/cors";
+import type { ContentfulStatusCode } from "hono/utils/http-status";
+import mongoose from "mongoose";
+
+const app = new Hono({ strict: false });
+
+app.onError(async (err, c) => {
+  const requestId = c.get("requestId") ?? "unknown";
+  const statusCode =
+    "status" in err && typeof err.status === "number"
+      ? err.status
+      : "statusCode" in err && typeof err.statusCode === "number"
+        ? err.statusCode
+        : 500;
+
+  console.error(`[api] Error ${statusCode} on ${c.req.method} ${c.req.path}:`, err);
+
+  captureRouteError(err, {
+    requestId,
+    path: c.req.path,
+    userId: c.get("userId") ?? null,
+    operation: "shop.api.error",
+  });
+
+  if (statusCode >= 500 && statusCode < 600) {
+    return c.json(
+      { error: { code: ErrorCodes.INTERNAL_ERROR, message: "Internal server error" } },
+      statusCode as ContentfulStatusCode
+    );
+  }
+
+  if (typeof err === "object" && err !== null && "message" in err) {
+    return c.json(
+      { error: { code: ErrorCodes.VALIDATION_ERROR, message: (err as Error).message } },
+      statusCode as ContentfulStatusCode
+    );
+  }
+
+  return c.json(
+    { error: { code: ErrorCodes.INTERNAL_ERROR, message: "Internal server error" } },
+    500
+  );
+});
+
+let authInstance: Awaited<ReturnType<typeof getClientAuth>> | null = null;
+app.use("*", async (c, next) => {
+  if (c.req.path === "/api/health" || c.req.path === "/api/health/ready") {
+    return next();
+  }
+  if (!authInstance) {
+    await dbConnect();
+    authInstance = await getClientAuth();
+  }
+  c.set("authInstance", authInstance);
+  return next();
+});
+
+app.use("*", async (c, next) => {
+  await next();
+  c.res.headers.set("X-Frame-Options", "DENY");
+  c.res.headers.set("X-Content-Type-Options", "nosniff");
+  c.res.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
+  c.res.headers.set("Permissions-Policy", "geolocation=(), microphone=(), camera=()");
+  if (runtimeConfig.enableHsts) {
+    c.res.headers.set("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
+  }
+});
+
+app.use("*", async (c, next) => {
+  const requestId = c.req.header("X-Request-ID") || crypto.randomUUID();
+  c.set("requestId", requestId);
+  c.res.headers.set("X-Request-ID", requestId);
+  const start = Date.now();
+  await next();
+  const ms = Date.now() - start;
+  if (!["/api/health", "/api/health/ready"].some((p) => c.req.path === p)) {
+    console.log(
+      JSON.stringify({
+        requestId,
+        timestamp: new Date().toISOString(),
+        method: c.req.method,
+        path: c.req.path,
+        status: c.res.status,
+        duration: ms,
+      })
+    );
+  }
+});
+
+const ALLOWED_ORIGIN_PATTERNS = [
+  /^http:\/\/localhost(:\d+)?$/,
+  /^https:\/\/.*\.onlinecompetitions\.win$/,
+  /^https:\/\/onlinecompetitions\.win$/,
+];
+
+app.use(
+  "*",
+  cors({
+    origin: (origin) =>
+      !origin || ALLOWED_ORIGIN_PATTERNS.some((re) => re.test(origin)) ? origin : null,
+    credentials: true,
+    allowMethods: ["GET", "HEAD", "PUT", "POST", "DELETE", "PATCH", "OPTIONS"],
+    allowHeaders: [
+      "Content-Type",
+      "Authorization",
+      "X-Request-ID",
+      "Cookie",
+      "baggage",
+      "sentry-trace",
+    ],
+    exposeHeaders: ["Set-Cookie"],
+  })
+);
+
+app.use("*", rateLimitBodyReader);
+app.use("*", emailRateLimit());
+app.use("*", csrfProtection());
+
+app.get("/api/version", (c) => {
+  c.res.headers.set("Cache-Control", "no-cache, no-store, must-revalidate");
+  return c.json({ sha: process.env.NEXT_PUBLIC_APP_VERSION || "dev" });
+});
+
+app.get("/api/health", (c) => c.json({ status: "ok", timestamp: new Date().toISOString() }));
+app.get("/api/health/ready", async (c) => {
+  const dbState = mongoose.connection.readyState;
+  const checks: Record<string, string> = {};
+
+  if (dbState !== 1) {
+    checks.database =
+      dbState === 0 ? "disconnected" : dbState === 2 ? "connecting" : "disconnecting";
+  } else {
+    checks.database = "connected";
+  }
+
+  const isHealthy = checks.database === "connected";
+  if (!isHealthy) {
+    return c.json({ status: "unhealthy", checks }, 503);
+  }
+
+  return c.json({ status: "healthy", checks });
+});
+
+app.on(["POST", "GET"], "/api/auth/*", async (c) => {
+  return await authInstance!.handler(c.req.raw);
+});
+
+app.use("*", sessionMiddleware);
+app.use("*", paymentRateLimit());
+
+app.route("/api/shop/products", shopProducts);
+app.route("/api/shop/categories", shopCategories);
+app.route("/api/shop/cart", shopCart);
+app.route("/api/shop/orders", shopOrders);
+app.route("/api/shop/checkout", shopCheckout);
+app.route("/api/payments", shopPayments);
+
+export type ShopApiApp = typeof app;
+export { app as shopApiApp };

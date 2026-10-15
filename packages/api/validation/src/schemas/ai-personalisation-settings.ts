@@ -1,5 +1,22 @@
 import { z } from "zod";
 
+/** Keep in sync with IMAGE_GENERATION_ASPECT_RATIOS in @oc/types (validation must not import @oc/types for Vite client bundles). */
+const imageGenerationAspectRatioValues = [
+  "1:1",
+  "4:3",
+  "3:4",
+  "16:9",
+  "9:16",
+  "3:2",
+  "2:3",
+  "4:5",
+  "5:4",
+  "2:1",
+  "1:2",
+] as const;
+
+const imageGenerationAspectRatioSchema = z.enum(imageGenerationAspectRatioValues);
+
 export const adminAiPersonalisationSettingsUpdateSchema = z.object({
   addonEnabled: z.boolean().optional(),
   openRouterApiKey: z.string().max(500).optional(),
@@ -33,6 +50,7 @@ export const adminAiPersonalisationSettingsUpdateSchema = z.object({
   imageGenerationPromptTemplate: z.string().max(8000).optional(),
   imageGenerationBrandColors: z.string().max(500).optional(),
   imageGenerationReferenceImageUrl: z.string().max(2000).optional(),
+  imageGenerationAspectRatio: imageGenerationAspectRatioSchema.optional(),
   descriptionEnhancementModel: z.string().max(200).optional(),
 });
 
@@ -40,6 +58,8 @@ export const competitionAiGenerateImageSchema = z.object({
   title: z.string().min(1).max(300),
   description: z.string().min(1).max(20_000),
   slug: z.string().max(200).optional(),
+  /** When set, sent to OpenRouter instead of building from the saved template. */
+  prompt: z.string().min(1).max(20_000).optional(),
 });
 
 export const competitionAiEnhanceDescriptionSchema = z.object({

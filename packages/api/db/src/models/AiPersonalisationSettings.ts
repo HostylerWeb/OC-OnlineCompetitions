@@ -52,6 +52,10 @@ const AiPersonalisationSettingsSchema = new Schema(
     },
     imageGenerationBrandColors: { type: String, default: "" },
     imageGenerationReferenceImageUrl: { type: String, default: "" },
+    imageGenerationAspectRatio: {
+      type: String,
+      default: DEFAULT_AI_PERSONALISATION_SETTINGS.imageGenerationAspectRatio,
+    },
     descriptionEnhancementModel: { type: String, default: "" },
   },
   { timestamps: true, _id: false }

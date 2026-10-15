@@ -226,7 +226,7 @@ export function CompetitionCard({
               </span>
             </div>
           )}
-          <div className="relative aspect-[4/3] flex-shrink-0 overflow-hidden">
+          <div className="relative aspect-square flex-shrink-0 overflow-hidden">
             {imageUrl && !imageFailed ? (
               <img
                 src={imageUrl}

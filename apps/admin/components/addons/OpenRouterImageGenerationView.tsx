@@ -23,6 +23,9 @@ import {
   useAdminOpenRouterImageModelsScan,
 } from "@oc/api-admin";
 import {
+  DEFAULT_COMPETITION_IMAGE_PROMPT_TEMPLATE,
+  IMAGE_GENERATION_ASPECT_RATIO_LABELS,
+  IMAGE_GENERATION_ASPECT_RATIOS,
   partitionOpenRouterImageModels,
   type AiPersonalisationSettings,
   type OpenRouterModelListItem,
@@ -88,6 +91,7 @@ export function OpenRouterImageGenerationView() {
   );
   const [brandColors, setBrandColors] = useState(DEFAULT_IMAGE_GENERATION_FORM_STATE.brandColors);
   const [referenceUrl, setReferenceUrl] = useState(DEFAULT_IMAGE_GENERATION_FORM_STATE.referenceUrl);
+  const [aspectRatio, setAspectRatio] = useState(DEFAULT_IMAGE_GENERATION_FORM_STATE.aspectRatio);
   const [descriptionModel, setDescriptionModel] = useState(
     DEFAULT_IMAGE_GENERATION_FORM_STATE.descriptionModel
   );
@@ -104,6 +108,7 @@ export function OpenRouterImageGenerationView() {
     setPromptTemplate(next.promptTemplate);
     setBrandColors(next.brandColors);
     setReferenceUrl(next.referenceUrl);
+    setAspectRatio(next.aspectRatio);
     setDescriptionModel(next.descriptionModel);
   }
 
@@ -162,6 +167,7 @@ export function OpenRouterImageGenerationView() {
           promptTemplate,
           brandColors,
           referenceUrl,
+          aspectRatio,
           descriptionModel,
         })
       );
@@ -214,8 +220,8 @@ export function OpenRouterImageGenerationView() {
         <CardHeader>
           <CardTitle className="text-base">Competition image AI</CardTitle>
           <CardDescription>
-            Generate 1:1 primary competition images and enhance descriptions while creating or
-            editing competitions.
+            Generate competition images (aspect ratio below) and enhance descriptions while creating
+            or editing competitions.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-1">
@@ -267,7 +273,7 @@ export function OpenRouterImageGenerationView() {
                     markDirty();
                     setModel(v);
                   }}
-                  disabled={!apiKeySet || scannedModels.length === 0}
+                  disabled={!apiKeySet || (scannedModels.length === 0 && !model.trim())}
                 >
                   <SelectTrigger className="w-full min-w-[14rem] sm:w-72">
                     <SelectValue placeholder="Scan models first" />
@@ -303,6 +309,36 @@ export function OpenRouterImageGenerationView() {
             }
           />
           <SettingRow
+            title="Output aspect ratio"
+            description="Sent to OpenRouter as aspect_ratio on every Generate with AI run. Pick what matches your primary image role (square for cards, 16:9 for banners, etc.)."
+            control={
+              <Select
+                value={aspectRatio}
+                onValueChange={(v) => {
+                  markDirty();
+                  setAspectRatio(v as typeof aspectRatio);
+                }}
+                disabled={!apiKeySet}
+              >
+                <SelectTrigger className="w-full min-w-[14rem] sm:w-72">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {IMAGE_GENERATION_ASPECT_RATIOS.map((ratio) => (
+                    <SelectItem key={ratio} value={ratio}>
+                      <span className="flex flex-col items-start gap-0.5">
+                        <span className="font-medium tabular-nums">{ratio}</span>
+                        <span className="text-xs text-muted-foreground">
+                          {IMAGE_GENERATION_ASPECT_RATIO_LABELS[ratio]}
+                        </span>
+                      </span>
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            }
+          />
+          <SettingRow
             title="Description enhancement model"
             description="Text model for Optimize description. Leave empty to use the customer personalisation model."
             control={
@@ -335,10 +371,26 @@ export function OpenRouterImageGenerationView() {
             />
           </div>
           <div className="py-4">
-            <Label className="text-sm font-medium">Generation prompt template</Label>
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <Label className="text-sm font-medium">Generation prompt template</Label>
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                disabled={!apiKeySet}
+                onClick={() => {
+                  markDirty();
+                  setPromptTemplate(DEFAULT_COMPETITION_IMAGE_PROMPT_TEMPLATE);
+                }}
+              >
+                Use recommended template
+              </Button>
+            </div>
             <p className="mt-1 text-xs text-muted-foreground">
-              Use [Name], [Description], [Brand colors], and [Reference image]. Competition title
-              and description are filled in when generating from the competition form.
+              Placeholders: [Name], [Description], [Brand colors], [Aspect ratio], [Reference
+              image]. The recommended template asks for on-image headlines (title + short tagline)
+              like other raffle sites. Reference is filled with instructions when a gallery reference
+              is configured; the image is also sent to the model as an attachment.
             </p>
             <Textarea
               className="mt-2 min-h-[160px] font-mono text-xs"

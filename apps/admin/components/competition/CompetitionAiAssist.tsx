@@ -1,16 +1,18 @@
 "use client";
 
 import type { ReactNode } from "react";
+import { useState } from "react";
 import {
   useAdminAiPersonalisationSettings,
   useAdminCompetitionAiEnhanceDescription,
-  useAdminCompetitionAiGenerateImage,
 } from "@oc/api-admin";
 import { Loader2, Sparkles, Wand2 } from "@oc/icons";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { toast } from "sonner";
+import { CompetitionAiGenerateImageDialog } from "./CompetitionAiGenerateImageDialog";
+import { addGeneratedImageToPool } from "./competition-image-pool";
 import {
   getDescriptionEnhancementBlockReason,
   getImageGenerationBlockReason,
@@ -22,6 +24,7 @@ interface CompetitionAiAssistProps {
   onFormUpdate: (updater: (prev: CompetitionFormState) => CompetitionFormState) => void;
   mode: "description" | "image";
   onSessionUploadedUrl?: (url: string) => void;
+  onImageAddedToPool?: (url: string) => void;
 }
 
 function GatedAiButton({
@@ -71,10 +74,11 @@ export function CompetitionAiAssist({
   onFormUpdate,
   mode,
   onSessionUploadedUrl,
+  onImageAddedToPool,
 }: CompetitionAiAssistProps) {
   const { data: settingsData, isLoading: settingsLoading } = useAdminAiPersonalisationSettings();
-  const generateMutation = useAdminCompetitionAiGenerateImage();
   const enhanceMutation = useAdminCompetitionAiEnhanceDescription();
+  const [imageDialogOpen, setImageDialogOpen] = useState(false);
 
   const settings = settingsData?.data;
   const titleOk = form.title.trim().length > 0;
@@ -118,54 +122,30 @@ export function CompetitionAiAssist({
     (!titleOk || !descriptionOk
       ? "Enter a title and full description on the Details tab first."
       : null);
-  const imageToolsReady = imageSetupBlock === null;
+
+  function handleImageAddedToPool(url: string) {
+    onSessionUploadedUrl?.(url);
+    onFormUpdate((prev) => addGeneratedImageToPool(prev, url));
+    onImageAddedToPool?.(url);
+  }
 
   return (
-    <GatedAiButton
-      blockReason={imageBlockReason}
-      disabled={Boolean(imageBlockReason) || generateMutation.isPending}
-      pending={generateMutation.isPending}
-      icon={<Sparkles className="size-4" />}
-      label="Generate with AI"
-      onClick={async () => {
-        if (!imageToolsReady || !titleOk || !descriptionOk) return;
-        try {
-          const slug = form.slug || form.title.toLowerCase().replace(/\s+/g, "-");
-          const res = await generateMutation.mutateAsync({
-            title: form.title.trim(),
-            description: form.description.trim(),
-            slug,
-          });
-          const url = res.data?.publicUrl;
-          if (!url) throw new Error("No image URL");
-          onSessionUploadedUrl?.(url);
-          onFormUpdate((prev) => {
-            const withoutPrimary = prev.images.map((img) => ({
-              ...img,
-              roles: img.roles.filter((r) => r !== "primary"),
-            }));
-            const existing = withoutPrimary.find((i) => i.url === url);
-            if (existing) {
-              return {
-                ...prev,
-                images: withoutPrimary.map((img) =>
-                  img.url === url
-                    ? { ...img, roles: [...new Set([...img.roles, "primary"])] }
-                    : img
-                ),
-              };
-            }
-            return {
-              ...prev,
-              images: [...withoutPrimary, { url, roles: ["primary"] }],
-            };
-          });
-          toast.success("Primary image generated (1:1).");
-        } catch {
-          toast.error("Image generation failed. Check OpenRouter AI image settings.");
-        }
-      }}
-    />
+    <>
+      <GatedAiButton
+        blockReason={imageBlockReason}
+        disabled={Boolean(imageBlockReason)}
+        pending={false}
+        icon={<Sparkles className="size-4" />}
+        label="Generate with AI"
+        onClick={() => setImageDialogOpen(true)}
+      />
+      <CompetitionAiGenerateImageDialog
+        open={imageDialogOpen}
+        onOpenChange={setImageDialogOpen}
+        form={form}
+        onImageAddedToPool={handleImageAddedToPool}
+      />
+    </>
   );
 }
 

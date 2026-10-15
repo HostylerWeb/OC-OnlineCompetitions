@@ -30,6 +30,9 @@ export function useAdminAiPersonalisationSettingsMutations() {
       api.put<AiPersonalisationSettings>("/api/admin/ai-personalisation-settings", payload),
     onSuccess: (res) => {
       qc.setQueryData(queryKeys.admin.aiPersonalisationSettings(), res);
+      void qc.invalidateQueries({
+        queryKey: [...queryKeys.admin.aiPersonalisationSettings(), "openrouter-balance"],
+      });
     },
   });
 
@@ -41,6 +44,35 @@ export type OpenRouterModelsScanResponse = {
   models: OpenRouterModelListItem[];
   scannedAt: string;
 };
+
+export type OpenRouterBalanceSnapshot = {
+  fetchedAt: string;
+  key: {
+    usageUsd: number;
+    usageDailyUsd: number;
+    usageMonthlyUsd: number;
+    limitUsd: number | null;
+    limitRemainingUsd: number | null;
+    limitReset: string | null;
+    isFreeTier: boolean;
+    label: string | null;
+  };
+  accountCredits: {
+    totalCreditsUsd: number;
+    totalUsageUsd: number;
+    remainingUsd: number;
+  } | null;
+  accountCreditsUnavailableReason?: string;
+};
+
+export function useAdminOpenRouterBalance(enabled: boolean) {
+  return useQuery<ApiResponse<OpenRouterBalanceSnapshot>>({
+    queryKey: [...queryKeys.admin.aiPersonalisationSettings(), "openrouter-balance"] as const,
+    queryFn: () => api.get("/api/admin/ai-personalisation-settings/openrouter/balance"),
+    staleTime: 60_000,
+    enabled,
+  });
+}
 
 export function useAdminOpenRouterModelsScan() {
   return useMutation({
@@ -94,8 +126,13 @@ export function useAdminOpenRouterImageModelsScan() {
 
 export function useAdminCompetitionAiGenerateImage() {
   return useMutation({
-    mutationFn: (payload: { title: string; description: string; slug?: string }) =>
-      api.post<{ publicUrl: string }>(
+    mutationFn: (payload: {
+      title: string;
+      description: string;
+      slug?: string;
+      prompt?: string;
+    }) =>
+      api.post<{ publicUrl: string; promptUsed?: string }>(
         "/api/admin/ai-personalisation-settings/competition/generate-image",
         payload,
         { timeout: 180_000 }

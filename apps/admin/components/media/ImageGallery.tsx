@@ -45,6 +45,7 @@ interface ImageGalleryProps {
   className?: string;
   onUploadsInFlightChange?: (inFlight: boolean) => void;
   onSessionUploadedUrl?: (url: string) => void;
+  highlightUrl?: string | null;
   legend?: string;
   description?: string;
 }
@@ -80,6 +81,7 @@ export function ImageGallery({
   className,
   onUploadsInFlightChange,
   onSessionUploadedUrl,
+  highlightUrl,
 }: ImageGalleryProps) {
   const [queue, setQueue] = useState<UploadQueueItem[]>([]);
   const [isDragOver, setIsDragOver] = useState(false);
@@ -310,7 +312,7 @@ export function ImageGallery({
                   variant="outline"
                   onClick={() => setPickerOpen(true)}
                 >
-                  Browse Storage
+                  Media library
                 </Button>
               )}
             </div>
@@ -332,6 +334,7 @@ export function ImageGallery({
                       img={img}
                       isPrimary={img.url === primaryUrl}
                       isHero={img.url === heroUrl}
+                      highlighted={highlightUrl != null && img.url === highlightUrl}
                       qi={queueItemForUrl(img.url)}
                       brokenImages={brokenImages}
                       setBrokenImages={setBrokenImages}
@@ -360,6 +363,7 @@ export function ImageGallery({
                       img={img}
                       isPrimary={img.url === primaryUrl}
                       isHero={img.url === heroUrl}
+                      highlighted={highlightUrl != null && img.url === highlightUrl}
                       qi={queueItemForUrl(img.url)}
                       brokenImages={brokenImages}
                       setBrokenImages={setBrokenImages}
@@ -443,7 +447,7 @@ export function ImageGallery({
                 }}
                 className="mt-2 h-auto text-xs text-gold underline underline-offset-2"
               >
-                Browse Storage
+                Media library
               </Button>
             )}
           </div>
@@ -464,7 +468,8 @@ export function ImageGallery({
         onOpenChange={setPickerOpen}
         onSelect={handleBrowseSelect}
         multiple
-        initialPrefix={slug ? `prizes/${slug}/` : "prizes/"}
+        initialType="image"
+        initialBrowseFlat
         selectedUrls={images.map((i) => i.url)}
       />
     </div>

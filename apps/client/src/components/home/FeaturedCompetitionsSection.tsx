@@ -82,7 +82,7 @@ export function FeaturedCompetitionsSection({
         {isLoading
           ? Array.from({ length: limit }).map((_, i) => (
               <div key={i} className="overflow-hidden rounded-2xl border border-gold/10 bg-card">
-                <Skeleton className="aspect-[4/3] w-full rounded-none" shimmer />
+                <Skeleton className="aspect-square w-full rounded-none" shimmer />
                 <div className="space-y-2 p-3">
                   <Skeleton className="h-5 w-3/4" shimmer />
                   <Skeleton className="h-4 w-1/2" shimmer />

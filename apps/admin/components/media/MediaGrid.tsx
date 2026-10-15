@@ -295,9 +295,7 @@ export function MediaGrid({
 }: MediaGridProps) {
   const isManagePage = layout === "page";
   const effectiveSelectable = selectable || isManagePage;
-  const [browseFlat, setBrowseFlat] = useState(
-    initialBrowseFlat ?? (layout === "page")
-  );
+  const [browseFlat, setBrowseFlat] = useState(initialBrowseFlat ?? true);
   const [assets, setAssets] = useState<S3Asset[]>([]);
   const [cursor, setCursor] = useState<string | undefined>();
   const [loading, setLoading] = useState<PickerState>("loading");
@@ -355,12 +353,12 @@ export function MediaGrid({
   }, [prefix, debouncedSearch, typeFilter, sort, view, browseFlat, isManagePage, onStateChange]);
 
   const visibleKeys = useMemo(() => {
-    if (browseFlat && isManagePage) {
+    if (browseFlat) {
       return assets.filter((a) => !isFrameKey(a.key)).map((a) => a.key);
     }
     const directFiles = extractDirectFiles(assets, prefix);
     return directFiles.map((a) => a.key);
-  }, [assets, prefix, browseFlat, isManagePage]);
+  }, [assets, prefix, browseFlat]);
 
   const metaCache = useMetadataCache(visibleKeys);
   const { cache: usageCache, prefetch: prefetchUsage } = useUsageCache();
@@ -371,7 +369,7 @@ export function MediaGrid({
       if (!cursorToken) setLoading("loading");
       try {
         const params = new URLSearchParams();
-        if (isManagePage && browseFlat) {
+        if (browseFlat) {
           params.set("flat", "1");
         } else {
           params.set("prefix", prefix);
@@ -403,7 +401,7 @@ export function MediaGrid({
         toast.error("Failed to load files");
       }
     },
-    [prefix, debouncedSearch, typeFilter, sort, browseFlat, isManagePage]
+    [prefix, debouncedSearch, typeFilter, sort, browseFlat]
   );
 
   useEffect(() => {
@@ -538,11 +536,10 @@ export function MediaGrid({
   }
 
   const breadcrumbs = parseBreadcrumbs(prefix);
-  const subfolders = browseFlat && isManagePage ? [] : extractSubfolders(assets, prefix);
-  const directFiles =
-    browseFlat && isManagePage
-      ? assets.filter((a) => !isFrameKey(a.key))
-      : extractDirectFiles(assets, prefix);
+  const subfolders = browseFlat ? [] : extractSubfolders(assets, prefix);
+  const directFiles = browseFlat
+    ? assets.filter((a) => !isFrameKey(a.key))
+    : extractDirectFiles(assets, prefix);
   const showSelect = showSelectButton ?? Boolean(onSelect);
   const inUseCount = useMemo(() => {
     let count = 0;
@@ -650,7 +647,7 @@ export function MediaGrid({
         </div>
       </div>
 
-      {(!browseFlat || !isManagePage) && breadcrumbs.length > 1 && (
+      {!browseFlat && breadcrumbs.length > 1 && (
         <nav className="flex flex-wrap items-center gap-1 text-sm text-muted-foreground">
           {breadcrumbs.map((crumb, i) => (
             <span key={crumb.prefix || "root"} className="flex items-center gap-1">

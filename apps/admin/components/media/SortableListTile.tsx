@@ -49,6 +49,7 @@ interface SortableListTileProps {
   onAssignRole: (url: string, role: "primary" | "hero") => void;
   onClearRole: (role: "primary" | "hero") => void;
   readOnly: boolean;
+  highlighted?: boolean;
 }
 
 export function SortableListTile({
@@ -62,6 +63,7 @@ export function SortableListTile({
   onAssignRole,
   onClearRole,
   readOnly,
+  highlighted,
 }: SortableListTileProps) {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
     id: img.url,
@@ -83,6 +85,7 @@ export function SortableListTile({
       style={style}
       className={cn(
         "flex items-center gap-3 rounded-lg border p-2.5 transition-all",
+        highlighted && "ring-2 ring-primary ring-offset-2 ring-offset-background",
         isItemUploading && "opacity-60",
         isDragging && "opacity-40"
       )}

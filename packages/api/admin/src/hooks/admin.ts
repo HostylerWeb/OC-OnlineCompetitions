@@ -71,6 +71,7 @@ export {
 export {
   useAdminAiPersonalisationSettings,
   useAdminAiPersonalisationSettingsMutations,
+  useAdminOpenRouterBalance,
   useAdminOpenRouterModelsScan,
   useAdminOpenRouterImageModelsScan,
   useAdminCompetitionAiGenerateImage,

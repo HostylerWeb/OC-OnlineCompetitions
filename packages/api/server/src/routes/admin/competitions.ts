@@ -386,6 +386,7 @@ app.put(
         urlsToCheck.push(body.prizeImageUrl);
       if (Array.isArray(body.prizeImages)) urlsToCheck.push(...body.prizeImages);
       if (Array.isArray(body.prizeImagesRemote)) urlsToCheck.push(...body.prizeImagesRemote);
+      const uniqueUrlsToCheck = [...new Set(urlsToCheck)];
 
       const bodyDump = {
         imageUrl: body.imageUrl,
@@ -398,11 +399,11 @@ app.put(
         `[admin.competitions.update] ${reqIdHead} body image fields: ${JSON.stringify(bodyDump)}`
       );
       console.log(
-        `[admin.competitions.update] ${reqIdHead} HEAD-check urlsToCheck (${urlsToCheck.length}): ${JSON.stringify(urlsToCheck)}`
+        `[admin.competitions.update] ${reqIdHead} HEAD-check urlsToCheck (${uniqueUrlsToCheck.length}): ${JSON.stringify(uniqueUrlsToCheck)}`
       );
 
       const brokenUrls = new Set<string>();
-      if (urlsToCheck.length > 0) {
+      if (uniqueUrlsToCheck.length > 0) {
         const headCheck = async (
           url: string
         ): Promise<{ url: string; ok: boolean; status: number }> => {
@@ -419,7 +420,7 @@ app.put(
           }
         };
 
-        const results = await Promise.all(urlsToCheck.map((u) => headCheck(u)));
+        const results = await Promise.all(uniqueUrlsToCheck.map((u) => headCheck(u)));
         for (const r of results) {
           console.log(
             `[admin.competitions.update] ${reqIdHead} HEAD result url=${r.url} ok=${r.ok} status=${r.status}`
@@ -554,7 +555,7 @@ app.put(
       const updated = competition as Pick<ICompetition, "maxTickets"> & {
         _id: mongoose.Types.ObjectId;
       };
-      if (body.maxTickets != null) {
+      if (body.maxTickets != null && body.maxTickets !== existing.maxTickets) {
         await provisionTickets(updated._id, updated.maxTickets);
       }
 

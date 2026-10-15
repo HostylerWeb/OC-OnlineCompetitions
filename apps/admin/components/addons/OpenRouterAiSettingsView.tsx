@@ -23,6 +23,7 @@ import { Textarea } from "@/components/ui/textarea";
 import {
   useAdminAiPersonalisationSettings,
   useAdminAiPersonalisationSettingsMutations,
+  useAdminOpenRouterBalance,
   useAdminOpenRouterModelsScan,
   useAdminPersonalisationPlannerLatestRun,
   useAdminRunPersonalisationPlanner,
@@ -50,7 +51,7 @@ import {
   Wand2,
 } from "@oc/icons";
 import Link from "next/link";
-import { type ReactNode, useEffect, useMemo, useState } from "react";
+import { type ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 
 const TONE_OPTIONS = [
@@ -58,6 +59,13 @@ const TONE_OPTIONS = [
   { value: "friendly", label: "Friendly" },
   { value: "enthusiastic", label: "Enthusiastic" },
 ] as const;
+
+const usdFormatter = new Intl.NumberFormat("en-GB", {
+  style: "currency",
+  currency: "USD",
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 4,
+});
 
 const usdPerMillionFormatter = new Intl.NumberFormat("en-GB", {
   style: "currency",
@@ -272,6 +280,7 @@ export function OpenRouterAiSettingsView({ embedded = false }: { embedded?: bool
   const [dryRunPlanner, setDryRunPlanner] = useState(
     DEFAULT_AI_PERSONALISATION_SETTINGS.dryRunPlanner
   );
+  const restoredModelScanRef = useRef(false);
 
   const formSetters = {
     setAddonEnabled,
@@ -300,11 +309,54 @@ export function OpenRouterAiSettingsView({ embedded = false }: { embedded?: bool
     setDryRunPlanner,
   };
 
+  const resolvedApiKey = apiKey.trim() || data?.data?.openRouterApiKey?.trim() || "";
+  const apiKeyConfiguredForBalance = Boolean(resolvedApiKey);
+  const {
+    data: balanceData,
+    isFetching: balanceLoading,
+    refetch: refetchBalance,
+  } = useAdminOpenRouterBalance(apiKeyConfiguredForBalance && hydrated);
+
   useEffect(() => {
     if (!data?.data || hydrated) return;
     applySettingsToForm(data.data, formSetters);
     setHydrated(true);
   }, [data?.data, hydrated]);
+
+  useEffect(() => {
+    if (!hydrated || restoredModelScanRef.current) return;
+    if (!addonEnabled || !resolvedApiKey || !model.trim()) return;
+    if (scannedModels.length > 0) return;
+
+    restoredModelScanRef.current = true;
+
+    void (async () => {
+      for (const tier of ["paid", "free"] as const) {
+        try {
+          const res = await scanModelsMutation.mutateAsync({
+            tier,
+            openRouterApiKey: apiKey.trim() || undefined,
+          });
+          const list = res.data?.models ?? [];
+          if (!list.some((m) => m.id === model)) continue;
+          setPricingTier(tier);
+          setScannedModels(list);
+          setModelsScannedAt(res.data?.scannedAt ?? null);
+          return;
+        } catch {
+          /* try other tier */
+        }
+      }
+    })();
+  }, [
+    hydrated,
+    addonEnabled,
+    resolvedApiKey,
+    model,
+    apiKey,
+    scannedModels.length,
+    scanModelsMutation,
+  ]);
 
   function resetDefaults() {
     if (data?.data) {
@@ -315,8 +367,6 @@ export function OpenRouterAiSettingsView({ embedded = false }: { embedded?: bool
     applySettingsToForm(DEFAULT_AI_PERSONALISATION_SETTINGS, formSetters);
     toast.message("Reset to defaults.");
   }
-
-  const resolvedApiKey = apiKey.trim() || data?.data?.openRouterApiKey?.trim() || "";
 
   async function scanModels() {
     if (!pricingTier) {
@@ -358,8 +408,16 @@ export function OpenRouterAiSettingsView({ embedded = false }: { embedded?: bool
     return { recommendedModelOptions: recommended, otherModelOptions: other };
   }, [modelSelectOptions, pricingTier]);
 
+  const savedModelLabel = useMemo(() => {
+    const fromScan = modelSelectOptions.find((m) => m.id === model);
+    return fromScan?.name ?? model;
+  }, [model, modelSelectOptions]);
+
   const savedModelMissingFromScan =
-    model && modelSelectOptions.length > 0 && !modelSelectOptions.some((m) => m.id === model);
+    Boolean(model.trim()) && !modelSelectOptions.some((m) => m.id === model);
+
+  const modelSelectEnabled =
+    addonEnabled && (modelSelectOptions.length > 0 || Boolean(model.trim()));
 
   async function handleSave() {
     const resolvedModel =
@@ -478,6 +536,81 @@ export function OpenRouterAiSettingsView({ embedded = false }: { embedded?: bool
                 />
               }
             />
+            {apiKeyConfiguredForBalance ? (
+              <div className="border-b border-border/60 py-4">
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                  <div className="max-w-xl">
+                    <p className="text-sm font-medium text-foreground">OpenRouter usage & balance</p>
+                    <p className="mt-1 text-xs text-muted-foreground">
+                      Pulled live from OpenRouter for this API key. Account-wide remaining credits
+                      need a management key; standard keys show per-key usage and limits.
+                    </p>
+                  </div>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    disabled={balanceLoading}
+                    onClick={() => void refetchBalance()}
+                  >
+                    {balanceLoading ? (
+                      <Loader2 className="size-4 animate-spin" />
+                    ) : (
+                      <RefreshCw className="size-4" />
+                    )}
+                    Refresh
+                  </Button>
+                </div>
+                {balanceData?.data ? (
+                  <dl className="mt-3 grid gap-2 text-sm sm:grid-cols-2">
+                    {balanceData.data.accountCredits ? (
+                      <>
+                        <div>
+                          <dt className="text-xs text-muted-foreground">Account remaining</dt>
+                          <dd className="font-medium tabular-nums">
+                            {usdFormatter.format(balanceData.data.accountCredits.remainingUsd)}
+                          </dd>
+                        </div>
+                        <div>
+                          <dt className="text-xs text-muted-foreground">Account purchased / used</dt>
+                          <dd className="tabular-nums text-muted-foreground">
+                            {usdFormatter.format(balanceData.data.accountCredits.totalCreditsUsd)} /{" "}
+                            {usdFormatter.format(balanceData.data.accountCredits.totalUsageUsd)}
+                          </dd>
+                        </div>
+                      </>
+                    ) : balanceData.data.accountCreditsUnavailableReason ? (
+                      <div className="sm:col-span-2 text-xs text-muted-foreground">
+                        {balanceData.data.accountCreditsUnavailableReason}
+                      </div>
+                    ) : null}
+                    <div>
+                      <dt className="text-xs text-muted-foreground">Key usage (all time)</dt>
+                      <dd className="font-medium tabular-nums">
+                        {usdFormatter.format(balanceData.data.key.usageUsd)}
+                      </dd>
+                    </div>
+                    <div>
+                      <dt className="text-xs text-muted-foreground">Key usage (this month)</dt>
+                      <dd className="tabular-nums">
+                        {usdFormatter.format(balanceData.data.key.usageMonthlyUsd)}
+                      </dd>
+                    </div>
+                    {balanceData.data.key.limitRemainingUsd != null ? (
+                      <div>
+                        <dt className="text-xs text-muted-foreground">Key spending limit remaining</dt>
+                        <dd className="font-medium tabular-nums">
+                          {usdFormatter.format(balanceData.data.key.limitRemainingUsd)}
+                          {balanceData.data.key.limitReset
+                            ? ` · resets ${balanceData.data.key.limitReset}`
+                            : null}
+                        </dd>
+                      </div>
+                    ) : null}
+                  </dl>
+                ) : null}
+              </div>
+            ) : null}
             <div className="border-b border-border/60 py-4 space-y-4">
               <div className="max-w-xl">
                 <p className="text-sm font-medium text-foreground">Model</p>
@@ -536,14 +669,14 @@ export function OpenRouterAiSettingsView({ embedded = false }: { embedded?: bool
                   ) : null}
                   <Label className="text-xs text-muted-foreground">Available model</Label>
                   <Select
-                    value={model}
+                    value={model || undefined}
                     onValueChange={setModel}
-                    disabled={!addonEnabled || modelSelectOptions.length === 0}
+                    disabled={!modelSelectEnabled}
                   >
                     <SelectTrigger className="w-full">
                       <SelectValue
                         placeholder={
-                          modelSelectOptions.length === 0
+                          modelSelectOptions.length === 0 && !model.trim()
                             ? "Scan to load models"
                             : "Select model"
                         }
@@ -551,7 +684,9 @@ export function OpenRouterAiSettingsView({ embedded = false }: { embedded?: bool
                     </SelectTrigger>
                     <SelectContent className="max-h-72">
                       {savedModelMissingFromScan ? (
-                        <SelectItem value={model}>Saved: {model}</SelectItem>
+                        <SelectItem value={model}>
+                          Saved: {savedModelLabel}
+                        </SelectItem>
                       ) : null}
                       {recommendedModelOptions.length > 0 ? (
                         <SelectGroup>

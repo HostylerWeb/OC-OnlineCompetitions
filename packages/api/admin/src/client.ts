@@ -10,6 +10,8 @@ import { logoutAll as logoutAllFn } from "./stores/clear-all";
 export const API_DEFAULT_TIMEOUT_MS = 15_000;
 export const API_CHECKOUT_TIMEOUT_MS = 60_000;
 export const API_ADMIN_INSTANT_PRIZE_ASSIGN_TIMEOUT_MS = 120_000;
+/** Competition PUT can provision tickets + HEAD-check image URLs on MinIO. */
+export const API_ADMIN_COMPETITION_WRITE_TIMEOUT_MS = 120_000;
 
 export interface ApiError {
   error: {
@@ -52,6 +54,11 @@ export const adminInstantPrizeAssignPostOptions: RequestOptions = {
 
 export const adminInstantPrizeAssignMutationOptions: RequestOptions = {
   timeout: API_ADMIN_INSTANT_PRIZE_ASSIGN_TIMEOUT_MS,
+};
+
+export const adminCompetitionWriteMutationOptions: RequestOptions = {
+  timeout: API_ADMIN_COMPETITION_WRITE_TIMEOUT_MS,
+  retries: 0,
 };
 
 export function idempotencyKeyFromCartId(cartId: string | null | undefined): string | undefined {

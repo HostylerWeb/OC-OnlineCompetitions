@@ -3,7 +3,7 @@ import { getEnv } from "@oc/env/next";
 import type { AdminCompetition, ApiResponse } from "@oc/types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { api } from "../../client";
+import { adminCompetitionWriteMutationOptions, api } from "../../client";
 import { queryKeys } from "../../keys";
 import { createPaginatedAdminQuery } from "../../lib/pagination";
 
@@ -221,13 +221,21 @@ export function useAdminCompetitionMutations() {
 
   const createMutation = useMutation({
     mutationFn: (payload: Record<string, unknown>) =>
-      api.post<ApiResponse<AdminCompetition>>("/api/admin/competitions", payload),
+      api.post<ApiResponse<AdminCompetition>>(
+        "/api/admin/competitions",
+        payload,
+        adminCompetitionWriteMutationOptions
+      ),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["admin", "competitions"] }),
   });
 
   const updateMutation = useMutation({
     mutationFn: ({ id, payload }: { id: string; payload: Record<string, unknown> }) =>
-      api.put<ApiResponse<AdminCompetition>>(`/api/admin/competitions/${id}`, payload),
+      api.put<ApiResponse<AdminCompetition>>(
+        `/api/admin/competitions/${id}`,
+        payload,
+        adminCompetitionWriteMutationOptions
+      ),
     onSuccess: (_data, variables) => {
       queryClient.invalidateQueries({ queryKey: ["admin", "competitions"] });
       queryClient.invalidateQueries({ queryKey: queryKeys.admin.competition(variables.id) });

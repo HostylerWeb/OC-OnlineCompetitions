@@ -4,6 +4,7 @@ import {
   PersonalisationPlannerRun,
   type IAiPersonalisationSettings,
 } from "@oc/api-db/models";
+import { resolveCompetitionImagePromptTemplate } from "@oc/types";
 import dbConnect from "@oc/api-infra/db";
 import { ErrorCodes } from "@oc/api-infra/error-codes";
 import { error, success } from "@oc/api-infra/response";
@@ -12,6 +13,10 @@ import { runPersonalisationPlanner } from "@oc/api-server/lib/jobs/run-personali
 import { buildCompetitionImagePrompt } from "@oc/api-server/lib/openrouter/build-competition-image-prompt";
 import { enhanceCompetitionDescriptionViaOpenRouter } from "@oc/api-server/lib/openrouter/enhance-competition-description";
 import { generateCompetitionImageViaOpenRouter } from "@oc/api-server/lib/openrouter/generate-competition-image";
+import {
+  fetchOpenRouterBalance,
+  OpenRouterBalanceError,
+} from "@oc/api-server/lib/openrouter/get-openrouter-balance";
 import { listOpenRouterImageModels } from "@oc/api-server/lib/openrouter/list-image-models";
 import {
   listOpenRouterModelsForTier,
@@ -61,6 +66,7 @@ const SETTINGS_UPDATE_KEYS = [
   "imageGenerationPromptTemplate",
   "imageGenerationBrandColors",
   "imageGenerationReferenceImageUrl",
+  "imageGenerationAspectRatio",
   "descriptionEnhancementModel",
 ] as const;
 
@@ -69,6 +75,9 @@ function mergeSettings(raw: IAiPersonalisationSettings | null): IAiPersonalisati
   return {
     ...DEFAULT_AI_PERSONALISATION_SETTINGS,
     ...raw,
+    imageGenerationPromptTemplate: resolveCompetitionImagePromptTemplate(
+      raw.imageGenerationPromptTemplate
+    ),
   };
 }
 
@@ -94,6 +103,31 @@ app.get("/", async (c) => {
       operation: "admin.aiPersonalisationSettings.get",
     });
     return error(c, ErrorCodes.INTERNAL_ERROR, "Internal server error", 500);
+  }
+});
+
+app.get("/openrouter/balance", async (c) => {
+  try {
+    await dbConnect();
+    const settings = await AiPersonalisationSettings.findById("ai_personalisation_settings")
+      .select("openRouterApiKey")
+      .lean();
+    const apiKey = settings?.openRouterApiKey?.trim() ?? "";
+    const snapshot = await fetchOpenRouterBalance(apiKey);
+    return success(c, snapshot);
+  } catch (err: unknown) {
+    if (err instanceof OpenRouterBalanceError) {
+      const status =
+        err.code === "INVALID_API_KEY" ? 401 : err.code === "MISSING_API_KEY" ? 400 : 502;
+      return error(c, ErrorCodes.VALIDATION_ERROR, err.message, status);
+    }
+    captureRouteError(err, {
+      requestId: c.get("requestId"),
+      path: c.req.path,
+      userId: c.get("userId") ?? null,
+      operation: "admin.aiPersonalisationSettings.openRouterBalance",
+    });
+    return error(c, ErrorCodes.INTERNAL_ERROR, "Failed to load OpenRouter balance", 500);
   }
 });
 
@@ -174,17 +208,21 @@ app.post("/competition/generate-image", async (c) => {
       return error(c, ErrorCodes.VALIDATION_ERROR, "OpenRouter API key is required", 400);
     }
 
-    const prompt = buildCompetitionImagePrompt(settings.imageGenerationPromptTemplate, {
-      title: parsed.data.title,
-      description: parsed.data.description,
-      brandColors: settings.imageGenerationBrandColors,
-      referenceImageUrl: settings.imageGenerationReferenceImageUrl,
-    });
+    const prompt =
+      parsed.data.prompt?.trim() ||
+      buildCompetitionImagePrompt(settings.imageGenerationPromptTemplate, {
+        title: parsed.data.title,
+        description: parsed.data.description,
+        brandColors: settings.imageGenerationBrandColors,
+        referenceImageUrl: settings.imageGenerationReferenceImageUrl,
+        aspectRatio: settings.imageGenerationAspectRatio,
+      });
 
     const result = await generateCompetitionImageViaOpenRouter({
       apiKey,
       model: settings.imageGenerationModel,
       prompt,
+      aspectRatio: settings.imageGenerationAspectRatio,
       referenceImageUrl: settings.imageGenerationReferenceImageUrl,
       uploadKeyPrefix: parsed.data.slug ?? parsed.data.title,
     });

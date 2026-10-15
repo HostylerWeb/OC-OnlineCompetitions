@@ -1,3 +1,4 @@
+import { configuredAssetCspOrigins, devAssetCspHosts } from "@oc/env/server";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
@@ -10,6 +11,8 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "assets.staging.onlinecompetitions.co.uk" },
       { protocol: "http", hostname: "localhost", port: "9011", pathname: "/onlinecompetitions-assets/**" },
       { protocol: "http", hostname: "127.0.0.1", port: "9011", pathname: "/onlinecompetitions-assets/**" },
+      { protocol: "http", hostname: "localhost", port: "9021", pathname: "/onlinecompetitions-assets/**" },
+      { protocol: "http", hostname: "127.0.0.1", port: "9021", pathname: "/onlinecompetitions-assets/**" },
     ],
     dangerouslyAllowLocalIP: process.env.NODE_ENV !== "production",
     formats: ["image/avif", "image/webp"],
@@ -29,6 +32,21 @@ const nextConfig: NextConfig = {
   serverExternalPackages: ["sharp"],
 
   async headers() {
+    const isDev = process.env.NODE_ENV !== "production";
+    const devAssetHosts = devAssetCspHosts(isDev);
+    const configuredAssetHosts = configuredAssetCspOrigins();
+    const csp =
+      "base-uri 'self'; form-action 'self'; object-src 'none'; frame-ancestors 'none'; default-src 'self'; " +
+      `media-src 'self' https://assets.onlinecompetitions.co.uk https://assets.staging.onlinecompetitions.co.uk${configuredAssetHosts}${devAssetHosts}; ` +
+      "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://challenges.cloudflare.com https://umami.onlinecompetitions.co.uk https://js.stripe.com; " +
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
+      "style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
+      "frame-src https://challenges.cloudflare.com https://js.stripe.com; " +
+      "worker-src 'self' blob:; child-src 'self' blob:; " +
+      `connect-src 'self' https://assets.onlinecompetitions.co.uk https://assets.staging.onlinecompetitions.co.uk https://challenges.cloudflare.com https://umami.onlinecompetitions.co.uk https://api.stripe.com${configuredAssetHosts}${devAssetHosts}; ` +
+      `img-src 'self' data: blob: https://assets.onlinecompetitions.co.uk https://assets.staging.onlinecompetitions.co.uk${configuredAssetHosts}${devAssetHosts}; ` +
+      "font-src 'self' https://fonts.gstatic.com data:";
+
     return [
       ...(process.env.NODE_ENV === "production"
         ? [
@@ -64,8 +82,7 @@ const nextConfig: NextConfig = {
           { key: "X-Frame-Options", value: "DENY" },
           {
             key: "Content-Security-Policy",
-            value:
-              "default-src 'self'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self'",
+            value: csp,
           },
         ],
       },

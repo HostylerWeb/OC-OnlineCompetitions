@@ -1,4 +1,4 @@
-import { cookies } from "next/headers";
+import { serverFetch } from "@/lib/server-fetch";
 
 export interface ShopProductOptionValue {
   value: string;
@@ -67,33 +67,6 @@ export interface PaginatedResponse<T> {
     pages: number;
     hasMore: boolean;
   };
-}
-
-const BASE_URL = process.env.APP_URL || "http://localhost:3444";
-
-/**
- * Server-side fetch with cookie forwarding for auth.
- * Uses absolute URLs to the embedded Hono API.
- */
-async function serverFetch<T>(path: string, options?: RequestInit): Promise<T> {
-  const cookieStore = await cookies();
-  const url = `${BASE_URL}${path}`;
-  const res = await fetch(url, {
-    cache: "no-store",
-    ...options,
-    headers: {
-      "Content-Type": "application/json",
-      Cookie: cookieStore.toString(),
-      ...options?.headers,
-    },
-    signal: AbortSignal.timeout(10_000),
-  });
-
-  if (!res.ok) {
-    throw new Error(`API ${path} returned ${res.status}`);
-  }
-
-  return res.json();
 }
 
 export async function fetchProducts(params?: {

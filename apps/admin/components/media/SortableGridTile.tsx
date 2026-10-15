@@ -59,6 +59,7 @@ interface SortableImageTileProps {
   onAssignRole: (url: string, role: "primary" | "hero") => void;
   onClearRole: (role: "primary" | "hero") => void;
   readOnly: boolean;
+  highlighted?: boolean;
 }
 
 export function SortableGridTile({
@@ -72,6 +73,7 @@ export function SortableGridTile({
   onAssignRole,
   onClearRole,
   readOnly,
+  highlighted,
 }: SortableImageTileProps) {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
     id: img.url,
@@ -90,6 +92,7 @@ export function SortableGridTile({
       <Card
         className={cn(
           "group/card relative overflow-hidden py-0 transition-all",
+          highlighted && "ring-2 ring-primary ring-offset-2 ring-offset-background",
           isItemUploading && "opacity-60",
           isDragging && "opacity-40"
         )}
